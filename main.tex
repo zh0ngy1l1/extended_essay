@@ -1,0 +1,242 @@
+\documentclass[11pt, a4]{article}
+\usepackage[a4paper, total={6in, 9in}]{geometry}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{amsthm}
+
+\title{Session 1 Difficult Problems - Solutions}
+\author{Li Zhongyi}
+
+\theoremstyle{definition}
+\newtheorem{solution}{Solution}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item
+    Suppose we have a system of three linear equations in three variables such that $a$ times the first equation plus $b$ times the second equation equals the third equation, where and are $a$ and $b$ are nonzero constants. 
+    \begin{enumerate}[label=\alph*)]
+        \item Must there be constants $c$ and $d$ such that $c$ times the second equation plus $d$ times the third equation equals the first equation?\\
+        \item  If so, find and in terms of $a$ and $b$.
+    \end{enumerate}
+
+
+\begin{solution}
+    Yes, such $c$ and $d$ exist. This will be proven as follows:\\
+    Let $E_1$, $E_2$, and $E_3$ denote the first, second, and third equations, respectively. Then from the given information, we have $E_3=aE_1+bE_2$. Solving for $E_1$, we get
+    \[E_1=\dfrac{E_3-bE_2}{a}=\dfrac{-b}{a}E_2+\dfrac{1}{a}E_3\]
+    Then, clearly, $c=\dfrac{-b}{a}$ and $d=\dfrac{1}{a}$ satisfy the condition in part (a).
+\end{solution}
+
+\vspace{1cm}
+\item
+    Find the value of $a^3b^7c^{14}$ given that $a^3b^2c=108$ and $a^2b^3c^5=240$.
+
+\begin{solution}
+    We will be finished if we find values for constants $x$ and $y$ such that ${(a^3b^2c)}^x{(a^2b^3c^5)}^y=a^3b^7c^{14}$, since that would equal $108^x240^y$.
+
+    Expanding the brackets and simplifying, we get\[{(a^3b^2c)}^x{(a^2b^3c^5)}^y=a^{3x+2y}b^{2x+3y}c^{x+5y}=a^3b^7c^{14},\]
+    which corresponds to the following linear system of equations, where each equation represents the relation of the exponent of each variable $a, b, c$.
+    \[\begin{cases}
+         3x+2y=3 \\
+         2x+3y=3 \\
+         x+5y=14
+    \end{cases}\]
+    Solving this, we easily obtain $(x, y)=(-1, 3)$, so $a^3b^7c^{14}=108^{-1}240^3=\dfrac{240^3}{108}=128 00$.
+    
+\end{solution}
+    
+\vspace{1cm}
+\item 
+    Find the value of $a+b+c$ given that
+    \begin{align*}
+        2a-b+5c&=13\\
+        2a+3b+c&=75
+    \end{align*}
+        
+\begin{solution}
+    We want to find $x$ and $y$ such that $x$ multiplied by the left-hand side of the first equation plus $y$ multiplied by the left-hand side of the second equation is equal to $a+b+c$. Formally,
+     \begin{align*}
+        a+b+c&=x(2a-b+5c)+y(2a+3b+c)\\
+        &=a(2x+2y)+b(-x+3y)+c(5x+y)
+    \end{align*}
+    Using the same technique as \textbf{Solution 2}, we get the following system of equations:
+    \[\begin{cases}
+         2x+2y=1 \\
+         -x+3y=1 \\
+         5x+y=1,
+    \end{cases}\]
+    which yields $(x, y)=(\dfrac{1}{8}, \dfrac{3}{8})$.\\
+    Hence, $a+b+c=\dfrac{1}{8}(2a-b+5c)+\dfrac{3}{8}(2a+3b+c)=\dfrac{1}{8}\cdot13+\dfrac{3}{8}\cdot75=\dfrac{119}{4}.$
+\end{solution}
+
+\vspace{1cm}
+\item
+    Find all solutions to the system of equations $a-2b=-4, a^2-2b^2=-14$.
+
+\begin{solution}
+    Substituting $a=-4+2b$ from the first equation into the second one, we get
+    \begin{align*}
+        a^2-2b^2&=-14\\
+        (-4+2b)^2-2b^2=4b^2-16b+16-2b^2=2b^2-16b+16&=-14, \text{ so}\\
+        2b^2-16b+30&=0\\
+        b^2-8b+15&=0
+    \end{align*}
+    Here you can use the quadratic formula, but the upcoming lesson we will teach you how to factor quadratics, i.e. write
+    \[b^2-8b+15=(b-3)(b-5)=0 \implies b=3 \text{ or } b=5.\]
+    Substituting these values of $b$ to the first equation yields $a=2$ and $a=6$, so the solutions for this system of equations are $(a, b) = (2, 3)$ and $(6, 5)$.
+\end{solution}
+
+
+\newpage
+\item 
+    A tennis player computes her “win ratio” by dividing the number of matches she has won by the total number of matches she has played. At the start of a weekend, her win ratio is exactly $0.500$. During the weekend she plays four matches, winning three and losing one. At the end of the weekend her win ratio is greater than $0.503$. What is the largest number of matches that she could have won before the weekend began?
+\begin{solution}
+    Let $n$ be the number of games that the tennis player has won at the start of the weekend. Since her win ratio is exactly $0.5$, she has played exactly $2n$ games. During the weekend, she won three games and lost one game, so her win ratio is now 
+    \begin{align*}
+        \dfrac{n+3}{2n+4}&>0.503. \text{ Solving for n, we get}\\
+        n+3&>(2n+4)0.503=1.006n+2.012\\
+        0.988&>0.006n\\
+        n&<\dfrac{0.988}{0.006}=\dfrac{988}{6}=164+\dfrac{2}{3}.
+    \end{align*}
+    Since $n$ is an integer, the largest possible value for n is $164$.
+\end{solution}
+
+\vspace{1cm}
+\item 
+    A right triangle has both a perimeter and an area of 30. Find the side lengths of the triangle.
+
+\begin{solution}
+    Let the legs be of lengths $a$ and $b$. The given information produces the system of equations
+    \[\begin{cases}
+         \dfrac{ab}{2}=30 \\
+         a+b+\sqrt{a^2+b^2}=30.
+    \end{cases}\]
+    Manipulating the second equation,
+    \begin{align*}
+        a+b+\sqrt{a^2+b^2}&=30\\
+        \sqrt{a^2+b^2}&=30-(a+b)\\
+        a^2+b^2&=30^2-2\cdot30(a+b)+(a+b)^2=900-60(a+b)+a^2+2ab+b^2\\
+        60(a+b)&=900+2ab
+    \end{align*}
+    Since the first equation gives us $\dfrac{ab}{2}=30\implies 2ab=120$, we can substitute that to receive $60(a+b)=900+120=1020 \implies a+b=17$.
+    Substituting $b=17-a$ from this into the first equation, we get
+    \begin{align*}
+        \dfrac{a(17-a)}{2}&=30\\
+        a(17-a)&=60\\
+        a^2-17a+60&=0\\
+        (a-5)(a-12)&=0,\\
+    \end{align*}
+    so $a=5$ and $a=12$ are solutions, which correspond to $b=12$ and $b=5$ respectively. Thus the hypotenuse is $\sqrt{5^2+12^2}=\sqrt{25+144}=\sqrt{169}=13$, so our triangle's side lengths are $5, 12$ and $13$.
+\end{solution}
+\newpage
+\item 
+    Find all $x$ such that $-4<\dfrac{1}{x}<3$
+\begin{solution}
+    Clearly, $x\ne0$.
+    We cannot multiply the whole inequality by $x$, because the direction of the inequality must be reversed for negative $x$.
+    Thus we will consider the chain of inequalities as two separate inequalities, 
+    \[\begin{cases}
+         -4<\dfrac{1}{x}\\
+         \dfrac{1}{x}<3.
+    \end{cases}\]
+    When $x$ is negative, the second equation is always true. Then we may multiply both sides of the first equation by $x$ and reverse the direction, to get
+    \[-4x>1\implies x<-\frac{1}{4}.\]
+
+    When $x$ is positive, the first equation is always true, and the second one yields
+    \[1<3x \implies x>\frac{1}{3}.\]
+    Thus, all values of $x$ to satisfy the original inequality are all values such that either $x>\frac{1}{3}$ or $x<-\frac{1}{4}$.
+
+\end{solution}
+
+\vspace{1cm}
+\item
+    If $\dfrac{x^2y}{z}=24$ and $\dfrac{y^4z}{x}=30$, find the value of $\dfrac{x^8}{(yz)^5}.$
+
+\begin{solution}
+    The technique is the same as in \textbf{Solution 2}, after writing $\dfrac{x^2y}{z}=x^2y^1z^{-1}$ and $\dfrac{y^4z}{x}=x^{-1}y^4z^1$.
+
+    The answer should be equal to $\dfrac{384}{25}$.
+\end{solution}
+
+\vspace{1cm}
+\item 
+    ...
+\begin{solution}
+    Sorry for not including the figure. Just pretend problem 9 doesn't exist.
+\end{solution}
+\newpage
+\item 
+    Consider the following system of linear equations. Characterize the values of $k$ such that this system has no solution, infinitely many solutions, and precisely one solution.
+    \[\begin{cases}
+         kx+y+z=k\\
+         x+ky+z=k\\
+         x+y+kz=k
+    \end{cases}\]
+\begin{solution}
+    Adding the three equations yields $(k+2)x+(k+2)y+(k+2)z=3k$, so $x+y+z=\frac{3k}{k+2}$.
+
+    Subtracting this from the first equation, we get
+    \begin{align*}
+        kx-x&=k-\dfrac{3k}{k+2}
+        (k-1)x&=\dfrac{k^2+2k-3k}{k+2}
+        x(k-1)&=\dfrac{k^2-k}{(k+2)}=\dfrac{k(k-1)}{(k+2)}.
+    \end{align*}
+
+    If $k=1$, $k-1=0$, both sides will be equal to 0, so there will be infinitely many solutions.\\
+    Else $k-1$ is nonzero, so we may divide both sides by it to obtain
+    \[x=\dfrac{k}{k+2}.\]
+    With the same steps (by symmetry), we will arrive to $y=\dfrac{k}{k+2}$ and $z=\dfrac{k}{k+2}$.\\
+    If $k=-2$, $k+2=0$, we will be dividing by zero, impossible, which means there are no solutions.
+    For all other values of k, there will be precisely one solution, namely $x=y=z=\dfrac{k}{k+2}$.
+
+\end{solution}
+
+\vspace{1cm}
+\item 
+    Let $a, b, c$ be nonzero constants. Solve the system
+    \[\begin{cases}
+         ay+bx=c\\
+         az+cx=b\\
+         bz+cy=a
+    \end{cases}\]
+    for $(x, y, z)$ in terms of $a, b$, and $c$.
+\begin{solution}
+    This should be mechanically easy: In the first equation, solve for $x$ in terms of $y, a, b, c$ and substitute the result into the second one, where you can solve for $z$ in terms in terms of $y, a, b, c$.
+
+    Then substitute that result into the third equation, to solve for $y$ in terms of $a, b$, and $c$.\\
+    Since we have expressions for $x$ and $z$ in terms of $y, a, b, c$, we can just substitute the previous result in the place of $y$ in these expressions, and after simplifying we may express $x$ and $z$ in terms of $a, b$, and $c$, so we are done.
+
+    The result should be:
+    \[(x, y, z) = \left ( \dfrac{b^2+c^2-a^2}{2bc}, \dfrac{a^2 + c^2 - b^2}{2ac}, \dfrac{a^2 + b^2 - c^2}{2ab} \right ). \]
+    
+\end{solution}
+\newpage
+
+\item
+    The binomial coefficients can be arranged in rows to form Pascal’s Triangle (where row $n$ is $\binom{n}{0}, \binom{n}{1}, ..., \binom{n}{n}$). In which row of Pascal’s Triangle do three consecutive entries occur that are in the ratio $3:4:5$?
+\begin{solution}
+    Our goal is to find a positive integer $n$ such that for some integer $k$, $0 \leq k \leq n-2$, we have
+    \[\binom{n}{k}:\binom{n}{k+1}:\binom{n}{k+2}=3:4:5.\]
+    We can obtain linear equations in $n$ and $k$ by taking the ratios of the binomial coefficients as follows:
+    \[\frac{3}{4}=\frac{\binom{n}{k}}{\binom{n}{k+1}}
+    =\frac{\frac{n!}{k!(n-k)!}}{\frac{n!}{(k+1)!(n-k-1)!}}
+    =\frac{(k+1)!(n-k-1)!}{k!(n-k)!}
+    =\frac{k+1}{n-k},\]
+    and
+    \[\frac{4}{5}=\frac{\binom{n}{k+1}}{\binom{n}{k+2}}
+    =\frac{\frac{n!}{(k+1)!(n-k-1)!}}{\frac{n!}{(k+2)!(n-k-2)!}}
+    =\frac{(k+2)!(n-k-2)!}{(k+1)!(n-k-1)!}
+    =\frac{k+2}{n-k-1}.\]\\
+    From $\frac{3}{4}=\frac{k+1}{n-k}$, we have $4k+4=3n-3k$, and from $\frac{4}{5}=\frac{k+2}{n-k-1}$, we have $5k+10=4n-4k-4$. Thus, we obtain the system of equations
+    \[\begin{cases}
+         7k=3n+4\\
+         9k=4n-14.
+    \end{cases}\]
+    Solving for $n$ yields $n=62$, so the desired row is row $62$.
+\end{solution}
+
+\end{enumerate}
+\end{document}
