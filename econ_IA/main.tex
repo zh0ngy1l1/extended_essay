@@ -40,6 +40,11 @@
 \usepackage{hyperref}
 \urlstyle{same}
 
+%Diagrams
+\usepackage{pgfplots}
+\pgfplotsset{compat = newest}
+\usetikzlibrary{positioning, arrows.meta}
+\usepgfplotslibrary{fillbetween}
 
 \begin{document}
 
@@ -61,7 +66,7 @@
     September 12, 2024\\
 
     \textbf{Commentary writing date:} \today\\
-    
+
     \textbf{Unit of the syllabus:}
     Microeconomics\\
 
@@ -73,36 +78,101 @@
   \end{center}
 \end{titlepage}
 
-
-
+\section*{Extract}
 { \itshape
-{\large The deal means that Yle faces a funding freeze and an increase in VAT payments, after a long drawn-out battle over setting the company's spending limits up to 2027.}
+  {\large The deal means that Yle faces a funding freeze and an increase in VAT payments, after a long drawn-out battle over setting the company's spending limits up to 2027.}
 
-Yle faces a years-long funding freeze after parliamentary parties agreed a deal on the company's budget, with the Finns Party, Greens and Left Alliance all approving the new agreement. 
+  Yle faces a years-long funding freeze after parliamentary parties agreed a deal on the company's budget, with the Finns Party, Greens and Left Alliance all approving the new agreement.
 
-The deal will freeze the budget until 2027, and increase the VAT rates levied on the company from 10 percent to 14 percent from 2026. Yle's budget in 2027 will be around 47 million euros smaller than it would be if index-linked budget increases occurred annually. 
+  The deal will freeze the budget until 2027, and increase the VAT rates levied on the company from 10 percent to 14 percent from 2026. Yle's budget in 2027 will be around 47 million euros smaller than it would be if index-linked budget increases occurred annually.
 
-The company will also be obliged to increase commissioning from external production companies, with external purchases slated to be around 15-20 percent higher than they were in the period 2021-2023. 
+  The company will also be obliged to increase commissioning from external production companies, with external purchases slated to be around 15-20 percent higher than they were in the period 2021-2023.
 
-In addition, Yle will be required to publish more information about its activities and spending. 
+  In addition, Yle will be required to publish more information about its activities and spending.
 
-The company is owned by the Finnish state and funded by a tax that in 2024 was a maximum of 163 euros per year for individual taxpayers, with reductions for those on lower incomes, or 3,000 euros for businesses. 
+  The company is owned by the Finnish state and funded by a tax that in 2024 was a maximum of 163 euros per year for individual taxpayers, with reductions for those on lower incomes, or 3,000 euros for businesses.
 
-Parties have been at loggerheads over Yle's budget since the election campaign, in which both the National Coalition and Finns Party argued for cuts worth more than a hundred million euros in Yle's funding. 
+  Parties have been at loggerheads over Yle's budget since the election campaign, in which both the National Coalition and Finns Party argued for cuts worth more than a hundred million euros in Yle's funding.
 }
 \newpage
-\textbf{\large Consusus decision}\\
-
+\textbf{\textit{\large Consusus decision}}\\
 { \itshape
 
-Yle's budget is traditionally decided by cross-party consensus, separate to the government programme. This is regarded as a safeguard against politicising the public service media company, but this time around negotiations were difficult and protracted. 
+  Yle's budget is traditionally decided by cross-party consensus, separate to the government programme. This is regarded as a safeguard against politicising the public service media company, but this time around negotiations were difficult and protracted.
 
-National Coalition MP Matias Marttinen chaired the working group seeking a compromise, with his own party and the Finns Party suggesting that the government could take the decision themselves if cross-party consensus wasn't reached. 
+  National Coalition MP Matias Marttinen chaired the working group seeking a compromise, with his own party and the Finns Party suggesting that the government could take the decision themselves if cross-party consensus wasn't reached.
 
-In July a proposal was accepted by all the parliamentary parties except the Greens and the Left Alliance, who were annoyed at the way the proposal had been negotiated between the Finns Party and National Coalition, rather than between all the parties in the working group. 
+  In July a proposal was accepted by all the parliamentary parties except the Greens and the Left Alliance, who were annoyed at the way the proposal had been negotiated between the Finns Party and National Coalition, rather than between all the parties in the working group.
 
-The two parties secured small changes to the text of the deal, relating to working conditions of staff and reinforced a commitment to the production of high quality programming for children and young people, and its role as a pillar of general education and a guarantor of equality in educational equality. 
+  The two parties secured small changes to the text of the deal, relating to working conditions of staff and reinforced a commitment to the production of high quality programming for children and young people, and its role as a pillar of general education and a guarantor of equality in educational equality.
 
-The Movement Now party, a one-man group consisting of Apprentice presenter Harry Harkimo, announced early on that it would reject the agreement on Yle funding. 
+  The Movement Now party, a one-man group consisting of Apprentice presenter Harry Harkimo, announced early on that it would reject the agreement on Yle funding.
 }
+\newpage
+
+\section*{Commentary}
+
+\includegraphics{Screenshot 2025-01-20 131959.png}
+
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{axis}[
+        width=10cm,
+        height=8cm,
+        axis lines* = left,
+        xtick = {0},
+        ytick = {\empty},
+        xmin = 0, xmax = 10,
+        ymin = 0, ymax = 8,
+        clip = false
+      ]
+      % Supply curves
+      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
+      400]{0.65*x+0.5};
+      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
+      400]{0.65*x-3.1};
+      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
+      400]{0.65*x-4};
+      
+      % Demand curves
+      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
+      400]{-x+4.5};
+      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
+      400]{-x+7};
+
+      % D/S curve labels
+      \node [right] at (10, 7) {$MSC$};
+      \node [right] at (10, 3.4) {$S_1$};
+      \node [right] at (10, 2.5) {$S_0$};
+
+      \node [left] at (0, 4.5) {$D=MPB$};
+      \node [left] at (0, 7) {$MSB$};
+
+      %\draw [dashed] (0, 3.060) -- (3.939, 3.060);
+      \draw [dashed] (3.939, 0) -- (3.939, 3.060);
+      \filldraw[black] (3.939, 0) circle (1pt);
+      \node [below] at (4.039, 0) {$Q_{opt}$};
+
+      \draw [dashed] (4.5, 0) -- (4.5, 3.425);
+      \filldraw[black] (4.5, 0) circle (1pt);
+      \node [below] at (4.6, -0.6) {$Q_m$};
+
+      %\draw [dashed] (4.769, 0) -- (4.769, 3.6);
+      \filldraw[black] (4.769, 0) circle (1pt);
+      \node [below] at (4.869, 0) {$Q_1$};
+
+      \filldraw[black] (6.154, 0) circle (1pt);
+      \node [below] at (6.254, 0) {$Q_0$};
+      
+      
+
+    \end{axis}
+    \node [below right] at (current axis.right of origin) {$Q \text{ (Hours of Content)}$};
+    \node [above] at (current axis.above origin) {$P \text{ (\texteuro)}$};
+  \end{tikzpicture}
+\end{center}
+
+
+
 \end{document}
