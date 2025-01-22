@@ -108,76 +108,86 @@
 
   The Movement Now party, a one-man group consisting of Apprentice presenter Harry Harkimo, announced early on that it would reject the agreement on Yle funding.
 }
+
+\includegraphics{Screenshot 2025-01-20 131959.png}
+
 \newpage
 
 \section*{Commentary}
 
-The article celebrates the conclusion of discussions within the government regarding the funding of Yle, the Finnish Public Service Media Company. 
-Consensus is reached after much deliberation, and consequently the budget of Yle will be cut by an amount which this commentary aims to prove to be insufficient.
-This will be done by examining the situation through concepts such as government subsidies and market failure. 
+The article celebrates the conclusion of discussions within the government regarding the funding of Yle, the Finnish Public Service Media Company.
+Consensus is reached after much deliberation, and consequently the budget of Yle will be cut by a noticeable but nonetheless timid amount.
+This will be done by examining the situation through concepts such as government subsidies and market failure.
 The funding for Yle is treated as a subsidy whose task is to correct market failure which arises from positive consumption externalities of news making the consumers more aware.
-It will be shown that this change is a step in the right direction in advancing \textbf{\color{orange}{economic well-being}}, which is what the discussion will revolve around.
+It will be shown that this change successfully advances \textbf{\color{orange}{economic well-being}}, around which the discussion will revolve.
 
-\includegraphics{Screenshot 2025-01-20 131959.png}
+\begin{figure}[h!]
+  \begin{center}
+    \begin{tikzpicture}[scale=0.8]
+      \begin{axis}[
+          width=10cm,
+          height=8cm,
+          axis lines = left,
+          xtick = {0},
+          ytick = {\empty},
+          xmin = 0, xmax = 10,
+          ymin = 0, ymax = 8,
+          clip = false
+        ]
+        % Supply curves
+        \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
+        400]{0.65*x+0.5};
+        \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
+        400]{0.65*x-3.1};
+        \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
+        400]{0.65*x-4};
+
+        % Demand curves
+        \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
+        400]{-x+4.5};
+        \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
+        400]{-x+7};
+
+        % D/S curve labels
+        \node[right] at (10, 7) {$MSC$};
+        \node[right] at (10, 3.4) {$S_1=MPC + d$};
+        \node[right] at (10, 2.5) {$S_0=MPC$};
+
+        \node[left] at (0, 4.5) {$D=MPB$};
+        \node[left] at (0, 7) {$MSB$};
+
+        \draw [dashed] (3.939, 0) -- (3.939, 3.060);
+        \filldraw[black] (3.939, 0) circle (1pt);
+        \node[below] at (4.039, 0) {$Q_{opt}$};
+
+        \draw [dashed] (4.5, 0) -- (4.5, 3.425);
+        \filldraw[black] (4.5, 0) circle (1pt);
+        \node[below] at (4.6, -0.6) {$Q_m$};
+
+        \filldraw[black] (4.769, 0) circle (1pt);
+        \node[below] at (4.869, 0) {$Q_1$};
+
+        \filldraw[black] (6.154, 0) circle (1pt);
+        \node[below] at (6.254, 0) {$Q_0$};
+
+        \draw[-Triangle] (9, 1.95) to (9, 2.65);
+        \node[right] at (9, 2.4) {$d$};
 
 
-\begin{center}
-  \begin{tikzpicture}
-    \begin{axis}[
-        width=10cm,
-        height=8cm,
-        axis lines* = left,
-        xtick = {0},
-        ytick = {\empty},
-        xmin = 0, xmax = 10,
-        ymin = 0, ymax = 8,
-        clip = false
-      ]
-      % Supply curves
-      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
-      400]{0.65*x+0.5};
-      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
-      400]{0.65*x-3.1};
-      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
-      400]{0.65*x-4};
-      
-      % Demand curves
-      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
-      400]{-x+4.5};
-      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples =
-      400]{-x+7};
 
-      % D/S curve labels
-      \node [right] at (10, 7) {$MSC$};
-      \node [right] at (10, 3.4) {$S_1$};
-      \node [right] at (10, 2.5) {$S_0$};
+      \end{axis}
+      \node[below right] at (current axis.right of origin) {$Q \text{ (Hours of Content)}$};
+      \node[above] at (current axis.above origin) {$P \text{ (\texteuro)}$};
+    \end{tikzpicture}
+    \caption{Effects of the Budget Cut}
+  \end{center}
+\end{figure}
 
-      \node [left] at (0, 4.5) {$D=MPB$};
-      \node [left] at (0, 7) {$MSB$};
+Figure 1 displays the effects of the new legislation with reference to the supply of content produced by Yle.
+The curves $S_0$ and $S_1$ represent the supply before and after the budget is cut by the amount $d \approx 47$ million €. 
+Consequently, the amount of content that is produced by Yle is reduced from $Q_0$ to $Q_1$.
+The quantity is still greater than that represented by the point $Q_m$, which shows the amount of content that the population of Finland is willing and able to consume.
 
-      %\draw [dashed] (0, 3.060) -- (3.939, 3.060);
-      \draw [dashed] (3.939, 0) -- (3.939, 3.060);
-      \filldraw[black] (3.939, 0) circle (1pt);
-      \node [below] at (4.039, 0) {$Q_{opt}$};
-
-      \draw [dashed] (4.5, 0) -- (4.5, 3.425);
-      \filldraw[black] (4.5, 0) circle (1pt);
-      \node [below] at (4.6, -0.6) {$Q_m$};
-
-      %\draw [dashed] (4.769, 0) -- (4.769, 3.6);
-      \filldraw[black] (4.769, 0) circle (1pt);
-      \node [below] at (4.869, 0) {$Q_1$};
-
-      \filldraw[black] (6.154, 0) circle (1pt);
-      \node [below] at (6.254, 0) {$Q_0$};
-      
-      
-
-    \end{axis}
-    \node [below right] at (current axis.right of origin) {$Q \text{ (Hours of Content)}$};
-    \node [above] at (current axis.above origin) {$P \text{ (\texteuro)}$};
-  \end{tikzpicture}
-\end{center}
 
 
 
