@@ -125,9 +125,9 @@ It will be shown that this change successfully advances \textbf{\color{orange}{e
 One of the motivations for the government running Yle is to attempt to correct the allocative inefficiency caused by positive consumption externalities, which arise from gererally accessible news making the Finnish population more aware.
 An equally important reason for it, however, is increasing \textbf{\color{orange}{equity}} in the Finnish society.
 Therefore, it is a fundamental principle of the company to keep their services free for all consumers.
-\begin{figure}[h!]
+\begin{wrapfigure}{L}{0.6\textwidth}
   \begin{center}
-    \begin{tikzpicture}[scale=0.8]
+    \begin{tikzpicture}[scale=0.5]
       \begin{axis}[
           width=10cm,
           height=8cm,
@@ -174,12 +174,12 @@ Therefore, it is a fundamental principle of the company to keep their services f
 
 
       \end{axis}
-      \node[below right] at (current axis.right of origin) {$Q \text{ (Hours of Content)}$};
+      \node[below right] at (current axis.right of origin) {$Q \text{ (Hrs of content)}$};
       \node[above] at (current axis.above origin) {$P \text{ (\texteuro)}$};
     \end{tikzpicture}
     \caption{Effects of the Budget Cut to Yle's Supply}
   \end{center}
-\end{figure}
+\end{wrapfigure}
 
 \textbf{Figure 1} displays the effects of the new legislation with reference to the supply of content produced by Yle.
 The curves $S_0$ and $S_1$ represent the supply before and after the budget is cut by some amount $d$ for every unit of output. 
@@ -193,12 +193,6 @@ However, attempting to reach allocative efficiency by adjusting the budget of Yl
 This issue is due to the difference between the quantity of content needed for allocative efficiency $Q_{opt}$, and the quantity demanded by the market $Q_m$.
 Neither of these quantities can be affected by adjusting the budget of Yle:
 The former is the target amount of content the government aims to produce by adjusting the size of the budget, while the latter is the amount of content that the population is willing and able to consume for free.
-
-
-A shortage of content would raise ethical concerns and further complicate the already chaotic discussions held in parliament regarding this topic.
-Delaying the decision is also highly unfavorable, because the government should stop losing money as early as possible.
-As a result, the rather small reduction in Yle's funding successfully alleviates the issue of overallocation, but fails to offer a conclusive solution.
-\newpage
 
 \begin{wrapfigure}{L}{0.6\textwidth}
   \begin{center}
@@ -218,19 +212,24 @@ As a result, the rather small reduction in Yle's funding successfully alleviates
         \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples = 400]{0.65*x-3.1};
         \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples = 400]{0.65*x-4};
 
-        % D/S curve labels
+        % MPB
+        \draw[gray, dashed] (0.3, 4.2) -- (4.5, 0);
+
+        % Supply curve labels
         \node[right] at (10, 7) {$MSC$};
         \node[right] at (10, 3.4) {$S_1$};
         \node[right] at (10, 2.5) {$S_0$};
 
+
         % Orange rectangle
         \filldraw[black] (4.769, 0) circle (1pt);
-        \node[below] at (4.869, 0) {$Q_1$};
+        \node[below right] at (4.769, 0) {$Q_1$};
         \filldraw[black] (0, 3.6) circle (1pt);
         \node[left] at (0, 3.6) {$P_1$};
 
         \draw[dashed] (4.769, 0) -- (4.769, 3.6) -- (0, 3.6);
         \fill[teal, opacity = 0.2] (0, 0) -- (4.769, 0) -- (4.769, 3.6) -- (0, 3.6);
+
 
         % Pink rectangle
         \filldraw[black] (6.154, 0) circle (1pt);
@@ -244,7 +243,9 @@ As a result, the rather small reduction in Yle's funding successfully alleviates
         \draw[-Triangle] (9, 1.95) to (9, 2.65);
         \node[right] at (9, 2.4) {$d$};
 
-        %6.15385, 4.5
+        % Q_m
+        \filldraw[black] (4.5, 0) circle (1pt);
+        \node[below] at (4.5, 0) {$Q_m$};
 
 
       \end{axis}
@@ -262,9 +263,74 @@ According to the article, this value is approximately equal to $47$ million euro
 
 \text{\empty}
 
-Since the quantity of content consumed $Q_m$ is unaffected by this change, and the price is still zero, the consumers are entirely unaffected by this change.
+Since the quantity of content consumed $Q_m<Q_1$ is unaffected by this change, and the price is still zero, the consumers are entirely unaffected by this change.
 This means that no faction is worse off, and the government saves a significant amount of money.
-From the 
+From the perspective of economic well-being, this change is purely positive.
+This is clear since each Finnish citizen will have to pay less "yleisradiovero", thus increasing their level of proseprity.
+In addition, a change of this scale is does not risk sacrificing any other more important factors of economic well-being;
+keeping a wide variety of news and entertainment means the population is able to have a satisfactory level of education both culturally and practically.
+
+An important argument made by opposing parties notes that shortage of content would raise ethical concerns, as the population wishes not to let the quality nor quantity of Yle's content degenerate after years of serving Finland.
+Delaying the decision is also highly unfavorable, because the government should stop losing money as early as possible.
+As a result, only a rather small reduction in Yle's funding is made.
+Although the change succeeds to alleviate the issue of overallocation, it will be shown that it fails to offer a conclusive solution.
+
+\begin{wrapfigure}{L}{0.6\textwidth}
+  \begin{center}
+    \begin{tikzpicture}[scale=0.7]
+      \begin{axis}[
+        width=10cm,
+        height=8cm,
+        axis lines = left,
+        xtick = {0},
+        ytick = {\empty},
+        xmin = 0, xmax = 10,
+        ymin = 0, ymax = 8,
+        clip = false
+      ]
+      % Supply curves
+      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples = 400]{0.65*x+0.5};
+      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples = 400]{0.65*x-3.1};
+      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples = 400]{0.65*x-4};
+
+      % Demand curves
+      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples = 400]{-x+4.5};
+      \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples = 400]{-x+7};
+
+      % D/S curve labels
+      \node[right] at (10, 7) {$MSC$};
+      \node[right] at (10, 3.4) {$S_1$};
+      \node[right] at (10, 2.5) {$S_0$};
+
+      \node[left] at (0, 4.5) {$MPB$};
+      \node[left] at (0, 7) {$MSB$};
+
+      \draw[dashed] (3.939, 0) -- (3.939, 3.060);
+      \filldraw[black] (3.939, 0) circle (1pt);
+      \node[below] at (4.039, 0) {$Q_{opt}$};
+
+      \filldraw[black] (4.5, 0) circle (1pt);
+      \node[below] at (4.6, -0.6) {$Q_m$};
+
+      \filldraw[black] (4.769, 0) circle (1pt);
+      \node[below] at (4.869, 0) {$Q_1$};
+
+      \filldraw[black] (6.154, 0) circle (1pt);
+      \node[below] at (6.254, 0) {$Q_0$};
+
+      \draw[-Triangle] (9, 1.95) to (9, 2.65);
+      \node[right] at (9, 2.4) {$d$};
+
+
+
+    \end{axis}
+      \node[below right] at (current axis.right of origin) {$Q$};
+      \node[above] at (current axis.above origin) {$P \text{ (\texteuro)}$};
+    \end{tikzpicture}
+    \caption{Remaining Welfare Loss}
+  \end{center}
+\end{wrapfigure}
+
 
 
 \end{document}
