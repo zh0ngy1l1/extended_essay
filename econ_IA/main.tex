@@ -146,9 +146,10 @@ An equally important reason for it, however, is increasing equity in Finnish soc
         \addplot[domain = 0.3:10, restrict y to domain = 0:8, samples = 400]{-x+7};
 
         % D/S curve labels
-        \node[right] at (10, 7) {$MSC$};
+        \node[right] at (10, 7) {$S_m=MSC$};
         \node[right] at (10, 3.4) {$S_1=S_0 + d$};
-        \node[right] at (10, 2.5) {$S_0=MPC$};
+        \node[right] at (10, 2.5) {$S_0=S_m + $};
+        \node[right] at (10, 1.9) {govt. provision};
 
         \node[left] at (0, 4.5) {$D=MPB$};
         \node[left] at (0, 7) {$MSB$};
@@ -170,7 +171,7 @@ An equally important reason for it, however, is increasing equity in Finnish soc
         \draw[-Triangle] (9, 1.95) to (9, 2.65);
         \node[right] at (9, 2.4) {$d$};
 
-
+        \node[above] at (5, 8) {Market of Radio Programmes};
 
       \end{axis}
       \node[below right] at (current axis.right of origin) {$Q$};
