@@ -294,22 +294,29 @@ The article states that the budget will shrink by approximately $47$ million eur
           width=10cm,
           height=8cm,
           axis lines = left,
-          xtick={1.6,3.2,...,10},
+          xtick={1.6,3.2,...,9.6},
           xticklabels={1,2,...,6},
-          ytick={0,0.8,...,10},
-          yticklabels={\empty},
-          extra y ticks={0,1.6,...,10},
-          extra y tick labels = {0,20,...,120},
+          ytick={0,1.6,...,9.6},
+          yticklabels={0,20,...,120},
           xmin = 0, xmax = 10,
           ymin = 0, ymax = 10,
           clip = false
         ]
         
-        \addplot[domain = 0:10, restrict y to domain = 0:10, samples = 1000] {(285.01-x^2.72)^0.37};
-        \addplot[domain = 0:10, restrict y to domain = 0:10, samples = 1000] {(285.01-x^2.72)^0.37};
+        \addplot[domain = 0:10, restrict y to domain = 0:10, samples = 1000] {(320-x^2.71828)^0.367879};
+        \addplot[domain = 0:10, restrict y to domain = 0:10, samples = 1000] {(200-x^2.71828)^0.367879};
 
+        \draw[-Triangle] (2, 8) to (1.95, 7.2);
+        \draw[-Triangle] (8, 2) to (7.2, 1.9);
+        %\draw[-Triangle] (6, 6) to (5.5, 5.4);
+
+        \draw[dashed] (0, 6.6) -- (6.3337, 6.6);
+        \draw[dashed] (6.3337, 0) -- (6.3337, 6.6);
+        \draw[dashed] (0, 4.18423) -- (6.3337, 4.18423);
+
+        \node[below] at (5, 10) {\footnotesize *A change $>8.6\%$ is shown for clarity};
         \node[below] at (5, -1) {Quality of Daily News (Arbitrary Units)};
-        \node[left, rotate=90] at (-1.6, 9.5) {Radio programming (1000 Hrs)};  
+        \node[left, rotate=90] at (-1.6, 9.5) {Radio Programming (1000 Hrs)};
 
       \end{axis}
     \end{tikzpicture}
@@ -317,11 +324,11 @@ The article states that the budget will shrink by approximately $47$ million eur
   \end{center}
 \end{wrapfigure}
 
-text text text
-
-
+\textbf{Figure 3} shows the reduction in Yle's production possibilities, and the choice it must face between producing radio programming and maintaining the quality of news.
+The budget cut is displayed as an inwards shift in the PPC curve, as the quantities that Yle is able to produce is now smaller.
+In 2023, the amount of radio programming produced is 82210 hours \footnote{\url{https://yle.fi/aihe/ylen-vuosi-2023}}
 hello.
-\footnote{Source: \url{https://yle.fi/aihe/ylen-vuosi-2023}}
+
 
 %In addition, a change of this scale is does not risk sacrificing more important factors of economic well-being;
 %keeping a wide variety of news and entertainment means the population is able to have a satisfactory level of education both culturally and practically.
