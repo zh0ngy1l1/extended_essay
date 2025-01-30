@@ -76,7 +76,7 @@
     Economic Well-Being.\\
 
     \vfill
-    Word count: 
+    Word count: 739
   \end{center}
 \end{titlepage}
 
@@ -270,7 +270,7 @@ Now we are ready to examine this reduction in Yle's budget.%TODO todo REMOVE THI
   \end{center}
 \end{wrapfigure}
 
-\noindent The budget cut is illustrated in \textbf{figure 2} as a reduction in the supply of news.
+\noindent The budget cut is illustrated in \textbf{Figure 2} as a reduction in the supply of news, by some amount $d$ which we will discuss.
 For clarity, the new market equilibrium is shown to settle at the quantity $Q_{opt}$. 
 This does, however, not imply that the welfare loss is totally cleared, for the following reasons.
 
@@ -304,18 +304,23 @@ The article states that the budget will shrink by approximately $47$ million eur
         ]
         
         \addplot[domain = 0:10, restrict y to domain = 0:10, samples = 1000] {(320-x^2.71828)^0.367879};
-        \addplot[domain = 0:10, restrict y to domain = 0:10, samples = 1000] {(200-x^2.71828)^0.367879};
+        \addplot[domain = 0:10, restrict y to domain = 0:10, samples = 1000] {(250-x^2.71828)^0.367879};
 
-        \draw[-Triangle] (2, 8) to (1.95, 7.2);
-        \draw[-Triangle] (8, 2) to (7.2, 1.9);
+        \draw[-Triangle] (2, 8.3) to (1.95, 7.6);
+        \draw[-Triangle] (8.3, 2) to (7.6, 1.9);
         %\draw[-Triangle] (6, 6) to (5.5, 5.4);
 
         \draw[dashed] (0, 6.6) -- (6.3337, 6.6);
         \draw[dashed] (6.3337, 0) -- (6.3337, 6.6);
-        \draw[dashed] (0, 4.18423) -- (6.3337, 4.18423);
+        \draw[dashed] (0, 5.42086) -- (6.3337, 5.42086);
 
-        \node[below] at (5, 10) {\footnotesize *A change $>8.6\%$ is shown for clarity};
-        \node[below] at (5, -1) {Quality of Daily News (Arbitrary Units)};
+        \filldraw[black] (6.3337, 6.6) circle (1pt);
+        \node[above right] at (6.3337, 6.6) {$A$};
+
+        \filldraw[black] (6.3337, 5.42086) circle (1pt);
+        \node[above right] at (6.3337, 5.42086) {$B$};
+        
+        \node[below] at (5, -1) {Availability of News (Arbitrary Units)};
         \node[left, rotate=90] at (-1.6, 9.5) {Radio Programming (1000 Hrs)};
 
       \end{axis}
@@ -324,10 +329,16 @@ The article states that the budget will shrink by approximately $47$ million eur
   \end{center}
 \end{wrapfigure}
 
-\textbf{Figure 3} shows the reduction in Yle's production possibilities, and the choice it must face between producing radio programming and maintaining the quality of news.
+\noindent \textbf{Figure 3} shows the reduction in Yle's production possibilities, and the choice it must face between producing radio programming and making news available.
+We define availability as some metric dependent on the quantity, the quality, and how topical the news is.
 The budget cut is displayed as an inwards shift in the PPC curve, as the quantities that Yle is able to produce is now smaller.
-In 2023, the amount of radio programming produced is 82210 hours \footnote{\url{https://yle.fi/aihe/ylen-vuosi-2023}}
-hello.
+In 2023, the amount of radio programming produced is $82210$ hours\footnote{\url{https://yle.fi/aihe/ylen-vuosi-2023}}, as reflected by the diagram.
+According to this (rather arbitrary) diagram, that corresponds to a quality of 4 units.
+To avoid compromising economic well-being through providing less news, Yle might attempt to keep the amount of news at 4 units.
+This means reducing the amount of radio programming to about $69000$ hours.
+Note that if this were to be the case, the supply curve $S_1$ from \textbf{Figure 2} would be stationary instead of moving to $S_2$, so $d=0$.
+Additionally, the size of the positive consumption externality would not change, so the $MSB$ would also be stationary.
+
 
 
 %In addition, a change of this scale is does not risk sacrificing more important factors of economic well-being;
