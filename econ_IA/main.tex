@@ -42,7 +42,7 @@
 
 %Diagrams
 \usepackage{pgfplots}
-\pgfplotsset{compat = newest}
+\pgfplotsset{compat=newest}
 \usetikzlibrary{positioning, arrows.meta}
 \usepgfplotslibrary{fillbetween}
 \usepackage{wrapfig}
@@ -67,6 +67,8 @@
     \textbf{Article publish date:}
     September 12, 2024\\
 
+    \textbf{Article access date:} \today\\
+
     \textbf{Commentary writing date:} \today\\
 
     \textbf{Unit of the syllabus:}
@@ -76,7 +78,7 @@
     Economic Well-Being.\\
 
     \vfill
-    Word count: 739
+    Word count: 731
   \end{center}
 \end{titlepage}
 
@@ -118,7 +120,7 @@
 The article extols the conclusion of discussions within the government regarding the endowment of Yle, the Finnish Public Service Media Company.
 Consensus is reached after much deliberation, and as a result the budget of Yle shall be diminished both directly, by reducing the direct tax "yleisradiovero" from 163\texteuro\ to 160\texteuro, and indirectly through the funding freeze and the VAT increase.
 This commentary aims to analyse the effects of the changes by simplifying the situation and treating it as a reduction of direct provision to the news market by the government.
-It shall be demonstrated that this change successfully advances \textbf{\color{orange}economic well-being}, around which the dialogue shall revolve.
+It shall be demonstrated that this change successfully advances \textbf{economic well-being}, around which the dialogue shall revolve.
 To inspect the potential consequences of this modification, one must first discern the condition antecedent to the alteration.
 
 \begin{wrapfigure}{L}{0.6\textwidth}
@@ -127,22 +129,22 @@ To inspect the potential consequences of this modification, one must first disce
       \begin{axis}[
           width=10cm,
           height=8cm,
-          axis lines = left,
-          xtick = {0},
-          ytick = {\empty},
-          xmin = 0, xmax = 10,
-          ymin = 0, ymax = 10,
-          clip = false
+          axis lines=left,
+          xtick={0},
+          ytick={\empty},
+          xmin=0, xmax=10,
+          ymin=0, ymax=10,
+          clip=false
         ]
-        % Supply curves
-        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{0.65*x+0.5};
-        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{0.65*x-1.5};
 
-        % Demand curves
-        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{-x+6.5};
-        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{-x+9};
+        \addplot[domain=0.3:10, restrict y to domain=0.3:10, samples=400]{0.65*x+0.5};
+        \addplot[domain=0.3:10, restrict y to domain=0.3:10, samples=400]{0.65*x-1.5};
 
-        % D/S curve labels
+
+        \addplot[domain=0.3:10, restrict y to domain=0.3:10, samples=400]{-x+6.5};
+        \addplot[domain=0.3:10, restrict y to domain=0.3:10, samples=400]{-x+9};
+
+
         \node[above] at (10, 7.5) {$S_0=MPC=MSC$};
         \node[right] at (10, 5) {$S_1=S_0 + $};
         \node[right] at (10, 4.4) {govt. provision};
@@ -175,10 +177,10 @@ To inspect the potential consequences of this modification, one must first disce
         \node[below] at (4.748, 0) {$Q_1$};
         \node[left] at (0, 1.652) {$P_1$};
         
-        \fill[teal, opacity = 0.2] (3.63636, 2.86364) -- (4.848, 3.651) -- (4.848, 4.152) -- (3.63636, 5.36364);
+        \fill[teal, opacity=0.2] (3.63636, 2.86364) -- (4.848, 3.651) -- (4.848, 4.152) -- (3.63636, 5.36364);
         \node[left] at (4.7, 4.2) {$a$};
 
-        \fill[red, opacity = 0.2] (5.15152, 3.84848) -- (4.848, 3.651) -- (4.848, 4.152);
+        \fill[red, opacity=0.2] (5.15152, 3.84848) -- (4.848, 3.651) -- (4.848, 4.152);
         \node[above] at (5.15152, 4) {$b$};
 
         \draw[-Triangle] (9, 6.15) to (9, 4.55);
@@ -196,9 +198,9 @@ To inspect the potential consequences of this modification, one must first disce
 \end{wrapfigure}
 
 \noindent \textbf{Figure 1} illustrates the externality that would arise were the Finnish government to abstain from intervening in the news markets through the direct provision of content via Yle.
-The $MSB$ curve is situated above $MPB$, because a positive externality of consumption is present.
-When Finnish citizens consume news, it renders them more erudite and informed, thereby producing benefit to the whole society.
-If the government does not intervene, the market equilibrium would rest at $Q_0$, which is inferior to $Q_{opt}$, the optimum quantity of News the Finnish market should provide.
+When Finnish citizens consume news, it renders them more erudite and informed, thereby producing benefit to the whole society that the individual consumer is unaware of.
+Consequently, the marginal social benefit ($MSB$) is greater than the marginal private benefit ($MPB$) at each quantity.
+If the government does not intervene, the market equilibrium would rest at $(P_0, Q_0)$, meaning the quantity produced is inferior to $Q_{opt}$, the optimum quantity of News the Finnish market should be producing.
 That means an unregulated market forgoes social surplus equal to the area $a+b$, so that is the amount of welfare loss occasioned by the positive consumption externality. 
 The government undertakes direct provision in the News market by creating Yle, whose charge is to rectify the welfare loss.
 
@@ -212,22 +214,22 @@ This is favourable, as the welfare loss in this case is limited to area $b$, so 
       \begin{axis}[
           width=10cm,
           height=8cm,
-          axis lines = left,
-          xtick = {0},
-          ytick = {\empty},
-          xmin = 0, xmax = 10,
-          ymin = 0, ymax = 10,
-          clip = false
+          axis lines=left,
+          xtick={0},
+          ytick={\empty},
+          xmin=0, xmax=10,
+          ymin=0, ymax=10,
+          clip=false
         ]
-        % Supply curves
-        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{0.65*x+0.5};
-        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{0.65*x-1};
-        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{0.65*x-1.5};
-        % Demand curves
-        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{-x+6.5};
-        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{-x+9};
 
-        % D/S curve labels
+        \addplot[domain=0.3:10, restrict y to domain=0.3:10, samples=400]{0.65*x+0.5};
+        \addplot[domain=0.3:10, restrict y to domain=0.3:10, samples=400]{0.65*x-1};
+        \addplot[domain=0.3:10, restrict y to domain=0.3:10, samples=400]{0.65*x-1.5};
+
+        \addplot[domain=0.3:10, restrict y to domain=0.3:10, samples=400]{-x+6.5};
+        \addplot[domain=0.3:10, restrict y to domain=0.3:10, samples=400]{-x+9};
+
+
         \node[right] at (10, 7) {$S_0$};
         \node[right] at (10, 5) {$S_1$};
         \node[right] at (10, 5.9) {$S_2=S_1-d$};
@@ -260,10 +262,10 @@ This is favourable, as the welfare loss in this case is limited to area $b$, so 
 
 
         
-        \fill[red, opacity = 0.2] (5.15152, 3.84848) -- (4.848, 3.651) -- (4.848, 4.152);
+        \fill[red, opacity=0.2] (5.15152, 3.84848) -- (4.848, 3.651) -- (4.848, 4.152);
         \node[above] at (5.15152, 4) {$b$};
 
-        \fill[green, opacity = 0.2] (4.54545, 3.45454) -- (4.54545, 4.45455) -- (4.848, 4.152) -- (4.848, 3.651);
+        \fill[teal, opacity=0.2] (4.54545, 3.45454) -- (4.54545, 4.45455) -- (4.848, 4.152) -- (4.848, 3.651);
         \node[above] at (4.65152, 4.5) {$c$};
 
         \draw[-Triangle] (9, 4.3) to (9, 4.9);
@@ -281,20 +283,18 @@ This is favourable, as the welfare loss in this case is limited to area $b$, so 
 \end{wrapfigure}
 
 \noindent The budget cut is illustrated in \textbf{Figure 2} as a reduction in the supply of news, by some amount $d$ which will be discussed later.
-For clarity, the new market equilibrium is shown to settle at the quantity $Q_{opt}$. 
-This, however, does not suggest that the welfare loss is entirely eradicated, for the following reasons.
+The change means market equilibrium will now be at $(P_2, Q_2)$, and an additional welfare loss equal to $c$ will be borne.
 
-Firstly, the fact that there is a lower quantity or quality of perfectly impartial news supplied by the government means the size of marginal social benefit may contract to some degree.
+We wish to assess the magnitude of loss, and for completeness we will first discuss a factor not accounted for in the diagram.
+The fact that there is a lower quantity or quality of perfectly impartial news supplied by the government means the size of marginal social benefit may contract to some degree.
 This arises because other news outlets in the market might be aligned with political factions or less devoted to serving the populace compared to Yle, prioritising their pecuniary gains instead.
 
-In addition, the magnitude of the change may not be as pronounced as the diagram suggests.
-This is because the cut is made to the company's budget.
-This means that effects are distributed over all of Yle's activities. 
+An important note is that the magnitude of the change may not be as pronounced as the diagram suggests.
+This is because the cut is made to the company's budget, so its effects are distributed over all of Yle's activities. 
 For example, we may expect the company to be producing less sports commentary or entertainment programmes, instead of sacrificing the quantity or quality of news provided.
 
-The speculations above are too vague, and I will use a production possibilities curve (PPC) to obtain a better idea of the specifics.
+The speculations above are too vague, and a production possibilities curve (PPC) will be used to obtain a better idea of the specifics.
 The article states that the budget will shrink by approximately $47$ million euros, or $\approx 8.6\%$\footnote{The total budget was $547$ million euros in 2024, according to \url{https://yle.fi/a/74-20117417}}.
-%Chance to sway the leftist teacher; lefts opposed a large cut.
 
 \begin{wrapfigure}{L}{0.6\textwidth}
   \begin{center}
@@ -302,18 +302,18 @@ The article states that the budget will shrink by approximately $47$ million eur
       \begin{axis}[
           width=10cm,
           height=8cm,
-          axis lines = left,
+          axis lines=left,
           xtick={1.33,2.66,...,10},
-          xticklabels={1,2,...,7},
+          xticklabels={1000,2000,...,7000},
           ytick={0,1.6,...,9.6},
           yticklabels={0,20,...,120},
-          xmin = 0, xmax = 10,
-          ymin = 0, ymax = 10,
-          clip = false
+          xmin=0, xmax=10,
+          ymin=0, ymax=10,
+          clip=false
         ]
         
-        \addplot[domain = 0:10, restrict y to domain = 0:10, samples = 1000] {(320-x^2.71828)^0.367879};
-        \addplot[domain = 0:10, restrict y to domain = 0:10, samples = 1000] {(250-x^2.71828)^0.367879};
+        \addplot[domain=0:10, restrict y to domain=0:10, samples=1000] {(320-x^2.71828)^0.367879};
+        \addplot[domain=0:10, restrict y to domain=0:10, samples=1000] {(250-x^2.71828)^0.367879};
 
         \draw[-Triangle] (2, 8.3) to (1.95, 7.6);
         \draw[-Triangle] (8.3, 2) to (7.6, 1.9);
@@ -329,7 +329,7 @@ The article states that the budget will shrink by approximately $47$ million eur
         \filldraw[black] (6.3337, 5.42086) circle (1pt);
         \node[above right] at (6.3337, 5.42086) {$B$};
         
-        \node[below] at (5, -1) {1000 News articles};
+        \node[below] at (5, -1) {News articles};
         \node[left, rotate=90] at (-1.6, 9.5) {Radio Programming (1000 Hrs)};
         \node[above] at (5.5, 9) {\large Annual Production Possibilities of Yle};
 
@@ -341,15 +341,14 @@ The article states that the budget will shrink by approximately $47$ million eur
 
 \noindent \textbf{Figure 3} shows the reduction in Yle's production possibilities, and the choice it must face between producing radio programming and making news available.
 We define availability as a measure influenced by quantity, quality, and the topicality of the news.
-The budget cut is displayed as an inwards shift in the PPC curve, as the quantities that Yle is able to produce is now smaller.
 In 2023, the amount of radio programming produced is $82,210$ hours\footnote{\url{https://yle.fi/aihe/ylen-vuosi-2023}}, as reflected by the diagram.
 According to this illustration, this corresponds to producing $48,000$ articles\footnote{This is my estimate on the number of articles published in a year, since no official data is available.}.
-To avert compromising economic well-being through providing less news, Yle may strive to maintain it constant.
+To avert compromising \textbf{economic well-being} through providing less news, Yle may strive to maintain it constant.
 That would entail reducing radio programming to about $69,000$ hours.
 
-If this course were adopted, the supply curve $S_1$ from \textbf{Figure 2} would be stationary instead of moving to $S_2$, so $d\approx0$.
-Additionally, the size of the positive consumption externality would not change, so $MSB$ would also be stationary.
-I think this is the expected outcome since sports commentary or radio, as examples, correspond to less positive externalities as opposed to news.
-Therefore, since Yle wishes to maximize the benefit of Finnish citizens, I believe this outcome is most probable.
+If this course were adopted, the news market would face no change, so $d\approx0$, and equivalently the additional welfare loss $c$ would not be incurred.
+Additionally, the size of the positive consumption externality would not decrease, avoiding further losses.
+I believe this is the most probable outcome since radio programmes (particularly entertainment) generally yield less positive externalities compared to news.
+The government and Yle by extension strive for \textbf{economic well-being}, and thus wish to accord precedence to benefits in the long run.
 
 \end{document}
