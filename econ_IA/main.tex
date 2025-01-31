@@ -1,7 +1,7 @@
 \documentclass[a4paper, 12pt]{article}
 
 %Paragraph jumps and indentation
-\setlength{\parskip}{1.4em}
+\setlength{\parskip}{1.5em}
 \setlength{\parindent}{1.25cm}
 
 %Border
@@ -136,7 +136,7 @@ To inspect the potential consequences of this modification, one must first disce
         ]
         % Supply curves
         \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{0.65*x+0.5};
-        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{0.65*x-3};
+        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{0.65*x-1.5};
 
         % Demand curves
         \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{-x+6.5};
@@ -144,8 +144,8 @@ To inspect the potential consequences of this modification, one must first disce
 
         % D/S curve labels
         \node[above] at (10, 7.5) {$S_0=MPC=MSC$};
-        \node[right] at (10, 3.5) {$S_1=S_0 + $};
-        \node[right] at (10, 2.9) {govt. provision};
+        \node[right] at (10, 5) {$S_1=S_0 + $};
+        \node[right] at (10, 4.4) {govt. provision};
 
         \node[left] at (0, 6.3) {$D=MPB$};
         \node[left] at (0, 8.7) {$MSB$};
@@ -155,7 +155,7 @@ To inspect the potential consequences of this modification, one must first disce
         \filldraw[black] (5.15152, 3.84849) circle (1pt);
         
         \filldraw[black] (5.15152, 0) circle (1pt);
-        \node[below] at (5.15152, 0) {$Q_{opt}$};
+        \node[below] at (5.55152, 0) {$Q_{opt}$};
         \node[left] at (0, 3.84848) {$P_{opt}$};
         
         \draw[dashed] (3.63636, 0) -- (3.63636, 5.36364);
@@ -167,22 +167,22 @@ To inspect the potential consequences of this modification, one must first disce
         \node[left] at (0, 2.86364) {$P_0$};
 
 
-        \draw[dashed] (5.75758, 0) -- (5.75758, 4.24243);
-        \draw[dashed] (5.75758, 0.74242) -- (0, 0.74242);
-        \filldraw[black] (5.75758, 0.74242) circle (1pt);
+        \draw[dashed] (4.848, 0) -- (4.848, 4.152);
+        \draw[dashed] (4.848, 1.652) -- (0, 1.652);
+        \filldraw[black] (4.848, 1.652) circle (1pt);
         
-        \filldraw[black] (5.75758, 0) circle (1pt);
-        \node[below] at (6, 0) {$Q_1$};
-        \node[left] at (0, 0.74242) {$P_1$};
+        \filldraw[black] (4.848, 0) circle (1pt);
+        \node[below] at (4.748, 0) {$Q_1$};
+        \node[left] at (0, 1.652) {$P_1$};
         
-        \fill[teal, opacity = 0.2] (3.63636, 2.86364) -- (5.15152, 3.84848) -- (3.63636, 5.36364);
-        \node[left] at (4.65152, 3.94848) {A};
-        
-        \fill[red, opacity = 0.2] (5.75758, 4.24243) -- (5.75758, 3.24242) -- (5.15152, 3.84848);
-        \node[right] at (5.15152, 3.89848) {B};
+        \fill[teal, opacity = 0.2] (3.63636, 2.86364) -- (4.848, 3.651) -- (4.848, 4.152) -- (3.63636, 5.36364);
+        \node[left] at (4.7, 4.2) {$a$};
 
-        \draw[-Triangle] (9, 6.15) to (9, 3.05);
-        \node[right] at (9, 5) {Yle's activity};
+        \fill[red, opacity = 0.2] (5.15152, 3.84848) -- (4.848, 3.651) -- (4.848, 4.152);
+        \node[above] at (5.15152, 4) {$b$};
+
+        \draw[-Triangle] (9, 6.15) to (9, 4.55);
+        \node[right] at (9, 5.8) {Yle's activity};
 
         \node[below] at (10, -1) {\Large Articles};
         \node[above] at (5.5, 9) {\Large Market of News};
@@ -196,17 +196,15 @@ To inspect the potential consequences of this modification, one must first disce
 \end{wrapfigure}
 
 \noindent \textbf{Figure 1} illustrates the externality that would arise were the Finnish government to abstain from intervening in the news markets through the direct provision of content via Yle.
-The $MSB$ curve is situated above $MPB$, because a positive externality of consumption is manifest.
+The $MSB$ curve is situated above $MPB$, because a positive externality of consumption is present.
 When Finnish citizens consume news, it renders them more erudite and informed, thereby producing benefit to the whole society.
-When left on its own, the market engenders a welfare loss equal to size $A$, occasioned by the positive consumption externality. 
-In particular, the market equilibrium would rest at $Q_0$, which is inferior to $Q_{opt}$, the optimum quantity of News the Finnish market should provide.
-That means an unregulated market forgoes social surplus equal to the area $A$, so that is the amount of welfare loss created by the externality.
+If the government does not intervene, the market equilibrium would rest at $Q_0$, which is inferior to $Q_{opt}$, the optimum quantity of News the Finnish market should provide.
+That means an unregulated market forgoes social surplus equal to the area $a+b$, so that is the amount of welfare loss occasioned by the positive consumption externality. 
 The government undertakes direct provision in the News market by creating Yle, whose charge is to rectify the welfare loss.
 
-The effects of introducing Yle to directly provide news means the supply curve shifts from $S_0$ to $S_1$.
+The effects of introducing Yle to directly provide news increases the supply of news from $S_0$ to $S_1$.
 The price and quantity of news settle to new equilibriums $P_1$ and $Q_1$ respectively.
-This is favourable, as the welfare loss in this case is limited to area $B$, which is smaller than the previously discussed area $A$.
-Now we are ready to examine this reduction in Yle's budget.%TODO todo REMOVE THIS ROW IF TOO MANY WORDS.
+This is favourable, as the welfare loss in this case is limited to area $b$, so the social surplus is increased by $a$.
 
 \begin{wrapfigure}{L}{0.6\textwidth}
   \begin{center}
@@ -223,41 +221,53 @@ Now we are ready to examine this reduction in Yle's budget.%TODO todo REMOVE THI
         ]
         % Supply curves
         \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{0.65*x+0.5};
-        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{0.65*x-3};
-        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{0.65*x-2};
+        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{0.65*x-1};
+        \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{0.65*x-1.5};
         % Demand curves
         \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{-x+6.5};
         \addplot[domain = 0.3:10, restrict y to domain = 0.3:10, samples = 400]{-x+9};
 
         % D/S curve labels
         \node[right] at (10, 7) {$S_0$};
-        \node[right] at (10, 3.5) {$S_1$};
-        \node[right] at (10, 4.5) {$S_2=S_1-d$};
+        \node[right] at (10, 5) {$S_1$};
+        \node[right] at (10, 5.9) {$S_2=S_1-d$};
 
         \node[left] at (0, 6.3) {$D=MPB$};
         \node[left] at (0, 8.7) {$MSB$};
 
         \draw[dashed] (5.15152, 0) -- (5.15152, 3.84849);
+        \draw[dashed] (0, 3.84849) -- (5.15152, 3.84849);
         \filldraw[black] (5.15152, 3.84849) circle (1pt);
         
         \filldraw[black] (5.15152, 0) circle (1pt);
-        \node[below] at (5.15152, 0) {$Q_{opt}$};
+        \node[below] at (5.6, 0) {$Q_{opt}$};
         \node[left] at (0, 3.84848) {$P_{opt}$};
 
-        \draw[dashed] (0, 3.84849) -- (5.15152, 3.84849);
-        \draw[dashed] (5.75758, 0) -- (5.75758, 4.24243);
-        \draw[dashed] (5.75758, 0.74242) -- (0, 0.74242);
-        \filldraw[black] (5.75758, 0.74242) circle (1pt);
+        \draw[dashed] (4.848, 0) -- (4.848, 4.152);
+        \draw[dashed] (4.848, 1.652) -- (0, 1.652);
         
-        \filldraw[black] (5.75758, 0) circle (1pt);
-        \node[below] at (6, 0) {$Q_1$};
-        \node[left] at (0, 0.74242) {$P_1$};
-        
-        \fill[red, opacity = 0.2] (5.75758, 4.24243) -- (5.75758, 3.24242) -- (5.15152, 3.84848);
-        \node[right] at (5.15152, 3.89848) {B};
+        \filldraw[black] (4.848, 1.652) circle (1pt);
+        \filldraw[black] (4.848, 0) circle (1pt);
+        \node[below] at (4.9, 0) {$Q_1$};
+        \node[left] at (0, 1.5) {$P_1$};
 
-        \draw[-Triangle] (9, 3.05) to (9, 3.70);
-        \node[right] at (9, 3.55) {d};
+        \draw[dashed] (4.54545, 0) -- (4.54545, 4.45455);
+        \draw[dashed] (4.54545, 1.95455) -- (0, 1.95455);
+        \filldraw[black] (4.54545, 1.95455) circle (1pt);
+        \filldraw[black] (4.54545, 0) circle (1pt);
+        \node[below] at (4.3, 0) {$Q_2$};
+        \node[left] at (0, 2) {$P_2$};
+
+
+        
+        \fill[red, opacity = 0.2] (5.15152, 3.84848) -- (4.848, 3.651) -- (4.848, 4.152);
+        \node[above] at (5.15152, 4) {$b$};
+
+        \fill[green, opacity = 0.2] (4.54545, 3.45454) -- (4.54545, 4.45455) -- (4.848, 4.152) -- (4.848, 3.651);
+        \node[above] at (4.65152, 4.5) {$c$};
+
+        \draw[-Triangle] (9, 4.3) to (9, 4.9);
+        \node[right] at (9, 4.85) {$d$};
 
         \node[below] at (10, -1) {\Large Articles};
         \node[above] at (5.5, 9) {\Large Market of News};
@@ -270,13 +280,12 @@ Now we are ready to examine this reduction in Yle's budget.%TODO todo REMOVE THI
   \end{center}
 \end{wrapfigure}
 
-\noindent The budget cut is illustrated in \textbf{Figure 2} as a reduction in the supply of news, by some amount $d$ which we will discuss.
+\noindent The budget cut is illustrated in \textbf{Figure 2} as a reduction in the supply of news, by some amount $d$ which will be discussed later.
 For clarity, the new market equilibrium is shown to settle at the quantity $Q_{opt}$. 
-This does, however, not imply that the welfare loss is totally cleared, for the following reasons.
+This, however, does not suggest that the welfare loss is entirely eradicated, for the following reasons.
 
-Firstly, the fact that there is a lower quantity or quality of perfectly impartial news supplied by the government means the size of marginal social benefit may shrink by some amount.
-This is because other news outlets in the market may be affiliated with political parties.
-They also may not be as committed to benefit the population as Yle is, as opposed to maximizing their own financial gains.
+Firstly, the fact that there is a lower quantity or quality of perfectly impartial news supplied by the government means the size of marginal social benefit may contract to some degree.
+This arises because other news outlets in the market might be aligned with political factions or less devoted to serving the populace compared to Yle, prioritising their pecuniary gains instead.
 
 In addition, the magnitude of the change may not be as pronounced as the diagram suggests.
 This is because the cut is made to the company's budget.
@@ -294,8 +303,8 @@ The article states that the budget will shrink by approximately $47$ million eur
           width=10cm,
           height=8cm,
           axis lines = left,
-          xtick={1.6,3.2,...,9.6},
-          xticklabels={1,2,...,6},
+          xtick={1.33,2.66,...,10},
+          xticklabels={1,2,...,7},
           ytick={0,1.6,...,9.6},
           yticklabels={0,20,...,120},
           xmin = 0, xmax = 10,
@@ -320,8 +329,9 @@ The article states that the budget will shrink by approximately $47$ million eur
         \filldraw[black] (6.3337, 5.42086) circle (1pt);
         \node[above right] at (6.3337, 5.42086) {$B$};
         
-        \node[below] at (5, -1) {Availability of News (Arbitrary Units)};
+        \node[below] at (5, -1) {1000 News articles};
         \node[left, rotate=90] at (-1.6, 9.5) {Radio Programming (1000 Hrs)};
+        \node[above] at (5.5, 9) {\large Annual Production Possibilities of Yle};
 
       \end{axis}
     \end{tikzpicture}
@@ -330,18 +340,16 @@ The article states that the budget will shrink by approximately $47$ million eur
 \end{wrapfigure}
 
 \noindent \textbf{Figure 3} shows the reduction in Yle's production possibilities, and the choice it must face between producing radio programming and making news available.
-We define availability as some metric dependent on the quantity, the quality, and how topical the news is.
+We define availability as a measure influenced by quantity, quality, and the topicality of the news.
 The budget cut is displayed as an inwards shift in the PPC curve, as the quantities that Yle is able to produce is now smaller.
-In 2023, the amount of radio programming produced is $82210$ hours\footnote{\url{https://yle.fi/aihe/ylen-vuosi-2023}}, as reflected by the diagram.
-According to this (rather arbitrary) diagram, that corresponds to a quality of 4 units.
-To avoid compromising economic well-being through providing less news, Yle might attempt to keep the amount of news at 4 units.
-This means reducing the amount of radio programming to about $69000$ hours.
-Note that if this were to be the case, the supply curve $S_1$ from \textbf{Figure 2} would be stationary instead of moving to $S_2$, so $d=0$.
-Additionally, the size of the positive consumption externality would not change, so the $MSB$ would also be stationary.
-\newpage
-\noindent {\footnotesize Final note, not part of the commentary:\\
-It turns out that news is not a private good but a \textbf{quasi-public good} (non-rivalrous and excludable), so the D/S diagrams I have are not suitable to describe the situation.
-I was not warned of this when selecting the article, and the SL Micro unit barely covers the behaviour of such goods.
-I hope that this oversight will not detriment my grade too severely.}
+In 2023, the amount of radio programming produced is $82,210$ hours\footnote{\url{https://yle.fi/aihe/ylen-vuosi-2023}}, as reflected by the diagram.
+According to this illustration, this corresponds to producing $48,000$ articles\footnote{This is my estimate on the number of articles published in a year, since no official data is available.}.
+To avert compromising economic well-being through providing less news, Yle may strive to maintain it constant.
+That would entail reducing radio programming to about $69,000$ hours.
+
+If this course were adopted, the supply curve $S_1$ from \textbf{Figure 2} would be stationary instead of moving to $S_2$, so $d\approx0$.
+Additionally, the size of the positive consumption externality would not change, so $MSB$ would also be stationary.
+I think this is the expected outcome since sports commentary or radio, as examples, correspond to less positive externalities as opposed to news.
+Therefore, since Yle wishes to maximize the benefit of Finnish citizens, I believe this outcome is most probable.
 
 \end{document}
