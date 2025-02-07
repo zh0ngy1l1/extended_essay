@@ -1,0 +1,93 @@
+\documentclass[a4paper, 12pt]{article}
+
+%Paragraph jumps and indentation
+\setlength{\parskip}{1.5em}
+\setlength{\parindent}{1.25cm}
+
+%Border
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+
+%Double spacing
+\usepackage{setspace}
+\doublespacing
+
+%Packages
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{titlesec}
+
+%Images
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{wrapfig}
+\usepackage{float}
+
+%Tables
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabu}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+%Equation numbering
+\counterwithin{equation}{section}
+
+%Links
+\usepackage{hyperref}
+\urlstyle{same}
+
+%Diagrams
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{positioning, arrows.meta}
+\usepgfplotslibrary{fillbetween}
+\usepackage{wrapfig}
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+    \textbf{TOK EXHIBITION}\\
+    \vspace*{3cm}
+    \textbf{To what extent is objectivity possible in the production or acquisition of knowledge?}\\
+
+    \vfill
+    \today\\
+    Word count: ??
+  \end{center}
+\end{titlepage}
+
+\section{Lecture 'On Mathematical Maturity' by Thomas Garrity}
+
+\begin{wrapfigure}{L}{0.5\textwidth}
+  \begin{center}
+    \includegraphics[width=7.9cm]{functions_thumbnail.jpg}
+    \caption{here is the caption.}
+  \end{center}
+\end{wrapfigure}
+
+\text{\empty}
+\subsection{ChatGPT Analysis} 
+{
+Thomas Garrity's discussion of "mathematical maturity" directly relates to your TOK prompt on the extent to which objectivity is possible in the acquisition of knowledge.
+
+Key Points of Connection:
+Objectivity vs. Intuition in Mathematics:
+While mathematics is often considered the most objective of disciplines, Garrity's emphasis on intuition, abstraction, and problem-approach diversity challenges this perception. The path to understanding mathematical concepts often involves subjective insights, even if the final proofs are rigorously objective.
+
+Subjective Pathways to Objective Knowledge:
+Developing mathematical maturity involves more than simply following objective rules. It requires personal engagement, critical thinking, and creative problem-solving—all of which are subjective elements that shape the acquisition of knowledge.
+
+Role of Abstraction:
+Garrity mentions abstraction as key to mathematical understanding. Abstraction itself involves a human-driven process of selecting which elements of a problem are essential, which introduces subjective judgment.
+
+Critical Thinking and Perspectives:
+Approaching problems from multiple perspectives, as Garrity suggests, reflects the idea that objectivity in knowledge acquisition may depend on reconciling subjective viewpoints.
+
+In your exhibition, you could argue that mathematical knowledge, despite its reputation for objectivity, involves subjective human processes that shape how knowledge is acquired and even what is considered worth studying. Mathematical maturity embodies the interplay between these subjective processes and the pursuit of objective truths.
+}
+\end{document}
