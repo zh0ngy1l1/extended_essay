@@ -1,0 +1,63 @@
+\documentclass[a4paper, 12pt]{article}
+
+%Paragraph jumps and indentation
+\setlength{\parskip}{1.6em}
+\setlength{\parindent}{1.25cm}
+
+%Border
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+
+%Double spacing
+\usepackage{setspace}
+\doublespacing
+
+%Packages
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{titlesec}
+
+%Images
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{wrapfig}
+\usepackage{float}
+
+%Tables
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabu}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+%Equation numbering
+\counterwithin{equation}{section}
+\usepackage{hyperref}
+\urlstyle{same}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+    Subject: Mathematics\\
+    \vspace*{4cm}
+    {\Large \textbf{Investigating the effectiveness of the complex plane in classical olympiad geometry}}\\
+
+    \vspace{1cm}
+    \textbf{Research Question:}
+    To what extent can using the complex plane $\mathbb{C}$ replace classical techniques in problems from the IMO shortlist?\\
+    \vspace{4cm}
+    Word count:
+    \vfill
+    \vspace{0.1cm}
+    Zhongyi Li, M26
+    \end{center}
+\end{titlepage}
+        
+
+\tableofcontents
+
+\end{document}
