@@ -38,26 +38,71 @@
 \usepackage{hyperref}
 \urlstyle{same}
 
+%Diagrams
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{positioning, arrows.meta}
+\usepgfplotslibrary{fillbetween}
+
 \begin{document}
 
 \begin{titlepage}
     \begin{center}
     Subject: Mathematics\\
     \vspace*{4cm}
-    {\Large \textbf{Investigating the effectiveness of the complex plane in classical olympiad geometry}}\\
+    {\Large \textbf{Investigating patterns in the product of Euler's totient function $\varphi$ and the sum of divisors function $\sigma$}}\\
 
     \vspace{1cm}
     \textbf{Research Question:}
-    To what extent can using the complex plane $\mathbb{C}$ replace classical techniques in problems from the IMO shortlist?\\
+    What gives rise to the patterns and bounds in the graph of $y=\varphi(x) \cdot \sigma(x)$, and how does this relate to the Riemann zeta function and the Basel problem?\\
+
     \vspace{4cm}
-    Word count:
+    Word count: 237
     \vfill
     \vspace{0.1cm}
     Zhongyi Li, M26
     \end{center}
 \end{titlepage}
-        
 
-\tableofcontents
+
+\section*{Abstract / Preliminary Research Plan}
+
+I will first define the functions $\varphi$ and $\sigma$, and provide motivations and justifications to why they are important and an integral part of number theory.
+
+\noindent Secondary source for this: \textbf{Introduction to Analytic Number Theory} by \textit{Tom M. Apostol}
+
+\begin{wrapfigure}{L}{0.5\textwidth}
+    \begin{center}
+        \includegraphics[width=7.9cm]{2_product.png}
+        \caption{The graph I wish to investigate}
+    \end{center}
+\end{wrapfigure}
+\noindent Next I will present the graph I plan to study, $y=\varphi(x) \cdot \sigma(x)$, and suggest computing bounds for this function.
+
+I might hint towards patterns in the graph already at this point, but I should leave the patterns until the end, for coherence.
+Instead, I introduce the upper bound of $x^2$ and lower bound of $\dfrac{x^2}{\zeta(2)}=x^2\cdot\dfrac{6}{\pi^2}$
+
+I should go on to prove these bounds, but perhaps before that I must allude to the famous Basel Problem.
+
+
+\[
+\frac{1}{1^2}+\frac{1}{2^2}+\frac{1}{3^2}+\frac{1}{4^2}+... = \frac{\pi^2}{6}
+\]
+
+I will discuss the relationship of this with the Riemann Zeta function, and perhaps see the need to refer to secondary sources here.
+\textbf{Modern Olympiad Number Theory} by \textit{Aditya Khurmi} is an ok choice for this, but there may exist better options.
+
+After that, the bounds will be established and we may move on to discussing the patterns in this graph.
+\begin{wrapfigure}{L}{0.7\textwidth}
+    \begin{center}
+        \includegraphics[width=11cm]{3_pattern.png}
+        \caption{We see that the graph has denser regions when enough data is included}
+    \end{center}
+\end{wrapfigure}
+
+\noindent The patterns can be clearly seen and I will be showing why they are manifest.
+Maybe that requires me providing an exact definition on what a "dense sort of line thing" we see here is. That may require additional secondary sources.
+
+I think this is enough content, and it will produce an analysis that I hope does not end up being too shallow nor too obstruse.
 
 \end{document}
