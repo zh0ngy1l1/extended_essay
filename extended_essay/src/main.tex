@@ -44,6 +44,10 @@
 \usetikzlibrary{positioning, arrows.meta}
 \usepgfplotslibrary{fillbetween}
 
+%Theorems
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+
 \begin{document}
 
 \begin{titlepage}
@@ -65,7 +69,8 @@
 \end{titlepage}
 
 
-\section*{Abstract / Preliminary Research Plan}
+
+\section*{Preliminary Research Plan}
 
 I will first define the functions $\varphi$ and $\sigma$, and provide motivations and justifications to why they are important and an integral part of number theory.
 
@@ -103,9 +108,48 @@ Maybe that requires me providing an exact definition on what a "dense sort of li
 I think this is enough content, and it will produce an analysis that I hope does not end up being too shallow nor too obstruse.
 
 \vspace*{0.5em}
-\section*{Preliminary bibliography}
+\subsection*{Preliminary bibliography}
 
 \textbf{Introduction to Analytic Number Theory} by \textit{Tom M. Apostol}\\
 \textbf{Modern Olympiad Number Theory} by \textit{Aditya Khurmi}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+\section*{Introduction}
+
+Broadly speaking, number theory is the branch of mathematics concerned with the properties of integers.
+In a school setting, this often includes topics such as divisibility rules, prime factorization, and, most importantly, the \textbf{Fundamental Theorem of Arithmetic}.
+
+\begin{theorem}[Fundamental Theorem of Arithmetic]
+    Every integer $n > 1$ can be represented as a product of prime factors in precisely one way, up to the order of the factors.
+\end{theorem}
+This theorem asserts that for any integer $n$, there exists a unique set of distinct prime numbers $p_1, p_2, ..., p_k$, along with their respective exponents $\alpha_1, \alpha_2, ..., \alpha_k$, such that
+\[n=p_1^{\alpha_1} p_2^{\alpha_2} ... p_k^{\alpha_k}.\]
+
+\section{Arithmetic Functions}
+
+%define arithmetic functions
+%Introduce phi and sigma
+%Show that they are multiplicative (Here or later?)
+%motivate the problem
+
+\section{The zeta function}
+
+%Show the infinite sum zeta and why it's equal to the infinite product
+%If extra words available, show that the are infinitely many primes.
+
+%Prove the bounds for our pattern
+
+\section{An Explanation for the Patterns}
+
+%Explain the patterns
+%Show that the lower bound is approached when large enough
+%MATH TO SUPPORT THIS NOT DONE YET!!!!!
+
+\section{Appendices}
+\section{Bibliography}
 
 \end{document}
