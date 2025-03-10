@@ -48,10 +48,18 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{definition}{Definition}
 
+%Bibliography
+\usepackage[
+  backend=biber,
+  style=alphabetic,
+  sorting=ynt
+]{biblatex}
+\addbibresource{refs.bib}
+
 \begin{document}
 
 \begin{titlepage}
-    \begin{center}
+  \begin{center}
     Subject: Mathematics\\
     \vspace*{4cm}
     {\Large \textbf{Investigating patterns in the product of Euler's totient function $\varphi$ and the sum of divisors function $\sigma$}}\\
@@ -65,20 +73,18 @@
     \vfill
     \vspace{0.1cm}
     Zhongyi Li, M26
-    \end{center}
+  \end{center}
 \end{titlepage}
-
-
 
 \section*{Preliminary Research Plan}
 
 I will first define the functions $\varphi$ and $\sigma$, and provide motivations and justifications to why they are important and an integral part of number theory.
 
 \begin{wrapfigure}{L}{0.5\textwidth}
-    \begin{center}
-        \includegraphics[width=7.9cm]{2_product.png}
-        \caption{The graph I wish to investigate}
-    \end{center}
+  \begin{center}
+    \includegraphics[width=7.9cm]{2_product.png}
+    \caption{The graph I wish to investigate}
+  \end{center}
 \end{wrapfigure}
 \noindent Next I will present the graph I plan to study, $y=\varphi(x) \cdot \sigma(x)$, and suggest computing bounds for this function.
 
@@ -87,19 +93,18 @@ Instead, I introduce the upper bound of $x^2$ and lower bound of $\dfrac{x^2}{\z
 
 I should go on to prove these bounds, but perhaps before that I must allude to the famous Basel Problem.
 
-
 \[
-\frac{1}{1^2}+\frac{1}{2^2}+\frac{1}{3^2}+\frac{1}{4^2}+... = \frac{\pi^2}{6}
+  \frac{1}{1^2}+\frac{1}{2^2}+\frac{1}{3^2}+\frac{1}{4^2}+... = \frac{\pi^2}{6}
 \]
 
 I will discuss the relationship of this with the Riemann Zeta function, and perhaps see the need to refer to secondary sources here.
 
 After that, the bounds will be established and we may move on to discussing the patterns in this graph.
 \begin{figure}
-    \begin{center}
-        \includegraphics[width=11cm]{3_pattern.png}
-        \caption{We see that the graph has denser regions when enough data is included}
-    \end{center}
+  \begin{center}
+    \includegraphics[width=11cm]{3_pattern.png}
+    \caption{We see that the graph has denser regions when enough data is included}
+  \end{center}
 \end{figure}
 
 \noindent The patterns can be clearly seen and I will be showing why they are manifest.
@@ -124,7 +129,7 @@ Broadly speaking, number theory is the branch of mathematics concerned with the 
 In a school setting, this often includes topics such as divisibility rules, prime factorization, and, most importantly, the \textbf{Fundamental Theorem of Arithmetic}.
 
 \begin{theorem}[Fundamental Theorem of Arithmetic]
-    Every integer $n > 1$ can be represented as a product of prime factors in precisely one way, up to the order of the factors.
+  Every integer $n > 1$ can be represented as a product of prime factors in precisely one way, up to the order of the factors.
 \end{theorem}
 This theorem asserts that for any integer $n$, there exists a unique set of distinct prime numbers $p_1, p_2, ..., p_k$, along with their respective exponents $\alpha_1, \alpha_2, ..., \alpha_k$, such that
 \[n=p_1^{\alpha_1} p_2^{\alpha_2} ... p_k^{\alpha_k}.\]
@@ -140,6 +145,7 @@ This theorem asserts that for any integer $n$, there exists a unique set of dist
 
 %Show the infinite sum zeta and why it's equal to the infinite product
 %If extra words available, show that the are infinitely many primes.
+hello \cite{basel} hello!!
 
 %Prove the bounds for our pattern
 
@@ -149,7 +155,11 @@ This theorem asserts that for any integer $n$, there exists a unique set of dist
 %Show that the lower bound is approached when large enough
 %MATH TO SUPPORT THIS NOT DONE YET!!!!!
 
-\section{Appendices}
-\section{Bibliography}
+\section*{Appendices}
+
+
+\newpage
+
+\printbibliography
 
 \end{document}
