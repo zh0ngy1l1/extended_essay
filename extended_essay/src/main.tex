@@ -47,6 +47,7 @@
 %Theorems
 \newtheorem{theorem}{Theorem}
 \newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
 
 %Bibliography
 \usepackage[
@@ -64,24 +65,74 @@
 
     \vspace{1cm}
     \textbf{Research Question:}
-    What gives rise to the patterns and bounds in the graph of $y=\varphi(x) \cdot \sigma(x)$, and how does this relate to the Riemann zeta function and the Basel problem?\\
+    What gives rise to the patterns and bounds in the graph of $f(n)=\varphi(n) \cdot \sigma(x)$, and how does this relate to the Riemann zeta function and the Basel problem?\\
 
-    \vspace{4cm}
-    Word count: 225
     \vfill
-    \vspace{0.1cm}
-    Zhongyi Li, M26
+    \today\\
+    Word count: 1729
   \end{center}
 \end{titlepage}
 
+\section{Presentation to the Class}
+This paper aims to investigate patterns in the graph of $f(n)=\varphi(n)\cdot\sigma(n)$.
+
+\subsection{What are the functions}
+
+$\varphi(n)$ is the "number of positive integers $\le n$ and coprime to $n$."
+$\sigma(n)$ is the "sum of the positive divisors of $n$."
+
+Examples:
+\begin{center}
+  \begin{minipage}{0.4\textwidth} % Reduce table width
+    \centering
+    \scriptsize % Shrink the font size of the table
+    \begin{tabular}{||c|c@{}c|c@{}c||} 
+      \hline
+      $n$ & $\varphi(n)$ & numbers & $\sigma(n)$ & numbers\\ [0.5ex] 
+      \hline\hline
+      1 & 1 & 1 & 1 = & 1\\ 
+      \hline
+      2 & 1 & 1 & 3 = & 1+2\\
+      \hline
+      3 & 2 & 1,2 & 4 = & 1+3\\
+      \hline
+      4 & 2 & 1,3 & 7 = & 1+2+4\\
+      \hline
+      5 & 4 & 1,2,3,4 & 6 = & 1+5\\
+      \hline
+      6 & 2 & 1,5 & 12 = & 1+2+3+6\\
+      \hline
+      7 & 6 & 1,2,3,4,5,6 & 8 = & 1+7\\
+      \hline
+      8 & 4 & 1,3,5,7 & 15 = & 1+2+4+8\\
+      \hline
+      9 & 6 & 1,2,4,5,7,8 & 13 = & 1+3+9\\
+      \hline
+      10 & 4 & 1,3,7,9 & 18 = & 1+2+5+10\\ [1ex]
+      \hline
+    \end{tabular}
+  \end{minipage}%
+  \begin{minipage}{0.55\textwidth} % Increase image width
+    \centering
+    \includegraphics[width=\textwidth]{1_phigma.png} % Make image take full width of minipage
+  \end{minipage}
+\end{center}
+
+There are nice patterns in this graph, and we will explore them more closely.
+
+
+Some properties of these functions:
+
+
+\newpage
 \section{Abstract}
-This paper aims to investigate patterns in the graph of $y=\varphi(x)\cdot\sigma(x)$.
 \newpage
 
 
 \tableofcontents
 
 \newpage
+
 
 \section{Introduction}
 Broadly speaking, number theory is the branch of mathematics concerned with the properties of integers.

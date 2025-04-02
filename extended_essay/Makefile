@@ -2,7 +2,7 @@
 SRC_DIR := src
 
 # List of LaTeX auxiliary files to be deleted
-LATEX_GARBAGE := *.aux *.bbl *.bcf *.blg *.log *.out *.run.xml *.synctex.gz
+LATEX_GARBAGE := *.aux *.bbl *.bcf *.blg *.log *.out *.run.xml *.synctex.gz *.toc
 
 # Target to clean up LaTeX garbage and move main.pdf
 all: clean move_pdf
