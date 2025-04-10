@@ -45,15 +45,18 @@
 \usepgfplotslibrary{fillbetween}
 
 %Theorems
-\newtheorem{theorem}{Theorem}
-\newtheorem{definition}{Definition}
-\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
 
 %Bibliography
 \usepackage[
   backend=biber
 ]{biblatex}
 \addbibresource{refs.bib}
+
+%Headers and footers
+\usepackage{fancyhdr}
 
 \begin{document}
 
@@ -65,7 +68,7 @@
 
     \vspace{1cm}
     \textbf{Research Question:}
-    What gives rise to the patterns and bounds in the graph of $f(n)=\varphi(n) \cdot \sigma(x)$, and how does this relate to the Riemann zeta function and the Basel problem?\\
+    What gives rise to the patterns and bounds in the graph of $f(n)=\varphi(n) \cdot \sigma(x)$, and how does this relate to the Riemann zeta function?\\
 
     \vfill
     \today\\
@@ -73,15 +76,17 @@
   \end{center}
 \end{titlepage}
 
+\pagestyle{fancy}
+\fancyfoot[L]{What gives rise to the patterns and bounds in the graph of $f(n)=\varphi(n) \cdot \sigma(x)$, and how does this relate to the Riemann zeta function?}
+\fancyhead[L]{\thepage}
 \section{Presentation to the Class}
 This paper aims to investigate patterns in the graph of $f(n)=\varphi(n)\cdot\sigma(n)$.
 
 \subsection{What are the functions}
 
-$\varphi(n)$ is the "number of positive integers $\le n$ and coprime to $n$."
+$\varphi(n)$ is the "number of positive integers $\le n$ and \textbf{coprime} to $n$."
 $\sigma(n)$ is the "sum of the positive divisors of $n$."
-
-Examples:
+%Examples:
 \begin{center}
   \begin{minipage}{0.4\textwidth} % Reduce table width
     \centering
@@ -114,14 +119,26 @@ Examples:
   \end{minipage}%
   \begin{minipage}{0.55\textwidth} % Increase image width
     \centering
-    \includegraphics[width=\textwidth]{1_phigma.png} % Make image take full width of minipage
+    \includegraphics[width=\textwidth]{phigma_with_line.png} % Make image take full width of minipage
   \end{minipage}
 \end{center}
 
-There are nice patterns in this graph, and we will explore them more closely.
+\noindent We call functions like $\varphi$ and $\sigma$ \textit{"arithmetic functions"}, i.e. functions that express some property of the number.
 
+\begin{lemma}[Multiplicativity of $\varphi$ and $\sigma$]
+  For any two \textbf{coprime} integers $m$, $n$, we have $\varphi(mn)=\varphi(m)\varphi(n)$ and $\sigma(mn)=\sigma(m)\sigma(n)$.
+\end{lemma}
+%You can try proving these. Nice combinatorics exercise.
 
-Some properties of these functions:
+%There are nice patterns in this graph, which I will describe qualitatively.
+
+\newpage
+
+We wish to find some way of taking an average that sends the pairs of points to the line $y=n$, i.e. discover a function that reduces the amount of chaos and erraticity in this graph.\\
+Initial guesses: AM, weighted AM, GM. 
+
+Plotting these:
+
 
 
 \newpage
