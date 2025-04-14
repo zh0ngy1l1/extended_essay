@@ -48,6 +48,7 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{definition}{Definition}[section]
 \newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
 
 %Bibliography
 \usepackage[
@@ -68,7 +69,7 @@
 
     \vspace{1cm}
     \textbf{Research Question:}
-    What gives rise to the patterns and bounds in the graph of $f(n)=\varphi(n) \cdot \sigma(x)$, and how does this relate to the Riemann zeta function?\\
+    What gives rise to the patterns in the graph of $f(n)=\sqrt{\varphi(n) \cdot \sigma(x)}$, and how does this relate to the Riemann zeta function?\\
 
     \vfill
     \today\\
@@ -77,12 +78,9 @@
 \end{titlepage}
 
 \pagestyle{fancy}
-\fancyfoot[L]{What gives rise to the patterns and bounds in the graph of $f(n)=\varphi(n) \cdot \sigma(x)$, and how does this relate to the Riemann zeta function?}
+\fancyfoot[L]{What gives rise to the patterns in the graph of $f(n)=\sqrt{\varphi(n) \cdot \sigma(x)}$, and how does this relate to the Riemann zeta function?}
 \fancyhead[L]{\thepage}
 \section{Presentation to the Class}
-This paper aims to investigate patterns in the graph of $f(n)=\varphi(n)\cdot\sigma(n)$.
-
-\subsection{What are the functions}
 
 $\varphi(n)$ is the "number of positive integers $\le n$ and \textbf{coprime} to $n$."
 $\sigma(n)$ is the "sum of the positive divisors of $n$."
@@ -132,12 +130,31 @@ $\sigma(n)$ is the "sum of the positive divisors of $n$."
 
 %There are nice patterns in this graph, which I will describe qualitatively.
 
+This allows us to write closed formulas of $\varphi(n)$ and $\sigma(n)$ in terms of the prime factorization of $n$.
+%This is also a nice exercise. See if you can figure the formulas out yourself.
+
+\begin{corollary}
+  $f(x)=\varphi(x)\cdot\sigma(x)$ is multiplicative.
+\end{corollary}
+
+
+
 \newpage
 
-We wish to find some way of taking an average that sends the pairs of points to the line $y=n$, i.e. discover a function that reduces the amount of chaos and erraticity in this graph.\\
-Initial guesses: AM, weighted AM, GM. 
+We wish to find some way of taking an average that sends the pairs of points to the line $y=n$, i.e. discover a function that reduces the amount of chaos and erraticity in this graph.
 
-Plotting these:
+Initial guesses for ways to take an average: % explain what AM, GM, HM abbreviate.
+\[\textbf{AM}:\ \frac{a+b}{2} \hspace{1cm} \textbf{GM}:\ \sqrt{ab} \hspace{1cm} \textbf{HM}:\ \dfrac{2}{\frac{1}{a} + \frac{1}{b}}\]
+
+\includegraphics[width=\textwidth]{AMGMHM.png}
+
+It's also possible to take some weighted version of these, to make the result closer to the target.
+Investigating that may be a part of my Research, if the word limit allows for that.
+
+I hope the conclusion is that the geometric mean is the best (whether 'best' may refer to most close to the target or easiest to compute).
+Then I will proceed to graph the function $f(x)=\sqrt{\varphi(n) \cdot \sigma(n)}$ in more detail, compute the lower and upper bounds, show that they're strict, and lastly explain why the patterns occur.
+
+\includegraphics[width=\textwidth]{GM_bounds.png}
 
 
 
