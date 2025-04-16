@@ -82,8 +82,8 @@
 \fancyhead[L]{\thepage}
 \section{Presentation to the Class}
 
-$\varphi(n)$ is the "number of positive integers $\le n$ and \textbf{coprime} to $n$."
-$\sigma(n)$ is the "sum of the positive divisors of $n$."
+$\varphi(n)$ is the ``number of positive integers $\le n$ and \textbf{coprime} to $n$.''
+$\sigma(n)$ is the ``sum of the positive divisors of $n$."
 %Examples:
 \begin{center}
   \begin{minipage}{0.4\textwidth} % Reduce table width
@@ -121,7 +121,7 @@ $\sigma(n)$ is the "sum of the positive divisors of $n$."
   \end{minipage}
 \end{center}
 
-\noindent We call functions like $\varphi$ and $\sigma$ \textit{"arithmetic functions"}, i.e. functions that express some property of the number.
+\noindent We call functions like $\varphi$ and $\sigma$ \textit{``arithmetic functions''}, i.e. functions that express some property of the number.
 
 \begin{lemma}[Multiplicativity of $\varphi$ and $\sigma$]
   For any two \textbf{coprime} integers $m$, $n$, we have $\varphi(mn)=\varphi(m)\varphi(n)$ and $\sigma(mn)=\sigma(m)\sigma(n)$.
@@ -151,10 +151,20 @@ Initial guesses for ways to take an average: % explain what AM, GM, HM abbreviat
 It's also possible to take some weighted version of these, to make the result closer to the target.
 Investigating that may be a part of my Research, if the word limit allows for that.
 
-I hope the conclusion is that the geometric mean is the best (whether 'best' may refer to most close to the target or easiest to compute).
-Then I will proceed to graph the function $f(x)=\sqrt{\varphi(n) \cdot \sigma(n)}$ in more detail, compute the lower and upper bounds, show that they're strict, and lastly explain why the patterns occur.
+I hope the conclusion is that the geometric mean is the best. % (whether `best' is most close to the target or easiest to compute)
+Then I will proceed to graph the function $f(x)=\sqrt{\varphi(n) \cdot \sigma(n)}$ in more detail and notice some lines with points packed more densely.
 
 \includegraphics[width=\textwidth]{GM_bounds.png}
+
+Since it looks linear, we are motivated to graph the function $g(n) = \dfrac{\sqrt{\varphi(n)\cdot\sigma(n)}}{n}$ in more detail, to get a clearer view of what the lines are.
+
+
+\includegraphics[width=\textwidth]{GM_normalized.png}
+
+
+In the rest of the paper, I will compute the lower and upper bounds, show that they're asymptotically strict, %i.e. you can't have make the bound any stronger
+and lastly explain why the patterns (denser lines) occur.
+
 
 
 
