@@ -1,7 +1,7 @@
 \documentclass[a4paper, 12pt]{article}
 
 %Paragraph jumps and indentation
-\setlength{\parskip}{1.5em}
+\setlength{\parskip}{1.6em}
 \setlength{\parindent}{1.25cm}
 
 %Border
@@ -35,8 +35,6 @@
 
 %Equation numbering
 \counterwithin{equation}{section}
-
-%Links
 \usepackage{hyperref}
 \urlstyle{same}
 
@@ -45,46 +43,65 @@
 \pgfplotsset{compat=newest}
 \usetikzlibrary{positioning, arrows.meta}
 \usepgfplotslibrary{fillbetween}
-\usepackage{wrapfig}
 
-%Bibliography
-\usepackage[
-  backend=biber
-]{biblatex}
-\addbibresource{refs.bib}
+%Theorems
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+
+%Headers and footers
+\usepackage{fancyhdr}
 
 \begin{document}
 
 \begin{titlepage}
   \begin{center}
-    \textbf{IB ECONOMICS} \hspace{1cm} STANDARD LEVEL\\
-    \vspace*{3cm}
-    \textbf{Title of the article:}
-    Yle budget cuts agreed after Left,
-    Greens and Finns Party approve new deal\\
-
-    \textbf{Source of the article:}
-    Yle News\\
-
-    \textbf{Link to the article:}
-    \url{https://yle.fi/a/74-20111279}\\
-
-    \textbf{Article publish date:}
-    September 12, 2024\\
-
-    \textbf{Article access date:} \today\\
-
-    \textbf{Commentary writing date:} \today\\
-
-    \textbf{Unit of the syllabus:}
-    Microeconomics\\
-
-    \textbf{Key concept:}
-    Economic Well-Being.\\
+    Internal Assessment: Chemistry\\
+    \vspace*{4cm}
+    {\Large \textbf{Investigating the relationship between the amount of $\mathrm{MnO_2}$ catalyst and the rate of reaction in the decomposition of $\mathrm{H_2O_2}$.}}\\
 
     \vfill
-    Word count: 731
+    \today\\
+    Word count: 123
   \end{center}
 \end{titlepage}
+
+\section{Preliminary Research Plan}
+
+\textbf{Materials:}
+\begin{itemize}
+  \item Water for dilution
+  \item $\mathrm{H_2O_2} (l)$, will be diluted to 1\% for safety
+  \item $\mathrm{MnO_2} (s)$ powder, about 2g needed
+\end{itemize}
+
+\noindent \textbf{Apparatus:}
+\begin{itemize}
+  \item Addition funnel
+  \item Two- or multi-neck flask
+  \item Clamp and stand
+  \item Pressure sensor with tubing
+  \item Graduated pipette and beakers for $\mathrm{H_2O_2}$
+  \item Thermometer to ensure constant initial temperature
+\end{itemize}
+\newpage
+
+\begin{wrapfigure}{L}{0.5\textwidth}
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{Example.png}
+    \caption{Example setup}
+  \end{center}
+\end{wrapfigure}
+
+\noindent This image is captured from the video \textit{How to make an Oxygen Generator (MnO2/H2O2 Method)} uploaded to YouTube by NileRed, \url{https://youtu.be/eI-HMUCEJsI}.
+
+My apparatus will be very similar to this; the only difference is that my rubber hosing will be connected to a pressure sensor.
+
+In every trial, after checking that the initial temperature and pressure are constant, I precisely measure the amount of $\mathrm{MnO_2}$ to add to the flask.
+Then I add some constant volume of $\mathrm{H_2O_2}$ through the addition funnel into the flask and close the funnel so air doesn't escape.
+The reaction happens and I get data on the change in pressure over time.
+
+
 
 \end{document}
