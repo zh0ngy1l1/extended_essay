@@ -35,7 +35,17 @@
 
 %Equation numbering
 \counterwithin{equation}{section}
+
+%links
 \usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
 \urlstyle{same}
 
 %Diagrams
@@ -52,6 +62,8 @@
 
 %Headers and footers
 \usepackage{fancyhdr}
+
+
 
 \begin{document}
 
@@ -72,7 +84,7 @@
 \textbf{Materials:}
 \begin{itemize}
   \item Water for dilution
-  \item $\mathrm{H_2O_2} (l)$, will be diluted to 1\% for safety
+  \item $\mathrm{H_2O_2} (l)$, will be diluted to 3\%
   \item $\mathrm{MnO_2} (s)$ powder, about 2g needed
 \end{itemize}
 
@@ -97,10 +109,9 @@
 \noindent This image is captured from the video \textit{How to make an Oxygen Generator (MnO2/H2O2 Method)} uploaded to YouTube by NileRed, \url{https://youtu.be/eI-HMUCEJsI}.
 
 My apparatus will be very similar to this; the only difference is that my rubber hosing will be connected to a pressure sensor.
-
 In every trial, after checking that the initial temperature and pressure are constant, I precisely measure the amount of $\mathrm{MnO_2}$ to add to the flask.
 Then I add some constant volume of $\mathrm{H_2O_2}$ through the addition funnel into the flask and close the funnel so air doesn't escape.
-The reaction happens and I get data on the change in pressure over time.
+I will record the change in pressure over time using Logger Pro.
 
 
 
