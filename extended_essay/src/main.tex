@@ -56,9 +56,6 @@
 ]{biblatex}
 \addbibresource{refs.bib}
 
-%Headers and footers
-\usepackage{fancyhdr}
-
 \begin{document}
 
 \begin{titlepage}
@@ -77,70 +74,8 @@
   \end{center}
 \end{titlepage}
 
-\pagestyle{fancy}
-\fancyfoot[L]{What gives rise to the patterns in the graph of $f(n)=\sqrt{\varphi(n) \cdot \sigma(x)}$, and how does this relate to the Riemann zeta function?}
-\fancyhead[L]{\thepage}
-\section{Presentation to the Class}
 
-$\varphi(n)$ is the ``number of positive integers $\le n$ and \textbf{coprime} to $n$.''
-$\sigma(n)$ is the ``sum of the positive divisors of $n$."
-%Examples:
-\begin{center}
-  \begin{minipage}{0.4\textwidth} % Reduce table width
-    \centering
-    \scriptsize % Shrink the font size of the table
-    \begin{tabular}{||c|c@{}c|c@{}c||} 
-      \hline
-      $n$ & $\varphi(n)$ & numbers & $\sigma(n)$ & numbers\\ [0.5ex] 
-      \hline\hline
-      1 & 1 & 1 & 1 = & 1\\ 
-      \hline
-      2 & 1 & 1 & 3 = & 1+2\\
-      \hline
-      3 & 2 & 1,2 & 4 = & 1+3\\
-      \hline
-      4 & 2 & 1,3 & 7 = & 1+2+4\\
-      \hline
-      5 & 4 & 1,2,3,4 & 6 = & 1+5\\
-      \hline
-      6 & 2 & 1,5 & 12 = & 1+2+3+6\\
-      \hline
-      7 & 6 & 1,2,3,4,5,6 & 8 = & 1+7\\
-      \hline
-      8 & 4 & 1,3,5,7 & 15 = & 1+2+4+8\\
-      \hline
-      9 & 6 & 1,2,4,5,7,8 & 13 = & 1+3+9\\
-      \hline
-      10 & 4 & 1,3,7,9 & 18 = & 1+2+5+10\\ [1ex]
-      \hline
-    \end{tabular}
-  \end{minipage}%
-  \begin{minipage}{0.55\textwidth} % Increase image width
-    \centering
-    \includegraphics[width=\textwidth]{phigma_with_line.png} % Make image take full width of minipage
-  \end{minipage}
-\end{center}
-
-\noindent We call functions like $\varphi$ and $\sigma$ \textit{``arithmetic functions''}, i.e. functions that express some property of the number.
-
-\begin{lemma}[Multiplicativity of $\varphi$ and $\sigma$]
-  For any two \textbf{coprime} integers $m$, $n$, we have $\varphi(mn)=\varphi(m)\varphi(n)$ and $\sigma(mn)=\sigma(m)\sigma(n)$.
-\end{lemma}
-%You can try proving these. Nice combinatorics exercise.
-
-%There are nice patterns in this graph, which I will describe qualitatively.
-
-This allows us to write closed formulas of $\varphi(n)$ and $\sigma(n)$ in terms of the prime factorization of $n$.
-%This is also a nice exercise. See if you can figure the formulas out yourself.
-
-\begin{corollary}
-  $f(x)=\varphi(x)\cdot\sigma(x)$ is multiplicative.
-\end{corollary}
-
-
-
-\newpage
-
+\section*{Presentation to the Class}
 We wish to find some way of taking an average that sends the pairs of points to the line $y=n$, i.e. discover a function that reduces the amount of chaos and erraticity in this graph.
 
 Initial guesses for ways to take an average: % explain what AM, GM, HM abbreviate.
@@ -169,7 +104,10 @@ and lastly explain why the patterns (denser lines) occur.
 
 
 \newpage
-\section{Abstract}
+\section*{Abstract}
+
+I'll write this later, when most other things are decided.
+
 \newpage
 
 
@@ -177,22 +115,54 @@ and lastly explain why the patterns (denser lines) occur.
 
 \newpage
 
-
 \section{Introduction}
-Broadly speaking, number theory is the branch of mathematics concerned with the properties of integers.
-In a school setting, this often includes topics such as divisibility rules, prime factorization, and, most importantly, the \textbf{Fundamental Theorem of Arithmetic}.
+As the British mathematician G. H. Hardy most eloquently argues in his essay \textit{A Mathematician's Apology} (1940)\cite{hardy}, pure mathematics is pursued for its aesthetic value despite having no practical applications.
+When encounting a result that seems plausible but is not formally proven, a mathematician cannot help being compelled to seek for a formal justification.
+The investigations done in the production of this paper are motivated by precisely this: It is a classic textbook example to show the bounds of $$
+%Explanation why this topic is relevant and important to a student.
+%Clearly stated the research question
+%Methodology of the research (future tense)
+
+\section{Prerequisite Knowledge}
+The reader should be familiar with mathematical notation and basic definitions like `coprime' and `divisor'.
+Additionally, understanding of \textit{Fundamental Theorem of Arithmetic} is required:
 
 \begin{theorem}[Fundamental Theorem of Arithmetic]
-  Every integer $n > 1$ can be represented as a product of prime factors in precisely one way, up to the order of the factors.
+  Every positive integer has an unique prime factorization.
 \end{theorem}
-This theorem asserts that for any integer $n$, there exists a unique set of distinct prime numbers $p_1, p_2, ..., p_k$, along with their respective exponents $\alpha_1, \alpha_2, ..., \alpha_k$, such that
-\[n=p_1^{\alpha_1} p_2^{\alpha_2} ... p_k^{\alpha_k}.\]
 
-This form of writing numbers as a product of primes is the key to the proofs delivered in this paper.
-For example, we can construct all the factors (positive divisors) of a number when given its prime factorization.
-Namely, they are precisely the numbers of the form
-\[d=p_1^{\beta_1} p_2^{\beta_2} ... p_k^{\beta_k},\]
-where $\beta_i\le\alpha_i$ for all $1\le i \le k$.
+In other words, for any $n$, there exists a unique set of distinct prime numbers $p_1, p_2, ..., p_k$, along with their respective exponents $\alpha_1, \alpha_2, ..., \alpha_k$, such that
+\[n=p_1^{\alpha_1} p_2^{\alpha_2} ... p_k^{\alpha_k}.\]
+Representing a number in this form will play an exceptionally important role in this paper.
+
+\section{An Introduction to Arithmetic Functions}
+
+A special class of functions called \textit{arithmetic functions} play a vital role in the study of number theory, which is the study of positive integers and their properties.
+The two arithmetic functions concerned in this paper are the following.
+
+\begin{definition}[Sum of Divisors Function]
+  Denoted by $\sigma(n)$, it returns the sum of all positive divisors of $n$.
+\end{definition}
+
+\begin{definition}[Euler's Totient Function]
+  Denoted by $\varphi(n)$, it returns the number of positive integers $\le n$ and coprime to $n$.
+\end{definition}
+
+Mathematics relies on abstraction, so properties like these are encoded using functions.
+For example, the property "n is a perfect number if it is equal to the sum of its proper divisors" can be expressed symbolically as:
+\[S = \{n \in \mathbb{N} : \sigma(n) = 2n\}\]
+
+Euler's totient function is best known as a part of \textit{Euler's Theorem}, upon which RSA encryption relies.
+It turns out that both functions have neat closed forms in terms of the prime factorization of $n$.
+\begin{align*}
+  n          &= \prod_{i=1}^{k} p_i^{\alpha_i}\\
+  \varphi(n) &= \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1)\\
+  \sigma(n)  &= \prod_{i=1}^{k} \dfrac{p_i^{\alpha_i+1}-1}{p_i-1}
+\end{align*}
+A proof of these statements is presented in the \hyperref[sec:appendix]{appendix}, which the author recommends reviewing.
+
+
+  
 
 
 
@@ -218,7 +188,10 @@ hello \cite{basel} hello!!
 %DO I WANT TO DEAL WITH PRIME DENSITY? WHAT IS A LINE?
 %NEW PROBLEM: prod[96]/96^2 = prod[4]/4^2. Do such things happen infinitely often?
 %Probably, but it's too hard. I try to sidestep this.
-\section{Appendices}
+
+\section{Appendix} \label{sec:appendix}
+
+
 
 
 \newpage
