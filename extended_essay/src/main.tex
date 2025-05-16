@@ -100,14 +100,6 @@ Since it looks linear, we are motivated to graph the function $g(n) = \dfrac{\sq
 In the rest of the paper, I will compute the lower and upper bounds, show that they're asymptotically strict, %i.e. you can't have make the bound any stronger
 and lastly explain why the patterns (denser lines) occur.
 
-
-
-
-\newpage
-\section*{Abstract}
-
-I'll write this later, when most other things are decided.
-
 \newpage
 
 
@@ -116,9 +108,11 @@ I'll write this later, when most other things are decided.
 \newpage
 
 \section{Introduction}
-As the British mathematician G. H. Hardy most eloquently argues in his essay \textit{A Mathematician's Apology} (1940)\cite{hardy}, pure mathematics is pursued for its aesthetic value despite having no practical applications.
-When encounting a result that seems plausible but is not formally proven, a mathematician cannot help being compelled to seek for a formal justification.
-The investigations done in the production of this paper are motivated by precisely this: It is a classic textbook example to show the bounds of $$
+Write this when most of the essay is finished
+%As the British mathematician G. H. Hardy most eloquently argues in his essay \textit{A Mathematician's Apology} (1940)\cite{hardy}, pure mathematics is pursued for its aesthetic value despite having no practical applications.
+%When encounting a result that seems plausible but is not formally proven, a mathematician cannot help being compelled to seek for a formal justification.
+%The investigations done in the production of this paper are motivated by precisely this: It is a classic textbook example to show the bounds of $$
+
 %Explanation why this topic is relevant and important to a student.
 %Clearly stated the research question
 %Methodology of the research (future tense)
@@ -154,29 +148,29 @@ For example, the property "n is a perfect number if it is equal to the sum of it
 
 Euler's totient function is best known as a part of \textit{Euler's Theorem}, upon which RSA encryption relies.
 It turns out that both functions have neat closed forms in terms of the prime factorization of $n$.
-\begin{align*}
-  n          &= \prod_{i=1}^{k} p_i^{\alpha_i}\\
-  \varphi(n) &= \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1)\\
-  \sigma(n)  &= \prod_{i=1}^{k} \dfrac{p_i^{\alpha_i+1}-1}{p_i-1}
-\end{align*}
-A proof of these statements is presented in the \hyperref[sec:appendix]{appendix}, which the author recommends reviewing.
 
+\begin{lemma}\label{l1}
+  The functions $\varphi$ and $\sigma$ have product forms
+  \begin{align*}
+    \varphi(n) &= \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1)\\
+    \sigma(n)  &= \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i-1}\\
+    \text{given }n &= \prod_{i=1}^{k} p_i^{\alpha_i}.
+  \end{align*}
+\end{lemma}
 
-  
+*Prove these statements through multiplicativity and primes.
 
+*It might be a potential danger that I'm not addressing my research question early enough, since the proof of Lemma~\ref{l1} will take about three pages and I plan to do it here.
 
+*Whether it's before or after proving the lemma, I shall shortly hereafter motivate the product of $\varphi$ and $\sigma$: the $p_i-1$'s cancel out and we get
 
-
-%define arithmetic functions
-%Introduce phi and sigma
-%Show that they are multiplicative (Here or later?)
-%motivate the problem
-
+\[\varphi(n)*\sigma(n) = \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i^{\alpha_i+1}-1)\]
 \section{The zeta function}
 
 %Show the infinite sum zeta and why it's equal to the infinite product
 %If extra words available, show that the are infinitely many primes.
 hello \cite{basel} hello!!
+
 
 %Prove the bounds for our pattern
 
@@ -189,7 +183,7 @@ hello \cite{basel} hello!!
 %NEW PROBLEM: prod[96]/96^2 = prod[4]/4^2. Do such things happen infinitely often?
 %Probably, but it's too hard. I try to sidestep this.
 
-\section{Appendix} \label{sec:appendix}
+\section{Appendix} \label{appendix}
 
 
 
