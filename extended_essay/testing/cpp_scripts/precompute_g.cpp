@@ -43,13 +43,15 @@ int main(){
     }
 
     // --- 3) output ---
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    ofstream f;
+    f.open("precomputed/g.csv");
+
     for(int i = 1; i <= N; i++){
-        cout << i
+        f << i
              << ' ' << g[i].first
              << ' ' << g[i].second
              << "\n";
     }
+    f.close();
     return 0;
 }

@@ -37,13 +37,15 @@ int main(){
     }
 
     // --- 3) output ---
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    ofstream f;
+    f.open("precomputed/phigma.csv");
+    
     for(int i = 1; i <= N; i++){
-        cout << i
+        f << i
              << ' ' << phi[i]
              << ' ' << sigma[i]
              << "\n";
     }
+    f.close();
     return 0;
 }
