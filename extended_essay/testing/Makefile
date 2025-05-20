@@ -1,11 +1,11 @@
 # Makefile
 
 CXX = g++
-CXXFLAGS = -Ofast -std=c++17
+CXXFLAGS = -Ofast -std=c++17 -Wall
 SRC_DIR = cpp_scripts
 BINARIES = precompute_g precompute_phigma
 
-all: run
+all: run clean
 
 # Compile both binaries
 precompute_g: $(SRC_DIR)/precompute_g.cpp
@@ -16,9 +16,8 @@ precompute_phigma: $(SRC_DIR)/precompute_phigma.cpp
 
 # Run the binaries
 run: precompute_g precompute_phigma
-	./precompute_g
-	./precompute_phigma
-	$(MAKE) clean
+	time -p ./precompute_g
+	time -p ./precompute_phigma
 
 # Delete the compiled binaries
 clean:

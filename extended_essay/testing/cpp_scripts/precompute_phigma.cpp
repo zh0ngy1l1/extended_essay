@@ -37,8 +37,12 @@ int main(){
     }
 
     // --- 3) output ---
+    namespace fs = std::filesystem;
+    fs::create_directory("precomputed"); // Creates dir if it doesn't exist
+
     ofstream f;
     f.open("precomputed/phigma.csv");
+    
     
     for(int i = 1; i <= N; i++){
         f << i
