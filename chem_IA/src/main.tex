@@ -17,6 +17,7 @@
 \usepackage{mathtools}
 \usepackage{amsfonts}
 \usepackage{titlesec}
+\usepackage{mhchem}
 
 %Images
 \usepackage{graphicx}
@@ -60,8 +61,13 @@
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{corollary}{Corollary}[section]
 
-%Headers and footers
-\usepackage{fancyhdr}
+%Bibliography
+\usepackage[
+  backend=biber
+]{biblatex}
+\addbibresource{refs.bib}
+
+\newcommand{\diff}{\frac{\mathrm{d}}{\mathrm{d}t}}
 
 
 
@@ -71,52 +77,108 @@
   \begin{center}
     Internal Assessment: Chemistry\\
     \vspace*{4cm}
-    {\Large \textbf{Investigating the relationship between the amount of $\mathrm{MnO_2}$ catalyst and the rate of reaction in the decomposition of $\mathrm{H_2O_2}$.}}\\
-
+    {\Large \textbf{Investigating the relationship between the concentration of \ce{MnO2} catalyst powder and the rate constant in the decomposition of \ce{H2O2}.}}\\
+    
+    \vspace{1cm}
+    \textbf{Research Question:}
+    How does changing the concentration of solid \ce{MnO2} catalyst powder suspended in aqueous \ce{2\% (v/v) H2O2 (aq)} affect the first-order rate constant for its decomposition at room temperature?
     \vfill
     \today\\
     Word count: 123
   \end{center}
 \end{titlepage}
 
-\section{Preliminary Research Plan}
-
 \textbf{Materials:}
 \begin{itemize}
-  \item Water for dilution
-  \item $\mathrm{H_2O_2} (l)$, will be diluted to 3\%
-  \item $\mathrm{MnO_2} (s)$ powder, about 2g needed
+  \item \ce{2\% (v/v) H2O2 (aq)}
+  \item $\ce{MnO2} (s)$ powder, about $0.05, 0.1, 0.15, 0.2$ g
 \end{itemize}
+Using Vernier Pressure sensor\footnote{\url{https://www.vernier.com/product/gas-pressure-sensor/} (\href{https://web.archive.org/web/20250613042845/https://www.vernier.com/product/gas-pressure-sensor/}{archived}), Accessed: 2025-07-04}
 
-\noindent \textbf{Apparatus:}
-\begin{itemize}
-  \item Addition funnel
-  \item Two- or multi-neck flask
-  \item Clamp and stand
-  \item Pressure sensor with tubing
-  \item Graduated pipette and beakers for $\mathrm{H_2O_2}$
-  \item Thermometer to ensure constant initial temperature
-\end{itemize}
-\newpage
+\section{Introduction}
 
-\begin{wrapfigure}{L}{0.5\textwidth}
-  \begin{center}
-    \includegraphics[width=0.5\textwidth]{Example.png}
-    \caption{Example setup}
-  \end{center}
-\end{wrapfigure}
+Hydrogen peroxide is widely used in disinfection, bleaching, and environmental remediation.
+Its catalytic decomposition improves its oxidizing ability and is especially relevant in green chemistry due to the reduced waste generated.
+Transition metal ions such as manganese, iron, cobalt, and lead are commonly used to catalyze this reaction.\cite{Abuissa}
+Manganese, in the form of \ce{MnO2}, is the catalyst of choice in this investigation because it is available in the school laboratory, being stable, inexpensive, and non-toxic in small quantities.
 
-\noindent This image is captured from the video \textit{How to make an Oxygen Generator (MnO2/H2O2 Method)} uploaded to YouTube by NileRed, \url{https://youtu.be/eI-HMUCEJsI}.
+\section{Background Information}
 
-My apparatus will be very similar to this; the only difference is that my rubber hosing will be connected to a pressure sensor.
-In every trial, after checking that the initial temperature and pressure are constant, I precisely measure the amount of $\mathrm{MnO_2}$ to add to the flask.
-Then I add some constant volume of $\mathrm{H_2O_2}$ through the addition funnel into the flask and close the funnel so air doesn't escape.
-I will record the change in pressure over time using Logger Pro.
+Most existing studies use \ce{MnO2} catalysts immobilized on solid supports\cite{Do} or embedded in porous materials\cite{Kim}.
+In contrast, this investigation uses fine \ce{MnO2} powder suspended in solution.
+This setup introduces practical limitations: the catalyst cannot be recovered after the reaction, and the surface area in contact with the solution is difficult to estimate precisely.
 
-\includegraphics[width=\textwidth]{trial02.png}
-\includegraphics[width=\textwidth]{trial005.png}
-I see that the graph is approximately an inverse exponent function.
-I shall use the coefficient C as the "rate of reaction" variable.
+Nonetheless, the powdered form offers simplicity for a school laboratory.
+Since previous research has shown that the rate constant for \ce{MnO2}-catalyzed \ce{H2O2} decomposition does not strongly depend on temperature, temperature control will not be a central concern in this investigation.
+
+Existing studies monitor the reaction utilizing methods such as titration on samples taken at specific intervals\cite{Abuissa} or colorimetric methods\cite{Do}, both of which allow direct measurement of the concentration of hydrogen peroxide in the solution.
+Instead, this experiment opts to evaluate the progress of the reaction by measuring the amount of (oxygen) gas released by the reaction over time.
+This can be calculated using the ideal gas law given constant temperature and volume and information about the pressure within the system over time.
+Gas pressure will be measured using a pressure sensor, allowing for precise, continuous data collection suitable for computer processing.
+This method should require less labor and resources compared to either method mentioned above, since there is no need for additional reagents or equipment that may not be available at my school, nor is there any for manual input while the reaction is taking place.
+
+\subsection{Relevant Theory}
+\begin{quote}
+\hspace*{2em}``The rate limiting reaction is believed to be the initial reaction between hydrogen peroxide and the iron oxides \cite{Miller1995,ValentineWang1998,Miller1999}.
+Additionally, the results reveal that the decomposition of \ce{H2O2} follows pseudo-ﬁrst order kinetics:
+\begin{equation}
+  -\dfrac{\mathrm{d}[\ce{H2O2}]}{\mathrm{d}t} = k_\mathrm{app}[\ce{H2O2}]
+\end{equation}
+[...] where $k_\mathrm{app}$ is the apparent ﬁrst-order rate constant, and [\ce{H2O2}] is the concentration of \ce{H2O2} in the solution at any time $t$.''\cite{Huang}
+\end{quote}
+
+\noindent Let $n(\ce{H2O2})$ and $n(\ce{O2})$ denote the amount of \ce{H2O2} present in the solution and the amount of \ce{O2} gas in the flask released by the reaction, respectively.
+The catalysed decomposition reaction taking place is described by
+\[\ce{2H2O2 (aq) ->[MnO2] 2H2O (l) + O2 (g)}\]
+If $n_0$ is the initial amount of \ce{H2O2} in the solution, we have
+\[n(\ce{O2}) =2(n_0 - n(\ce{H2O2}))\]
+\begin{equation}
+  \implies n(\ce{H2O2}) =n_0 - \frac{n(\ce{O2})}{2}
+\end{equation}
+
+\noindent Let $V_l$ and $V_f$ denote the solution volume and the flask's total volume, respectively.
+By the definition of concentration, we have
+\begin{equation}
+  [\ce{H2O2}] = n(\ce{H2O2}) \cdot V_l^{-1}
+\end{equation}
+
+\noindent Let $P$ and $T$ denote the pressure and temperature of gas within the flask, respectively.
+If $R$ is the ideal gas constant, the ideal gas law states
+\begin{equation}
+  n(\ce{O2}) = P(V_f-V_l) \cdot (RT)^{-1}
+\end{equation}
+
+Our goal is to compute an approximate value of the constant $k_\mathrm{app}$ given the data of pressure over time.
+Equation (2.1) shall be algebraically manipulated with the aid of equations (2.2), (2.3), and (2.4), to express $k_\mathrm{app}$ in terms of known constants and our function $P(t)$.
+The following calculations assume that $T$ and $V_l$ are approximately constant over time.\footnote{$V_f$ is obviously constant over time within a trial, but inconveniently it may vary across trials}
+
+\begin{align*}
+  k_\mathrm{app}[\ce{H2O2}] &= -\diff [\ce{H2O2}] &(2.1)\\
+  k_\mathrm{app} &= -[\ce{H2O2}]^{-1}\cdot \diff [\ce{H2O2}]\\
+  &= -(n(\ce{H2O2}) \cdot V_l^{-1})^{-1}\cdot \diff n(\ce{H2O2}) \cdot V_l^{-1} &(2.3)\\
+  &= -V_l \cdot n(\ce{H2O2})^{-1} \cdot V_l^{-1} \diff n(\ce{H2O2})\\
+  &= -n(\ce{H2O2})^{-1} \cdot \diff n(\ce{H2O2})\\
+  &= -(n_0 - \frac{n(\ce{O2})}{2})^{-1} \cdot \diff (n_0 - \frac{n(\ce{O2})}{2}) &(2.2)\\
+  &= -(n_0 - \frac{n(\ce{O2})}{2})^{-1} \cdot (-\frac{1}{2}) \diff n(\ce{O2})\\
+  &= \frac{1}{2} (n_0 - \frac{n(\ce{O2})}{2})^{-1} \cdot \diff n(\ce{O2})\\
+  &= \frac{1}{2} (n_0 - \frac{P(V_f-V_l) \cdot (RT)^{-1}}{2})^{-1} \cdot \diff P(V_f-V_l) \cdot (RT)^{-1} &(2.4)\\
+  &= \frac{1}{2} (n_0 - \frac{P(V_f-V_l) \cdot (RT)^{-1}}{2})^{-1} \cdot (V_f-V_l) \cdot (RT)^{-1} \diff P\\
+  &= \frac{1}{2}(n_0 - \frac{P(V_f-V_l) \cdot (RT)^{-1}}{2})^{-1} \cdot \frac{V_f-V_l}{RT} \cdot \frac{\mathrm{d}P}{\mathrm{d}t}\\
+  &= (2n_0 - P(V_f-V_l) \cdot (RT)^{-1})^{-1}\cdot \frac{V_f-V_l}{RT} \cdot \frac{\mathrm{d}P}{\mathrm{d}t}\\
+  &= \frac{V_f-V_l}{RT(2n_0 - P(V_f-V_l) \cdot (RT)^{-1})}\cdot \frac{\mathrm{d}P}{\mathrm{d}t}\\
+  &= \frac{V_f-V_l}{2n_0RT - (V_f-V_l)P}\cdot \frac{\mathrm{d}P}{\mathrm{d}t}\\
+\end{align*}
+Though this expression is still quite unsightly, one must note that $P$ and $\diff P$ are the only variables that are not constant over time.
+
+\section{Measurements}
+\begin{align*}
+  V_f &= 0.343 l\\
+  V_l &= 0.050 l\\
+  R &= 8.314 J (K mol)^{-1}\\
+  T &= 297.2 K\\
+\end{align*}
+Calculate $n_0$:
+
 
 
 
