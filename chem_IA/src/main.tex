@@ -62,10 +62,8 @@
 \newtheorem{corollary}{Corollary}[section]
 
 %Bibliography
-\usepackage[
-  backend=biber
-]{biblatex}
-\addbibresource{refs.bib}
+%\usepackage[backend=biber]{biblatex}
+%\addbibresource{refs.bib}
 
 \newcommand{\diff}{\frac{\mathrm{d}}{\mathrm{d}t}}
 
@@ -150,7 +148,8 @@ If $R$ is the ideal gas constant, the ideal gas law states
 
 Our goal is to compute an approximate value of the constant $k_\mathrm{app}$ given the data of pressure over time.
 Equation (2.1) shall be algebraically manipulated with the aid of equations (2.2), (2.3), and (2.4), to express $k_\mathrm{app}$ in terms of known constants and our function $P(t)$.
-The following calculations assume that $T$ and $V_l$ are approximately constant over time.\footnote{$V_f$ is obviously constant over time within a trial, but inconveniently it may vary across trials}
+The following calculations assume that $T$ and $V_l$ are approximately constant over time.
+\footnote{$V_f$ is obviously constant over time within a trial, but not between trials because I seal the flask with a cork.}
 
 \begin{align*}
   k_\mathrm{app}[\ce{H2O2}] &= -\diff [\ce{H2O2}] &(2.1)\\
@@ -168,18 +167,27 @@ The following calculations assume that $T$ and $V_l$ are approximately constant 
   &= \frac{V_f-V_l}{RT(2n_0 - P(V_f-V_l) \cdot (RT)^{-1})}\cdot \frac{\mathrm{d}P}{\mathrm{d}t}\\
   &= \frac{V_f-V_l}{2n_0RT - (V_f-V_l)P}\cdot \frac{\mathrm{d}P}{\mathrm{d}t}\\
 \end{align*}
-Though this expression is still quite unsightly, one must note that $P$ and $\diff P$ are the only variables that are not constant over time.
+Thanks to the ideal gas law we can substitute the expression $P_0(V_f-V_l)=n_0RT$ where $P_0$ is the initial pressure of the gas within the flask, to simplify and obtain
+\begin{equation}
+  k_\mathrm{app} = \frac{1}{2P_0 - P}\cdot \frac{\mathrm{d}P}{\mathrm{d}t}\\
+\end{equation}
 
 \section{Measurements}
 \begin{align*}
-  V_f &= 0.343 l\\
+  V_f &= 0.345 l\\
   V_l &= 0.050 l\\
-  R &= 8.314 J (K mol)^{-1}\\
-  T &= 297.2 K\\
 \end{align*}
-Calculate $n_0$:
 
 
 
+Addressing random variance in measurements:
+Due to random experimental fluctuations, the raw pressure data 
+$P$ exhibits noise which causes the numerical derivative 
+
+$\frac{dP}{dt}$ to occasionally take unphysical negative values.
+To reduce noise and obtain physically meaningful estimates of the rate of pressure change 
+$\frac{dP}{dt}$, I applied a five-point Savitzky-Golay filter of degree 2 using fixed convolution weights.
+This method smooths the data while computing derivatives more accurately than basic finite difference formulas. I used the coefficients 
+$\frac{[-2, -1, 0, +1, +2]}{10\Delta t}$, which are derived from a least-squares fit of a quadratic polynomial over a five-point window.
 
 \end{document}
