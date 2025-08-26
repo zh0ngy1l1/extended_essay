@@ -2,7 +2,7 @@
 
 %Paragraph jumps and indentation
 \setlength{\parskip}{1.6em}
-\setlength{\parindent}{1.25cm}
+\setlength{\parindent}{0.618cm}
 
 %Border
 \usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
@@ -32,6 +32,7 @@
 {\normalfont\large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}
 {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\usepackage{tabularx} 
 
 %Equation numbering
 \counterwithin{equation}{section}
@@ -45,10 +46,14 @@
 \usepgfplotslibrary{fillbetween}
 
 %Theorems
+\usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{definition}{Definition}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{corollary}{Corollary}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem*{notation}{Notation}
 
 %Bibliography
 \usepackage[
@@ -66,42 +71,13 @@
 
     \vspace{1cm}
     \textbf{Research Question:}
-    What gives rise to the patterns in the graph of $f(n)=\sqrt{\varphi(n) \cdot \sigma(x)}$, and how does this relate to the Riemann zeta function?\\
+    What gives rise to the patterns in the graph of $f(n)=\varphi(n)\sigma(n)\cdot n^{-2}$, and how does this relate to the Riemann zeta function?\\
 
     \vfill
     \today\\
     Word count: 1729
   \end{center}
 \end{titlepage}
-
-
-\section*{Presentation to the Class}
-We wish to find some way of taking an average that sends the pairs of points to the line $y=n$, i.e. discover a function that reduces the amount of chaos and erraticity in this graph.
-
-Initial guesses for ways to take an average: % explain what AM, GM, HM abbreviate.
-\[\textbf{AM}:\ \frac{a+b}{2} \hspace{1cm} \textbf{GM}:\ \sqrt{ab} \hspace{1cm} \textbf{HM}:\ \dfrac{2}{\frac{1}{a} + \frac{1}{b}}\]
-
-\includegraphics[width=\textwidth]{AMGMHM.png}
-
-It's also possible to take some weighted version of these, to make the result closer to the target.
-Investigating that may be a part of my Research, if the word limit allows for that.
-
-I hope the conclusion is that the geometric mean is the best. % (whether `best' is most close to the target or easiest to compute)
-Then I will proceed to graph the function $f(x)=\sqrt{\varphi(n) \cdot \sigma(n)}$ in more detail and notice some lines with points packed more densely.
-
-\includegraphics[width=\textwidth]{GM_bounds.png}
-
-Since it looks linear, we are motivated to graph the function $g(n) = \dfrac{\sqrt{\varphi(n)\cdot\sigma(n)}}{n}$ in more detail, to get a clearer view of what the lines are.
-
-
-\includegraphics[width=\textwidth]{GM_normalized.png}
-
-
-In the rest of the paper, I will compute the lower and upper bounds, show that they're asymptotically strict, %i.e. you can't have make the bound any stronger
-and lastly explain why the patterns (denser lines) occur.
-
-\newpage
-
 
 \tableofcontents
 
@@ -117,50 +93,36 @@ Write this when most of the essay is finished
 %Clearly stated the research question
 %Methodology of the research (future tense)
 
-\section{Prerequisite Knowledge}
-The reader should be familiar with mathematical notation and basic definitions like `coprime' and `divisor'.
-Additionally, understanding of \textit{Fundamental Theorem of Arithmetic} is required:
+\newpage
+\section{Prerequisite Knowledge, Notation, and Definitions}
+The concepts investigated in this paper are strictly elementary number theory, which means we're mostly working with positive integers.
+Thus, for simplicity, you can assume all variables mentioned in this paper are positive integers, unless otherwise stated.
 
 \begin{theorem}[Fundamental Theorem of Arithmetic]
   Every positive integer has an unique prime factorization.
 \end{theorem}
 
-In other words, for any $n$, there exists a unique set of distinct prime numbers $p_1, p_2, ..., p_k$, along with their respective exponents $\alpha_1, \alpha_2, ..., \alpha_k$, such that
-\[n=p_1^{\alpha_1} p_2^{\alpha_2} ... p_k^{\alpha_k}.\]
-Representing a number in this form will play an exceptionally important role in this paper.
+This theorem is crucial in our ensuing discussion, because it allows us to express any number $n$ uniquely in terms of its $k$ prime divisors $p_1, p_2, ..., p_k$, along with their respective exponents $\alpha_1, \alpha_2, ..., \alpha_k$, as the product
+$p_1^{\alpha_1} p_2^{\alpha_2} \dots p_k^{\alpha_k} = n$.\footnote{for $n=1$ simply set $k=0$}
 
-\section{An Introduction to Arithmetic Functions}
+\vspace{6pt} \noindent
+Some more complicated sums and products are discussed in this paper, which require set-builder-like\footnote{see \url{https://en.wikipedia.org/wiki/Set-builder_notation}} notation to impose restrictions on the numbers we're summing over.
+This notation will allow us to cleanly write formulas for the two functions that will be extensively discussed:
 
-A special class of functions called \textit{arithmetic functions} play a vital role in the study of number theory, which is the study of positive integers and their properties.
-The two arithmetic functions concerned in this paper are the following.
-
-\begin{definition}[Sum of Divisors Function]
-  Denoted by $\sigma(n)$, it returns the sum of all positive divisors of $n$.
+\begin{definition}[Sum of Divisors Function $\sigma$ and Euler's Totient Function $\varphi$]
+  \[\sigma(n) = \sum_{d \in \mathbb{Z}^+,\ d|n} d\]
+  \[\varphi(n) = \sum_{\substack{m \in \mathbb{Z}^+,\, m\leq n \\ \gcd(m,n)=1}} 1\]
 \end{definition}
 
-\begin{definition}[Euler's Totient Function]
-  Denoted by $\varphi(n)$, it returns the number of positive integers $\le n$ and coprime to $n$.
-\end{definition}
+The comma inside the subscripts simply means `and', so verbosely we would say that
+$\sigma(n)$ takes the sum of all numbers $d$ which divide $n$, and
+$\varphi(n)$ counts the number of numbers $m\leq n$ which are coprime to $n$.
 
-Mathematics relies on abstraction, so properties like these are encoded using functions.
-For example, the property "n is a perfect number if it is equal to the sum of its proper divisors" can be expressed symbolically as:
-\[S = \{n \in \mathbb{N} : \sigma(n) = 2n\}\]
+\section{The Problem of Study}
 
-Euler's totient function is best known as a part of \textit{Euler's Theorem}, upon which RSA encryption relies.
-It turns out that both functions have neat closed forms in terms of the prime factorization of $n$.
-
-\begin{lemma}\label{l1}
-  The functions $\varphi$ and $\sigma$ have product forms
-  \begin{align*}
-    \varphi(n) &= \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1)\\
-    \sigma(n)  &= \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i-1}\\
-    \text{given }n &= \prod_{i=1}^{k} p_i^{\alpha_i}.
-  \end{align*}
-\end{lemma}
+The 
 
 *Prove these statements through multiplicativity and primes.
-
-*It might be a potential danger that I'm not addressing my research question early enough, since the proof of Lemma~\ref{l1} will take about three pages and I plan to do it here.
 
 *Whether it's before or after proving the lemma, I shall shortly hereafter motivate the product of $\varphi$ and $\sigma$: the $p_i-1$'s cancel out and we get
 

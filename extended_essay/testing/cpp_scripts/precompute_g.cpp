@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 using ull = unsigned long long;
 
-const int N = 10000000;
+const int N = 1000000;
 pair<ull,ull> g[N+1];
 bool is_prime[N+1];
 

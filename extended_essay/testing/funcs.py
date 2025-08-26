@@ -36,7 +36,7 @@ def load_g(max_n, filepath):
     print("Loading g...\t\t\t\t", end=' ', flush=True)
 
     global g
-    g = [0] * (max_n + 1)
+    g = [None] * (max_n + 1)
     with open(f"{filepath}/g.csv") as h:
         for line in h.read().split("\n"):
             if not line.strip():
@@ -74,7 +74,7 @@ def init(max_n=1000, filepath="precomputed"):
     global_start = perf_counter()
     print(f"Initializing precomputed data up to n={max_n}...\n")
     
-    load_phigma(max_n, filepath)
+    #load_phigma(max_n, filepath)
     load_g(max_n, filepath)
     init_pfactorize(max_n)
     
