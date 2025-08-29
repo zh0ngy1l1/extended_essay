@@ -74,8 +74,8 @@ def init(max_n=1000, filepath="precomputed"):
     global_start = perf_counter()
     print(f"Initializing precomputed data up to n={max_n}...\n")
     
-    #load_phigma(max_n, filepath)
-    load_g(max_n, filepath)
+    load_phigma(max_n, filepath)
+    #load_g(max_n, filepath)
     init_pfactorize(max_n)
     
     print(f"\nInitialization completed in {int((perf_counter() - global_start) * 1000)} ms")

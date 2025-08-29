@@ -2,7 +2,7 @@
 using namespace std;
 using ull = unsigned long long;
 
-const int N = 10000000;
+const int N = 1000000;
 ull phi[N + 1], sigma[N + 1];
 bool is_prime[N + 1];
 
