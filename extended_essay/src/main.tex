@@ -18,6 +18,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{titlesec}
+\usepackage{enumitem}
 
 %Images
 \usepackage{graphicx}
@@ -55,6 +56,7 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
+\newtheorem*{terminology}{Terminology}
 \newtheorem*{notation}{Notation}
 \newtheorem*{problem}{Problem}
 
@@ -101,44 +103,69 @@ Write this when most of the essay is finished
 
 \newpage
 \section{Prerequisite Knowledge, Notation, and Definitions}
-The concepts investigated in this paper are strictly elementary number theory, which means we're mostly working with positive integers.
-Thus, for simplicity, you can assume all variables mentioned in this paper are positive integers, unless otherwise stated.
-
+The inarguably most important theorem in number theory is the following:
 \begin{theorem}[Fundamental Theorem of Arithmetic]
   Every positive integer has an unique prime factorization.
 \end{theorem}
-
 This theorem is crucial in our ensuing discussion, because it allows us to express any number $n$ uniquely in terms of its $k$ prime divisors $p_1, p_2, ..., p_k$, along with their respective exponents $\alpha_1, \alpha_2, ..., \alpha_k$, as the product
 $p_1^{\alpha_1} p_2^{\alpha_2} \dots p_k^{\alpha_k} = n$.\footnote{for $n=1$ simply set $k=0$}
 
-\vspace{6pt} \noindent
-Some more complicated sums and products are discussed in this paper, which require set-builder-like\footnote{see \url{https://en.wikipedia.org/wiki/Set-builder_notation}} notation to impose restrictions on the numbers we're summing over.
+The reader should be comfortable with $\Pi$-notation for sequential products, which is similar to the familiar $\Sigma$ but for multiplication.
+For example,
+\[n = p_1^{\alpha_1} p_2^{\alpha_2} \dots p_k^{\alpha_k} = \prod_{i=1}^{k}p_i^{\alpha_i}\]
+
+In a certain sense, every integer $n$ is simply a collection of prime divisors and their respective exponents.
+Im mathematics, we call such collections `sets'.
+This paper will deal with sets a lot, so it is necessary to introduce the relevant notation:
+\begin{notation}[Set-builder]
+  Most commonly, a set $S$ is defined, i.e. `built', with the following notation:
+  \[S = \left\{a \in A\ :\ \text{conditions for }a\right\}\]
+  Sometimes, like in (2.4) of the following example, the domain of the set is put into the condition of $a$, which allows the set to take an expression in $a$.
+\end{notation}
+Here are some relevant examples of set-builder notation:
+\begin{align}
+  &\text{Positive Integers} &\mathbb{Z}^+  = \left\{x \in \mathbb{Z}\ :\ x > 0 \right\}\\
+  &\text{Divisors of $n$}   &\mathcal{D}_n = \left\{x \in \mathbb{Z}^+\ :\  x \mid n \right\}\\
+  &\text{Prime Numbers}     &\mathbb{P}    = \left\{x \in \mathbb{Z}^+\ :\ \mathcal{D}_x = \{1, x\} \right\}\\
+  &\text{Prime Powers}      &\mathbb{P}^*  = \left\{x^\alpha :\ x \in \mathbb{P},\ \alpha \in \mathbb{Z}^+ \right\}
+\end{align}
+
+Some more complicated sums and products are discussed in this paper, which require set-builder-like notation to impose restrictions on the numbers to sum over.
 This notation will allow us to cleanly write formulas for the two functions that will be extensively discussed:
 
 \begin{definition}[Sum of Divisors Function $\sigma$ and Euler's Totient Function $\varphi$]
   \[\sigma(n) = \sum_{d \in \mathbb{Z}^+,\ d|n} d\]
-  \[\varphi(n) = \sum_{\substack{m \in \mathbb{Z}^+,\, m\leq n \\ \gcd(m,n)=1}} 1\]
+  \[\varphi(n) = \sum_{\substack{k \in \mathbb{Z}^+,\, k\leq n \\ \gcd(k,n)=1}} 1\]
 \end{definition}
 
-The comma inside the subscripts simply means `and', so verbosely we would say that
+Verbosely we would say that
 $\sigma(n)$ takes the sum of all numbers $d$ which divide $n$, and
-$\varphi(n)$ counts the numbers $m\leq n$ which are coprime to $n$.
+$\varphi(n)$ counts the numbers $k\leq n$ which are \textit{coprime} to $n$.
+\begin{terminology}
+  We say that $a$ is coprime to $b$, or $a, b$ are coprime, if $\gcd(a,b)=1$.
+\end{terminology}
 
 \section{The Problem of Study}
 The aformentioned functions $\varphi$ and $\sigma$ are the subject of this study.
-Specifically, we will solve the following problem from a classic textbook in analytic number theory\footcite[Chapter 3, Exercise 9]{apostol} and investigate it's intricacies on a deeper level.
+Specifically, we will solve the following problem from a classic textbook in analytic number theory \cite{apostol} and investigate it's intricacies on a deeper level.
 
 \begin{problem}
-  Show that $\displaystyle \frac{6}{\pi^2}<\frac{\varphi(n)\sigma(n)}{n^2}<1$\quad if $n\geq 2.$
+  Show that $\displaystyle \frac{6}{\pi^2}<\frac{\varphi(n)\sigma(n)}{n^2}<1$ for all $ n\geq 2.$
 \end{problem}
 
 Luckily, this strange emergence of $\pi$ is addressed:
 The textbook promises to prove, in a later chapter, that the infinite product $\prod_p (1 - p^{-2})$,
-extended over all primes $p$, converges to the value $\displaystyle \frac{1}{\zeta(2)}=\frac{6}{\pi^2}$. \textit{\footnotesize Do I need to define zeta???}
+extended over all primes $p$, converges to the value $\displaystyle \frac{6}{\pi^2}$.
+
+The result we are hinted to use is known as the Basel Problem.
+The proof that the infinite sum and infinite product are equal will be presented in \textbf{Section 4}, but showing that they are equal to $\frac{\pi^2}{6}$ is more involved and not relevant to this study. \cite{basel}
+\begin{theorem}[Basel Problem]
+  \[\prod_{p \in \mathbb{P}} \frac{1}{(1 - p^{-2})} = \sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}\]
+\end{theorem}
 
 In consideration of this hint, we should incorporate prime numbers to the statement.
 Equally crucially, we also need to expand our understanding on these functions, as simply substituting the summations from \textbf{Definition 1} quickly becomes hopeless.
-These two issues can actually be overcome simultaneously, with the following result, which characterizes $\varphi$ and $\sigma$ in terms of the prime factorization of $n$:
+These two issues can be overcome simultaneously with the following result, which characterizes $\varphi$ and $\sigma$ in terms of the prime factorization of $n$:
 \begin{lemma}
   For any positive integer $n$ with prime factorization $n = \prod_{i=1}^{k} p_i^{\alpha_i}$\\
   \begin{align}
@@ -157,51 +184,220 @@ To prove this lemma, an even more elementary result on the behaviour of $\varphi
 \end{lemma}
 
 After proving \textbf{Lemma 2} and \textbf{Lemma 1}, we proceed to solve the Problem.
-Here we make an equivalent statement of the problem to facilitate the following discussion.
-Define the sequence $a_n = \dfrac{\varphi(n)\sigma(n)}{n^2}$. Then the problem is equivalent to the statement $a_n \in \left(\dfrac{6}{\pi^2}, 1\right)$
+Then, we make an equivalent statement of the problem to better facilitate the following discussion.
+Define the sequence $a_n = \dfrac{\varphi(n)\sigma(n)}{n^2}$. Then the problem is equivalent to the statement $a_n \in \left(\frac{6}{\pi^2}, 1\right)$
 A natural question that follows is whether this interval can be made narrower.
 \begin{question}
-  Does there exist an interval
-  $\displaystyle (c^-, c^+)\subsetneq\left(\frac{6}{\pi^2},1\right)$
+  Does there exist an open interval
+  $I\subsetneq\left(\frac{6}{\pi^2},1\right)$
   such that 
-  $\displaystyle c^-<a_n<c^+$
-  holds for all $n\geq 2$?
+  $a_n \in I$ holds for all $ n\geq 2$?
 \end{question}
 
+Using a computer to calculate the first 5000 terms of the sequence $a_n$ and visualize them as points $(n, a_n)$ on the Cartesian plane, we notice that the upper bound probably can't be improved.
+The same is suspected for the lower bound.
 
-\includegraphics[width=\textwidth]{fig1.png}
-The answer turns out to be negative, which we can see with a diagram:
-
-*Prove these statements through multiplicativity and primes.
-
-*Whether it's before or after proving the lemma, I shall shortly hereafter motivate the product of $\varphi$ and $\sigma$: the $p_i-1$'s cancel out and we get
-
-\[\varphi(n)*\sigma(n) = \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i^{\alpha_i+1}-1)\]
-\section{The zeta function}
-
-%Show the infinite sum zeta and why it's equal to the infinite product
-%If extra words available, show that the are infinitely many primes.
-hello \cite{basel} hello!!
-
-
-%Prove the bounds for our pattern
-
-\section{An Explanation for the Patterns}
-
-%Explain the patterns
-%Show that the lower bound is approached when large enough
-
-%DO I WANT TO DEAL WITH PRIME DENSITY? WHAT IS A LINE?
-%NEW PROBLEM: prod[96]/96^2 = prod[4]/4^2. Do such things happen infinitely often?
-%Probably, but it's too hard. I try to sidestep this.
-
-\section{Notes on Apostol}
-Page 71 (pdf: 83): Main problem statement
-Page 230 (pdf: 242): Euler product form proof.
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{clean.png}
+    \caption{Plotting the Sequence}
+    \label{fig:clean}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{boundary.png}
+    \caption{Highlighting Minima \& Maxima}
+    \label{fig:boundary}
+  \end{minipage}
+\end{figure}
 
 
+More interestingly, however, we notice some intriguing patterns in Figure 1.
+The points around certain special values 1.00 and 0.75 look denser and seem to form horizontal lines.
+
+\begin{question}
+  Why are `denser lines' formed?
+\end{question}
+
+A major section of this study will be dedicated to \textbf{Question 2}, in which we will precisely define what is meant by a `denser line' and explain why such a pattern emerges.
+
+After discussing these regions with many points, we proceed to discuss the opposite:
+Are there any regions with no points?
+Formally, we may ask,
+\begin{question}
+  Does there exist a nonempty open interval
+  $I\subset\left(\frac{6}{\pi^2},1\right)$
+  such that 
+  $a_n \notin I$ holds for all $ n\geq 2$?
+\end{question}
+
+Notice how this formulation looks familiar?
+Similarly to \textbf{Question 1}, the answer here is also \textbf{No.}
+This is actually a generalization of that question:
+Here we are showing that the sequence $a_n$ gets arbitrarily close to \textit{any} point in the interval $\left(\frac{6}{\pi^2},1\right)$,
+while \textbf{Question 1} only required us to show that the sequence gets arbitrarily close to its boundary.
+
+\newpage
+\section{Solving the Problem}
+We work from the bottom up and start by showing \textbf{Lemma 2}.
+\subsection*{Proof of Lemma 2}
+We are give numbers $m, n$ with $gcd(m, n)=1$, and wish to show that
+\begin{enumerate}[label=(3.\arabic*), start=2]
+  \item $\varphi(mn)=\varphi(m)\varphi(n)$
+  \item $\sigma(mn)=\sigma(m)\sigma(n)$
+\end{enumerate}
+
+Recall that $\varphi(n)$ counts the numbers $k \leq n$ with which are coprime to $n$, so in set-builder notation,
+\[\varphi(n) = \left| \left\{k\in\mathbb{Z}^+:\ k\leq n,\ \gcd(k,n) = 1\right\} \right|.\]
+Then the desired equality $\varphi(mn) = \varphi(m) \varphi(n)$ is equivalent to showing that 
+\begin{align}
+  &\left| \left\{k\in\mathbb{Z}:\ 0 \leq k < mn,\ \gcd(k,mn) = 1\right\} \right|\\
+  &=\left| \left\{k\in\mathbb{Z}:\ 0\leq k < m,\ \gcd(k,m) = 1\right\} \right| \cdot
+  \left| \left\{k\in\mathbb{Z}:\ 0\leq k < n,\ \gcd(k,n) = 1\right\} \right|\\
+  &=\left| \left\{(k_m, k_n)\in\mathbb{Z} \times \mathbb{Z}:\ 0 \leq k_m < m,\ 0 \leq k_n < n,\ \gcd(k_m,m) = \gcd(k_n,n) = 1\right\} \right|
+\end{align}
+
+To prove this, we use the following fact:
+\begin{theorem}[Special Case of CRT\footnote{Maybe I should mention the general case, since the reader may be interested\dots}]
+  If $m, n$ are coprime, and for integers $k_m, k_n$ hold $0\leq k_m < m,\ 0\leq k_n < n$,
+  then there exists an unique integer $k$ with $0 \leq k < mn$ that has remainder $k_m$ when divided by $m$ and remainder $k_n$ when divided by $n$.
+\end{theorem}
+
+\textbf{Proof of CRT.} Suppose, for contradiction, that there exists anonther integer $k'$, greater than $k$, with $0 \leq k' < mn$, which also has remainders $k_m, k_n$ when divided by $m$ and $n$, respectively.
+Then $m \mid k' - k$ and $n \mid k' - k$ are both true.
+Noting that $m$ and $n$ are coprime and $k' - k > 0$ we may write
+\[mn \mid k' - k \implies mn \leq k' - k < mn,\]
+contradiction.
+This shows that each pair of remainders $k_m, k_n$ corresponds to at most one number $k$ with $0 \leq k < mn$.
+Since there precisely $mn$ pairs of remainders, and also precisely $mn$ integers between $0$ and $mn$, we conclude that such a $k$ must always exist, so the proof is complete. \qed
 
 
+This theorem shows that every number $k$ from the set in (4.1) corresponds to an unique pair of remainders when divided by $n$ and $m$,
+and every pair $(k_m, k_n)$ from the set in (4.3) corresponds to an unique number between $0$ and $mn$.
+This will be very useful if we verify that the remainders of $k$ when divided $m$ and $n$ are coprime to $m$ and $n$ respectively, if and only if $k$ is coprime to $mn$.
+
+By the Euclidean algorithm, we may write
+\[\gcd(m, k) = \gcd(m, k-m) = \gcd(m, k-2m) = ... = \gcd(m, k_m).\]
+Repeating this for $n$ and combining, we get that $\gcd(mn, k) = \gcd(m,k)\gcd(n,k)=\gcd(m,k_m)\gcd(n,k_n)$, which equals one if and only if both $\gcd(m,k_m)=\gcd(n,k_n)=1$.
+
+This means the Chinese remainder theorem actually finds a one-to-one correspondence between these sets which we want to show to have equal size,
+which finally shows that $\varphi(mn) = \varphi(m)\varphi(n)$. \qed
+
+Luckily, the proof that $\sigma(mn) = \sigma(m)\sigma(n)$ is not nearly as difficult.
+We will use the following fact in the proof:
+\begin{lemma}
+  Given that $m$ and $n$ are coprime, each divisor $d \mid mn$ can be written uniquely as the product $d_m d_n$ of divisors $d_m\mid m$ and $d_n\mid n$.
+\end{lemma}
+
+\textbf{Proof of Lemma 3.} Observe the prime factorization of $d = \prod_{i=1}^{k} p_i^{\alpha_i}$.
+For each term $p_i^{\alpha_i}$ in this product holds either 
+$\begin{dcases}
+  p_i \not|\ n\\
+  p_i^{\alpha_i} \mid m
+\end{dcases}$
+or
+$\begin{dcases}
+  p_i \not|\ m\\
+  p_i^{\alpha_i} \mid n
+\end{dcases}$
+.
+We simply multiply the terms which divide $m$ to obtain $d_m$, and the terms which divide $n$ to obtain $d_n$.
+This process is unique since prime factorization is unique (\textbf{Theorem 1}), so the proof is complete. \qed
+
+Now the multiplicativity of $\sigma$ can be proven in one go, by using \textbf{Lemma 3} to get from (4.4) to (4.5).
+\begin{align}
+\sigma(mn) =&\sum_{d\mid mn} d\\
+=&\sum_{d_m\mid m,\ d_n\mid n} d_m d_n\\
+=&\sum_{d_m\mid m}\sum_{d_n\mid n} d_m d_n\\
+=&\sum_{d_m\mid m} d_m \left(\sum_{d_n\mid n} d_n\right)\\
+=&\left(\sum_{d_m\mid m} d_m\right)\left(\sum_{d_n\mid n} d_n\right)=\sigma(m)\sigma(n).
+\end{align}
+\qed
+
+$\backslash \text{begin}\{\text{ROUGH DRAFT TERRITORY}\}$
+
+See how sigma and phi behave for prime powers to show lemma 1, by induction over the terms in the prime factorization, kinda.
+
+Then show that the basel problem $\infty$ sum is the $\infty$ product: Page 230 (pdf: 242) of \cite{apostol}.
+Then solve \textbf{Problem.} by writing $\dfrac{\varphi(n)\sigma(n)}{n^2}$ in terms of primes:
+\[\frac{\varphi(n)\sigma(n)}{n^2} = \prod_{i=1}^{k} \dfrac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}}\]
+(we get this by plugging Lemma 1)
+
+To finish the problem, see the maximum of each term in this product, and the minimum of each term.
+Each term is at least $\dfrac{p_k^2-1}{p_k^2}$ and at most arbitrarily close to 1 but less than $1$.
+
+Then the global maximum is strictly below 1 (we only consider $n\geq2$\footnote{maybe consider $n=1$ too but that's a matter of my taste \& preference})
+Then the global minimum is strictly above $\prod_{p\in \mathbb{P}}\dfrac{p^2-1}{p^2} = \dfrac{6}{\pi^2}$ (Basel Problem)
+
+So \textbf{Problem.} is done.
+
+\section{Questions}
+Next answer Question 1. Also rewrite it not using the interval because it's IB AA HL, not Topology 101.
+
+The answer is: no, the bounds can't be uniformly improved.
+For upper bound this is trivial (n = $2^k$ for very big $k$)
+
+For lower bound it's what convergence means. Now that I think about it, Question 1 isn't really worth doing since it's so fricking easy.
+
+Question 2.
+The topmost `dense line' is primes, (or prime powers? That would make the discussion more complete but also longer and not that much more impressive)
+\begin{definition}[`dense line' should I come up with a better name :(]
+  We define a subsequence $b_n$ of the sequence $a_n$ to be a `dense line' if it
+\begin{itemize}
+  \item increases
+  \item approaches some value $t$
+  \item $b_n$ = $a_g(n)$ and $g(n) < c x \ln x$\footnote{Here $x \ln x$ is the asymptotic growth of primes (also the asymptotic growth of prime powers, cool! This condition says `$b_n$ must be dense enough.')}
+\end{itemize}
+\end{definition}
+
+
+Actually, we get a dense line $b_n = a_{c p_n}$ for any positive integer d, and the line is denser the smaller c is (obviously). here $p_n$ is the $n$th smallest prime.
+Though the issue is that if I define `dense lines' like this, it's hard to verify every dense line is generated by this description.
+In fact, I don't even think that's true... Maybe it is? But how do I define it better? This is the only formal definition I could come up with!
+
+But that's enough Knowledge about the dense lines that we can graph them! Is this a satisfying enough answer to Question 2?
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{10densest.png}
+    \caption{First 10 `dense lines'}
+    \label{fig:10densest}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{2m.png}
+    \caption{max from 5000 to 2,000,000}
+    \label{fig:2m}
+  \end{minipage}
+\end{figure}
+
+Now question 3. Look at figure 4. We see more blue `dense lines' than previously, but also white regions with very few points.
+We are motivated to ask: Do dense lines cover everything eventually? Will there be some strip with no points whatsoever?
+The answer is no, and we present an algorithm which shows this. It's really cool and relies on Nagura's bound:
+\begin{theorem}
+  For all $n\geq 25$ there is always a prime $p$ with $n < p < 1.2n$
+\end{theorem}
+
+And a bit of computer brute-force for $3 < n < 25$
+
+and a tiny bit of brute-force by hand for $n=2, n=3$
+
+After that though Nagura + induction can get the remaining cases.
+I think this is my coolest result, and I only recently come up with it
+
+
+
+
+\section{Concluding Remarks}
+I don't know what to say here.
+It's been fun investigating this, but seeing that the lines were just primes and constant multiples of primes is kinda anticlimactic for me; I like very hard problems and felt much more thrilled solving \textbf{Question 3.}
+
+Also I need to write an introduction\dots
 
 \newpage
 
