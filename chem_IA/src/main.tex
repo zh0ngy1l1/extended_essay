@@ -2,7 +2,7 @@
 
 %Paragraph jumps and indentation
 \setlength{\parskip}{1.6em}
-\setlength{\parindent}{1.25cm}
+\setlength{\parindent}{1cm}
 
 %Border
 \usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
@@ -62,8 +62,8 @@
 \newtheorem{corollary}{Corollary}[section]
 
 %Bibliography
-%\usepackage[backend=biber]{biblatex}
-%\addbibresource{refs.bib}
+\usepackage[backend=biber]{biblatex}
+\addbibresource{refs.bib}
 
 \newcommand{\diff}{\frac{\mathrm{d}}{\mathrm{d}t}}
 
@@ -75,23 +75,16 @@
   \begin{center}
     Internal Assessment: Chemistry\\
     \vspace*{4cm}
-    {\Large \textbf{Investigating the relationship between the concentration of \ce{MnO2} catalyst powder and the rate constant in the decomposition of \ce{H2O2}.}}\\
+    {\Large \textbf{Investigating the relationship between the concentration of \ce{MnO2} catalyst powder and the first-order rate constant in the decomposition of \ce{H2O2} using measurements of pressure.}}\\
     
     \vspace{1cm}
     \textbf{Research Question:}
-    How does changing the concentration of solid \ce{MnO2} catalyst powder suspended in aqueous \ce{2\% (v/v) H2O2 (aq)} affect the first-order rate constant for its decomposition at room temperature?
+    How does changing the concentration of solid \ce{MnO2} catalyst powder suspended in aqueous \ce{1.1\% (v/v) H2O2 (aq)} affect the first-order rate constant for its decomposition at $24^\circ$C?
     \vfill
     \today\\
     Word count: 123
   \end{center}
 \end{titlepage}
-
-\textbf{Materials:}
-\begin{itemize}
-  \item \ce{2\% (v/v) H2O2 (aq)}
-  \item $\ce{MnO2} (s)$ powder, about $0.05, 0.1, 0.15, 0.2$ g
-\end{itemize}
-Using Vernier Pressure sensor\footnote{\url{https://www.vernier.com/product/gas-pressure-sensor/} (\href{https://web.archive.org/web/20250613042845/https://www.vernier.com/product/gas-pressure-sensor/}{archived}), Accessed: 2025-07-04}
 
 \section{Introduction}
 
@@ -100,79 +93,194 @@ Its catalytic decomposition improves its oxidizing ability and is especially rel
 Transition metal ions such as manganese, iron, cobalt, and lead are commonly used to catalyze this reaction.\cite{Abuissa}
 Manganese, in the form of \ce{MnO2}, is the catalyst of choice in this investigation because it is available in the school laboratory, being stable, inexpensive, and non-toxic in small quantities.
 
+This investigation aims to establish a quantitative relation between the concentration of manganese oxide powder and the rate of decomposition of \ce{H2O2}, by measuring the concentration of \ce{H2O2} indirectly through the amount of oxygen gas released.
+
 \section{Background Information}
 
 Most existing studies use \ce{MnO2} catalysts immobilized on solid supports\cite{Do} or embedded in porous materials\cite{Kim}.
 In contrast, this investigation uses fine \ce{MnO2} powder suspended in solution.
-This setup introduces practical limitations: the catalyst cannot be recovered after the reaction, and the surface area in contact with the solution is difficult to estimate precisely.
-
+This setup presents practical limitations, most notably that the catalyst in its powdered form cannot be directly recovered after the reaction, necessitating an additional separation process.
 Nonetheless, the powdered form offers simplicity for a school laboratory.
-Since previous research has shown that the rate constant for \ce{MnO2}-catalyzed \ce{H2O2} decomposition does not strongly depend on temperature, temperature control will not be a central concern in this investigation.
 
-Existing studies monitor the reaction utilizing methods such as titration on samples taken at specific intervals\cite{Abuissa} or colorimetric methods\cite{Do}, both of which allow direct measurement of the concentration of hydrogen peroxide in the solution.
-Instead, this experiment opts to evaluate the progress of the reaction by measuring the amount of (oxygen) gas released by the reaction over time.
-This can be calculated using the ideal gas law given constant temperature and volume and information about the pressure within the system over time.
+Most existing studies monitor the reaction utilizing methods such as titration on samples taken at specific intervals\cite{Abuissa} or colorimetric methods\cite{Do}, both of which allow direct measurement of the concentration of hydrogen peroxide in the solution.
+Instead, this experiment opts to evaluate the progress of the reaction by measuring the amount of oxygen gas released by the reaction over time.
+This can be calculated with information about the pressure of the sealed reaction vessel over time, assuming constant temperature.
 Gas pressure will be measured using a pressure sensor, allowing for precise, continuous data collection suitable for computer processing.
-This method should require less labor and resources compared to either method mentioned above, since there is no need for additional reagents or equipment that may not be available at my school, nor is there any for manual input while the reaction is taking place.
 
 \subsection{Relevant Theory}
 \begin{quote}
-\hspace*{2em}``The rate limiting reaction is believed to be the initial reaction between hydrogen peroxide and the iron oxides \cite{Miller1995,ValentineWang1998,Miller1999}.
-Additionally, the results reveal that the decomposition of \ce{H2O2} follows pseudo-ﬁrst order kinetics:
-\begin{equation}
-  -\dfrac{\mathrm{d}[\ce{H2O2}]}{\mathrm{d}t} = k_\mathrm{app}[\ce{H2O2}]
-\end{equation}
-[...] where $k_\mathrm{app}$ is the apparent ﬁrst-order rate constant, and [\ce{H2O2}] is the concentration of \ce{H2O2} in the solution at any time $t$.''\cite{Huang}
+  \hspace{-1em}\vrule width 1pt\hspace{1em}%
+  \begin{minipage}[t]{0.95\linewidth}
+  ``The rate limiting reaction is believed to be the initial reaction between hydrogen peroxide and the iron oxides \cite{Miller1995,ValentineWang1998,Miller1999}.
+  Additionally, the results reveal that the decomposition of \ce{H2O2} follows pseudo-first order kinetics:
+  \begin{equation}
+    -\dfrac{\mathrm{d}[\ce{H2O2}]}{\mathrm{d}t} = k_\mathrm{app}[\ce{H2O2}]
+  \end{equation}
+  and thus:
+  \begin{equation}
+    \ln\left(\dfrac{[\ce{H2O2}]}{[\ce{H2O2}]_0}\right) = -k_\mathrm{app}t
+  \end{equation}
+  where $k_\mathrm{app}$ is the apparent first-order rate constant,
+  and $[\ce{H2O2}]$ and $[\ce{H2O2}]_0$ are the concentrations of \ce{H2O2} in the solution at any time $t$ and time zero, respectively.\cite{Huang}''
+  \end{minipage}
 \end{quote}
 
-\noindent Let $n(\ce{H2O2})$ and $n(\ce{O2})$ denote the amount of \ce{H2O2} present in the solution and the amount of \ce{O2} gas in the flask released by the reaction, respectively.
-The catalysed decomposition reaction taking place is described by
+\noindent The data presented in \textbf{Section 4} agrees with theory, that the reaction is pseudo-first order.
+The aim of this investigation is to measure how $k_\mathrm{app}$ changes in relation to the amount of catalyst used.
+
+Now a general expression for pressure as a function of time  will be mathematically derived from (2.2).
+\begin{center}
+\begin{tabular}{|c >{\raggedright\arraybackslash}p{5cm}|c >{\raggedright\arraybackslash}p{5cm}|}
+  \hline
+  \multicolumn{4}{|c|}{Notation} \\
+  \hline
+  $n(\ce{H2O2})$&\ce{H2O2} in solution at time $t$&$P$&Pressure at time $t$\\
+  $n(\ce{O2})$&\ce{O2} released up to $t$ &$P_0$&Initial pressure\\
+  $n_0$&Initial \ce{H2O2} in solution&$P_\infty$&Final pressure\\
+  $n_\mathrm{air}$&Initial air molecules&$V_l$&Solution volume\\
+  $R$&Ideal gas constant&$V_f$&Flask volume\\
+  $T$&Temperature&$V_g$&$= V_f-V_l$, Gas volume\\
+  \hline
+\end{tabular}
+\end{center}
+
+\noindent The catalysed decomposition reaction taking place is described by
 \[\ce{2H2O2 (aq) ->[MnO2] 2H2O (l) + O2 (g)}\]
-If $n_0$ is the initial amount of \ce{H2O2} in the solution, we have
-\[n(\ce{O2}) =2(n_0 - n(\ce{H2O2}))\]
+We use this to compute $n(\ce{H2O2})$ in terms of $n(\ce{O2})$:
 \begin{equation}
-  \implies n(\ce{H2O2}) =n_0 - \frac{n(\ce{O2})}{2}
+  n(\ce{O2}) =2(n_0 - n(\ce{H2O2})) \implies n(\ce{H2O2}) =n_0 - \frac{n(\ce{O2})}{2}
+\end{equation}
+By the definition of concentration,
+\[[\ce{H2O2}] = n(\ce{H2O2}) \cdot V_l^{-1}\]
+Substituting (2.3) into the above yields
+\begin{align}
+  [\ce{H2O2}] &= \left(n_0 - \frac{n(\ce{O2})}{2}\right) V_l^{-1}\\
+  [\ce{H2O2}]_0 &= n_0 \cdot V_l^{-1}
+\end{align}
+The ideal gas law states
+\[PV_g=(n_\mathrm{air} + n(\ce{O2}))RT\]
+Solve for $n(\ce{O2})$ in this expression:
+\begin{equation}
+  n(\ce{O2})=PV_g R^{-1} T^{-1} - n_\mathrm{air}
+\end{equation}
+Substituting this into (2.4) yields
+\begin{equation}
+  \begin{split}
+    [\ce{H2O2}] &= \left(n_0 - \frac{n(\ce{O2})}{2}\right) V_l^{-1}\\
+  &= \left(n_0 - \frac{PV_g R^{-1} T^{-1} - n_\mathrm{air}}{2}\right) V_l^{-1}\\
+  &= \frac{1}{2}\left(2n_0 + n_\mathrm{air} - PV_g R^{-1} T^{-1}\right) V_l^{-1}
+  \end{split}
+\end{equation}
+Notice that when all $\ce{H2O2}$ is decomposed, $n(\ce{H2O2})=0$ and (2.3) yields $n(\ce{O2})=2n_0$.
+Hence $2n_0$ is the final amount of $\ce{O2}$ produced.
+Then $2n_0 + n_\mathrm{air}$ can be interpreted as the final amount of gas present, so by the ideal gas law,
+\begin{equation}
+  (2n_0 + n_\mathrm{air})RT = P_\infty V_g
+  \implies 2n_0 + n_\mathrm{air} = P_\infty V_g R^{-1} T^{-1}
+\end{equation}
+Substituting this into (2.7) gives
+\begin{equation}
+  \begin{split}
+    [\ce{H2O2}] &= \frac{1}{2}\left(P_\infty V_g R^{-1} T^{-1} - PV_g R^{-1} T^{-1}\right) V_l^{-1}\\
+    &= \frac{1}{2}\left(P_\infty - P\right)V_g R^{-1} T^{-1} V_l^{-1}
+  \end{split}
 \end{equation}
 
-\noindent Let $V_l$ and $V_f$ denote the solution volume and the flask's total volume, respectively.
-By the definition of concentration, we have
-\begin{equation}
-  [\ce{H2O2}] = n(\ce{H2O2}) \cdot V_l^{-1}
-\end{equation}
-
-\noindent Let $P$ and $T$ denote the pressure and temperature of gas within the flask, respectively.
-If $R$ is the ideal gas constant, the ideal gas law states
-\begin{equation}
-  n(\ce{O2}) = P(V_f-V_l) \cdot (RT)^{-1}
-\end{equation}
-
-Our goal is to compute an approximate value of the constant $k_\mathrm{app}$ given the data of pressure over time.
-Equation (2.1) shall be algebraically manipulated with the aid of equations (2.2), (2.3), and (2.4), to express $k_\mathrm{app}$ in terms of known constants and our function $P(t)$.
-The following calculations assume that $T$ and $V_l$ are approximately constant over time.
-\footnote{$V_f$ is obviously constant over time within a trial, but not between trials because I seal the flask with a cork.}
-
+Finally, substitute (2.9) and (2.5) into (2.2).
 \begin{align*}
-  k_\mathrm{app}[\ce{H2O2}] &= -\diff [\ce{H2O2}] &(2.1)\\
-  k_\mathrm{app} &= -[\ce{H2O2}]^{-1}\cdot \diff [\ce{H2O2}]\\
-  &= -(n(\ce{H2O2}) \cdot V_l^{-1})^{-1}\cdot \diff n(\ce{H2O2}) \cdot V_l^{-1} &(2.3)\\
-  &= -V_l \cdot n(\ce{H2O2})^{-1} \cdot V_l^{-1} \diff n(\ce{H2O2})\\
-  &= -n(\ce{H2O2})^{-1} \cdot \diff n(\ce{H2O2})\\
-  &= -(n_0 - \frac{n(\ce{O2})}{2})^{-1} \cdot \diff (n_0 - \frac{n(\ce{O2})}{2}) &(2.2)\\
-  &= -(n_0 - \frac{n(\ce{O2})}{2})^{-1} \cdot (-\frac{1}{2}) \diff n(\ce{O2})\\
-  &= \frac{1}{2} (n_0 - \frac{n(\ce{O2})}{2})^{-1} \cdot \diff n(\ce{O2})\\
-  &= \frac{1}{2} (n_0 - \frac{P(V_f-V_l) \cdot (RT)^{-1}}{2})^{-1} \cdot \diff P(V_f-V_l) \cdot (RT)^{-1} &(2.4)\\
-  &= \frac{1}{2} (n_0 - \frac{P(V_f-V_l) \cdot (RT)^{-1}}{2})^{-1} \cdot (V_f-V_l) \cdot (RT)^{-1} \diff P\\
-  &= \frac{1}{2}(n_0 - \frac{P(V_f-V_l) \cdot (RT)^{-1}}{2})^{-1} \cdot \frac{V_f-V_l}{RT} \cdot \frac{\mathrm{d}P}{\mathrm{d}t}\\
-  &= (2n_0 - P(V_f-V_l) \cdot (RT)^{-1})^{-1}\cdot \frac{V_f-V_l}{RT} \cdot \frac{\mathrm{d}P}{\mathrm{d}t}\\
-  &= \frac{V_f-V_l}{RT(2n_0 - P(V_f-V_l) \cdot (RT)^{-1})}\cdot \frac{\mathrm{d}P}{\mathrm{d}t}\\
-  &= \frac{V_f-V_l}{2n_0RT - (V_f-V_l)P}\cdot \frac{\mathrm{d}P}{\mathrm{d}t}\\
+  -k_\mathrm{app}t &= \ln\left(\dfrac{[\ce{H2O2}]}{[\ce{H2O2}]_0}\right)\\
+  &= \ln\left(\dfrac{\frac{1}{2}\left(P_\infty - P\right)V_g R^{-1} T^{-1} V_l^{-1}}{n_0 \cdot V_l^{-1}}\right)\\
+  &= \ln\left(\left(P_\infty - P\right) \cdot \dfrac{V_g}{2 n_0 RT}\right)
 \end{align*}
-Thanks to the ideal gas law we can substitute the expression $P_0(V_f-V_l)=n_0RT$ where $P_0$ is the initial pressure of the gas within the flask, to simplify and obtain
+Solve for $P$ to finish:
+\begin{align*}
+  e^{-k_\mathrm{app}t} &= (P_\infty - P)\\
+  \frac{2 n_0 RT}{V_g} \cdot e^{-k_\mathrm{app}t} &= P_\infty - P\\
+  P &= P_\infty - \frac{2 n_0 RT}{V_g} \cdot e^{-k_\mathrm{app}t}
+\end{align*}
+
+For clarity, set
 \begin{equation}
-  k_\mathrm{app} = \frac{1}{2P_0 - P}\cdot \frac{\mathrm{d}P}{\mathrm{d}t}\\
+  c = 2 n_0 RT V_g^{-1}
 \end{equation}
 
-\section{Measurements}
+Notice that $c$ is constant over time assuming that the temperature and volume do not change throughout the reaction.
+Then the pressure at time $t$ always satisfies the following equation, for constants $P_\infty$, $c$, and $k_\mathrm{app}$.
+\begin{equation}
+  P = P_\infty - c\cdot e^{-k_\mathrm{app}t}
+\end{equation}
+
+\subsection{Existing Results}
+
+For porous \ce{MnO2} on carbon nanotube (CNT) supports, the highest reported \textit{specific} rate constant is 
+\[
+k_\mathrm{CNT} = 35.48 \,\mathrm{g^{-1}\,min^{-1}},
+\]
+measured at $25^\circ$C in 100 mL of solution containing $1000$ ppm \ce{H2O2}.\cite{Kim}
+The existence of such a specific rate constant suggests that the observed rate constant is roughly proportional with the mass of \ce{MnO2} used.
+
+For pyrolusite (the primary manganese ore) powder, the highest reported specific rate constant is 
+\[
+k_\mathrm{pyro} = 0.061 \,\mathrm{min^{-1}\,mM^{-1}},
+\]
+measured at room temperature in 200 mL of solution containing $29.4$ mM \ce{H2O2}.\cite{Do}
+This suggests that the rate constant is proportional to the concentration of \ce{MnO2} in solution.
+
+
+The results obtained in this investigation will be compared with these two results.
+\textbf{Hypothesis.} Ideally a proportional relationship between the mass of \ce{MnO2} and $k_\mathrm{app}$ is observed in this investigation, and the result does not deviate majorly from the above values.
+
+\section{Experimental}
+\subsection{Materials \& Apparatus}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.5\textwidth} >{\raggedright\arraybackslash}p{0.5\textwidth}}
+  \multicolumn{2}{c}{\textbf{Materials}} \\ \hline
+  $33\%$ (v/v) \ce{H2O2} (aq), diluted to $3.3\%$ & $10 \pm 0.5$ mL per trial \\
+  Pure distilled water & $20 \pm 0.5$ mL per trial \\
+  Fine \ce{MnO2} powder & $\approx 1$ g total \\ \hline
+  \multicolumn{2}{c}{\textbf{Equipment}} \\ \hline
+  200 mL Erlenmeyer flask&Thermometer\\
+  20 mL Medical syringe ($\pm 0.5$mL)&Electronic scale ($\pm 0.001$g)\\
+  Vernier Pressure sensor\footnote{\url{https://www.vernier.com/product/gas-pressure-sensor/}, Accessed \today}&Rubber stopper\\
+  Magnetic stir bar and stir plate&Parafilm \\\hline
+\end{tabular}
+\begin{wrapfigure}{l}{0.37\textwidth}
+  \begin{center}
+    \includegraphics[width=0.36\textwidth]{apparatus.jpg}
+  \end{center}
+  \caption{Apparatus}
+  \label{fig:apparatus}
+\end{wrapfigure}
+
+\noindent \textbf{Pressure sensor specifications.} \\
+Range: 0–140 kPa \quad Accuracy: $\pm 2$ kPa \quad Sampling rate: 1 Hz \\
+Data is recorded automatically using Logger Pro.
+
+\noindent \textbf{Illustration.}
+The stir bar is in the flask, which is sealed airtight with a rubber stopper wrapped in parafilm.
+The tapered valve connector of the pressure sensor is wrapped in parafilm and inserted in the hole of the rubber stopper.
+A minimal setup, with the aid of parafilm and pressure-rated tubing aims to minimize leakage at moderate ($\leq 140$ kPa) pressure.\\
+
+\subsection{Process}
+\textbf{Before trials:} Prepare the necessary amount of \ce{H2O2} solution, diluted to $3.3\%$ (v/v).
+Confirm the pressure sensor is ready for data collection and is connected to the valve connector with tubing.
+
+\textbf{For each trial:} Add 20 mL water to the empty Erlenmeyer flask.
+Measure the desired amount of \ce{MnO2} powder and add in the flask.
+Confirm that the solution is at $24^\circ$C.
+Add the stir bar and stir at 600 rpm.
+Wrap the sides of the rubber stopper in parafilm and push it in the flask, sufficiently deeply to minimize leakage.
+Draw 10 mL of $3.3\%$ \ce{H2O2} in the syringe.
+Wrap the tapered area of the valve connector in parafilm.
+Then, inject the contents of the syringe into the flask through the hole in the stopper, and (quickly) insert the tapered valve connector into the hole.
+
+When pressure reaches 140kPa, carefully withdraw the valve connector from the stopper.
+Confirm the temperature of the solution has remained roughly the same as before the reaction.
+Then the trial is finished.
+\subsection{Analytical Method}
+With data on the relation between pressure and time, simply use Logger Pro's `fit curve' functionality to automatically fit a curve with the general form derived in (2.11).
+
+\section{Results and Discussion}
+Data, calcs, results, error all here.
 \begin{align*}
   V_f &= 0.345 l\\
   V_l &= 0.050 l\\
@@ -180,14 +288,9 @@ Thanks to the ideal gas law we can substitute the expression $P_0(V_f-V_l)=n_0RT
 
 
 
-Addressing random variance in measurements:
-Due to random experimental fluctuations, the raw pressure data 
-$P$ exhibits noise which causes the numerical derivative 
+\section{Conclusion}
+\newpage
 
-$\frac{dP}{dt}$ to occasionally take unphysical negative values.
-To reduce noise and obtain physically meaningful estimates of the rate of pressure change 
-$\frac{dP}{dt}$, I applied a five-point Savitzky-Golay filter of degree 2 using fixed convolution weights.
-This method smooths the data while computing derivatives more accurately than basic finite difference formulas. I used the coefficients 
-$\frac{[-2, -1, 0, +1, +2]}{10\Delta t}$, which are derived from a least-squares fit of a quadratic polynomial over a five-point window.
+\printbibliography
 
 \end{document}
