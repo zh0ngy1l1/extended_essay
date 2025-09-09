@@ -82,7 +82,7 @@
     How does changing the concentration of solid \ce{MnO2} catalyst powder suspended in aqueous \ce{1.1\% (v/v) H2O2 (aq)} affect the first order rate constant for its decomposition at $24^\circ$C?
     \vfill
     \today\\
-    Word count: 123
+    Word count: 1492
   \end{center}
 \end{titlepage}
 
@@ -103,7 +103,7 @@ In contrast, this investigation uses fine \ce{MnO2} powder suspended in solution
 This setup presents practical limitations, most notably that the catalyst in its powdered form cannot be directly recovered after the reaction, necessitating an additional separation process.
 Nonetheless, the powdered form offers simplicity for a school laboratory.
 
-Most existing studies monitor the reaction utilizing methods such as titration on samples taken at specific intervals\cite{Abuissa} or colorimetric methods\cite{Do}, both of which allow direct measurement of the concentration of hydrogen peroxide in the solution.
+Existing studies monitor the reaction utilizing methods such as titration on samples taken at specific intervals\cite{Abuissa} or colorimetric methods\cite{Do}, both of which allow direct measurement of the concentration of hydrogen peroxide in the solution.
 Instead, this experiment opts to evaluate the progress of the reaction by measuring the amount of oxygen gas released by the reaction over time.
 This can be calculated with information about the pressure of the sealed reaction vessel over time, assuming constant temperature.
 Gas pressure will be measured using a pressure sensor, allowing for precise, continuous data collection suitable for computer processing.
@@ -145,101 +145,72 @@ Now a general expression for pressure as a function of time  will be mathematica
 \end{tabular}
 \end{center}
 
-\noindent The catalysed decomposition reaction taking place is described by
-\[\ce{2H2O2 (aq) ->[MnO2] 2H2O (l) + O2 (g)}\]
-We use this to compute $n(\ce{H2O2})$ in terms of $n(\ce{O2})$:
-\begin{equation}
-  n(\ce{O2}) =2(n_0 - n(\ce{H2O2})) \implies n(\ce{H2O2}) =n_0 - \frac{n(\ce{O2})}{2}
-\end{equation}
-By the definition of concentration,
-\[[\ce{H2O2}] = n(\ce{H2O2}) \cdot V_l^{-1}\]
-Substituting (2.3) into the above yields
-\begin{align}
-  [\ce{H2O2}] &= \left(n_0 - \frac{n(\ce{O2})}{2}\right) V_l^{-1}\\
-  [\ce{H2O2}]_0 &= n_0 \cdot V_l^{-1}
-\end{align}
-The ideal gas law states
-\[PV_g=(n_\mathrm{air} + n(\ce{O2}))RT\]
-Solve for $n(\ce{O2})$ in this expression:
-\begin{equation}
-  n(\ce{O2})=PV_g R^{-1} T^{-1} - n_\mathrm{air}
-\end{equation}
-Substituting this into (2.4) yields
-\begin{equation}
-  \begin{split}
-    [\ce{H2O2}] &= \left(n_0 - \frac{n(\ce{O2})}{2}\right) V_l^{-1}\\
-  &= \left(n_0 - \frac{PV_g R^{-1} T^{-1} - n_\mathrm{air}}{2}\right) V_l^{-1}\\
-  &= \frac{1}{2}\left(2n_0 + n_\mathrm{air} - PV_g R^{-1} T^{-1}\right) V_l^{-1}
-  \end{split}
-\end{equation}
-Notice that when all $\ce{H2O2}$ is decomposed, $n(\ce{H2O2})=0$ and (2.3) yields $n(\ce{O2})=2n_0$.
-Hence $2n_0$ is the final amount of $\ce{O2}$ produced.
-Then $2n_0 + n_\mathrm{air}$ can be interpreted as the final amount of gas present, so by the ideal gas law,
-\begin{equation}
-  (2n_0 + n_\mathrm{air})RT = P_\infty V_g
-  \implies 2n_0 + n_\mathrm{air} = P_\infty V_g R^{-1} T^{-1}
-\end{equation}
-Substituting this into (2.7) gives
-\begin{equation}
-  \begin{split}
-    [\ce{H2O2}] &= \frac{1}{2}\left(P_\infty V_g R^{-1} T^{-1} - PV_g R^{-1} T^{-1}\right) V_l^{-1}\\
-    &= \frac{1}{2}\left(P_\infty - P\right)V_g R^{-1} T^{-1} V_l^{-1}
-  \end{split}
-\end{equation}
-
-Finally, substitute (2.9) and (2.5) into (2.2).
-\begin{align*}
-  -k_\mathrm{app}t &= \ln\left(\dfrac{[\ce{H2O2}]}{[\ce{H2O2}]_0}\right)\\
-  &= \ln\left(\dfrac{\frac{1}{2}\left(P_\infty - P\right)V_g R^{-1} T^{-1} V_l^{-1}}{n_0 \cdot V_l^{-1}}\right)\\
-  &= \ln\left(\left(P_\infty - P\right) \cdot \dfrac{V_g}{2 n_0 RT}\right)
-\end{align*}
-Solve for $P$ to finish:
-\begin{align*}
-  e^{-k_\mathrm{app}t} &= (P_\infty - P)\\
-  \frac{2 n_0 RT}{V_g} \cdot e^{-k_\mathrm{app}t} &= P_\infty - P\\
-  P &= P_\infty - \frac{2 n_0 RT}{V_g} \cdot e^{-k_\mathrm{app}t}
-\end{align*}
-
-For clarity, set
-\begin{equation}
-  c = 2 n_0 RT V_g^{-1}
-\end{equation}
-
-Notice that $c$ is constant over time assuming that the temperature and volume do not change throughout the reaction.
-Then the pressure at time $t$ always satisfies the following equation, for constants $P_\infty$, $c$, and $k_\mathrm{app}$.
-\begin{equation}
-  P = P_\infty - c\cdot e^{-k_\mathrm{app}t}
-\end{equation}
+\noindent The catalysed decomposition is
+\[
+\ce{2H2O2 (aq) ->[MnO2] 2H2O (l) + O2 (g)}
+\]
+From stoichiometry,
+\[
+n(\ce{O2})=\frac{n_0-n(\ce{H2O2})}{2}
+\quad\Longrightarrow\quad
+n(\ce{H2O2})=n_0-2\,n(\ce{O2}).
+\]
+With $[\ce{H2O2}]=n(\ce{H2O2})/V_l$ and $PV_g=(n_{\mathrm{air}}+n(\ce{O2}))RT$,
+\[
+n(\ce{O2})=\frac{PV_g}{RT}-n_{\mathrm{air}}
+\]
+so
+\[
+[\ce{H2O2}]
+=\frac{n_0+2n_{\mathrm{air}}-2PV_g/(RT)}{V_l}
+\]
+At completion $n(\ce{H2O2})=0$, hence $n_0+2n_{\mathrm{air}}=2P_\infty V_g/(RT)$ and therefore
+\[
+[\ce{H2O2}]=\frac{2(P_\infty-P)\,V_g}{RT\,V_l}
+\]
+Combining this with the integrated pseudo–first order law
+\[
+-k_{\mathrm{app}}t=\ln\frac{[\ce{H2O2}]}{[\ce{H2O2}]_0},\qquad [\ce{H2O2}]_0=\frac{n_0}{V_l}
+\]
+and simplifying yields
+\[
+2(P_\infty-P)\frac{V_g}{RT}=n_0 e^{-k_{\mathrm{app}}t}
+\]
+and hence
+\[
+P(t)=P_\infty-\frac{n_0RT}{2V_g}\,e^{-k_{\mathrm{app}}t}
+\]
+For brevity define
+\[
+c:=\frac{n_0RT}{2V_g},
+\]
+giving the general form
+\[
+\boxed{\,P(t)=P_\infty-c\,e^{-k_{\mathrm{app}}t}\,}.
+\]
 
 \subsection{Existing Results}
-
-For porous \ce{MnO2} on carbon nanotube (CNT) supports, the highest reported \textit{specific} rate constant is 
-\[
-k_\mathrm{CNT} = 35.48 \,\mathrm{g^{-1}\,min^{-1}},
-\]
-measured at $25^\circ$C in 100 mL of solution containing $1000$ppm \ce{H2O2}.\cite{Kim}
-The existence of such a specific rate constant suggests that the apparent rate constant is roughly proportional with the mass of \ce{MnO2} used.
 
 For pyrolusite (the primary manganese ore) powder, the highest reported specific rate constant is 
 \[
 k_\mathrm{pyro} = 0.061 \,\mathrm{min^{-1}\,mM^{-1}},
 \]
-measured at room temperature in 200 mL of solution containing $29.4$mM \ce{H2O2}.\cite{Do}
+measured at room temperature in 200 mL of solution containing $29.4$ mM \ce{H2O2}.\cite{Do}
 This suggests that the rate constant is proportional to the concentration of \ce{MnO2} in solution.
 
-The results obtained in this investigation will be compared with these two results.
-\textbf{Hypothesis.} Ideally a proportional relationship between the mass of \ce{MnO2} and $k_\mathrm{app}$ is observed in this investigation, and the result does not deviate majorly from the above values.
+The results obtained in this investigation will be compared with this result.
+\textbf{Hypothesis.} Ideally a proportional relationship between the mass of \ce{MnO2} and $k_\mathrm{app}$ is observed in this investigation, and the result does not deviate majorly from the above value.
 
 \section{Experimental}
 \subsection{Materials \& Apparatus}
 \begin{tabular}{>{\raggedright\arraybackslash}p{0.5\textwidth} >{\raggedright\arraybackslash}p{0.5\textwidth}}
   \multicolumn{2}{c}{\textbf{Materials}} \\ \hline
-  $33\%$ (v/v) \ce{H2O2} (aq), diluted to $3.3\%$ & $10 \pm 0.5$mL per trial \\
-  Pure distilled water & $20 \pm 0.5$mL per trial \\
+  $33\%$ (v/v) \ce{H2O2} (aq), diluted to $3.3\%$ & $10 \pm 0.5$ mL per trial \\
+  Pure distilled water & $20 \pm 0.5$ mL per trial \\
   Fine \ce{MnO2} powder & $\approx 1$g total \\ \hline
   \multicolumn{2}{c}{\textbf{Equipment}} \\ \hline
   220 mL Erlenmeyer flask&Thermometer\\
-  20 mL Medical syringe ($\pm 0.5$mL)&Electronic scale ($\pm 0.001$g)\\
+  20 mL Medical syringe ($\pm 0.5$ mL)&Electronic scale ($\pm 0.001$ g)\\
   Vernier Pressure sensor\footnote{\url{https://www.vernier.com/product/gas-pressure-sensor/}, Accessed \today}&Rubber stopper\\
   Magnetic stir bar and stir plate&Parafilm \\\hline
 \end{tabular}
@@ -252,38 +223,38 @@ The results obtained in this investigation will be compared with these two resul
 \end{wrapfigure}
 
 \noindent \textbf{Pressure sensor specifications.} \\
-Range: 0–140 kPa \quad Accuracy: $\pm 2$kPa \quad Sampling rate: 1 Hz \\
+Range: 0–140 kPa \quad Accuracy: $\pm 2$ kPa \quad Sampling rate: 1 Hz \\
 Data is recorded automatically using Logger Pro.
 
 \noindent \textbf{Illustration.}
 The stir bar is in the flask, which is sealed airtight with a rubber stopper wrapped in parafilm.
 The tapered valve connector of the pressure sensor is wrapped in parafilm and inserted in the hole of the rubber stopper.
-A minimal setup, with the aid of parafilm and pressure-rated tubing aims to minimize leakage at moderate ($\leq 140$kPa) pressure.\\
+A minimal setup, with the aid of parafilm and pressure-rated tubing aims to minimize leakage at moderate ($\leq 140$ kPa) pressure.\\
 
 \subsection{Process}
-\textbf{Before trials:} Prepare the necessary amount of \ce{H2O2} solution, diluted to $3.3\%$ (v/v).
-Confirm the pressure sensor is ready for data collection and is connected to the valve connector with tubing.
+\textbf{Preparation:} A $3.3\%$ (v/v) \ce{H2O2} solution was prepared in advance.  
+The pressure sensor was connected to the valve connector with tubing and verified to be functional.
 
-\noindent \textbf{For each trial:} Add 20 mL water to the empty Erlenmeyer flask.
-Measure the desired amount of \ce{MnO2} powder and add in the flask.
-Confirm that the solution is at $24^\circ$C.
-Add the stir bar and stir at 600 rpm.
-Wrap the sides of the rubber stopper in parafilm and push it in the flask, sufficiently deeply to minimize leakage.
-Draw 10 mL of $3.3\%$ \ce{H2O2} in the syringe.
-Wrap the tapered area of the valve connector in parafilm.
-Then, inject the contents of the syringe into the flask through the hole in the stopper, and (quickly) insert the tapered valve connector into the hole.
+\noindent \textbf{Each trial:}  
+An empty Erlenmeyer flask was charged with 20 mL of water and the desired mass of \ce{MnO2}.  
+The solution temperature was confirmed at $24^\circ$C.  
+A stir bar was added, and stirring was maintained at 600 rpm.  
+The rubber stopper was wrapped with parafilm and fitted securely to minimize leakage.  
+Separately, 10 mL of $3.3\%$ \ce{H2O2} was drawn into a syringe.  
+The tapered region of the valve connector was wrapped with parafilm before the syringe contents were injected into the flask through the stopper, after which the connector was immediately inserted.  
+The reaction was allowed to proceed until the pressure reached 140 kPa, at which point the connector was withdrawn.  
+The solution temperature was checked again to ensure it remained near its initial value.  
+The apparatus was then reset for subsequent trials.
 
-When pressure reaches 140kPa, carefully withdraw the valve connector from the stopper.
-Confirm the temperature of the solution has remained roughly the same as before the reaction.
-Then the trial is finished; reset the apparatus and repeat.
-
-\subsection{Analytical Method}
-With data on the relation between pressure and time, simply use Logger Pro's `fit curve' functionality to automatically fit a curve with the general form derived in (2.11).
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.9\textwidth]{Screenshot0_05.png}
-  \caption{Logger Pro Auto Fit Curve for 0.05g trial}
+  \includegraphics[width=0.6\textwidth]{Screenshot0_05.png}
+  \caption{0.05 g Trial Plot and Auto Fit}
 \end{figure}
+
+\subsection{Analytical Method}
+
+With data on the relation between pressure and time, simply use Logger Pro's `fit curve' functionality to automatically fit a curve with the general form derived in (2.11).
 
 The curve will be fit on the data between 120 kPa and 140 kPa, except for the m(\ce{MnO2})=0.05g.
 The beginning of data collection is avoided because it contains an unwanted artifact resulting from connecting the valve.
@@ -292,7 +263,6 @@ To establish proportionality with respect to catalyst concentration, the error r
 
 In \textbf{Figure 2}, $A=P_\infty$, $B=-k_\mathrm{app}$, and $C=\ln(c)$, in relation to the constants in (2.11).
 From this data, only the value of $k_\mathrm{app}$ is ultimately needed, but $P_\infty$ is a useful sanity check, to ensure no major systematic error is taking place.
-\subsection{Considerations}
 
 \section{Results and Discussion}
 \subsection{Computing Theoretical Final Pressure}
@@ -301,115 +271,126 @@ We compute the theoretical final pressure and compare it to the experimental val
 \rho(\mathrm{H_2O_2})=1.45\ \mathrm{g\;mL^{-1}},\qquad M(\mathrm{H_2O_2})=34.0\ \mathrm{g\;mol^{-1}},
 \]
 \begin{align*}
-  &V_l = 30 \pm 1 \mathrm{ mL}\\
-  \implies & V_{\mathrm{H_2O_2}}=0.33 \pm 0.011 \mathrm{ mL}\\
-  \implies & m=\rho V=0.33\cdot1.45=0.4785 \pm 0.0160\mathrm{ g},
+  &V_l = 30 \pm 1\ \mathrm{mL}\\
+  \implies & V_{\mathrm{H_2O_2}}=0.33 \pm 0.011\ \mathrm{mL}\\
+  \implies & m=\rho V=0.33\cdot1.45=0.4785 \pm 0.0160\ \mathrm{g},
 \end{align*}
 \begin{equation}
-  n(\mathrm{H_2O_2})=\frac{m}{M}=\frac{0.4785}{34.0}=0.0141 \pm 0.00047\mathrm{mol}
+  n(\mathrm{H_2O_2})=\frac{m}{M}=\frac{0.4785}{34.0}=0.0141 \pm 0.00047\ \mathrm{mol}
 \end{equation}
 
-This decomposes into $0.00705 \pm 0.00024$mol \ce{O2}.
+This decomposes into $0.00705 \pm 0.00024$ mol \ce{O2}.
 Assuming constant gas volume and temperature, the ideal gas law states
 \begin{equation}
-  \Delta P = (\Delta n)RT V^{-1} \qquad \text{for } R \approx 8.314 L\ \mathrm{kPa}\ K^{-1}\ \mathrm{mol}^{-1}
+  \Delta P = (\Delta n)\ R\ T\ V^{-1} \qquad \text{for } R \approx 8.314 L\ \mathrm{kPa}\ K^{-1}\ \mathrm{mol}^{-1}
 \end{equation}
 
 Initial conditions for the headspace gas:
 \[
-P_i=101\pm 1 \mathrm{kPa},\qquad
-V_g=200\pm10 \mathrm{mL}=0.20\pm0.01 \mathrm{L},\qquad
-T=24 \pm 1 ^\circ\mathrm{C}=297.15 \pm 1 \mathrm{K}
+P_i=101\pm 1\ \mathrm{kPa},\qquad
+V_g=200\pm10\ \mathrm{mL}=0.20\pm0.01\ \mathrm{L},\qquad
+T=24 \pm 1 ^\circ\mathrm{C}=297.15 \pm 1\ \mathrm{K}
 \]
-Then numerically $\displaystyle \Delta P = \frac{0.00705 \cdot 8.314 \cdot 297.15}{0.20} \approx 88 \pm 7$kPa.
+Then numerically $\displaystyle \Delta P = \frac{0.00705 \cdot 8.314 \cdot 297.15}{0.20} \approx 88 \pm 7$ kPa.
 The final pressure $P_\infty$, in theory, is $P_0 + \Delta P \approx 88 + 102 = 190 \pm 8$ kPa.
 This is a rough range close to which the experimental final pressure should belong.
 
 \subsection{Data and Processing}
-Below are the data and fitted curves by Logger Pro.
 \begin{table}[h]
   \centering
   \begin{tabular}{|c|c|c|} 
    \hline
    m(\ce{MnO2}) & $k_\mathrm{app}$ & $P_\infty$\\ 
    \hline
-   0.05g& $0.003043 \pm 0.000025 s^{-1}$& $142.35 \pm 0.18$kPa\\
-   0.10g& $0.003454 \pm 0.000023 s^{-1}$& $167.30 \pm 0.24$kPa\\
-   0.15g& $0.005248 \pm 0.000055 s^{-1}$& $176.15 \pm 0.48$kPa\\
-   0.20g& $0.006974 \pm 0.000106 s^{-1}$& $176.66 \pm 0.70$kPa\\
-   0.10g& $0.005308 \pm 0.000053 s^{-1}$& $176.98 \pm 0.46$kPa\\
+   0.05 g& $0.003043 \pm 0.000025\ s^{-1}$& $142.35 \pm 0.18$ kPa\\
+   0.10 g& $0.003454 \pm 0.000023\ s^{-1}$& $167.30 \pm 0.24$ kPa\\
+   0.15 g& $0.005248 \pm 0.000055\ s^{-1}$& $176.15 \pm 0.48$ kPa\\
+   0.20 g& $0.006974 \pm 0.000106\ s^{-1}$& $176.66 \pm 0.70$ kPa\\
+   0.10 g& $0.005308 \pm 0.000053\ s^{-1}$& $176.98 \pm 0.46$ kPa\\
    \hline
   \end{tabular}
   \caption{Trial Data From Logger Pro}
 \end{table}
+
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot0_10.png}
+    \caption{\small m(\ce{MnO2}) = 0.10 g}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot0_15.png}
+    \caption{\small m(\ce{MnO2}) = 0.15 g}
+  \end{minipage}
+\end{figure}
 
 \newpage
 \begin{figure}[h]
   \centering
   \begin{minipage}{0.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{Screenshot0_10.png}
-    \caption{\small m(\ce{MnO2}) = 0.10g}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.49\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{Screenshot0_15.png}
-    \caption{\small m(\ce{MnO2}) = 0.15g}
-  \end{minipage}
-\end{figure}
-\begin{figure}[h]
-  \centering
-  \begin{minipage}{0.49\linewidth}
-    \centering
     \includegraphics[width=\linewidth]{Screenshot0_20.png}
-    \caption{\small m(\ce{MnO2}) = 0.20g}
+    \caption{\small m(\ce{MnO2}) = 0.20 g}
   \end{minipage}
   \hfill
   \begin{minipage}{0.49\linewidth}
     \centering
     \includegraphics[width=\linewidth]{Screenshot0_25.png}
-    \caption{\small m(\ce{MnO2}) = 0.25g}
+    \caption{\small m(\ce{MnO2}) = 0.25 g}
   \end{minipage}
 \end{figure}
 \noindent It seems that $P_\infty$ in practice is always below the theoretical $P_\infty$ derived in \textbf{Section 4.1}.
-The deviation is not major, and is likely caused by the reasons discussed in \textbf{Section 3.4}.
+The deviation is not major, and is likely caused by the reasons discussed in \textbf{Section 5}.
 
 For each trial, we compute the concentration of \ce{MnO2}:
-\[c(\ce{MnO2})=\frac{n(\ce{MnO2})}{V_l} = \frac{m(\ce{MnO2})}{M(\ce{MnO2}) V_l} = 383.4\ \mathrm{mmol}\ g^{-1}L^{-1} \cdot m(\ce{MnO2})\]
-The uncertainty of this is $3.3\%$ resulting from $V_l = 30 \pm 1$mL; the uncertainty of catalyst mass is negligible.
+\[c(\ce{MnO2})=\frac{n(\ce{MnO2})}{V_l} = \frac{m(\ce{MnO2})}{M(\ce{MnO2}) V_l} = 383.4\ \mathrm{mM}\ g^{-1} \cdot m(\ce{MnO2})\]
+The uncertainty of this is $3.3\%$ resulting from $V_l = 30 \pm 1$ mL; the uncertainty of catalyst mass is negligible.
 
-The catalyst concentrations are shown in \textbf{Table 2}
 \begin{table}[h]
   \centering
   \begin{tabular}{|c|c|c|} 
    \hline
    m(\ce{MnO2}) & c(\ce{MnO2})\\ 
    \hline
-   0.05g& $19.17 \pm 0.63 \mathrm{mol} L^{-1}$\\
-   0.10g& $38.34 \pm 1.27 \mathrm{mol} L^{-1}$\\
-   0.15g& $57.51 \pm 1.90 \mathrm{mol} L^{-1}$\\
-   0.20g& $76.68 \pm 2.53 \mathrm{mol} L^{-1}$\\
-   0.10g& $95.85 \pm 3.16 \mathrm{mol} L^{-1}$\\
+   0.05 g& $19.17 \pm 0.63\ \mathrm{mM}\ L^{-1}$\\
+   0.10 g& $38.34 \pm 1.27\ \mathrm{mM}\ L^{-1}$\\
+   0.15 g& $57.51 \pm 1.90\ \mathrm{mM}\ L^{-1}$\\
+   0.20 g& $76.68 \pm 2.53\ \mathrm{mM}\ L^{-1}$\\
+   0.10 g& $95.85 \pm 3.16\ \mathrm{mM}\ L^{-1}$\\
    \hline
   \end{tabular}
-  \caption{Processed data}
+  \caption{Catalyst Concentrations}
 \end{table}
-
 The aim is to find a proportional relationship in between the concentrations in \textbf{Table 2} and the corresponding rate constants in \textbf{Table 1}.
-Plotting these five data points of the form $(c(\ce{MnO2}),  k_\mathrm{app})$ onto the plane, \textbf{Figure 7} is obtained.
+Plotting the data points of the form $(c(\ce{MnO2}),  k_\mathrm{app})$, each representing a different trial, \textbf{Figure 7} is obtained.
+\newpage 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.9\textwidth]{proportional.png}
+  \includegraphics[width=0.4\textwidth]{proportional.png}
   \caption{Data Points Plotted}
 \end{figure}
 
+\noindent This fit gives the specific rate constant $k_\mathrm{spec}\approx 0.00009093\ s^{-1}\ \mathrm{mM}^{-1} = 0.0054558\ \mathrm{min}^{-1}\ \mathrm{mM}^{-1}$,
+which is within an acceptable range of the known $k_\mathrm{pyro} = 0.061\ \mathrm{min}^{-1}\ \mathrm{mM}^{-1}$ from \textbf{Section 2.2}.
+\subsection{Conclusion}
+
+The data support a direct, near-proportional increase of the apparent first-order rate constant $k_{\mathrm{app}}$ with suspended \ce{MnO2} concentration.
+This matches the general expectation that more active surface yields faster reaction, but the measured specific rate is lower than literature ($0.061\ \mathrm{min^{-1}\,mM^{-1}}$); plausible causes include incomplete \ce{O2} capture (leakage, connector losses), variable effective surface area (agglomeration or settling of powder), the initial connection artifact, and instrument limits (pressure sensor accuracy, uncertain $V_g$).
+These uncertainties (notably $V_l \pm 3.3\%$ and sensor $\pm 2$ kPa) moderately affect $k_{\mathrm{app}}$ and explain observed scatter and the anomalously low 0.05 g point, so quantitative agreement with literature is tentative though the trend is robust.
+
+Methodological limitations with meaningful impact:
+reliance on headspace pressure rather than direct concentration assays, imperfect seals, limited replicates per mass and a narrow mass range, and possible temperature/stirring inconsistencies.
+Strengths include a clear theoretical derivation linking $P(t)$ to $[\ce{H2O2}]$ and continuous high-frequency data collection.
+
+Realistic, relevant improvements: use pressure-rated fittings or water-displacement gas collection; immobilize catalyst or better disperse powder;
+increase replicate number and mass range; directly assay $[\ce{H2O2}]$ (titration or spectrophotometry) for cross-validation;
+calibrate sensor and measure $V_g$ precisely.
+With these changes the proportional relationship can be tested more reliably and quantitative agreement improved.
 
 
-
-
-
-\section{Conclusion}
 \newpage
 
 \printbibliography
