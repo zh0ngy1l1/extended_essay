@@ -227,7 +227,6 @@ k_\mathrm{pyro} = 0.061 \,\mathrm{min^{-1}\,mM^{-1}},
 measured at room temperature in 200 mL of solution containing $29.4$mM \ce{H2O2}.\cite{Do}
 This suggests that the rate constant is proportional to the concentration of \ce{MnO2} in solution.
 
-
 The results obtained in this investigation will be compared with these two results.
 \textbf{Hypothesis.} Ideally a proportional relationship between the mass of \ce{MnO2} and $k_\mathrm{app}$ is observed in this investigation, and the result does not deviate majorly from the above values.
 
@@ -265,7 +264,7 @@ A minimal setup, with the aid of parafilm and pressure-rated tubing aims to mini
 \textbf{Before trials:} Prepare the necessary amount of \ce{H2O2} solution, diluted to $3.3\%$ (v/v).
 Confirm the pressure sensor is ready for data collection and is connected to the valve connector with tubing.
 
-\textbf{For each trial:} Add 20 mL water to the empty Erlenmeyer flask.
+\noindent \textbf{For each trial:} Add 20 mL water to the empty Erlenmeyer flask.
 Measure the desired amount of \ce{MnO2} powder and add in the flask.
 Confirm that the solution is at $24^\circ$C.
 Add the stir bar and stir at 600 rpm.
@@ -277,22 +276,23 @@ Then, inject the contents of the syringe into the flask through the hole in the 
 When pressure reaches 140kPa, carefully withdraw the valve connector from the stopper.
 Confirm the temperature of the solution has remained roughly the same as before the reaction.
 Then the trial is finished; reset the apparatus and repeat.
+
 \subsection{Analytical Method}
 With data on the relation between pressure and time, simply use Logger Pro's `fit curve' functionality to automatically fit a curve with the general form derived in (2.11).
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.9\textwidth]{lpro_autofit.png}
-  \caption{Logger Pro Auto Fit Curve for 0.25g trial}
+  \includegraphics[width=0.9\textwidth]{Screenshot0_05.png}
+  \caption{Logger Pro Auto Fit Curve for 0.05g trial}
 \end{figure}
 
-The curve will be fit on the data between 120 kPa and 140 kPa.
-This interpolation always uses well above 80 data points.
-It avoids the beginning of the data collection which contains an unwanted artifact that results from connecting the valve.
-Using the Auto Fit functionality also automatically gives the error radius for $k_\mathrm{app}$, which is the only error in dependent variables that needs to be considered.
+The curve will be fit on the data between 120 kPa and 140 kPa, except for the m(\ce{MnO2})=0.05g.
+The beginning of data collection is avoided because it contains an unwanted artifact resulting from connecting the valve.
+Using the Auto Fit functionality also automatically gives the error radius for $k_\mathrm{app}$, which is the only error among dependent variables that needs to be considered.
 To establish proportionality with respect to catalyst concentration, the error radius of \ce{MnO2} mass and solution volume are also necessary.
 
 In \textbf{Figure 2}, $A=P_\infty$, $B=-k_\mathrm{app}$, and $C=\ln(c)$, in relation to the constants in (2.11).
-Only the value of $k_\mathrm{app}$ is ultimately needed, but $P_\infty$ is a useful sanity check, to ensure no major systematic error is taking place.
+From this data, only the value of $k_\mathrm{app}$ is ultimately needed, but $P_\infty$ is a useful sanity check, to ensure no major systematic error is taking place.
+\subsection{Considerations}
 
 \section{Results and Discussion}
 \subsection{Computing Theoretical Final Pressure}
@@ -326,20 +326,77 @@ The final pressure $P_\infty$, in theory, is $P_0 + \Delta P \approx 88 + 102 = 
 This is a rough range close to which the experimental final pressure should belong.
 
 \subsection{Data and Processing}
+Below are the data and fitted curves by Logger Pro.
 \begin{table}[h]
   \centering
-  \begin{tabular}{|c|c|c||} 
+  \begin{tabular}{|c|c|c|} 
    \hline
-   m(\ce{MnO2}) & $k_app$ & $P_\infty$\\ 
+   m(\ce{MnO2}) & $k_\mathrm{app}$ & $P_\infty$\\ 
    \hline
    0.05g& $0.003043 \pm 0.000025 s^{-1}$& $142.35 \pm 0.18$kPa\\
    0.10g& $0.003454 \pm 0.000023 s^{-1}$& $167.30 \pm 0.24$kPa\\
    0.15g& $0.005248 \pm 0.000055 s^{-1}$& $176.15 \pm 0.48$kPa\\
    0.20g& $0.006974 \pm 0.000106 s^{-1}$& $176.66 \pm 0.70$kPa\\
    0.10g& $0.005308 \pm 0.000053 s^{-1}$& $176.98 \pm 0.46$kPa\\
+   \hline
   \end{tabular}
   \caption{Trial Data From Logger Pro}
 \end{table}
+
+\newpage
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot0_10.png}
+    \caption{\small m(\ce{MnO2}) = 0.10g}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot0_15.png}
+    \caption{\small m(\ce{MnO2}) = 0.15g}
+  \end{minipage}
+\end{figure}
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot0_20.png}
+    \caption{\small m(\ce{MnO2}) = 0.20g}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{Screenshot0_25.png}
+    \caption{\small m(\ce{MnO2}) = 0.25g}
+  \end{minipage}
+\end{figure}
+\noindent It seems that $P_\infty$ in practice is always below the theoretical $P_\infty$ derived in \textbf{Section 4.1}.
+The deviation is not major, and is likely caused by the reasons discussed in \textbf{Section 3.4}.
+
+For each trial, we compute the concentration of \ce{MnO2}:
+\[c(\ce{MnO2})=\frac{n(\ce{MnO2})}{V_l} = \frac{m(\ce{MnO2})}{M(\ce{MnO2}) V_l} = 383.4\ \mathrm{mmol}\ g^{-1}L^{-1} \cdot m(\ce{MnO2})\]
+The uncertainty of this is $3.3\%$ resulting from $V_l = 30 \pm 1$mL; the uncertainty of catalyst mass is negligible.
+
+The catalyst concentrations are shown in \textbf{Table 2}
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|c|} 
+   \hline
+   m(\ce{MnO2}) & c(\ce{MnO2})\\ 
+   \hline
+   0.05g& $19.17 \pm 0.63 \mathrm{mol} L^{-1}$\\
+   0.10g& $38.34 \pm 1.27 \mathrm{mol} L^{-1}$\\
+   0.15g& $57.51 \pm 1.90 \mathrm{mol} L^{-1}$\\
+   0.20g& $76.68 \pm 2.53 \mathrm{mol} L^{-1}$\\
+   0.10g& $95.85 \pm 3.16 \mathrm{mol} L^{-1}$\\
+   \hline
+  \end{tabular}
+  \caption{Processed data}
+\end{table}
+
+Using Logger Pro to make a proportional fit for these five data points $(c(\ce{MnO2}),  k_\mathrm{app})$,
 
 
 
