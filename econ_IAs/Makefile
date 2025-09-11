@@ -1,23 +1,47 @@
-# Source directories
-SRC_DIRS := micro macro global
-
 # List of LaTeX auxiliary files to be deleted
-LATEX_GARBAGE := *.aux *.fdb_latexmk *.fls *.bcf *.blg *.log *.out *.run.xml *.synctex.gz
+LATEX_GARBAGE := *.aux *.bbl *.bcf *.blg *.log *.out *.run.xml *.synctex.gz
 
-# Default target: move all PDFs
-all: $(SRC_DIRS:%=move_pdf_%)
+# Declare phony targets
+.PHONY: all clean_micro clean_macro clean_global micro macro global
 
-# Clean all aux files everywhere
-clean:
-	@echo "Nuking LaTeX garbage everywhere..."
-	@find $(SRC_DIRS) -type f \( \
-		$(foreach ext,$(LATEX_GARBAGE),-name "$(ext)" -o) -false \
-	\) -delete
+# Default target: build all
+all: micro macro global
 
-# Move PDF rule for each dir
-move_pdf_%:
-	@echo "Moving $*/main.pdf -> main_$*.pdf"
-	@mv $*/main.pdf ./main_$*.pdf
+# Main phony targets
+micro:
+	@$(MAKE) clean_micro
+	@$(MAKE) build_micro
 
-# Phony targets
-.PHONY: all clean $(SRC_DIRS:%=move_pdf_%)
+macro:
+	@$(MAKE) clean_macro
+	@$(MAKE) build_macro
+
+global:
+	@$(MAKE) clean_global
+	@$(MAKE) build_global
+
+# Cleaning rules
+clean_micro:
+	@echo "Cleaning LaTeX garbage in micro..."
+	@cd micro && rm -f $(LATEX_GARBAGE)
+
+clean_macro:
+	@echo "Cleaning LaTeX garbage in macro..."
+	@cd macro && rm -f $(LATEX_GARBAGE)
+
+clean_global:
+	@echo "Cleaning LaTeX garbage in global..."
+	@cd global && rm -f $(LATEX_GARBAGE)
+
+# Build rules
+build_micro:
+	@echo "Moving micro/main.pdf to main_micro.pdf..."
+	@mv -f micro/main.pdf main_micro.pdf
+
+build_macro:
+	@echo "Moving macro/main.pdf to main_macro.pdf..."
+	@mv -f macro/main.pdf main_macro.pdf
+
+build_global:
+	@echo "Moving global/main.pdf to main_global.pdf..."
+	@mv -f global/main.pdf main_global.pdf
