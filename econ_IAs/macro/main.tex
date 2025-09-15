@@ -92,15 +92,109 @@
 
   Levi said the results show the Mozambican economy is rebounding after climate shocks and post-election tensions, with the private sector driving growth. She also highlighted the launch of a US\$250 million mutual guarantee fund during the fair to support recovery and expand private sector participation.
 
-  These achievements align with the country’s strategy to strengthen investor appeal. In recent years, Mozambique has pursued reforms to attract capital, including the creation of the Investment and Export Promotion Agency (APIEX) and the adoption of a new investment law in 2023. The country now offers tax and customs incentives, along with special economic zones in agriculture, aquaculture, and less-developed regions.
+  These achievements align with the country's strategy to strengthen investor appeal. In recent years, Mozambique has pursued reforms to attract capital, including the creation of the Investment and Export Promotion Agency (APIEX) and the adoption of a new investment law in 2023. The country now offers tax and customs incentives, along with special economic zones in agriculture, aquaculture, and less-developed regions.
 
   According to UNCTAD, Mozambique ranked fourth in Africa for foreign direct investment inflows in 2024, reaching US\$3.55 billion, up from US\$2.5 billion in 2023, when it placed sixth.
 
 }
 
 \newpage
-
 \section*{Commentary}
-Fuckfuckfuck
+
+In summary, Mozambique has approved major new investment projects worth about US\$5 billion, mostly foreign-funded and centered in Sofala, including a large green energy park producing commodities and solar panels.
+The initiatives are expected to create jobs and support the country's economic recovery after recent shocks, with reforms and incentives aimed at strengthening investor confidence.
+This commentary will discuss how \textbf{intervention} by the government through this form of fiscal policy achieves its effects on increasing economic growth and decreasing unemployment.
+The analysis shall be done with respect to the Keynesian model of aggregate demand and supply.
+
+\begin{wrapfigure}{L}{0.6\textwidth}
+  \begin{center}
+    \begin{tikzpicture}[scale=1]
+      \begin{axis}[
+          axis lines=left,
+          xlabel={real GDP},
+          ylabel={price level},
+          xmin=0, xmax=1,
+          ymin=0, ymax=1,
+          xtick={0}, ytick={\empty},
+          clip=false
+        ]
+
+        \addplot[thick, domain=0:0.45] {0.3};
+        \addplot[thick, domain=0.45:0.65] {0.5 - sqrt(1/25 - (x-0.45)^2)};
+        \addplot[thick, domain=0.65:0.654] {100*x - 64.5};
+        \node[left] at (0.65, 0.85) {AS$_0$};
+
+        \addplot[thick, domain=0.25:0.5] {1.1-2*x};
+        \node[right] at (0.5, 0.1) {AD$_0$};
+
+        \addplot[thick, domain=0.5:0.75] {1.6-2*x};
+        \node[right] at (0.75, 0.1) {AD$_1$};
+
+        \draw[dashed] (0.4, 0.3) -- (0.4, 0);
+        \node[below] at (0.4, 0) {Y$_0$};
+
+        \draw[dashed] (0.61, 0.38) -- (0.61, 0);
+        \node[below] at (0.61, 0) {Y$_1$};
+
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Increase in AD}
+  \end{center}
+\end{wrapfigure}
+
+
+
+
+
+\begin{figure}[h]
+  \begin{center}
+    \begin{tikzpicture}[scale=1]
+      \begin{axis}[
+          axis lines=left,
+          xlabel={real GDP},
+          ylabel={price level},
+          xmin=0, xmax=1,
+          ymin=0, ymax=1,
+          xtick={0}, ytick={\empty},
+          clip=false
+        ]
+
+        \addplot[thick, domain=0:0.55] {0.3};
+        \addplot[thick, domain=0.55:0.75] {0.5 - sqrt(1/25 - (x-0.55)^2)};
+        \addplot[thick, domain=0.75:0.754] {100*x - 74.5};
+        \node[right] at (0.75, 0.85) {AS$_1$};
+
+        \addplot[thick, domain=0.45:0.65] {0.5 - sqrt(1/25 - (x-0.45)^2)};
+        \addplot[thick, domain=0.65:0.654] {100*x - 64.5};
+        \node[left] at (0.65, 0.85) {AS$_0$};
+
+        \addplot[thick, domain=0.5:0.75] {1.6-2*x};
+        \node[right] at (0.75, 0.1) {AD$_1$};
+
+
+        \draw[dashed] (0.61, 0.38) -- (0.61, 0);
+        \node[below left] at (0.61, 0) {Y$_1$};
+
+        \draw[dashed] (0.64, 0.32) -- (0.64, 0);
+        \node[below right] at (0.64, 0) {Y$_2$};
+
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Increase in AS}
+  \end{center}
+\end{figure}
+
+
+Direct impact on demand: G and I component of AD. (don't mention exports here)
+
+(Perhaps mainly in terms of quantification) interventionist SS policy, as industrial policy creating jobs and also in favor of `green energy'.
+
+``The country now offers tax and customs incentives, along with
+special economic zones in agriculture, aquaculture, and less-developed regions, 
+[...]
+
+support recovery and expand private sector participation.'' (Market based SS policy)
+
+Mozambique GDP: 22.42B USD
 
 \end{document}
