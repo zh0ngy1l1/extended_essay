@@ -19,6 +19,7 @@
 \usepackage{amssymb}
 \usepackage{titlesec}
 \usepackage{enumitem}
+\usepackage{cancel}
 
 %Images
 \usepackage{graphicx}
@@ -35,6 +36,7 @@
 \titleformat{\subsection}
 {\normalfont\large\bfseries}{\thesubsection}{1em}{}
 \usepackage{tabularx} 
+\usepackage{ragged2e}
 
 %Equation numbering
 \counterwithin{equation}{section}
@@ -56,9 +58,10 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{problem}{Problem}
 \newtheorem*{terminology}{Terminology}
 \newtheorem*{notation}{Notation}
-\newtheorem*{problem}{Problem}
 
 %Bibliography
 \usepackage[
@@ -79,10 +82,9 @@
 
     \vspace{1cm}
     \textbf{Research Question:}
-    What gives rise to the patterns in the sequence $a_n=n^{-2}\varphi(n)\sigma(n)$?\\
+    What gives rise to the patterns in the graph of $n^{-2}\varphi(n)\sigma(n)$?\\
 
     \vfill
-    \today\\
     Word count: 1729
   \end{center}
 \end{titlepage}
@@ -101,128 +103,382 @@ Write this when most of the essay is finished
 %Clearly stated the research question
 %Methodology of the research (future tense)
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{2million_simple.png}
+  \caption{what?}
+\end{figure}
+
 \newpage
 \section{Prerequisite Knowledge, Notation, and Definitions}
 The inarguably most important theorem in number theory is the following:
 \begin{theorem}[Fundamental Theorem of Arithmetic]
-  Every positive integer has an unique prime factorization.
+  Every positive integer has an unique prime factorization.\cite{apostol}
 \end{theorem}
-This theorem is crucial in our ensuing discussion, because it allows us to express any number $n$ uniquely in terms of its $k$ prime divisors $p_1, p_2, ..., p_k$, along with their respective exponents $\alpha_1, \alpha_2, ..., \alpha_k$, as the product
-$p_1^{\alpha_1} p_2^{\alpha_2} \dots p_k^{\alpha_k} = n$.\footnote{for $n=1$ simply set $k=0$}
+This theorem is crucial in our ensuing discussion, because it allows us to express any integer $n\geq 2$ uniquely in terms of its $k$ prime divisors $p_1, p_2, ..., p_k$,
+along with the positive integers $\alpha_1, \alpha_2, ..., \alpha_k$ which indicate the number of times that $n$ is divisible by the corresponding prime factor.
+With this, we obtain the familiar form
 
-The reader should be comfortable with $\Pi$-notation for sequential products, which is similar to the familiar $\Sigma$ but for multiplication.
-For example,
-\[n = p_1^{\alpha_1} p_2^{\alpha_2} \dots p_k^{\alpha_k} = \prod_{i=1}^{k}p_i^{\alpha_i}\]
+\begin{equation}
+  n = p_1^{\alpha_1} p_2^{\alpha_2} \dots p_k^{\alpha_k} = \prod_{i=1}^{k}p_i^{\alpha_i}
+\end{equation}
 
-In a certain sense, every integer $n$ is simply a collection of prime divisors and their respective exponents.
-Im mathematics, we call such collections `sets'.
-This paper will deal with sets a lot, so it is necessary to introduce the relevant notation:
-\begin{notation}[Set-builder]
-  Most commonly, a set $S$ is defined, i.e. `built', with the following notation:
-  \[S = \left\{a \in A\ :\ \text{conditions for }a\right\}\]
-  Sometimes, like in (2.4) of the following example, the domain of the set is put into the condition of $a$, which allows the set to take an expression in $a$.
+In the special case $n=1$, there are no prime factors, and by convention
+\begin{equation}
+  \textit{the empty product equals 1.}
+\end{equation}
+
+The reader should be comfortable with $\Pi$-notation for sequential products, which is similar to $\Sigma$ but for multiplication.
+
+\subsection{Sets and Set-builder Notation}
+Conventionally, $\mathbb{Z}$ denotes the set of integers and $\mathbb{R}$ the set of real numbers.
+The notation $x\in S$ means $x$ belongs to set $S$. For a finite set $S$, $|S|$ is used to denote the number of elements in $S$.
+
+Set-builder notation is a way for mathematicians to define sets symbolically rather than verbosely.
+Basic set-builder notation is used frequently throughout this paper.
+
+\begin{notation}
+  The set $S$ of elements in the set $A$ that fulfill a certain condition is defined, i.e. `built', with the following notation:
+  \[S = \{a \in A\ :\ \text{conditions for }a\}\]
 \end{notation}
-Here are some relevant examples of set-builder notation:
-\begin{align}
-  &\text{Positive Integers} &\mathbb{Z}^+  = \left\{x \in \mathbb{Z}\ :\ x > 0 \right\}\\
-  &\text{Divisors of $n$}   &\mathcal{D}_n = \left\{x \in \mathbb{Z}^+\ :\  x \mid n \right\}\\
-  &\text{Prime Numbers}     &\mathbb{P}    = \left\{x \in \mathbb{Z}^+\ :\ \mathcal{D}_x = \{1, x\} \right\}\\
-  &\text{Prime Powers}      &\mathbb{P}^*  = \left\{x^\alpha :\ x \in \mathbb{P},\ \alpha \in \mathbb{Z}^+ \right\}
-\end{align}
 
-Some more complicated sums and products are discussed in this paper, which require set-builder-like notation to impose restrictions on the numbers to sum over.
-This notation will allow us to cleanly write formulas for the two functions that will be extensively discussed:
+In this case, $S$ is a subset of $A$, because every element of $S$ is an element of $A$.
+This is denoted by $S\subseteq A$.
+The reader should understand the following examples before proceeding:
 
-\begin{definition}[Sum of Divisors Function $\sigma$ and Euler's Totient Function $\varphi$]
-  \[\sigma(n) = \sum_{d \in \mathbb{Z}^+,\ d|n} d\]
-  \[\varphi(n) = \sum_{\substack{k \in \mathbb{Z}^+,\, k\leq n \\ \gcd(k,n)=1}} 1\]
+\begin{example}
+  Build the set of positive integers, denoted $\mathbb{Z}^+$, by choosing the integers which are positive:
+  \begin{equation}
+    \mathbb{Z}^+  = \{x \in \mathbb{Z}\ :\ x > 0 \}
+  \end{equation}
+\end{example}\vspace{0.5em}
+
+
+\begin{example}
+  Build the set of positive divisors of an integer $n\neq 0$, denoted $\mathcal{D}_n$, by choosing the positive integers that divide $n$:
+  \begin{equation}
+    \mathcal{D}_n = \{x \in \mathbb{Z}^+\ :\  x \mid n \}
+  \end{equation}
+  The notation $a\mid b$ means $a$ divides $b$.
+\end{example}\vspace{0.5em}
+
+\begin{example}
+  Recall that prime numbers are positive integers greater than 1 whose only positive divisors are 1 and itself.
+  Build the set of primes, denoted $\mathbb{P}$, using the set of positive divisors defined in (2.4):
+  \begin{equation}
+    \mathbb{P} = \left\{x \in \mathbb{Z}^+\ :\ x>1,\ \mathcal{D}_x = \{1,\ x\} \right\}
+  \end{equation}
+  In this case, multiple conditions on $x$ are necessary, and notationally we separate them with a comma.  
+\end{example}
+
+More complicated sequential sums and products also involve require set-builder-like notation in the subscripts, used to impose restrictions on the what to take the sum or product over.
+(2.6) in \textbf{Definition 1} serves as an example of this.
+
+\subsection{Key Definitions}
+The following functions, defined for any positive integer $n$, are the central focus of this study.
+
+\begin{definition}[Sum of Divisors Function $\sigma$]
+  Define $\sigma(n)$ as the sum of all positive divisors of $n$.
+
+  Mimicking set-builder notation, write
+  \begin{equation}
+    \sigma(n) = \sum_{d \in \mathcal{D}_n} d
+  \end{equation}
 \end{definition}
 
-Verbosely we would say that
-$\sigma(n)$ takes the sum of all numbers $d$ which divide $n$, and
-$\varphi(n)$ counts the numbers $k\leq n$ which are \textit{coprime} to $n$.
+\begin{example}
+  Compute $\sigma(12)$:
+  Since the positive divisors of 12 are $\mathcal{D}_{12}=\{1,\ 2,\ 3,\ 4,\ 6,\ 12\}$,
+  taking their sum yields $\sigma(15)=1+2+3+4+6+12=28$
+\end{example}
+
+\vspace{0.5em}\begin{definition}[Euler's Totient Function $\varphi$]
+  Define $\varphi(n)$ as the number of positive integers less than or equal to $n$ and \textit{coprime} to $n$.
+  Formally,
+  \begin{equation}
+    \varphi(n) = \left|\{x\in \mathbb{Z}^+\ :\ x\leq n,\ \gcd(x,n)=1\}\right|
+  \end{equation}
+\end{definition}
 \begin{terminology}
-  We say that $a$ is coprime to $b$, or $a, b$ are coprime, if $\gcd(a,b)=1$.
+  We say that `$a$ is coprime to $b$', or `$a$ and $b$ are coprime', if $\gcd(a,b)=1$.
 \end{terminology}
 
+\begin{example}
+  Compute $\varphi(12)$:
+
+  \noindent The positive integers less than or equal to 15 and coprime to 15 are 1, 5, 7, 11.
+  Since there are 4 such numbers, $\varphi(12)=4$.
+\end{example}
+
+\newpage
+
 \section{The Problem of Study}
-The aformentioned functions $\varphi$ and $\sigma$ are the subject of this study.
-Specifically, we will solve the following problem from a classic textbook in analytic number theory \cite{apostol} and investigate it's intricacies on a deeper level.
+This investigation was inspired by the following problem from the undergraduate textbook \textit{Introduction to Analytic Number Theory} \cite{apostol}.
 
 \begin{problem}
   Show that $\displaystyle \frac{6}{\pi^2}<\frac{\varphi(n)\sigma(n)}{n^2}<1$ for all $ n\geq 2.$
 \end{problem}
 
-Luckily, this strange emergence of $\pi$ is addressed:
-The textbook promises to prove, in a later chapter, that the infinite product $\prod_p (1 - p^{-2})$,
-extended over all primes $p$, converges to the value $\displaystyle \frac{6}{\pi^2}$.
-
-The result we are hinted to use is known as the Basel Problem.
-The proof that the infinite sum and infinite product are equal will be presented in \textbf{Section 4}, but showing that they are equal to $\frac{\pi^2}{6}$ is more involved and not relevant to this study. \cite{basel}
-\begin{theorem}[Basel Problem]
-  \[\prod_{p \in \mathbb{P}} \frac{1}{(1 - p^{-2})} = \sum_{n=1}^\infty \frac{1}{n^2} = \frac{\pi^2}{6}\]
-\end{theorem}
-
-In consideration of this hint, we should incorporate prime numbers to the statement.
-Equally crucially, we also need to expand our understanding on these functions, as simply substituting the summations from \textbf{Definition 1} quickly becomes hopeless.
-These two issues can be overcome simultaneously with the following result, which characterizes $\varphi$ and $\sigma$ in terms of the prime factorization of $n$:
-\begin{lemma}
-  For any positive integer $n$ with prime factorization $n = \prod_{i=1}^{k} p_i^{\alpha_i}$\\
-  \begin{align}
-    \varphi(n) &= \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1)\\
-    \sigma(n)  &= \prod_{i=1}^{k} \dfrac{p_i^{\alpha_i+1}-1}{p_i-1}
-  \end{align}
-\end{lemma}
-
-To prove this lemma, an even more elementary result on the behaviour of $\varphi$ and $\sigma$ is required:
-\begin{lemma}[Multiplicativity]
-  For any numbers $m, n$ with $\gcd(m,n)=1$, we have
-  \begin{align}
-    \varphi(mn)=\varphi(m)\varphi(n)\\
-    \sigma(mn)=\sigma(m)\sigma(n)
-  \end{align}
-\end{lemma}
-
-After proving \textbf{Lemma 2} and \textbf{Lemma 1}, we proceed to solve the Problem.
-Then, we make an equivalent statement of the problem to better facilitate the following discussion.
-Define the sequence $a_n = \dfrac{\varphi(n)\sigma(n)}{n^2}$. Then the problem is equivalent to the statement $a_n \in \left(\frac{6}{\pi^2}, 1\right)$
-A natural question that follows is whether this interval can be made narrower.
-\begin{question}
-  Does there exist an open interval
-  $I\subsetneq\left(\frac{6}{\pi^2},1\right)$
-  such that 
-  $a_n \in I$ holds for all $ n\geq 2$?
-\end{question}
-
-Using a computer to calculate the first 5000 terms of the sequence $a_n$ and visualize them as points $(n, a_n)$ on the Cartesian plane, we notice that the upper bound probably can't be improved.
-The same is suspected for the lower bound.
-
 \begin{figure}[h]
   \centering
-  \begin{minipage}{0.49\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{clean.png}
-    \caption{Plotting the Sequence}
-    \label{fig:clean}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.49\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{boundary.png}
-    \caption{Highlighting Minima \& Maxima}
-    \label{fig:boundary}
-  \end{minipage}
+  \includegraphics[width=0.8\textwidth]{2500_bounds.png}
+  \caption{Graph for \textbf{Problem 1}}
 \end{figure}
 
+\textbf{Figure 2} visualizes the scenario by plotting points $(n, \frac{\varphi(n)\sigma(n)}{n^2})$ (in blue) and the lower-- and upper bounds (in red) on the Cartesian plane.
+Then, the task in \textbf{Problem 1} is to show that all blue points fall in between the red lines.
 
-More interestingly, however, we notice some intriguing patterns in Figure 1.
-The points around certain special values 1.00 and 0.75 look denser and seem to form horizontal lines.
+The research question of this investigation, regarding `patterns' in the graph can now be put concretely.
+In addition to solving \textbf{Problem 1}, this paper will develop the necessary tools to answer the following questions.
 
 \begin{question}
   Why are `denser lines' formed?
 \end{question}
+This question regards the horizontal lines that many of the points seem to fall in, at $y=1,\ y=0.75$, and $y=0.89$ for example.
+This is one of the first questions arising upon seeing \textbf{Figure 2}, since the orderly patterns strike as unexpected in such a scattered and seemingly random distribution.
+After addressing \textbf{Question 1}, the next natural question is,
 
-A major section of this study will be dedicated to \textbf{Question 2}, in which we will precisely define what is meant by a `denser line' and explain why such a pattern emerges.
+\begin{question}
+  Where can `denser lines' form?
+\end{question}
+This is also a natural thing to ask.
+We see many dense lines between 0.95 and 1, and much fewer below 0.70.
+
+\section{Solving Problem 1}
+First, we must improve our undrstanding on the functions $\sigma$ and $\varphi$. 
+The following product forms for these functions in terms of the prime factorization of $n$ can be derived from their definitions.
+
+\begin{lemma}
+  For any positive integer $n$ with prime factorization $n = \prod_{i=1}^{k} p_i^{\alpha_i}$\\
+  \begin{align}
+    \sigma(n)  &= \prod_{i=1}^{k} \dfrac{p_i^{\alpha_i+1}-1}{p_i-1}\\
+    \varphi(n) &= \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1)
+  \end{align}
+\end{lemma}
+Sections (4.1) and (4.2) are proofs for these two statements.
+\subsection{Deriving the Product Form of $\sigma$}
+To do this, we first show that $\sigma$ is \textit{multiplicative}, which means
+\begin{equation}
+  \sigma(mn)=\sigma(m)\sigma(n)
+\end{equation}
+holds for all coprime positive integers $m, n$.
+
+Let $d$ be a positive divisor of $mn$, and write the prime factorization of $d$:
+\begin{equation}
+  d=\prod_{i=1}^{k}p_i^{\alpha_i}
+\end{equation}
+In this form, each term $p_i^{\alpha_i}$ either 
+\vspace{-0.5em}\begin{enumerate}
+  \item divides $m$ and is coprime to $n$, or
+  \item divides $n$ and is coprime to $m$,
+\end{enumerate}\vspace{-0.5em}
+because $d$ is a divisor of $mn$ and $m$, $n$ are coprime.
+That means we can (uniquely) write
+\begin{equation}
+  d=d_m d_n
+\end{equation}
+where $d_m$ is the product of the terms which correspond
+to case 1., and $d_n$ is the product of the terms
+which correspond to case 2.
+
+Conversely, if $d_m$ and $d_n$ are positive divisors
+of $m$ and $n$, respectively, then $d_m d_n$ is a
+divisor of $mn$. This means that 
+\begin{lemma}
+  There is a \textit{one-to-one correspondence}
+  between elements in $\mathcal{D}_{mn}$ and pairs of
+  elements in $\mathcal{D}_m$ and $\mathcal{D}_n$,
+  for coprime positive integers $m, n$.
+\end{lemma}
+
+\begin{example}
+  Let $m=9,\ n=14$.
+  The divisors of $9$ are $\mathcal{D}_9=\{1,\ 3,\ 9\}$ and of $14$ are
+  $\mathcal{D}_{14}=\{1,\ 2,\ 7,\ 14\}$.
+  Every divisor of $mn=126$ is a product of one divisor
+  of $9$ and one divisor of $14$:
+  \[
+  \begin{aligned}
+    1  &= 1\cdot1,  & 2  &= 1\cdot2,  & 7  &= 1\cdot7,  & 14  &= 1\cdot14,\\
+    3  &= 3\cdot1,  & 6  &= 3\cdot2,  & 21 &= 3\cdot7,  & 42  &= 3\cdot14,\\
+    9  &= 9\cdot1,  & 18 &= 9\cdot2,  & 63 &= 9\cdot7,  & 126 &= 9\cdot14.
+  \end{aligned}
+  \]
+  Thus $\mathcal D_{126}=\{1,\ 2,\ 3,\ 6,\ 7,\ 9,\ 14,\ 18,\ 21,\ 42,\ 63,\ 126\}$.
+\end{example}
+\noindent Thanks to \textbf{Lemma 2}, \textit{multiplicativity} can be established using \textbf{Definition 1}.
+\begin{align}
+\sigma(mn) =&\sum_{d\in \mathcal{D}_{mn}} d\\
+=&\sum_{d_m \in \mathcal{D}_m}\sum_{d_n \in \mathcal{D}_n} d_m d_n\\
+=&\sum_{d_m \in \mathcal{D}_m} d_m \left(\sum_{d_n \in \mathcal{D}_n} d_n\right)\\
+=&\left(\sum_{d_m \in \mathcal{D}_m} d_m\right)\left(\sum_{d_n \in \mathcal{D}_n} d_n\right)=\sigma(m)\sigma(n).
+\end{align}
+\vspace{-0.5em}\begin{enumerate}[label=(4.\arabic*), start=6]
+  \item This is \textbf{Definition 1}.
+  \item By \textbf{Lemma 2}, divisors of $mn$ correspond uniquely to products $d_m d_n$ with $d_m\mid m$, $d_n\mid n$, so the sum may be rewritten as a double sum over such pairs.
+  \item The inner and outer sums are independent, allowing the factors $d_m$ and $d_n$ to be separated.
+  \item Since the inner sum depends only on $n$, it can be factored out of the outer sum.
+\end{enumerate}
+This lets us express $\sigma(n)$ in terms of the prime factorization
+$n=\prod_{i=1}^{k}p_i^{\alpha_i}$ for any positive integer $n$.
+Since $p_1^{\alpha_1},\ p_2^{\alpha_2},\ \dots,\ p_k^{\alpha_k}$ are all coprime,
+\textit{multiplicativity} lets us separate the terms $p_1^{\alpha_1},\ p_2^{\alpha_2},\ \dots,\ p_k^{\alpha_k}$
+out, one by one, to finally reach the form in (4.15):
+\begin{align}
+  \sigma(n) = &\sigma(p_1^{\alpha_1}p_2^{\alpha_2} \dots p_k^{\alpha_k})\\
+  = &\sigma(p_1^{\alpha_1}) \cdot \sigma(p_2^{\alpha_2} \dots p_k^{\alpha_k})\\
+  = &\sigma(p_1^{\alpha_1}) \cdot \sigma(p_2^{\alpha_2}) \cdot \sigma(p_3^{\alpha_3} \dots p_k^{\alpha_k})\\
+  = &\dots\\
+  = &\sigma(p_1^{\alpha_1}) \cdot \sigma(p_2^{\alpha_2}) \cdot \dots \cdot \sigma(p_k^{\alpha_k})\\
+  = &\prod_{i=1}^{k}\sigma(p_i^{\alpha_i})
+\end{align}
+To finish, we only need to compute $\sigma(p^\alpha)$ when $p$ is prime and $\alpha$ is any positive integer.
+This is easy since
+\begin{equation}
+  \mathcal{D}_{p^\alpha}=\{1,\ p,\ p^2,\ \dots,\ p^\alpha\}
+\end{equation}
+which implies $\sigma(p^\alpha)$ is simply a geometric series
+\begin{equation}
+  \sigma(p^{\alpha})=1+p+p^2+\dots+p^\alpha = \frac{p^{\alpha+1}-1}{p-1}
+\end{equation}
+Finally, substitute this into (4.15) to finish:
+\[
+  \sigma(n) = \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i-1} \tag{4.1}
+\]
+This is true for all $n>1$.
+
+
+\begin{example}
+  Compute $\sigma(2025)$.
+  \begin{align*}
+    \sigma(2025) = &\sigma(3^4\cdot 5^2)\\
+    = &\sigma(3^4)\cdot\sigma(5^2)\\
+    = &\frac{3^5-1}{3-1} \frac{5^3-1}{5-1}\\
+    = &121 \cdot 31 = 3751
+  \end{align*}
+\end{example}
+
+\subsection{Deriving the Product Form of $\varphi$}
+Many textbooks elect to first show that $\varphi$ is \textit{multiplicative} like the above proof for $\sigma$.
+Here, an alternative proof requiring less background will be presented.\cite{weisstein}
+
+We will introduce a definition that is very helpful in this proof:
+\begin{definition}
+  Let $\varphi_m(n)$ be the number of positive integers less than or equal to $n$ and coprime to $m$.
+  Formally,
+  \begin{equation}
+    \varphi_m(n) = \left|\{x\in \mathbb{Z}^+\ :\ x\leq n,\ \gcd(x,m)=1\}\right|
+  \end{equation}
+\end{definition}
+\begin{example}
+  Let $n=12$. We compute
+  $\varphi_2(12)$, $\varphi_3(12)$, and $\varphi_6(12)$ by listing the positive integers
+  less than or equal to 12 and striking those not coprime to the subscript:
+  \begin{align*}
+    \varphi_2(12) &= \bigl|\{1,\ \cancel{2},\ 3,\ \cancel{4},\ 5,\ \cancel{6},\ 7,\ \cancel{8},\ 9,\ \cancel{10},\ 11,\ \cancel{12}\}\bigr| = 6,\\[0.3em]
+    \varphi_3(12) &= \bigl|\{1,\ 2,\ \cancel{3},\ 4,\ 5,\ \cancel{6},\ 7,\ 8,\ \cancel{9},\ 10,\ 11,\ \cancel{12}\}\bigr| = 8,\\[0.3em]
+    \varphi_6(12) &= \bigl|\{1,\ \cancel{2},\ \cancel{3},\ \cancel{4},\ 5,\ \cancel{6},\ 7,\ \cancel{8},\ \cancel{9},\ \cancel{10},\ 11,\ \cancel{12}\}\bigr| = 4.
+  \end{align*}
+  Observe that earlier in \textbf{Example 5} we computed $\varphi(12)=4$, the same value 
+  as $\varphi_6(12)=4$.
+  As we shall see, this is not a coincidence.
+\end{example}
+  
+Let $n$ be a positive integer with prime factorization
+\begin{equation}
+  n=\prod_{i=1}^{k} p_i^{\alpha_i}
+\end{equation}
+
+Consider some positive integer $x\leq n$.
+
+If no prime among $p_1,\ p_2,\ \dots,\ p_k$ divides $x$, then
+\begin{equation}
+  \gcd\left(x, \prod_{i=1}^{k}p_1\right)=\gcd(x, n)=1
+\end{equation}
+since no prime divisor of $n$ nor $\prod_{i=1}^{k}p_1$ divides $x$.
+
+\vspace{0.5em}Otherwise, some prime among $p_1,\ p_2,\ \dots,\ p_k$ divides $x$.
+Then it is a common divisor of $x$, $\prod_{i=1}^{k}p_1$, and $n$, which implies both
+\begin{equation}
+  \gcd\left(x, \prod_{i=1}^{k}p_1\right)\neq1 \text{ and } \gcd(x, n)\neq1
+\end{equation}
+
+Hence we deduce that
+\begin{lemma}
+  For a positive integer $n$ with prime factorization $n = \prod_{i=1}^{k}p_1^{\alpha_i}$,
+  The equality $\gcd(x, \prod_{i=1}^{k}p_1)=1$ holds precisely when $\gcd(x, n)=1$ holds.
+\end{lemma}
+This implies the following:
+\begin{align}
+  \varphi_{\prod_{i=1}^{k}p_1}(n) =& \left|\left\{x\in \mathbb{Z}^+\ :\ x\leq n,\ \gcd\left(x,\ \prod_{i=1}^{k}p_1\right)=1\right\}\right|\\
+=& \left|\{x\in \mathbb{Z}^+\ :\ x\leq n,\ \gcd(x,n)=1\}\right|\\
+=& \varphi(n)
+\end{align}
+\vspace{-0.5em}\begin{enumerate}[label=(4.\arabic*), start=24]
+  \item This is \textbf{Definition 3}.
+  \item By \textbf{Lemma 3}, the condition $\gcd(x, \prod_{i=1}^{k}p_1)=1$ in (4.22) is equivalent to the condition $\gcd(x, n)=1$, so the sets are equal.
+  \item This is \textbf{Definition 2}.
+\end{enumerate}
+(4.26) of this result generalizes our observation in \textbf{Example 8}.
+If we choose $m$ to be the product of all distinct prime factors of $n$, i.e. $\prod_{i=1}^{k}p_i$,
+then $\varphi_m(n)$ always gives the same result as the original $\varphi(n)$. 
+
+We proceed to use induction on the prime factors $p_1,\ p_2,\ \dots,\ p_k$ of $n$.
+
+\textbf{Inductive claim:}
+For the positive integer $j < k$ holds
+\begin{equation}
+  \varphi_{\prod_{i=1}^{j}p_i}(n)=n\prod_{i=1}^{j}\left(1-\frac{1}{p_i}\right)
+\end{equation}
+
+\textbf{Base case, $j=1$:}
+Compute $\varphi_{p_1}(n)$.
+
+Among the $n$ positive integers less than or equal to $n$, there are $n/p_1$ multiples of
+$p_1$, namely $p_1,\ 2p_1,\ \dots,\ \frac{n}{p_1} p_1$.
+All the remaining numbers are coprime to $p_1$, which means
+\begin{equation}
+  \varphi_{p_1}(n) = n-n/p_1
+  =n\left(1-\frac{1}{p_1}\right)=n\prod_{i=1}^{1}{\left(1-\frac{1}{p_i}\right)}
+\end{equation}
+This is the desired form, so the base case is done.
+
+\textbf{Inductive step:}
+Assume that the claim holds for $j$, so
+\begin{equation}
+  \varphi_{\prod_{i=1}^{j}p_i}(n)=n\prod_{i=1}^{j}\left(1-\frac{1}{p_i}\right) \tag{4.25}
+\end{equation}
+We consider $p_{j+1}$, the next prime divisor of $n$.
+Among the $n$ positive integers less than or equal to $n$, there are $n/p_{j+1}$ multiples of
+$p_{j+1}$, namely $p_{j+1},\ 2p_{j+1},\ \dots,\ \frac{n}{p_{j+1}} p_{j+1}$.
+
+These numbers need to be erased, but some of them are already erased, namely those
+which are 
+
+\textbf{FUCKFUCKFUCK THIS IS THE MÖBIUS INVERSION PROOF}
+
+\textbf{THIS IS TOO HARD! BUT IS CRT PROOF ANY EASIER??}
+
+Maybe modular inverses proo???
+
+\newpage
+\text{\huge \color{red}\textbackslash section\{ROUGH DRAFT TERRITORY\}}
+\begin{figure}[h]
+  \centering
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{2500_simple.png}
+    \caption{Plotting the Sequence}
+    \label{fig:simple}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{2500_minmax.png}
+    \caption{Highlighting Minima \& Maxima}
+    \label{fig:minmax}
+  \end{minipage}
+\end{figure}
 
 After discussing these regions with many points, we proceed to discuss the opposite:
 Are there any regions with no points?
@@ -241,86 +497,6 @@ Here we are showing that the sequence $a_n$ gets arbitrarily close to \textit{an
 while \textbf{Question 1} only required us to show that the sequence gets arbitrarily close to its boundary.
 
 \newpage
-\section{Solving the Problem}
-We work from the bottom up and start by showing \textbf{Lemma 2}.
-\subsection*{Proof of Lemma 2}
-We are give numbers $m, n$ with $gcd(m, n)=1$, and wish to show that
-\begin{enumerate}[label=(3.\arabic*), start=2]
-  \item $\varphi(mn)=\varphi(m)\varphi(n)$
-  \item $\sigma(mn)=\sigma(m)\sigma(n)$
-\end{enumerate}
-
-Recall that $\varphi(n)$ counts the numbers $k \leq n$ with which are coprime to $n$, so in set-builder notation,
-\[\varphi(n) = \left| \left\{k\in\mathbb{Z}^+:\ k\leq n,\ \gcd(k,n) = 1\right\} \right|.\]
-Then the desired equality $\varphi(mn) = \varphi(m) \varphi(n)$ is equivalent to showing that 
-\begin{align}
-  &\left| \left\{k\in\mathbb{Z}:\ 0 \leq k < mn,\ \gcd(k,mn) = 1\right\} \right|\\
-  &=\left| \left\{k\in\mathbb{Z}:\ 0\leq k < m,\ \gcd(k,m) = 1\right\} \right| \cdot
-  \left| \left\{k\in\mathbb{Z}:\ 0\leq k < n,\ \gcd(k,n) = 1\right\} \right|\\
-  &=\left| \left\{(k_m, k_n)\in\mathbb{Z} \times \mathbb{Z}:\ 0 \leq k_m < m,\ 0 \leq k_n < n,\ \gcd(k_m,m) = \gcd(k_n,n) = 1\right\} \right|
-\end{align}
-
-To prove this, we use the following fact:
-\begin{theorem}[Special Case of CRT\footnote{Maybe I should mention the general case, since the reader may be interested\dots}]
-  If $m, n$ are coprime, and for integers $k_m, k_n$ hold $0\leq k_m < m,\ 0\leq k_n < n$,
-  then there exists an unique integer $k$ with $0 \leq k < mn$ that has remainder $k_m$ when divided by $m$ and remainder $k_n$ when divided by $n$.
-\end{theorem}
-
-\textbf{Proof of CRT.} Suppose, for contradiction, that there exists anonther integer $k'$, greater than $k$, with $0 \leq k' < mn$, which also has remainders $k_m, k_n$ when divided by $m$ and $n$, respectively.
-Then $m \mid k' - k$ and $n \mid k' - k$ are both true.
-Noting that $m$ and $n$ are coprime and $k' - k > 0$ we may write
-\[mn \mid k' - k \implies mn \leq k' - k < mn,\]
-contradiction.
-This shows that each pair of remainders $k_m, k_n$ corresponds to at most one number $k$ with $0 \leq k < mn$.
-Since there precisely $mn$ pairs of remainders, and also precisely $mn$ integers between $0$ and $mn$, we conclude that such a $k$ must always exist, so the proof is complete. \qed
-
-
-This theorem shows that every number $k$ from the set in (4.1) corresponds to an unique pair of remainders when divided by $n$ and $m$,
-and every pair $(k_m, k_n)$ from the set in (4.3) corresponds to an unique number between $0$ and $mn$.
-This will be very useful if we verify that the remainders of $k$ when divided $m$ and $n$ are coprime to $m$ and $n$ respectively, if and only if $k$ is coprime to $mn$.
-
-By the Euclidean algorithm, we may write
-\[\gcd(m, k) = \gcd(m, k-m) = \gcd(m, k-2m) = ... = \gcd(m, k_m).\]
-Repeating this for $n$ and combining, we get that $\gcd(mn, k) = \gcd(m,k)\gcd(n,k)=\gcd(m,k_m)\gcd(n,k_n)$, which equals one if and only if both $\gcd(m,k_m)=\gcd(n,k_n)=1$.
-
-This means the Chinese remainder theorem actually finds a one-to-one correspondence between these sets which we want to show to have equal size,
-which finally shows that $\varphi(mn) = \varphi(m)\varphi(n)$. \qed
-
-Luckily, the proof that $\sigma(mn) = \sigma(m)\sigma(n)$ is not nearly as difficult.
-We will use the following fact in the proof:
-\begin{lemma}
-  Given that $m$ and $n$ are coprime, each divisor $d \mid mn$ can be written uniquely as the product $d_m d_n$ of divisors $d_m\mid m$ and $d_n\mid n$.
-\end{lemma}
-
-\textbf{Proof of Lemma 3.} Observe the prime factorization of $d = \prod_{i=1}^{k} p_i^{\alpha_i}$.
-For each term $p_i^{\alpha_i}$ in this product holds either 
-$\begin{dcases}
-  p_i \not|\ n\\
-  p_i^{\alpha_i} \mid m
-\end{dcases}$
-or
-$\begin{dcases}
-  p_i \not|\ m\\
-  p_i^{\alpha_i} \mid n
-\end{dcases}$
-.
-We simply multiply the terms which divide $m$ to obtain $d_m$, and the terms which divide $n$ to obtain $d_n$.
-This process is unique since prime factorization is unique (\textbf{Theorem 1}), so the proof is complete. \qed
-
-Now the multiplicativity of $\sigma$ can be proven in one go, by using \textbf{Lemma 3} to get from (4.4) to (4.5).
-\begin{align}
-\sigma(mn) =&\sum_{d\mid mn} d\\
-=&\sum_{d_m\mid m,\ d_n\mid n} d_m d_n\\
-=&\sum_{d_m\mid m}\sum_{d_n\mid n} d_m d_n\\
-=&\sum_{d_m\mid m} d_m \left(\sum_{d_n\mid n} d_n\right)\\
-=&\left(\sum_{d_m\mid m} d_m\right)\left(\sum_{d_n\mid n} d_n\right)=\sigma(m)\sigma(n).
-\end{align}
-\qed
-
-$\backslash \text{begin}\{\text{ROUGH DRAFT TERRITORY}\}$
-
-See how sigma and phi behave for prime powers to show lemma 1, by induction over the terms in the prime factorization, kinda.
-
 Then show that the basel problem $\infty$ sum is the $\infty$ product: Page 230 (pdf: 242) of \cite{apostol}.
 Then solve \textbf{Problem.} by writing $\dfrac{\varphi(n)\sigma(n)}{n^2}$ in terms of primes:
 \[\frac{\varphi(n)\sigma(n)}{n^2} = \prod_{i=1}^{k} \dfrac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}}\]
@@ -332,7 +508,7 @@ Each term is at least $\dfrac{p_k^2-1}{p_k^2}$ and at most arbitrarily close to 
 Then the global maximum is strictly below 1 (we only consider $n\geq2$\footnote{maybe consider $n=1$ too but that's a matter of my taste \& preference})
 Then the global minimum is strictly above $\prod_{p\in \mathbb{P}}\dfrac{p^2-1}{p^2} = \dfrac{6}{\pi^2}$ (Basel Problem)
 
-So \textbf{Problem.} is done.
+So \textbf{Problem 1.} is done.
 
 \section{Questions}
 Next answer Question 1. Also rewrite it not using the interval because it's IB AA HL, not Topology 101.
@@ -358,21 +534,21 @@ Actually, we get a dense line $b_n = a_{c p_n}$ for any positive integer d, and 
 Though the issue is that if I define `dense lines' like this, it's hard to verify every dense line is generated by this description.
 In fact, I don't even think that's true... Maybe it is? But how do I define it better? This is the only formal definition I could come up with!
 
-But that's enough Knowledge about the dense lines that we can graph them! Is this a satisfying enough answer to Question 2?
+But that's enough knowledge about the dense lines that we can graph them! Is this a satisfying enough answer to Question 2?
 \begin{figure}[h]
   \centering
   \begin{minipage}{0.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{10densest.png}
-    \caption{First 10 `dense lines'}
-    \label{fig:10densest}
+    \includegraphics[width=\linewidth]{2500_densest.png}
+    \caption{First 6 `dense lines'}
+    \label{fig:densest}
   \end{minipage}
   \hfill
   \begin{minipage}{0.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{2m.png}
-    \caption{max from 5000 to 2,000,000}
-    \label{fig:2m}
+    \includegraphics[width=\linewidth]{2million_simple.png}
+    \caption{plotting up to $n=2,000,000$}
+    \label{fig:2million}
   \end{minipage}
 \end{figure}
 

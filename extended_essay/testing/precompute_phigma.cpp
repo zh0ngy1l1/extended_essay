@@ -1,23 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 using ull = unsigned long long;
 
-const int N = 1000000;
-pair<ull,ull> g[N+1];
-bool is_prime[N+1];
+const int N = 2000000;
+ull phi[N + 1], sigma[N + 1];
+bool is_prime[N + 1];
 
 int main(){
     // --- 1) initialize ---
     for(int i = 1; i <= N; i++){
-        g[i] = {1, 1};
+        phi[i] = sigma[i] = 1;
         is_prime[i] = true;
     }
-    is_prime[0] = is_prime[1] = false;
 
-    // --- 2) sieve + build g multiplicatively ---
-    for(int p = 2; p <= N; p++){
-        if(!is_prime[p]) continue;
+    // --- 2) sieve + build phi and sigma multiplicatively ---
+    for (int p = 2; p <= N; p++) {
+        if (!is_prime[p]) continue;
         // mark multiples as composite
         for(int k = 2*p; k <= N; k += p)
             is_prime[k] = false;
@@ -29,31 +27,27 @@ int main(){
             while(j % (p_pow * p) == 0)
                 p_pow *= p;
             // now p_pow = p^α, so contribution is
-            //   num = p^(α+1) - 1
-            //   den = p^(α+1)
-            ull num = p_pow * p - 1;
-            ull den = p_pow * p;
-
-            // multiply into g[j] and immediately reduce
-            g[j].first  *= num;
-            g[j].second *= den;
-            ull d = gcd(g[j].first, g[j].second);
-            g[j].first  /= d;
-            g[j].second /= d;
+            //   phi = p^α - p^(α-1)
+            //   sigma = (p^(α+1) - 1) / (p - 1)
+            ull dphi = p_pow - p_pow / p;
+            ull dsig = (p_pow * p - 1) / (p - 1);
+            phi[j] *= dphi;
+            sigma[j] *= dsig;
         }
     }
 
     // --- 3) output ---
     namespace fs = std::filesystem;
     fs::create_directory("precomputed"); // Creates dir if it doesn't exist
-    
-    ofstream f;
-    f.open("precomputed/g.csv");
 
+    ofstream f;
+    f.open("precomputed/phigma.csv");
+    
+    
     for(int i = 1; i <= N; i++){
         f << i
-             << ' ' << g[i].first
-             << ' ' << g[i].second
+             << ' ' << phi[i]
+             << ' ' << sigma[i]
              << "\n";
     }
     f.close();
