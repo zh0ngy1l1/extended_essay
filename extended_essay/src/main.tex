@@ -130,10 +130,37 @@ In the special case $n=1$, there are no prime factors, and by convention
 
 The reader should be comfortable with $\Pi$-notation for sequential products, which is similar to $\Sigma$ but for multiplication.
 
-\subsection{Sets and Set-builder Notation}
-Conventionally, $\mathbb{Z}$ denotes the set of integers and $\mathbb{R}$ the set of real numbers.
-The notation $x\in S$ means $x$ belongs to set $S$. For a finite set $S$, $|S|$ is used to denote the number of elements in $S$.
+\subsection{Introduction to Sets}
+A \textit{set} is an \textit{unordered} collection of elements.
+The discussion in this paper only involves sets of numbers, such as $\mathbb{Z}$, used to denote the set of integers,
+and $\mathbb{R}$, used to denote the set of real numbers.
 
+Here \textit{unordered} means that for example, the set $A =\{1, 2\}$ is the same as
+the set $B=\{2, 1\}$.
+When two sets $A, B$ are the same, we write $A = B$.
+
+\begin{notation}
+  \begin{itemize}
+    Let $A$, $B$, and $S$ be sets.
+    \item The notation $x \in S$ means that $x$ is an element of the set $S$.
+    \item For a finite set $S$, the symbol $|S|$ denotes the number of elements contained in $S$.
+    \item The union $A \cup B$ is the set of all elements that belong to $A$, to $B$, or to both.
+    \item The intersection $A \cap B$ is the set of all elements that belong to both $A$ and $B$.
+    \item The difference $A \setminus B$ is the set of all elements that belong to both $A$ but not $B$.
+  \end{itemize}
+\end{notation}\vspace{0.5em}
+
+\begin{example}\text{}
+
+  The set $\{1,2,4,7,8,11,13,14\}$ has size $\left|\{1,2,4,7,8,11,13,14\}\right|=4$.
+
+  For sets $A= \{2,4,6,8,10,12\},\ B=\{3,6,9,12\}$,
+  their union is $A\cup B = \{2, 3, 4, 6, 8, 9, 10, 12\}$,
+  and their intersection is $A\cap B = \{6, 12\}$.
+  The difference $A\setminus B$ is $\{2,4,8,10\}$.
+\end{example}
+
+\subsection{Set-builder Notation}
 Set-builder notation is a way for mathematicians to define sets symbolically rather than verbosely.
 Basic set-builder notation is used frequently throughout this paper.
 
@@ -194,7 +221,7 @@ The following functions, defined for any positive integer $n$, are the central f
 
 \vspace{0.5em}\begin{definition}[Euler's Totient Function $\varphi$]
   Define $\varphi(n)$ as the number of positive integers less than or equal to $n$ and \textit{coprime} to $n$.
-  Formally,
+  Formally, define
   \begin{equation}
     \varphi(n) = \left|\{x\in \mathbb{Z}^+\ :\ x\leq n,\ \gcd(x,n)=1\}\right|
   \end{equation}
@@ -359,107 +386,57 @@ This is true for all $n>1$.
 \end{example}
 
 \subsection{Deriving the Product Form of $\varphi$}
-Many textbooks elect to first show that $\varphi$ is \textit{multiplicative} like the above proof for $\sigma$.
-Here, an alternative proof requiring less background will be presented.\cite{weisstein}
-
-We will introduce a definition that is very helpful in this proof:
-\begin{definition}
-  Let $\varphi_m(n)$ be the number of positive integers less than or equal to $n$ and coprime to $m$.
-  Formally,
-  \begin{equation}
-    \varphi_m(n) = \left|\{x\in \mathbb{Z}^+\ :\ x\leq n,\ \gcd(x,m)=1\}\right|
-  \end{equation}
-\end{definition}
-\begin{example}
-  Let $n=12$. We compute
-  $\varphi_2(12)$, $\varphi_3(12)$, and $\varphi_6(12)$ by listing the positive integers
-  less than or equal to 12 and striking those not coprime to the subscript:
-  \begin{align*}
-    \varphi_2(12) &= \bigl|\{1,\ \cancel{2},\ 3,\ \cancel{4},\ 5,\ \cancel{6},\ 7,\ \cancel{8},\ 9,\ \cancel{10},\ 11,\ \cancel{12}\}\bigr| = 6,\\[0.3em]
-    \varphi_3(12) &= \bigl|\{1,\ 2,\ \cancel{3},\ 4,\ 5,\ \cancel{6},\ 7,\ 8,\ \cancel{9},\ 10,\ 11,\ \cancel{12}\}\bigr| = 8,\\[0.3em]
-    \varphi_6(12) &= \bigl|\{1,\ \cancel{2},\ \cancel{3},\ \cancel{4},\ 5,\ \cancel{6},\ 7,\ \cancel{8},\ \cancel{9},\ \cancel{10},\ 11,\ \cancel{12}\}\bigr| = 4.
-  \end{align*}
-  Observe that earlier in \textbf{Example 5} we computed $\varphi(12)=4$, the same value 
-  as $\varphi_6(12)=4$.
-  As we shall see, this is not a coincidence.
-\end{example}
-  
 Let $n$ be a positive integer with prime factorization
 \begin{equation}
-  n=\prod_{i=1}^{k} p_i^{\alpha_i}
+  n=\prod_{i=1}^{k} p_i^{\alpha_i} 
 \end{equation}
 
-Consider some positive integer $x\leq n$.
-
-If no prime among $p_1,\ p_2,\ \dots,\ p_k$ divides $x$, then
+Recall the definition of $\varphi$ from \textbf{Definition 2}:
 \begin{equation}
-  \gcd\left(x, \prod_{i=1}^{k}p_1\right)=\gcd(x, n)=1
+  \varphi(n) = \left|\{x\in \mathbb{Z}^+\ :\ x\leq n,\ \gcd(x,n)=1\}\right|
+  \tag{2.7}
 \end{equation}
-since no prime divisor of $n$ nor $\prod_{i=1}^{k}p_1$ divides $x$.
+In other words, we can compute $\varphi(n)$ using the set of positive integers less than
+or equal to $n$, by removing those which are a multiple of some prime factor of $n$, and
+counting how many remains.
+This works because those which are erased are not coprime to $n$, and all the remaining ones are.
+\begin{example}
+  Suppose $n=15 = 5 \cdot 3$, and compute $\varphi(15)$:
 
-\vspace{0.5em}Otherwise, some prime among $p_1,\ p_2,\ \dots,\ p_k$ divides $x$.
-Then it is a common divisor of $x$, $\prod_{i=1}^{k}p_1$, and $n$, which implies both
+  The multiples of 3 less than 15 are
+  $\{3,\ 6,\ 9,\ 12,\ 15\}$,
+  and the multiples of 5 less than 15 are
+  $\{5,\ 10,\ 15\}$. If we remove these from the positive integers less than or equal to 15,
+  the integers that remain are
+  \begin{equation}
+    \{1,2,\not3,4,\not5,\not6,7,8,\not9,\not10,11,\not12,13,14,\not15\}
+    =\{1,\ 2,\ 4,\ 7,\ 8,\ 11,\ 13,\ 14\}
+  \end{equation}
+  so $\varphi(15) = 8$
+\end{example}
+The line of thought in \textbf{Example 9} motivates the following definition:
+\begin{definition}
+  For some prime divisor $p\mid n$, let $S_p (n)$ denote the set of multiples of $p$ which are less than or equal to $n$.
+  Formally, define the set
+  \begin{equation}
+    S_p (n) = \left\{x\in\textbf{Z}^+\ :\ x\leq n,\ p \mid x\right\}
+  \end{equation}
+\end{definition}
+Notice how $\{3,\ 6,\ 9,\ 12,\ 15\} = S_3 (15)$ and $\{5,\ 10,\ 15\}= S_5 (15)$ in \textbf{Example 9}.
+
+To generalize the idea in the example, we should consider the following set:
 \begin{equation}
-  \gcd\left(x, \prod_{i=1}^{k}p_1\right)\neq1 \text{ and } \gcd(x, n)\neq1
+  S_{p_1}(n)\cup S_{p_2}(n)\cup \dots \cup S_{p_k}(n)
 \end{equation}
+This is the set we remove from $\{1,\ 2,\ \dots,\ n\}$, so that the remaining numbers
+are all coprime to $n$ and hence make up $\varphi(n)$.
 
-Hence we deduce that
-\begin{lemma}
-  For a positive integer $n$ with prime factorization $n = \prod_{i=1}^{k}p_1^{\alpha_i}$,
-  The equality $\gcd(x, \prod_{i=1}^{k}p_1)=1$ holds precisely when $\gcd(x, n)=1$ holds.
-\end{lemma}
-This implies the following:
-\begin{align}
-  \varphi_{\prod_{i=1}^{k}p_1}(n) =& \left|\left\{x\in \mathbb{Z}^+\ :\ x\leq n,\ \gcd\left(x,\ \prod_{i=1}^{k}p_1\right)=1\right\}\right|\\
-=& \left|\{x\in \mathbb{Z}^+\ :\ x\leq n,\ \gcd(x,n)=1\}\right|\\
-=& \varphi(n)
-\end{align}
-\vspace{-0.5em}\begin{enumerate}[label=(4.\arabic*), start=24]
-  \item This is \textbf{Definition 3}.
-  \item By \textbf{Lemma 3}, the condition $\gcd(x, \prod_{i=1}^{k}p_1)=1$ in (4.22) is equivalent to the condition $\gcd(x, n)=1$, so the sets are equal.
-  \item This is \textbf{Definition 2}.
-\end{enumerate}
-(4.26) of this result generalizes our observation in \textbf{Example 8}.
-If we choose $m$ to be the product of all distinct prime factors of $n$, i.e. $\prod_{i=1}^{k}p_i$,
-then $\varphi_m(n)$ always gives the same result as the original $\varphi(n)$. 
+Actually, size of the set in (4.21) is precisely $n-\varphi(n)$.
 
-We proceed to use induction on the prime factors $p_1,\ p_2,\ \dots,\ p_k$ of $n$.
+prove inclusion-exclusion (pp. 231 - 233).
 
-\textbf{Inductive claim:}
-For the positive integer $j < k$ holds
-\begin{equation}
-  \varphi_{\prod_{i=1}^{j}p_i}(n)=n\prod_{i=1}^{j}\left(1-\frac{1}{p_i}\right)
-\end{equation}
 
-\textbf{Base case, $j=1$:}
-Compute $\varphi_{p_1}(n)$.
 
-Among the $n$ positive integers less than or equal to $n$, there are $n/p_1$ multiples of
-$p_1$, namely $p_1,\ 2p_1,\ \dots,\ \frac{n}{p_1} p_1$.
-All the remaining numbers are coprime to $p_1$, which means
-\begin{equation}
-  \varphi_{p_1}(n) = n-n/p_1
-  =n\left(1-\frac{1}{p_1}\right)=n\prod_{i=1}^{1}{\left(1-\frac{1}{p_i}\right)}
-\end{equation}
-This is the desired form, so the base case is done.
-
-\textbf{Inductive step:}
-Assume that the claim holds for $j$, so
-\begin{equation}
-  \varphi_{\prod_{i=1}^{j}p_i}(n)=n\prod_{i=1}^{j}\left(1-\frac{1}{p_i}\right) \tag{4.25}
-\end{equation}
-We consider $p_{j+1}$, the next prime divisor of $n$.
-Among the $n$ positive integers less than or equal to $n$, there are $n/p_{j+1}$ multiples of
-$p_{j+1}$, namely $p_{j+1},\ 2p_{j+1},\ \dots,\ \frac{n}{p_{j+1}} p_{j+1}$.
-
-These numbers need to be erased, but some of them are already erased, namely those
-which are 
-
-\textbf{FUCKFUCKFUCK THIS IS THE MÖBIUS INVERSION PROOF}
-
-\textbf{THIS IS TOO HARD! BUT IS CRT PROOF ANY EASIER??}
-
-Maybe modular inverses proo???
 
 \newpage
 \text{\huge \color{red}\textbackslash section\{ROUGH DRAFT TERRITORY\}}
