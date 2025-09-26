@@ -23,6 +23,7 @@
 \graphicspath{ {./images/} }
 \usepackage{wrapfig}
 \usepackage{float}
+\usepackage{caption}
 
 %Tables
 \usepackage{multirow}
@@ -45,7 +46,7 @@
 \pgfplotsset{compat=newest}
 \usetikzlibrary{positioning, arrows.meta}
 \usepgfplotslibrary{fillbetween}
-\usepackage{wrapfig}
+%\tikzset{every node/.style={font=\small}}
 
 
 \begin{document}
@@ -69,7 +70,7 @@
 
     \textbf{Article access date:} September 11, 2025\\
 
-    \textbf{Commentary writing date:} September 11, 2025\\
+    \textbf{Commentary writing date:} \today\\
 
     \textbf{Unit of the syllabus:}
     Macroeconomics\\
@@ -78,7 +79,7 @@
     Intervention.\\
 
     \vfill
-    Word count: 666
+    Word count: 772
   \end{center}
 \end{titlepage}
 
@@ -101,14 +102,17 @@
 \newpage
 \section*{Commentary}
 
-In summary, Mozambique has approved major new investment projects worth about US\$5 billion, mostly foreign-funded and centered in Sofala, including a large green energy park producing important commodities.
+In summary, Mozambique has approved major new investment projects worth about 5 billion USD, mostly foreign-funded and centered in Sofala, including a large green energy park producing important commodities.
 The initiatives are expected to create jobs and support the country's economic recovery after recent shocks, with reforms and incentives aimed at strengthening investor confidence.
-This commentary will discuss how \textbf{intervention} by the government through this form of fiscal policy achieves its effects on increasing economic growth and decreasing unemployment.
-The analysis shall be done with respect to the Keynesian model of aggregate demand and supply.
+This commentary will discuss how indirect \textbf{intervention} by the government, in the act of facilitating and approving such projects, achieves its effects on increasing economic growth and decreasing unemployment.
+The analysis shall be done with respect to the Keynesian model of aggregate demand (AD) and aggregate supply (AS).
 
-\begin{wrapfigure}{L}{0.5\textwidth}
+Firstly, the immediate effect of approving `investment projects valued at about US\$5 billion' likely causes economic growth, and thereby alleviates the potential contraction caused by recent shocks.
+This development represents direct investment spending.
+As a component of GDP, an increase in investment spending directly increases aggregate demand.
+\vspace{-2em}\begin{wrapfigure}{L}{0.48\textwidth}
   \begin{center}
-    \begin{tikzpicture}[scale=1]
+    \begin{tikzpicture}[scale=0.9]
       \begin{axis}[
           axis lines=left,
           xlabel={real GDP},
@@ -122,40 +126,107 @@ The analysis shall be done with respect to the Keynesian model of aggregate dema
         \addplot[thick, domain=0:0.45] {0.3};
         \addplot[thick, domain=0.45:0.65] {0.5 - sqrt(1/25 - (x-0.45)^2)};
         \addplot[thick, domain=0.65:0.654] {100*x - 64.5};
-        \node[left] at (0.65, 0.85) {AS$_0$};
+        \node[left] at (0.65, 0.85) {AS$_1$};
 
         \addplot[thick, domain=0.25:0.5] {1.1-2*x};
-        \node[right] at (0.5, 0.1) {AD$_0$};
+        \node[xshift=11pt] at (0.5, 0.1) {AD$_1$};
 
         \addplot[thick, domain=0.5:0.75] {1.6-2*x};
-        \node[right] at (0.75, 0.1) {AD$_1$};
+        \node[xshift=11pt] at (0.75, 0.1) {AD$_2$};
 
         \draw[dashed] (0.4, 0.3) -- (0.4, 0);
-        \node[below] at (0.4, 0) {Y$_0$};
+        \node[below] at (0.4, 0) {$Y_1$};
 
         \draw[dashed] (0.61, 0.38) -- (0.61, 0);
-        \node[below] at (0.61, 0) {Y$_1$};
+        \node[below] at (0.61, 0) {$Y_2$};
 
       \end{axis}
     \end{tikzpicture}
-    \caption{Increase in AD}
+    \captionsetup{
+      justification=centering,
+      font=small,
+      labelfont=small
+    }
+    \caption{The short-run effect of increased investment on aggregate demand.}
   \end{center}
 \end{wrapfigure}
-\noindent Firstly, the immediate effect of approving `investment projects valued at about US\$5 billion' indicates direct investment spending.
-As a component of GDP, an increase in investment spending directly increases aggregate demand.
-It is reasonable to treat these inefficiencies that Mozambique is facing as a source for a recessionary gap.
-Then, according to the Keynesian model, an economy experiencing a recessionary gap is not able to correct itself, the government must do something to increase aggregate demand and clear it. 
-Thus, the decision to approve the investment projects can be considered as \textbf{intervention} by the government, to clear this market failure.
 
-In \textbf{Figure 1}, the initial aggregate demand (AD) is denoted by AD$_0$.
-Following the 5 billion USD investment, aggregate demand will increase to AD$_1$.
-The recessionary gap previously present is depicted with the old demand curve intersecting the Keynesian aggregate supply (AS) curve AS$_0$ at its flat portion, resulting in real GDP of Y$_0$.
-The increase in aggregate demand to AD$_1$ increases real GDP to Y$_1$ with little effect on the price level, and the new intersection is on the upwards sloping part of the supply curve.
-This is reasonable to assume, considering that 5 billion USD is a significant amount of money compared to the GDP of Mozambique as of September 2025, which is 22.44 billion USD.
+\noindent It is reasonable to treat the `climate shocks and post-election tensions' in Mozambique as a source of a recessionary gap, manifest as insufficient aggregate demand.
+According to the Keynesian model, an economy experiencing a recessionary gap cannot self-correct, so the government must act to boost aggregate demand. 
+Although the 5 billion USD counts as investment spending in national accounts, the government's role in approving these projects makes the policy an indirect form of \textbf{intervention}.
 
-\begin{wrapfigure}{L}{0.5\textwidth}
+In \textbf{Figure 1}, the initial aggregate demand is denoted by AD$_1$.
+Following the 5 billion USD investment, aggregate demand increases to AD$_2$.
+The recessionary gap is depicted with the initial demand curve AD$_1$ intersecting the Keynesian aggregate supply curve AS$_1$ at its flat portion, resulting in real GDP of $Y_1$.
+The increase in aggregate demand to AD$_2$ increases real GDP to $Y_2$ with little effect on the price level, and the new intersection is on the upwards sloping part of the supply curve.
+This aligns with Keynesian theory and indicates short-run economic growth.
+Such a noticeable increase in AD is reasonable to assume, considering that 5 billion USD is a significant amount of money compared to Mozambique's GDP in September 2025, which is 22.44 billion USD.
+
+\vspace{-2em}\begin{wrapfigure}{L}{0.48\textwidth}
   \begin{center}
-    \begin{tikzpicture}[scale=1]
+    \begin{tikzpicture}[scale=0.9]
+      \begin{axis}[
+          axis lines=left,
+          xlabel={quantity of labor},
+          ylabel={price of labor (wage)},
+          y label style={at={(axis description cs:-0.1,.5)},anchor=south},
+          xmin=0, xmax=1,
+          ymin=0, ymax=1,
+          xtick={0}, ytick={\empty},
+          clip=false
+        ]
+
+        \node at (0.5, 1.1) {labor market in the};
+        \node at (0.5, 1.02) {industrial sector};
+        
+        \addplot[thick, domain=0.1:0.9] {x};
+        \addplot[thick, domain=0.1:0.7] {0.8 - x};
+        \addplot[thick, domain=0.2:0.9] {1.1- x};
+        \addplot[thick, domain=0.167:0.833] {1- x};
+        \node[below] at (0.9, 0.9) {S};
+        \node[xshift=7pt] at (0.9, 0.2) {D$_1$};
+        \node[xshift=7pt] at (0.7, 0.1) {D$_2$};
+        \node[xshift=7pt] at (0.833, 0.167) {D$_3$};
+        
+        \draw[dashed] (0, 0.55) -- (0.55, 0.55) -- (0.55, 0);
+        \node[below] at (0.55, 0) {$Q_1$};
+        \node[left] at (0, 0.55) {$W_1$};
+
+        \draw[dashed] (0.25, 0.55) -- (0.25, 0);
+        \node[below] at (0.25, 0) {$Q_2$};
+
+
+        \draw[dashed] (0.45, 0.55) -- (0.45, 0);
+        \node[below] at (0.45, 0) {$Q_3$};
+
+      \end{axis}
+    \end{tikzpicture}
+    \captionsetup{
+      justification=centering,
+      font=small,
+      labelfont=small
+    }
+    \caption{Increase in demand of labor}
+  \end{center}
+\end{wrapfigure}
+
+\noindent In addition to an immediate increase in investment spending, it is likely that there is also more consumer spending, contributing to aggregate demand.
+The creation of 10,000 direct jobs in the industrial sectors increases household income, and reducing cyclical unemployment.
+
+In \textbf{Figure 2}, D$_1$ represents the demand of labor in the Mozambican industrial sector before these shocks, which reduce its demand to D$_2$.
+Keynesian theory claims that wages are inflexible downwards, so the wage remains at $W_1$, resulting in cyclical unemployment of $Q_1 - Q_2$.
+The effect of the newly created jobs is shown as an increase in demand, from D$_2$ to D$_3$, which works to lessen unemployment to $Q_1 - Q_3$.
+More employment means more household income, so consumer spending is increased.
+
+These investment projects also have a long-run effect on aggregate demand.
+The increased output from these industries allows for the export of a portion of the commodities produced in this industrial park.
+This is likely, given that most of the investment originates from foreign sources.
+
+
+
+\begin{wrapfigure}{L}{0.48\textwidth}
+  \begin{center}
+    \begin{tikzpicture}[scale=0.9]
       \begin{axis}[
           axis lines=left,
           xlabel={real GDP},
@@ -169,53 +240,36 @@ This is reasonable to assume, considering that 5 billion USD is a significant am
         \addplot[thick, domain=0:0.55] {0.3};
         \addplot[thick, domain=0.55:0.75] {0.5 - sqrt(1/25 - (x-0.55)^2)};
         \addplot[thick, domain=0.75:0.754] {100*x - 74.5};
-        \node[right] at (0.75, 0.85) {AS$_1$};
+        \node[right] at (0.75, 0.85) {AS$_2$};
 
         \addplot[thick, domain=0.45:0.65] {0.5 - sqrt(1/25 - (x-0.45)^2)};
         \addplot[thick, domain=0.65:0.654] {100*x - 64.5};
-        \node[left] at (0.65, 0.85) {AS$_0$};
-
-        \addplot[thick, domain=0.5:0.75] {1.6-2*x};
-        \node[right] at (0.75, 0.1) {AD$_1$};
-
-
-        \draw[dashed] (0.61, 0.38) -- (0.61, 0);
-        \node[below left] at (0.61, 0) {Y$_1$};
-
-        \draw[dashed] (0.64, 0.32) -- (0.64, 0);
-        \node[below right] at (0.64, 0) {Y$_2$};
-
+        \node[left] at (0.65, 0.85) {AS$_1$};
       \end{axis}
     \end{tikzpicture}
-    \caption{Increase in AS}
-  \end{center}
+    \captionsetup{
+      justification=centering,
+      font=small,
+      labelfont=small
+    }
+    \caption{The long-run effect of job creation and infrastructure on aggregate supply.}
+\end{center}
 \end{wrapfigure}
-\noindent Next, the new creation of 17,000 jobs will increase potential output, which equates to long term economic growth.
-Specifically, the effect of these new jobs can potentially be manifest as a decrease in the natural rate of employment, corresponding to an increase in labor as a factor of production.
-Consequently, with more production of key commodities such as aluminium, steel, cement, batteries and solar panels, the amount of output supplied at any given price level is increased.
-In other words, the Mozambican economy experiences an increase in aggregate supply thanks to this increase in jobs.
-Thus, it is a form of long-term growth and aligns with the incentive of the government, so the \textbf{intervention} is justified.
+\noindent The investment in physical capital, such as establishing Green Energy Mozambique in Sofala, also improves potential output, creating long term economic growth.
+With more production of key commodities such as aluminum, steel, cement, batteries, and solar panels, the amount of output supplied at any given price level is increased.
+In other words, the aggregate supply in the Mozambican economy increases.
 
-This is illustrated in \textbf{Figure 2}, with AS$_0$ and AD$_1$ still the same, and AS$_1$ corresponding to the increased aggregate supply following this change.
+The increase is illustrated in \textbf{Figure 3}, with AS$_1$ same as in \textbf{Figure 1}, and AS$_2$ corresponding to the increased aggregate supply following this change.
 As the figure shows, it is now possible to create a higher amount of real output without significantly increasing the price level.
-Additionally, the actual real GDP is also increased, from Y$_1$ to Y$_2$, aligning with the reported data on the GDP of Mozambique.
+This indicates long-term economic growth in the economy.
 
-Finally, and most pertinently in regards to \textbf{intervention} is the aspects of supply management present in this policy.
-The choice to dedicate the funds mainly on industry, transport, communications, and services, all of which related to infrastructure, is a form of interventionist supply management.
-The action of the government imposing improvements in infrastructure increases efficiency in production, resulting in higher demand.
+This increase in aggregate supply also reflects a market-based supply-side intervention. 
+The creation of Green Energy Mozambique supports sustainable production.
+By improving efficiency and limiting the external costs of pollution and resource depletion, the project helps ensure that the economy can maintain high levels of output in the future.
 
-Similarly, the establishment of 'Green Energy Mozambique' is the government's \textbf{intervention} to support sustainable production, thus accounting as market-based supply management.
-The benefit lies in slowing down pollution and the depletion of natural resources, which allows the economy to produce equally efficiently in the future.
-
-These factors also work to increase the aggregate supply as in \textbf{Figure 2}, while the possibility to export a portion of the commodities produced in this industrial park increases aggregate demand as in \textbf{Figure 1}.
-All these improvements combined means it is reasonable to expect more economic growth in Mozambique in the future, if climate shocks and political tensions can be successfully avoided.
-
-%NOTES:
-% Distinguish G and I clearly
-% Logical ordering: read the book
-%  The new jobs are CREATED by the development in infrastructure
-%  differentiate short/long run changes more clearly
-%  Labor market diagram maybe?
-% Diagram labels/captions.
+The effects of \textbf{intervention} ideally increase AD in the short run and pull the economy out of contraction.
+In the long run increases in AD, caused by increased consumption spending and net exports, and
+increases in AS, caused by capital improvements and incentives to improve long-term efficiency.
+All these improvements combined mean it is reasonable to expect more economic growth in Mozambique in the future, if climate shocks and political tensions can be successfully avoided.
 
 \end{document}
