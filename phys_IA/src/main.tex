@@ -1,0 +1,223 @@
+\documentclass[a4paper, 12pt]{article}
+
+%Paragraph jumps and indentation
+\setlength{\parskip}{1.6em}
+\setlength{\parindent}{1cm}
+
+%Border
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+
+%Double spacing
+\usepackage{setspace}
+\doublespacing
+%Packages
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{titlesec}
+\usepackage{mhchem}
+
+%Images
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{wrapfig}
+\usepackage{float}
+
+%Tables
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabu}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+%Equation numbering
+\counterwithin{equation}{section}
+
+%links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+\urlstyle{same}
+
+%Diagrams
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{positioning, arrows.meta}
+\usepgfplotslibrary{fillbetween}
+
+%Theorems
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+
+%Bibliography
+\usepackage[backend=biber]{biblatex}
+\addbibresource{refs.bib}
+
+\newcommand{\diff}{\frac{\mathrm{d}}{\mathrm{d}t}}
+
+
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+    Internal Assessment: Physics\\
+    \vspace*{4cm}
+    {\Large \textbf{Computing the dynamic frictional coefficient $\mu_d$ between wood and steel by measuring the relationship between the force of friction and mass.}}\\
+    
+    \vspace{1cm}
+    \textbf{Research Question:}
+    How does changing the mass of the box sliding against a plank affect the force of friction it experiences?
+    \vfill
+    \today\\
+    Word count: 420
+  \end{center}
+\end{titlepage}
+
+\section{Introduction}
+Idk man
+\section{Background Information}
+Theory says dybamic friction is proportional to the normal force.
+This means that a frictional coefficient exists, which is $F_\mu/N$ where $N$ is the normal force.
+\subsection{Relevant Theory}
+\begin{quote}
+  \hspace{-1em}\vrule width 1pt\hspace{1em}%
+  \begin{minipage}[t]{0.95\linewidth}
+  ``The rate limiting reaction is believed to be the initial reaction between hydrogen peroxide and the iron oxides \cite{Miller1995,ValentineWang1998,Miller1999}.
+  Additionally, the results reveal that the decomposition of \ce{H2O2} follows pseudo-first order kinetics:
+  \begin{equation}
+    -\dfrac{\mathrm{d}[\ce{H2O2}]}{\mathrm{d}t} = k_\mathrm{app}[\ce{H2O2}]
+  \end{equation}
+  and thus:
+  \begin{equation}
+    \ln\left(\dfrac{[\ce{H2O2}]}{[\ce{H2O2}]_0}\right) = -k_\mathrm{app}t
+  \end{equation}
+  where $k_\mathrm{app}$ is the apparent first order rate constant,
+  and $[\ce{H2O2}]$ and $[\ce{H2O2}]_0$ are the concentrations of \ce{H2O2} in the solution at any time $t$ and time zero, respectively.\cite{Huang}''
+  \end{minipage}
+\end{quote}
+
+\noindent The data presented in \textbf{Section 4} agrees with theory, that the reaction is pseudo-first order.
+The aim of this investigation is to measure how $k_\mathrm{app}$ changes in relation to the amount of catalyst used.
+
+Now a general expression for pressure as a function of time  will be mathematically derived from (2.2).
+\begin{center}
+\begin{tabular}{|c >{\raggedright\arraybackslash}p{5cm}|c >{\raggedright\arraybackslash}p{5cm}|}
+  \hline
+  \multicolumn{4}{|c|}{Notation} \\
+  \hline
+  $n(\ce{H2O2})$&\ce{H2O2} in solution at time $t$&$P$&Pressure at time $t$\\
+  $n(\ce{O2})$&\ce{O2} released up to $t$ &$P_0$&Initial pressure\\
+  $n_0$&Initial \ce{H2O2} in solution&$P_\infty$&Final pressure\\
+  $n_\mathrm{air}$&Initial air molecules&$V_l$&Solution volume\\
+  $R$&Ideal gas constant&$V_f$&Flask volume\\
+  $T$&Temperature&$V_g$&$= V_f-V_l$, Gas volume\\
+  \hline
+\end{tabular}
+\end{center}
+
+\noindent The catalysed decomposition is
+\[
+\ce{2H2O2 (aq) ->[MnO2] 2H2O (l) + O2 (g)}
+\]
+From stoichiometry,
+\[
+n(\ce{O2})=\frac{n_0-n(\ce{H2O2})}{2}
+\quad\Longrightarrow\quad
+n(\ce{H2O2})=n_0-2\,n(\ce{O2}).
+\]
+With $[\ce{H2O2}]=n(\ce{H2O2})/V_l$ and $PV_g=(n_{\mathrm{air}}+n(\ce{O2}))RT$,
+\[
+n(\ce{O2})=\frac{PV_g}{RT}-n_{\mathrm{air}}
+\]
+so
+\[
+[\ce{H2O2}]
+=\frac{n_0+2n_{\mathrm{air}}-2PV_g/(RT)}{V_l}
+\]
+At completion $n(\ce{H2O2})=0$, hence $n_0+2n_{\mathrm{air}}=2P_\infty V_g/(RT)$ and therefore
+\[
+[\ce{H2O2}]=\frac{2(P_\infty-P)\,V_g}{RT\,V_l}
+\]
+Combining this with the integrated pseudo–first order law
+\[
+-k_{\mathrm{app}}t=\ln\frac{[\ce{H2O2}]}{[\ce{H2O2}]_0},\qquad [\ce{H2O2}]_0=\frac{n_0}{V_l}
+\]
+and simplifying yields
+\[
+2(P_\infty-P)\frac{V_g}{RT}=n_0 e^{-k_{\mathrm{app}}t}
+\]
+and hence
+\[
+P(t)=P_\infty-\frac{n_0RT}{2V_g}\,e^{-k_{\mathrm{app}}t}
+\]
+For brevity define
+\[
+c:=\frac{n_0RT}{2V_g},
+\]
+giving the general form
+\[
+\boxed{\,P(t)=P_\infty-c\,e^{-k_{\mathrm{app}}t}\,}.
+\]
+
+\subsection{Existing Results}
+
+For pyrolusite (the primary manganese ore) powder, the highest reported specific rate constant is 
+\[
+k_\mathrm{pyro} = 0.061 \,\mathrm{min^{-1}\,mM^{-1}},
+\]
+measured at room temperature in 200 mL of solution containing $29.4$ mM \ce{H2O2}.\cite{Do}
+This suggests that the rate constant is proportional to the concentration of \ce{MnO2} in solution.
+
+The results obtained in this investigation will be compared with this result.
+\textbf{Hypothesis.} Ideally a proportional relationship between the mass of \ce{MnO2} and $k_\mathrm{app}$ is observed in this investigation, and the result does not deviate majorly from the above value.
+
+\section{Experimental}
+\subsection{Materials \& Apparatus}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.5\textwidth} >{\raggedright\arraybackslash}p{0.5\textwidth}}
+  \multicolumn{2}{c}{\textbf{Materials}} \\ \hline
+  $33\%$ (v/v) \ce{H2O2} (aq), diluted to $3.3\%$ & $10 \pm 0.5$ mL per trial \\
+  Pure distilled water & $20 \pm 0.5$ mL per trial \\
+  Fine \ce{MnO2} powder & $\approx 1$g total \\ \hline
+  \multicolumn{2}{c}{\textbf{Equipment}} \\ \hline
+  220 mL Erlenmeyer flask&Thermometer\\
+  20 mL Medical syringe ($\pm 0.5$ mL)&Electronic scale ($\pm 0.001$ g)\\
+  Vernier Pressure sensor\footnote{\url{https://www.vernier.com/product/gas-pressure-sensor/}, Accessed \today}&Rubber stopper\\
+  Magnetic stir bar and stir plate&Parafilm \\\hline
+\end{tabular}
+
+
+\noindent This fit gives the specific rate constant $k_\mathrm{spec}\approx 0.00009093\ s^{-1}\ \mathrm{mM}^{-1} = 0.0054558\ \mathrm{min}^{-1}\ \mathrm{mM}^{-1}$,
+which is within an acceptable range of the known $k_\mathrm{pyro} = 0.061\ \mathrm{min}^{-1}\ \mathrm{mM}^{-1}$ from \textbf{Section 2.2}.
+\subsection{Conclusion}
+
+The data support a direct, near-proportional increase of the apparent first-order rate constant $k_{\mathrm{app}}$ with suspended \ce{MnO2} concentration.
+This matches the general expectation that more active surface yields faster reaction, but the measured specific rate is lower than literature ($0.061\ \mathrm{min^{-1}\,mM^{-1}}$); plausible causes include incomplete \ce{O2} capture (leakage, connector losses), variable effective surface area (agglomeration or settling of powder), the initial connection artifact, and instrument limits (pressure sensor accuracy, uncertain $V_g$).
+These uncertainties (notably $V_l \pm 3.3\%$ and sensor $\pm 2$ kPa) moderately affect $k_{\mathrm{app}}$ and explain observed scatter and the anomalously low 0.05 g point, so quantitative agreement with literature is tentative though the trend is robust.
+
+Methodological limitations with meaningful impact:
+reliance on headspace pressure rather than direct concentration assays, imperfect seals, limited replicates per mass and a narrow mass range, and possible temperature/stirring inconsistencies.
+Strengths include a clear theoretical derivation linking $P(t)$ to $[\ce{H2O2}]$ and continuous high-frequency data collection.
+
+Realistic, relevant improvements: use pressure-rated fittings or water-displacement gas collection; immobilize catalyst or better disperse powder;
+increase replicate number and mass range; directly assay $[\ce{H2O2}]$ (titration or spectrophotometry) for cross-validation;
+calibrate sensor and measure $V_g$ precisely.
+With these changes the proportional relationship can be tested more reliably and quantitative agreement improved.
+
+
+\newpage
+
+\printbibliography
+
+\end{document}
