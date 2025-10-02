@@ -290,37 +290,18 @@ To do this, we first show that $\sigma$ is \textit{multiplicative}, which means
 \end{equation}
 holds for all coprime positive integers $m, n$.
 
-Let $d$ be a positive divisor of $mn$, and write the prime factorization of $d$:
-\begin{equation}
-  d=\prod_{i=1}^{k}p_i^{\alpha_i}
-\end{equation}
-In this form, each term $p_i^{\alpha_i}$ either 
-\vspace{-0.5em}\begin{enumerate}
-  \item divides $m$ and is coprime to $n$, or
-  \item divides $n$ and is coprime to $m$,
-\end{enumerate}\vspace{-0.5em}
-because $d$ is a divisor of $mn$ and $m$, $n$ are coprime.
-That means we can (uniquely) write
-\begin{equation}
-  d=d_m d_n
-\end{equation}
-where $d_m$ is the product of the terms which correspond
-to case 1., and $d_n$ is the product of the terms
-which correspond to case 2.
-
-Conversely, if $d_m$ and $d_n$ are positive divisors
-of $m$ and $n$, respectively, then $d_m d_n$ is a
-divisor of $mn$. This means that 
+To show that $\sigma$ is multiplicative, we use the following lemma:
 \begin{lemma}
-  There is a \textit{one-to-one correspondence}
-  between elements in $\mathcal{D}_{mn}$ and pairs of
-  elements in $\mathcal{D}_m$ and $\mathcal{D}_n$,
-  for coprime positive integers $m, n$.
-\end{lemma}
+  For coprime positive integers $m, n$,
+  each element in $\mathcal{D}_{mn}$ is a product of a 
+  unique pair of elements in $\mathcal{D}_m$ and $\mathcal{D}_n$.
 
+  Conversely, each pair of elements in $\mathcal{D}_m$ and $\mathcal{D}_n$
+  has a product which is an unique element in $\mathcal{D}_{mn}$.
+\end{lemma}
 \begin{example}
   Let $m=9,\ n=14$.
-  The divisors of $9$ are $\mathcal{D}_9=\{1,\ 3,\ 9\}$ and of $14$ are
+  The divisors of 9 are $\mathcal{D}_9=\{1,\ 3,\ 9\}$ and of $14$ are
   $\mathcal{D}_{14}=\{1,\ 2,\ 7,\ 14\}$.
   Every divisor of $mn=126$ is a product of one divisor
   of $9$ and one divisor of $14$:
@@ -333,6 +314,39 @@ divisor of $mn$. This means that
   \]
   Thus $\mathcal D_{126}=\{1,\ 2,\ 3,\ 6,\ 7,\ 9,\ 14,\ 18,\ 21,\ 42,\ 63,\ 126\}$.
 \end{example}
+
+\textbf{Proof.}
+Let $d$ be a positive divisor of $mn$, and write the prime factorization of $d$:
+\begin{equation}
+  d=\prod_{i=1}^{k}p_i^{\alpha_i}
+\end{equation}
+In this form, each term $p_i^{\alpha_i}$ either 
+\vspace{-0.5em}\begin{enumerate}
+  \item divides $m$ and is coprime to $n$, or
+  \item divides $n$ and is coprime to $m$,
+\end{enumerate}\vspace{-0.5em}
+because $d$ is a divisor of $mn$ and $m$, $n$ are coprime.
+This means we can write
+\begin{equation}
+  d=d_m d_n
+\end{equation}
+where $d_m$ is the product of the terms which correspond
+to case 1., and $d_n$ is the product of the terms
+which correspond to case 2.
+Now
+\[d_m \mid d \mid mn\]
+so 
+and $d_m$ shares no prime divisors with $n$
+This shows that each element in $\mathcal{D}_{mn}$ is a product of some pair of elements $d_m \in \mathcal{D}_m$ and $d_n \in \mathcal{D}_n$.
+Moreover, the process of separating the terms between case 1 and case 2 is unique, so the corresponding pair $d_m, d_n$ is unique.
+
+
+Conversely, if $d_m$ and $d_n$ are positive divisors
+of $m$ and $n$, respectively, then $d_m d_n$ is a
+divisor of $mn$.
+This shows that the pair of elements $d_m, d_n$ is unique; 
+
+
 \noindent Thanks to \textbf{Lemma 2}, \textit{multiplicativity} can be established using \textbf{Definition 1}.
 \begin{align}
 \sigma(mn) =&\sum_{d\in \mathcal{D}_{mn}} d\\
@@ -386,54 +400,107 @@ This is true for all $n>1$.
 \end{example}
 
 \subsection{Deriving the Product Form of $\varphi$}
-Let $n$ be a positive integer with prime factorization
+To do this, we first show that $\varphi$ is \textit{multiplicative}, which means
 \begin{equation}
-  n=\prod_{i=1}^{k} p_i^{\alpha_i} 
+  \varphi(mn)=\varphi(m)\varphi(n)
 \end{equation}
+holds for all coprime positive integers $m, n$.
 
 Recall the definition of $\varphi$ from \textbf{Definition 2}:
 \begin{equation}
   \varphi(n) = \left|\{x\in \mathbb{Z}^+\ :\ x\leq n,\ \gcd(x,n)=1\}\right|
   \tag{2.7}
 \end{equation}
-In other words, we can compute $\varphi(n)$ using the set of positive integers less than
-or equal to $n$, by removing those which are a multiple of some prime factor of $n$, and
-counting how many remains.
-This works because those which are erased are not coprime to $n$, and all the remaining ones are.
+
+To show that $\varphi$ is multiplicative, we use the following lemma, which is a special case of the 
+\textbf{Chinese Remainder Theorem}.
+\begin{lemma}
+  For coprime positive integers $m, n$, each nonnegative integer $x$ with $0\leq x < mn$
+  has a unique pair of remainders when divided by $m$ and by $n$.
+\end{lemma}
 \begin{example}
-  Suppose $n=15 = 5 \cdot 3$, and compute $\varphi(15)$:
-
-  The multiples of 3 less than 15 are
-  $\{3,\ 6,\ 9,\ 12,\ 15\}$,
-  and the multiples of 5 less than 15 are
-  $\{5,\ 10,\ 15\}$. If we remove these from the positive integers less than or equal to 15,
-  the integers that remain are
-  \begin{equation}
-    \{1,2,\not3,4,\not5,\not6,7,8,\not9,\not10,11,\not12,13,14,\not15\}
-    =\{1,\ 2,\ 4,\ 7,\ 8,\ 11,\ 13,\ 14\}
-  \end{equation}
-  so $\varphi(15) = 8$
+  Let $m=3,\ n=4$.
+  Then $mn=12$, so we list all integers
+  $x$ with $0 \leq x < 12$ together with their remainders
+  when divided by 3 and by 4:
+  \[
+  \begin{aligned}
+    0 &\rightarrow (0,0), & 3 &\rightarrow (0,3), & 6 &\rightarrow (0,2), & 9  &\rightarrow (0,1),\\
+    1 &\rightarrow (1,1), & 4 &\rightarrow (1,0), & 7 &\rightarrow (1,3), & 10 &\rightarrow (1,2),\\
+    2 &\rightarrow (2,2), & 5 &\rightarrow (2,1), & 8 &\rightarrow (2,0), & 11 &\rightarrow (2,3).
+  \end{aligned}
+  \]
+  We see that each pair of remainders is unique.
 \end{example}
-The line of thought in \textbf{Example 9} motivates the following definition:
-\begin{definition}
-  For some prime divisor $p\mid n$, let $S_p (n)$ denote the set of multiples of $p$ which are less than or equal to $n$.
-  Formally, define the set
-  \begin{equation}
-    S_p (n) = \left\{x\in\textbf{Z}^+\ :\ x\leq n,\ p \mid x\right\}
-  \end{equation}
-\end{definition}
-Notice how $\{3,\ 6,\ 9,\ 12,\ 15\} = S_3 (15)$ and $\{5,\ 10,\ 15\}= S_5 (15)$ in \textbf{Example 9}.
 
-To generalize the idea in the example, we should consider the following set:
-\begin{equation}
-  S_{p_1}(n)\cup S_{p_2}(n)\cup \dots \cup S_{p_k}(n)
-\end{equation}
-This is the set we remove from $\{1,\ 2,\ \dots,\ n\}$, so that the remaining numbers
-are all coprime to $n$ and hence make up $\varphi(n)$.
 
-Actually, size of the set in (4.21) is precisely $n-\varphi(n)$.
 
-prove inclusion-exclusion (pp. 231 - 233).
+
+Suppose, for contradiction, that there exists anonther integer $k'$, greater than $k$, with $0 \leq k' < mn$, which also has remainders $k_m, k_n$ when divided by $m$ and $n$, respectively.
+Then $m \mid k' - k$ and $n \mid k' - k$ are both true.
+Noting that $m$ and $n$ are coprime and $k' - k > 0$ we may write
+\[mn \mid k' - k \implies mn \leq k' - k < mn,\]
+contradiction.
+This shows that each pair of remainders $k_m, k_n$ corresponds to at most one number $k$ with $0 \leq k < mn$.
+Since there precisely $mn$ pairs of remainders, and also precisely $mn$ integers between $0$ and $mn$, we conclude that such a $k$ must always exist, so the proof is complete. \qed
+
+Then the desired equality $\varphi(mn) = \varphi(m) \varphi(n)$ is equivalent to showing that 
+\begin{align}
+  &\left| \left\{k\in\mathbb{Z}:\ 0 \leq k < mn,\ \gcd(k,mn) = 1\right\} \right|\\
+  &=\left| \left\{k\in\mathbb{Z}:\ 0\leq k < m,\ \gcd(k,m) = 1\right\} \right| \cdot
+  \left| \left\{k\in\mathbb{Z}:\ 0\leq k < n,\ \gcd(k,n) = 1\right\} \right|\\
+  &=\left| \left\{(k_m, k_n)\in\mathbb{Z} \times \mathbb{Z}:\ 0 \leq k_m < m,\ 0 \leq k_n < n,\ \gcd(k_m,m) = \gcd(k_n,n) = 1\right\} \right|
+\end{align}
+
+This theorem shows that every number $k$ from the set in (4.1) corresponds to an unique pair of remainders when divided by $n$ and $m$,
+and every pair $(k_m, k_n)$ from the set in (4.3) corresponds to an unique number between $0$ and $mn$.
+This will be very useful if we verify that the remainders of $k$ when divided $m$ and $n$ are coprime to $m$ and $n$ respectively, if and only if $k$ is coprime to $mn$.
+
+By the Euclidean algorithm, we may write
+\[\gcd(m, k) = \gcd(m, k-m) = \gcd(m, k-2m) = ... = \gcd(m, k_m).\]
+Repeating this for $n$ and combining, we get that $\gcd(mn, k) = \gcd(m,k)\gcd(n,k)=\gcd(m,k_m)\gcd(n,k_n)$, which equals one if and only if both $\gcd(m,k_m)=\gcd(n,k_n)=1$.
+
+This means the Chinese remainder theorem actually finds a one-to-one correspondence between these sets which we want to show to have equal size,
+which finally shows that $\varphi(mn) = \varphi(m)\varphi(n)$. \qed
+
+% In other words, we can compute $\varphi(n)$ using the set of positive integers less than
+% or equal to $n$, by removing those which are a multiple of some prime factor of $n$, and
+% counting how many remains.
+% This works because those which are erased are not coprime to $n$, and all the remaining ones are.
+% \begin{example}
+%   Suppose $n=15 = 5 \cdot 3$, and compute $\varphi(15)$:
+
+%   The multiples of 3 less than 15 are
+%   $\{3,\ 6,\ 9,\ 12,\ 15\}$,
+%   and the multiples of 5 less than 15 are
+%   $\{5,\ 10,\ 15\}$. If we remove these from the positive integers less than or equal to 15,
+%   the integers that remain are
+%   \begin{equation}
+%     \{1,2,\not3,4,\not5,\not6,7,8,\not9,\not10,11,\not12,13,14,\not15\}
+%     =\{1,\ 2,\ 4,\ 7,\ 8,\ 11,\ 13,\ 14\}
+%   \end{equation}
+%   so $\varphi(15) = 8$
+% \end{example}
+% The line of thought in \textbf{Example 9} motivates the following definition:
+% \begin{definition}
+%   For some prime divisor $p\mid n$, let $S_p (n)$ denote the set of multiples of $p$ which are less than or equal to $n$.
+%   Formally, define the set
+%   \begin{equation}
+%     S_p (n) = \left\{x\in\textbf{Z}^+\ :\ x\leq n,\ p \mid x\right\}
+%   \end{equation}
+% \end{definition}
+% Notice how $\{3,\ 6,\ 9,\ 12,\ 15\} = S_3 (15)$ and $\{5,\ 10,\ 15\}= S_5 (15)$ in \textbf{Example 9}.
+
+% To generalize the idea in the example, we should consider the following set:
+% \begin{equation}
+%   S_{p_1}(n)\cup S_{p_2}(n)\cup \dots \cup S_{p_k}(n)
+% \end{equation}
+% This is the set we remove from $\{1,\ 2,\ \dots,\ n\}$, so that the remaining numbers
+% are all coprime to $n$ and hence make up $\varphi(n)$.
+
+% Actually, size of the set in (4.21) is precisely $n-\varphi(n)$.
+
+% prove inclusion-exclusion (pp. 231 - 233).
 
 
 
