@@ -64,10 +64,6 @@
 \usepackage[backend=biber]{biblatex}
 \addbibresource{refs.bib}
 
-\newcommand{\diff}{\frac{\mathrm{d}}{\mathrm{d}t}}
-
-
-
 \begin{document}
 
 \begin{titlepage}
@@ -85,153 +81,216 @@
 \end{titlepage}
 
 \section{Introduction}
-The author finds it perplexing how the force of friction an object
-experiences in kinematics happens to be proportional to the size of the
-normal force of the surface.
-It is quite remarkable indeed how many physical phenomena may be described with
-a proportional model.
-Yet, attempting to answer \textit{why} proportionality describes the behaviour
+It is perplexing how the force of friction a sliding object
+experiences happens to be proportional to the size of the normal force at
+the surface it slides against.
+We perhaps take it for granted that so many physical phenomena may be described with
+a proportional model, yet this fact strikes the author as rather remarkable.
+Despite this, attempting to answer \textit{why} proportionality describes the behaviour
 of friction is far beyond the scope of this discussion.
-Instead, we shall merely satisfy our curiousity with examples that show
-proportionality is indeed valid.
+Instead, we shall merely satisfy our curiousity with an example from
+which it is easy to observe that the proportional relationship is indeed
+present.
 
-My research uses a minimal yet clever setup to measure the size of friction
-in relation to the mass of the box, with the mass as the independent variable.
-Both the speed at which the dynamic fraction is measured and the area of 
-contact surface between the box and the plane
+\section{Variables}
+The independent variable is the mass of the box, which is varied in approximately
+$200g$ increments.
+The dependent variable is the frictional force that the box experiences
+when sliding against the plane.
+This is measured using a Vernier dual range force sensor.
+The speed at which the box slides is a notable control variable.
+To mitigate errors arising from movement at different speeds, the experiment
+is performed thrice for each mass, with the median of the results selected
+for further analysis. The maximum and minimum over all three runs
+are used for error estimation.
 
-
-\section{Background Information}
-Theory says dynamic friction is proportional to the normal force.
-This means that a frictional coefficient exists, which is $F_\mu/N$ where $N$ is the normal force.
-\subsection{Relevant Theory}
-\begin{quote}
-  \hspace{-1em}\vrule width 1pt\hspace{1em}%
-  \begin{minipage}[t]{0.95\linewidth}
-  ``The rate limiting reaction is believed to be the initial reaction between hydrogen peroxide and the iron oxides \cite{Miller1995,ValentineWang1998,Miller1999}.
-  Additionally, the results reveal that the decomposition of \ce{H2O2} follows pseudo-first order kinetics:
-  \begin{equation}
-    -\dfrac{\mathrm{d}[\ce{H2O2}]}{\mathrm{d}t} = k_\mathrm{app}[\ce{H2O2}]
-  \end{equation}
-  and thus:
-  \begin{equation}
-    \ln\left(\dfrac{[\ce{H2O2}]}{[\ce{H2O2}]_0}\right) = -k_\mathrm{app}t
-  \end{equation}
-  where $k_\mathrm{app}$ is the apparent first order rate constant,
-  and $[\ce{H2O2}]$ and $[\ce{H2O2}]_0$ are the concentrations of \ce{H2O2} in the solution at any time $t$ and time zero, respectively.\cite{Huang}''
-  \end{minipage}
-\end{quote}
-
-\noindent The data presented in \textbf{Section 4} agrees with theory, that the reaction is pseudo-first order.
-The aim of this investigation is to measure how $k_\mathrm{app}$ changes in relation to the amount of catalyst used.
-
-Now a general expression for pressure as a function of time  will be mathematically derived from (2.2).
-\begin{center}
-\begin{tabular}{|c >{\raggedright\arraybackslash}p{5cm}|c >{\raggedright\arraybackslash}p{5cm}|}
-  \hline
-  \multicolumn{4}{|c|}{Notation} \\
-  \hline
-  $n(\ce{H2O2})$&\ce{H2O2} in solution at time $t$&$P$&Pressure at time $t$\\
-  $n(\ce{O2})$&\ce{O2} released up to $t$ &$P_0$&Initial pressure\\
-  $n_0$&Initial \ce{H2O2} in solution&$P_\infty$&Final pressure\\
-  $n_\mathrm{air}$&Initial air molecules&$V_l$&Solution volume\\
-  $R$&Ideal gas constant&$V_f$&Flask volume\\
-  $T$&Temperature&$V_g$&$= V_f-V_l$, Gas volume\\
-  \hline
-\end{tabular}
-\end{center}
-
-\noindent The catalysed decomposition is
-\[
-\ce{2H2O2 (aq) ->[MnO2] 2H2O (l) + O2 (g)}
-\]
-From stoichiometry,
-\[
-n(\ce{O2})=\frac{n_0-n(\ce{H2O2})}{2}
-\quad\Longrightarrow\quad
-n(\ce{H2O2})=n_0-2\,n(\ce{O2}).
-\]
-With $[\ce{H2O2}]=n(\ce{H2O2})/V_l$ and $PV_g=(n_{\mathrm{air}}+n(\ce{O2}))RT$,
-\[
-n(\ce{O2})=\frac{PV_g}{RT}-n_{\mathrm{air}}
-\]
-so
-\[
-[\ce{H2O2}]
-=\frac{n_0+2n_{\mathrm{air}}-2PV_g/(RT)}{V_l}
-\]
-At completion $n(\ce{H2O2})=0$, hence $n_0+2n_{\mathrm{air}}=2P_\infty V_g/(RT)$ and therefore
-\[
-[\ce{H2O2}]=\frac{2(P_\infty-P)\,V_g}{RT\,V_l}
-\]
-Combining this with the integrated pseudo–first order law
-\[
--k_{\mathrm{app}}t=\ln\frac{[\ce{H2O2}]}{[\ce{H2O2}]_0},\qquad [\ce{H2O2}]_0=\frac{n_0}{V_l}
-\]
-and simplifying yields
-\[
-2(P_\infty-P)\frac{V_g}{RT}=n_0 e^{-k_{\mathrm{app}}t}
-\]
-and hence
-\[
-P(t)=P_\infty-\frac{n_0RT}{2V_g}\,e^{-k_{\mathrm{app}}t}
-\]
-For brevity define
-\[
-c:=\frac{n_0RT}{2V_g},
-\]
-giving the general form
-\[
-\boxed{\,P(t)=P_\infty-c\,e^{-k_{\mathrm{app}}t}\,}.
-\]
-
-\subsection{Existing Results}
-
-For pyrolusite (the primary manganese ore) powder, the highest reported specific rate constant is 
-\[
-k_\mathrm{pyro} = 0.061 \,\mathrm{min^{-1}\,mM^{-1}},
-\]
-measured at room temperature in 200 mL of solution containing $29.4$ mM \ce{H2O2}.\cite{Do}
-This suggests that the rate constant is proportional to the concentration of \ce{MnO2} in solution.
-
-The results obtained in this investigation will be compared with this result.
-\textbf{Hypothesis.} Ideally a proportional relationship between the mass of \ce{MnO2} and $k_\mathrm{app}$ is observed in this investigation, and the result does not deviate majorly from the above value.
-
-\section{Experimental}
-\subsection{Materials \& Apparatus}
-\begin{tabular}{>{\raggedright\arraybackslash}p{0.5\textwidth} >{\raggedright\arraybackslash}p{0.5\textwidth}}
-  \multicolumn{2}{c}{\textbf{Materials}} \\ \hline
-  $33\%$ (v/v) \ce{H2O2} (aq), diluted to $3.3\%$ & $10 \pm 0.5$ mL per trial \\
-  Pure distilled water & $20 \pm 0.5$ mL per trial \\
-  Fine \ce{MnO2} powder & $\approx 1$g total \\ \hline
-  \multicolumn{2}{c}{\textbf{Equipment}} \\ \hline
-  220 mL Erlenmeyer flask&Thermometer\\
-  20 mL Medical syringe ($\pm 0.5$ mL)&Electronic scale ($\pm 0.001$ g)\\
-  Vernier Pressure sensor\footnote{\url{https://www.vernier.com/product/gas-pressure-sensor/}, Accessed \today}&Rubber stopper\\
-  Magnetic stir bar and stir plate&Parafilm \\\hline
-\end{tabular}
-
-
-\noindent This fit gives the specific rate constant $k_\mathrm{spec}\approx 0.00009093\ s^{-1}\ \mathrm{mM}^{-1} = 0.0054558\ \mathrm{min}^{-1}\ \mathrm{mM}^{-1}$,
-which is within an acceptable range of the known $k_\mathrm{pyro} = 0.061\ \mathrm{min}^{-1}\ \mathrm{mM}^{-1}$ from \textbf{Section 2.2}.
-\subsection{Conclusion}
-
-The data support a direct, near-proportional increase of the apparent first-order rate constant $k_{\mathrm{app}}$ with suspended \ce{MnO2} concentration.
-This matches the general expectation that more active surface yields faster reaction, but the measured specific rate is lower than literature ($0.061\ \mathrm{min^{-1}\,mM^{-1}}$); plausible causes include incomplete \ce{O2} capture (leakage, connector losses), variable effective surface area (agglomeration or settling of powder), the initial connection artifact, and instrument limits (pressure sensor accuracy, uncertain $V_g$).
-These uncertainties (notably $V_l \pm 3.3\%$ and sensor $\pm 2$ kPa) moderately affect $k_{\mathrm{app}}$ and explain observed scatter and the anomalously low 0.05 g point, so quantitative agreement with literature is tentative though the trend is robust.
-
-Methodological limitations with meaningful impact:
-reliance on headspace pressure rather than direct concentration assays, imperfect seals, limited replicates per mass and a narrow mass range, and possible temperature/stirring inconsistencies.
-Strengths include a clear theoretical derivation linking $P(t)$ to $[\ce{H2O2}]$ and continuous high-frequency data collection.
-
-Realistic, relevant improvements: use pressure-rated fittings or water-displacement gas collection; immobilize catalyst or better disperse powder;
-increase replicate number and mass range; directly assay $[\ce{H2O2}]$ (titration or spectrophotometry) for cross-validation;
-calibrate sensor and measure $V_g$ precisely.
-With these changes the proportional relationship can be tested more reliably and quantitative agreement improved.
-
+\section{Theory}
+It is known that force of dynamic friction of a body sliding against a
+surface is proportional to the normal force that the surface exerts upon
+the body.
+Theoretically, this force is not dependent on the area of the contact surface
+between the body and the surface, nor the speed of the body.
+This implies the existence of a constant, conventionally denoted by $\mu_d$
+and called the `dynamic frictional coefficient', which is only dependent
+on the materials which are sliding against each other, and reports the
+relation between the normal force and the frictional force.
+Therefore, in this experiment it suffices to compute the size of the normal
+force exerted onto the box given its mass, and compare it against the 
+measured average friction.
+Since the box and the plane are level, the normal force exerted by the plane
+onto the box is equal to the force of gravitational attraction that the box
+experiences.
+Formally, if $g$ is the gravitational constant ($\approx 9.81 m s^{-2}$) and
+$m$ is the mass of the box, the normal force $R$ can be calculated as follows:
+\begin{equation}
+  R=G=mg
+\end{equation}
+The coefficient of friction $\mu_d$ is defined as
+\begin{equation}
+  \mu_d = \frac{F_\mu}{R}
+\end{equation}
+In terms of data processing, the average frictional force of the sliding
+body $F_\mu$ can be measured directly by reading the force sensor.
+The normal force $R$ exerted on to the box can be computed given its
+mass using (3.1).
 
 \newpage
 
+
+\section{Existing Results}
+\vspace{-2em}\begin{wrapfigure}{l}{0.37\textwidth}
+  \begin{center}
+    \includegraphics[width=0.36\textwidth]{boxplane.png}
+  \end{center}
+  \caption{Box and plane}
+\end{wrapfigure}
+In this experiment, the plane is a plank of presumably fir or pine.
+The box is wooden, but it makes contact with the plane with some metal
+railings, presumably some iron alloy like stainless steel.
+The box, with its metal railings, is visible in \textbf{Figure 1}, with
+the wooden plane in the background.
+
+There were no existing results regarding the coefficient of dynamic friction 
+with this fir or pine sliding against metal readily available.
+However, trials using western hemlock should suffice as a reference.
+After all, both woods are from trees belonging to the \textit{Pinaceae}
+family and are used in construction.
+
+According to Murase's study\cite{Murase1984}, the dynamic frictional coefficient is approximately $1.2$ for stainless steel and $1.6$ for mild steel against western hemlock wood.
+The following differences in the methodology may explain a greater observed frictional coefficient in this investigation compared to Murase's existing study:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[h]
+  \begin{tabular}{p{0.45\textwidth} p{0.45\textwidth}}
+  \hline
+  \textbf{Existing study} & \textbf{This investigation} \\
+  \hline
+  Uses air-dried wood and shows that increasing moisture content increases friction & Wood moisture content not considered \\
+  Uses clean steel with documented surface roughness & Steel railings are slightly rusted (\textbf{Figure 1}) \\
+  Uses western hemlock & Uses softer woods such as European fir or pine \\
+  \hline
+  \end{tabular}
+\end{table}
+\end{center}
+
+\section{Apparatus}
+The apparatus in this investigation is very similar to the one used in
+Murase's study.
+\begin{quote}
+  \hspace{-1em}\vrule width 1pt\hspace{1em}%
+  \begin{minipage}[t]{0.95\linewidth}
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{murase_apparatus.png}
+
+    \end{center}
+
+    Figure 2. Schematic representation of test apparatus.
+    \textcircled{1} Wood specimen,
+    \textcircled{2} Counterface material,
+    \textcircled{3} Load cell,
+    \textcircled{4} Weigh,
+    \textcircled{5} Carriage.
+    
+    \hfill {\color{gray} \footnotesize Copied from \cite{Murase1984}}
+  \end{minipage}
+\end{quote}
+Fewer parts are used in the apparatus of this investigation, as seen in figure \textbf{Figure 3} below.
+\textcircled{1} and \textcircled{4} are collectively referred to as the `box', whose mass varies by changing the number of weights set on the sliding block.
+The plank that is pushed acts simultaneously as both the \textcircled{2} counterface material and the \textcircled{5} carriage. 
+\textcircled{3} is the Vernier force sensor, also called load cell, used for data collection.
+
+\setcounter{figure}{2}
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+    \def\imgwidth{12.96cm}
+    \def\imgheight{8.19cm}
+    
+    \node[anchor=south west,inner sep=0] (img) at (0,0)
+      {\includegraphics[width=\imgwidth,height=\imgheight]{trial.png}};
+    
+    \begin{scope}[x=1.5cm/100, y=1.5cm/100]
+
+      \draw[white,fill] (270,101) circle (15);
+      \node at (270,100) {\textcircled{1}};
+
+      \draw[white,fill] (700,481) circle (15);
+      \node at (700,480) {\textcircled{3}};
+
+      \draw[white,fill] (200,301) circle (15);
+      \node at (200,300) {\textcircled{4}};
+
+      \draw[white,fill,rounded corners=7] 
+      (476-15,201-15) rectangle (524+15,201+15);
+      \node at (500,200) {\textcircled{2}, \textcircled{5}};
+    \end{scope}
+  \end{tikzpicture}
+  \caption{Photo of apparatus}
+\end{figure}
+The force sensor is secured to an unmoving platform.
+The box and the force sensor are connected with a piece of string, selected to minimize
+unwanted unwanted behaviour.
+The mass is varied in $200g$ increments, by varying the number of weights on the box.
+
+\section{procedure}
+\textbf{For each trial:}
+Put the desired amount of weight onto the box, and measure with a scale to verify.
+Perform at least three runs for each value of mass tested.
+
+\textbf{For each run:}
+Have the string slack and running parallel with the grain of the wood and in the effective direction of the force sensor.
+Start data collection and attempt to push the plank at a constant speed, directly away from the force sensor.
+
+\section{Data and processing}
+This investigation begins at no weights ($m=195g$) and proceeds to increment till 6 weights ($m=1495g$) are on the box.
+In each trial, three runs are performed and their average frictions measured between $t=6s$ and $t=8s$ are recorded.
+Of the three averages, the median is selected for further data processing.
+The maximum and minimum frictions recorded across these three runs in this time interval are used for error estimation.
+
+\newpage
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{data_06.png}
+  \caption{Measurements for $m=795g$}
+\end{figure}
+For example, in \textbf{Figure 4}, the median average friction, which is the one selected for further analysis, is $1.790N$.
+The maximum friction (in red at $t=7.97s$) is $1.66N$
+and the minimum friction (in green at $t=7.64s$) is $1.42N$.
+This gives an uncertainty of $\frac{1.66-1.42}{2}=0.12N$ for friction in this trial.
+
+The mass of the box in this trial is $995g = 0.995kg$, so the normal force is $0.995\cdot9.81\approx9.76N$.
+The uncertainty associated with the normal force is a constant $0.01N$, arising from the scale having a precision of $1g$.
+
+In this manner, the average friction and its uncertainty are deduced and computed for each trial.
+The normal force and its uncertainty are also computed, giving \textbf{Table 1} below.
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|} 
+   \hline
+   $R$ & $F_\mu$\\ 
+   \hline
+   $1.91N$ & $0.36\pm 0.12\ N$\\
+   $3.87N$ & $0.74\pm 0.13\ N$\\
+   $5.84N$ & $1.14\pm 0.12\ N$\\
+   $7.80N$ & $1.54\pm 0.12\ N$\\
+   $9.76N$ & $1.79\pm 0.25\ N$\\
+   $11.73N$& $2.13\pm 0.21\ N$\\
+   $13.68N$& $2.48\pm 0.17\ N$\\
+   \hline
+  \end{tabular}
+  \caption{Processed data}
+\end{table}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Screenshot 2025-10-03 155223.png}
+  \caption{Fitted curves}
+\end{figure}
+
+\newpage
+\section{Conclusions}
+\newpage
 \printbibliography
 
 \end{document}
