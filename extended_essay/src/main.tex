@@ -150,8 +150,7 @@ When two sets $A, B$ are the same, we write $A = B$.
   \end{itemize}
 \end{notation}\vspace{0.5em}
 
-\begin{example}\text{}
-
+\begin{example}
   The set $\{1,2,4,7,8,11,13,14\}$ has size $\left|\{1,2,4,7,8,11,13,14\}\right|=4$.
 
   For sets $A= \{2,4,6,8,10,12\},\ B=\{3,6,9,12\}$,
@@ -180,7 +179,6 @@ The reader should understand the following examples before proceeding:
   \end{equation}
 \end{example}\vspace{0.5em}
 
-
 \begin{example}
   Build the set of positive divisors of an integer $n\neq 0$, denoted $\mathcal{D}_n$, by choosing the positive integers that divide $n$:
   \begin{equation}
@@ -202,7 +200,7 @@ More complicated sequential sums and products also involve require set-builder-l
 (2.6) in \textbf{Definition 1} serves as an example of this.
 
 \subsection{Key Definitions}
-The following functions, defined for any positive integer $n$, are the central focus of this study.
+The following functions, defined for all positive integers $n$, are the central focus of this study.
 
 \begin{definition}[Sum of Divisors Function $\sigma$]
   Define $\sigma(n)$ as the sum of all positive divisors of $n$.
@@ -219,16 +217,17 @@ The following functions, defined for any positive integer $n$, are the central f
   taking their sum yields $\sigma(15)=1+2+3+4+6+12=28$
 \end{example}
 
-\vspace{0.5em}\begin{definition}[Euler's Totient Function $\varphi$]
+\vspace{1em}\begin{definition}[Euler's Totient Function $\varphi$]
   Define $\varphi(n)$ as the number of positive integers less than or equal to $n$ and \textit{coprime} to $n$.
   Formally, define
   \begin{equation}
     \varphi(n) = \left|\{x\in \mathbb{Z}^+\ :\ x\leq n,\ \gcd(x,n)=1\}\right|
   \end{equation}
 \end{definition}
+\vspace{1em}
 \begin{terminology}
   We say that `$a$ is coprime to $b$', or `$a$ and $b$ are coprime', if $\gcd(a,b)=1$.
-\end{terminology}
+\end{terminology}\vspace{1em}
 
 \begin{example}
   Compute $\varphi(12)$:
@@ -243,8 +242,10 @@ The following functions, defined for any positive integer $n$, are the central f
 This investigation was inspired by the following problem from the undergraduate textbook \textit{Introduction to Analytic Number Theory} \cite{apostol}.
 
 \begin{problem}
-  Show that $\displaystyle \frac{6}{\pi^2}<\frac{\varphi(n)\sigma(n)}{n^2}<1$ for all $ n\geq 2.$
+  Show that $\displaystyle \frac{6}{\pi^2}<\varphi(n)\sigma(n) n^{-2}<1$ for all integers $n$ greater than 1.
 \end{problem}
+
+For simplicity, $f(n)$ will be used to denote $\varphi(n)\sigma(n) n^{-2}$ from this point onwards.
 
 \begin{figure}[h]
   \centering
@@ -252,7 +253,7 @@ This investigation was inspired by the following problem from the undergraduate 
   \caption{Graph for \textbf{Problem 1}}
 \end{figure}
 
-\textbf{Figure 2} visualizes the scenario by plotting points $(n, \frac{\varphi(n)\sigma(n)}{n^2})$ (in blue) and the lower-- and upper bounds (in red) on the Cartesian plane.
+\textbf{Figure 2} visualizes the scenario by plotting points $(n, f(n))$ (in blue) and the lower-- and upper bounds (in red) on the Cartesian plane.
 Then, the task in \textbf{Problem 1} is to show that all blue points fall in between the red lines.
 
 The research question of this investigation, regarding `patterns' in the graph can now be put concretely.
@@ -261,6 +262,7 @@ In addition to solving \textbf{Problem 1}, this paper will develop the necessary
 \begin{question}
   Why are `denser lines' formed?
 \end{question}
+
 This question regards the horizontal lines that many of the points seem to fall in, at $y=1,\ y=0.75$, and $y=0.89$ for example.
 This is one of the first questions arising upon seeing \textbf{Figure 2}, since the orderly patterns strike as unexpected in such a scattered and seemingly random distribution.
 After addressing \textbf{Question 1}, the next natural question is,
@@ -268,17 +270,17 @@ After addressing \textbf{Question 1}, the next natural question is,
 \begin{question}
   Where can `denser lines' form?
 \end{question}
-This is also a natural thing to ask.
-We see many dense lines between 0.95 and 1, and much fewer below 0.70.
+
+This is also a natural thing to ask; we see many dense lines between 0.95 and 1, and much fewer below 0.70.
 
 \section{Background for Problem 1}
 To approach \textbf{Problem 1}, we must improve our undrstanding on the functions $\sigma$ and $\varphi$. 
 The following product forms for these functions in terms of the prime factorization of $n$ shall be derived.
 
 \begin{lemma}
-  For any positive integer $n$ with prime factorization $n = \prod_{i=1}^{k} p_i^{\alpha_i}$\\
+  For any positive integer $n$ with prime factorization $n = \prod_{i=1}^{k} p_i^{\alpha_i}$ holds
   \begin{align}
-    \sigma(n)  &= \prod_{i=1}^{k} \dfrac{p_i^{\alpha_i+1}-1}{p_i-1}\\
+    \sigma(n)  &= \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i-1}\\
     \varphi(n) &= \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1)
   \end{align}
 \end{lemma}
@@ -315,7 +317,7 @@ The following lemma is used to show \textit{multiplicativity}.
   \]
 \end{example}\vspace{1em}
 
-\noindent\textbf{Proof of Lemma 2.}\\
+\subsubsection*{Proof of Lemma 2}
 Let $d$ be a positive divisor of $mn$, and write the prime factorization of $d$:
 \begin{equation}
   d=\prod_{i=1}^{k}p_i^{\alpha_i}
@@ -341,6 +343,7 @@ The process of separating the terms $p_i^{\alpha_i}$ between case 1 and case 2 d
 Conversely, every pair $d_m \in \mathcal{D}_m,\ d_n \in \mathcal{D}_n$ determines exactly one divisor of $mn$, namely their product $d_m d_n$.
 \qed\vspace{1em}
 
+\subsubsection*{Proving multiplicativity of $\sigma$}
 Using \textbf{Lemma 2}, \textit{multiplicativity} can be established using \textbf{Definition 1}.
 \begin{align}
 \sigma(mn) =&\sum_{d\in \mathcal{D}_{mn}} d\\
@@ -355,8 +358,9 @@ Using \textbf{Lemma 2}, \textit{multiplicativity} can be established using \text
   \item Since the inner sum depends only on $n$, it can be factored out of the outer sum.
 \end{enumerate}
 
+\subsubsection*{Finishing the product form of $\sigma$}
 \textit{Multiplicativity} lets us express $\sigma(n)$ in terms of the prime factorization
-$n=\prod_{i=1}^{k}p_i^{\alpha_i}$ for any positive integer $n$.
+$n=\prod_{i=1}^{k}p_i^{\alpha_i}$.
 Since $p_1^{\alpha_1}, p_2^{\alpha_2}, \dots, p_k^{\alpha_k}$ are all coprime,
 we may separate the terms $p_1^{\alpha_1}, p_2^{\alpha_2}, \dots, p_k^{\alpha_k}$
 out, one by one, to reach the form in (4.15):
@@ -400,6 +404,7 @@ To do this, we first show that $\varphi$ is \textit{multiplicative}, which means
 \end{equation}
 holds for all coprime positive integers $m, n$.
 The following lemma, which is a special case of the \textbf{Chinese Remainder Theorem}, is used to show \textit{multiplicativity}.
+
 \vspace{1em}\begin{lemma}
   For coprime positive integers $m, n$, each integer $x$ with $0\leq x < mn$
   has a unique pair of remainders when divided by $m$ and by $n$.
@@ -421,7 +426,7 @@ The following lemma, which is a special case of the \textbf{Chinese Remainder Th
   \]
 \end{example}\vspace{1em}
 
-\noindent\textbf{Proof of Lemma 3.}\\
+\subsubsection*{Proof of Lemma 3.}
 We first show, by contradiction, that each pair of remainders when dividing by $m$ and by $n$ is produced by at most one integer $x$ with $0 \leq x < mn$.
 Let the remainders of $x$ when divided by $m$ and by $n$ be $x_m$ and $x_n$, respectively.
 Assume, for contradiction, that there exists another integer $x'$, with $0 \leq x' < mn$, which also gives remainders $x_m, x_n$.
@@ -474,7 +479,7 @@ The following lemma is necessary.
   or the right remainder shares a prime factor with 4.
 \end{example}\vspace{1em}
 
-\noindent\textbf{Proof of Lemma 4.}\\
+\subsubsection*{Proof of Lemma 4}
 Consider the integer division of $x$ by $m$ and by $n$:
 \begin{align}
   x &= q_m m + x_m\\
@@ -501,6 +506,7 @@ We have shown that $\gcd(x,mn)>1$ holds exactly when at least one of $\gcd(x_m, 
 Equivalently, $\gcd(x,mn)=1$ holds if and only if $\gcd(x_m, m) = \gcd(x_n, n) = 1$.
 \qed\vspace{1em}
 
+\subsubsection*{Proving multiplicativity of $\varphi$}
 Recall that \textbf{Definition 2} defines $\varphi(n)$ as the number of positive integers $x\leq n$
 which are coprime to $n$, while \textbf{Lemma 3} and \textbf{lemma 4} are concerned
 with nonnegative integers $x < n$.
@@ -524,6 +530,7 @@ Similarly, the number of possible values for $x_n$ is $\varphi(n)$.
 This means the number of pairs $(x_m, x_n)$ is $\varphi(m)\varphi(n)$.
 Therefore, $\varphi(mn)=\varphi(m)\varphi(n)$.
 
+\subsubsection*{Finishing the product form of $\sigma$}
 Now, exactly like (4.10) -- (4.15) in the derivation of the product form of $\sigma$,
 we deduce that for $n = \prod_{i=1}^{k}p_i^{\alpha_i}$ holds
 \begin{equation}
@@ -552,6 +559,64 @@ Finally, substitute this into (4.25) to finish:
   \end{align*}
 \end{example}
 
+\section{Solving Problem 1}
+The task was to prove $\frac{\pi^2}{6}<f(n)<1$ for all integers $n>1$.
+Now that both parts of \textbf{Lemma 1} have been derived,
+we can derive the following formula for $f(n) = \sigma(n)\varphi(n) n^{-2}$ in terms of the prime factorization of $n$.
+
+\begin{lemma}
+  For any positive integer $n$ with prime factorization $n=\prod_{i=1}^{k}p_i^{\alpha_i}$ holds
+  \begin{equation}
+    f(n)=\prod_{i=1}^{k} \frac{(p_i^{\alpha_i+1}-1)}{p_i^{\alpha_i+1}}
+  \end{equation}
+\end{lemma}
+
+\subsubsection*{Proof of Lemma 5.}
+Suppose that the integer $n>1$ has prime factorization $n=\prod_{i=1}^{k}p_i^{\alpha_i}$.
+By (4.1) and (4.2),
+\begin{align}
+  \sigma(n)\varphi(n) &= \left(\prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i-1}\right)
+                         \left(\prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1)\right)\\
+    &= \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{\cancel{p_i-1}} p_i^{\alpha_i-1}(\cancel{p_i-1})\\
+    &= \prod_{i=1}^{k} (p_i^{\alpha_i+1}-1)p_i^{\alpha_i-1}
+\end{align}
+Additionally,
+\begin{align}
+  n^{-2} &= \left(\prod_{i=1}^{k}p_i^{\alpha_i}\right)^{-2}\\
+         &= \prod_{i=1}^{k}(p_i^{\alpha_i})^{-2}\\
+         &= \prod_{i=1}^{k}p_i^{-2\alpha_i}
+\end{align}
+Combine (5.3) and (5.6) and simplify:
+\begin{align}
+  f(n)=\sigma(n)\varphi(n) n^{-2} &= \left(\prod_{i=1}^{k} (p_i^{\alpha_i+1}-1)p_i^{\alpha_i-1}\right)
+                                \left(\prod_{i=1}^{k}p_i^{-2\alpha_i}\right)\\
+    &=\prod_{i=1}^{k} (p_i^{\alpha_i+1}-1)p_i^{\alpha_i-1} p_i^{-2\alpha_i}\\
+    &=\prod_{i=1}^{k} (p_i^{\alpha_i+1}-1)p_i^{\alpha_i-1-2\alpha_i}\\
+    &=\prod_{i=1}^{k} (p_i^{\alpha_i+1}-1)p_i^{-\alpha_i-1}\\
+    &=\prod_{i=1}^{k} \frac{(p_i^{\alpha_i+1}-1)}{p_i^{\alpha_i+1}}
+\end{align}
+\qed
+
+\vspace{1em}\begin{example}
+  Compute $f(2025)$.
+
+  Since $2025 = 3^4\cdot 5^2$, we use the formula (5.11)
+  \[f(2025)=\frac{(3^{4+1}-1)}{3^{4+1}}\frac{(5^{2+1}-1)}{5^{2+1}} = \frac{242}{243}\cdot\frac{124}{125}=\frac{30008}{30375}\]
+  Verifying using the answers of \textbf{Example 8} and \textbf{Example 11}:
+  \[f(2025) = \sigma(2025)\varphi(2025) 2025^{-2} = 3751\cdot1080 \cdot 2025^-2 = \frac{4051080}{4100625} = \frac{30008}{30375}\]
+
+  The value lies between $\frac{\pi^2}{6}$ and $1$, as expected.
+\end{example}\vspace{1em}
+
+(5.11) looks very promising.
+In fact, the bound $\sigma(n)\varphi(n) n^{-2}<1$ is now obvious:
+every term in the product is strictly less than 1, so the whole product must be less than 1 too.
+
+Yet often a term will be very close to 1.
+
+
+
+%GI)OEWHG JIGJP IWOUGJ )U$ J)IOGW
 \newpage
 \text{\huge \color{red}\textbackslash section\{ROUGH DRAFT TERRITORY\}}
 \begin{figure}[h]
