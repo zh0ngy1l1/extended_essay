@@ -215,7 +215,7 @@ The following functions, defined for any positive integer $n$, are the central f
 
 \begin{example}
   Compute $\sigma(12)$:
-  Since the positive divisors of 12 are $\mathcal{D}_{12}=\{1,\ 2,\ 3,\ 4,\ 6,\ 12\}$,
+  Since the positive divisors of 12 are $\mathcal{D}_{12}=\{1, 2, 3, 4, 6, 12\}$,
   taking their sum yields $\sigma(15)=1+2+3+4+6+12=28$
 \end{example}
 
@@ -271,9 +271,9 @@ After addressing \textbf{Question 1}, the next natural question is,
 This is also a natural thing to ask.
 We see many dense lines between 0.95 and 1, and much fewer below 0.70.
 
-\section{Solving Problem 1}
-First, we must improve our undrstanding on the functions $\sigma$ and $\varphi$. 
-The following product forms for these functions in terms of the prime factorization of $n$ can be derived from their definitions.
+\section{Background for Problem 1}
+To approach \textbf{Problem 1}, we must improve our undrstanding on the functions $\sigma$ and $\varphi$. 
+The following product forms for these functions in terms of the prime factorization of $n$ shall be derived.
 
 \begin{lemma}
   For any positive integer $n$ with prime factorization $n = \prod_{i=1}^{k} p_i^{\alpha_i}$\\
@@ -282,27 +282,28 @@ The following product forms for these functions in terms of the prime factorizat
     \varphi(n) &= \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1)
   \end{align}
 \end{lemma}
-Sections (4.1) and (4.2) are proofs for these two statements.
+
 \subsection{Deriving the Product Form of $\sigma$}
 To do this, we first show that $\sigma$ is \textit{multiplicative}, which means
 \begin{equation}
   \sigma(mn)=\sigma(m)\sigma(n)
 \end{equation}
 holds for all coprime positive integers $m, n$.
+The following lemma is used to show \textit{multiplicativity}.
 
-To show that $\sigma$ is multiplicative, we use the following lemma:
-\begin{lemma}
+\vspace{1em}\begin{lemma}
   For coprime positive integers $m, n$,
-  each element in $\mathcal{D}_{mn}$ is a product of a 
+  each element $d$ in the set $\mathcal{D}_{mn}$ is a product of a 
   unique pair of elements in $\mathcal{D}_m$ and $\mathcal{D}_n$.
-
+  
   Conversely, each pair of elements in $\mathcal{D}_m$ and $\mathcal{D}_n$
   has a product which is an unique element in $\mathcal{D}_{mn}$.
 \end{lemma}
+\vspace{1em}
 \begin{example}
   Let $m=9,\ n=14$.
-  The divisors of 9 are $\mathcal{D}_9=\{1,\ 3,\ 9\}$ and of $14$ are
-  $\mathcal{D}_{14}=\{1,\ 2,\ 7,\ 14\}$.
+  The divisors of 9 are $\mathcal{D}_9=\{1, 3, 9\}$ and of $14$ are
+  $\mathcal{D}_{14}=\{1, 2, 7, 14\}$.
   Every divisor of $mn=126$ is a product of one divisor
   of $9$ and one divisor of $14$:
   \[
@@ -312,10 +313,9 @@ To show that $\sigma$ is multiplicative, we use the following lemma:
     9  &= 9\cdot1,  & 18 &= 9\cdot2,  & 63 &= 9\cdot7,  & 126 &= 9\cdot14.
   \end{aligned}
   \]
-  Thus $\mathcal D_{126}=\{1,\ 2,\ 3,\ 6,\ 7,\ 9,\ 14,\ 18,\ 21,\ 42,\ 63,\ 126\}$.
-\end{example}
+\end{example}\vspace{1em}
 
-\textbf{Proof.}
+\noindent\textbf{Proof of Lemma 2.}\\
 Let $d$ be a positive divisor of $mn$, and write the prime factorization of $d$:
 \begin{equation}
   d=\prod_{i=1}^{k}p_i^{\alpha_i}
@@ -331,40 +331,35 @@ This means we can write
   d=d_m d_n
 \end{equation}
 where $d_m$ is the product of the terms which correspond
-to case 1., and $d_n$ is the product of the terms
+to case 1, and $d_n$ is the product of the terms
 which correspond to case 2.
-Now
-\[d_m \mid d \mid mn\]
-so 
-and $d_m$ shares no prime divisors with $n$
+In this way, we guarantee that $d_m \mid m$ and $d_n \mid n$, or equivalently $d_m \in \mathcal{D}_m$ and $d_n \in \mathcal{D}_n$.
+
 This shows that each element in $\mathcal{D}_{mn}$ is a product of some pair of elements $d_m \in \mathcal{D}_m$ and $d_n \in \mathcal{D}_n$.
-Moreover, the process of separating the terms between case 1 and case 2 is unique, so the corresponding pair $d_m, d_n$ is unique.
+The process of separating the terms $p_i^{\alpha_i}$ between case 1 and case 2 does not involve choices, so the corresponding pair $(d_m, d_n)$ is unique.
 
+Conversely, every pair $d_m \in \mathcal{D}_m,\ d_n \in \mathcal{D}_n$ determines exactly one divisor of $mn$, namely their product $d_m d_n$.
+\qed\vspace{1em}
 
-Conversely, if $d_m$ and $d_n$ are positive divisors
-of $m$ and $n$, respectively, then $d_m d_n$ is a
-divisor of $mn$.
-This shows that the pair of elements $d_m, d_n$ is unique; 
-
-
-\noindent Thanks to \textbf{Lemma 2}, \textit{multiplicativity} can be established using \textbf{Definition 1}.
+Using \textbf{Lemma 2}, \textit{multiplicativity} can be established using \textbf{Definition 1}.
 \begin{align}
 \sigma(mn) =&\sum_{d\in \mathcal{D}_{mn}} d\\
 =&\sum_{d_m \in \mathcal{D}_m}\sum_{d_n \in \mathcal{D}_n} d_m d_n\\
 =&\sum_{d_m \in \mathcal{D}_m} d_m \left(\sum_{d_n \in \mathcal{D}_n} d_n\right)\\
 =&\left(\sum_{d_m \in \mathcal{D}_m} d_m\right)\left(\sum_{d_n \in \mathcal{D}_n} d_n\right)=\sigma(m)\sigma(n).
 \end{align}
-\vspace{-0.5em}\begin{enumerate}[label=(4.\arabic*), start=6]
+\vspace{-1em}\begin{enumerate}[label=(4.\arabic*), start=6]
   \item This is \textbf{Definition 1}.
   \item By \textbf{Lemma 2}, divisors of $mn$ correspond uniquely to products $d_m d_n$ with $d_m\mid m$, $d_n\mid n$, so the sum may be rewritten as a double sum over such pairs.
   \item The inner and outer sums are independent, allowing the factors $d_m$ and $d_n$ to be separated.
   \item Since the inner sum depends only on $n$, it can be factored out of the outer sum.
 \end{enumerate}
-This lets us express $\sigma(n)$ in terms of the prime factorization
+
+\textit{Multiplicativity} lets us express $\sigma(n)$ in terms of the prime factorization
 $n=\prod_{i=1}^{k}p_i^{\alpha_i}$ for any positive integer $n$.
-Since $p_1^{\alpha_1},\ p_2^{\alpha_2},\ \dots,\ p_k^{\alpha_k}$ are all coprime,
-\textit{multiplicativity} lets us separate the terms $p_1^{\alpha_1},\ p_2^{\alpha_2},\ \dots,\ p_k^{\alpha_k}$
-out, one by one, to finally reach the form in (4.15):
+Since $p_1^{\alpha_1}, p_2^{\alpha_2}, \dots, p_k^{\alpha_k}$ are all coprime,
+we may separate the terms $p_1^{\alpha_1}, p_2^{\alpha_2}, \dots, p_k^{\alpha_k}$
+out, one by one, to reach the form in (4.15):
 \begin{align}
   \sigma(n) = &\sigma(p_1^{\alpha_1}p_2^{\alpha_2} \dots p_k^{\alpha_k})\\
   = &\sigma(p_1^{\alpha_1}) \cdot \sigma(p_2^{\alpha_2} \dots p_k^{\alpha_k})\\
@@ -373,10 +368,11 @@ out, one by one, to finally reach the form in (4.15):
   = &\sigma(p_1^{\alpha_1}) \cdot \sigma(p_2^{\alpha_2}) \cdot \dots \cdot \sigma(p_k^{\alpha_k})\\
   = &\prod_{i=1}^{k}\sigma(p_i^{\alpha_i})
 \end{align}
-To finish, we only need to compute $\sigma(p^\alpha)$ when $p$ is prime and $\alpha$ is any positive integer.
+
+To obtain the desired form in (4.2), we only need to compute $\sigma(p^\alpha)$ when $p$ is prime and $\alpha$ is any positive integer.
 This is easy since
 \begin{equation}
-  \mathcal{D}_{p^\alpha}=\{1,\ p,\ p^2,\ \dots,\ p^\alpha\}
+  \mathcal{D}_{p^\alpha}=\{1, p, p^2, \dots, p^\alpha\}
 \end{equation}
 which implies $\sigma(p^\alpha)$ is simply a geometric series
 \begin{equation}
@@ -386,14 +382,12 @@ Finally, substitute this into (4.15) to finish:
 \[
   \sigma(n) = \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i-1} \tag{4.1}
 \]
-This is true for all $n>1$.
-
+\qed\vspace{1em}
 
 \begin{example}
   Compute $\sigma(2025)$.
   \begin{align*}
     \sigma(2025) = &\sigma(3^4\cdot 5^2)\\
-    = &\sigma(3^4)\cdot\sigma(5^2)\\
     = &\frac{3^5-1}{3-1} \frac{5^3-1}{5-1}\\
     = &121 \cdot 31 = 3751
   \end{align*}
@@ -405,19 +399,14 @@ To do this, we first show that $\varphi$ is \textit{multiplicative}, which means
   \varphi(mn)=\varphi(m)\varphi(n)
 \end{equation}
 holds for all coprime positive integers $m, n$.
-
-Recall the definition of $\varphi$ from \textbf{Definition 2}:
-\begin{equation}
-  \varphi(n) = \left|\{x\in \mathbb{Z}^+\ :\ x\leq n,\ \gcd(x,n)=1\}\right|
-  \tag{2.7}
-\end{equation}
-
-To show that $\varphi$ is multiplicative, we use the following lemma, which is a special case of the 
-\textbf{Chinese Remainder Theorem}.
-\begin{lemma}
-  For coprime positive integers $m, n$, each nonnegative integer $x$ with $0\leq x < mn$
+The following lemma, which is a special case of the \textbf{Chinese Remainder Theorem}, is used to show \textit{multiplicativity}.
+\vspace{1em}\begin{lemma}
+  For coprime positive integers $m, n$, each integer $x$ with $0\leq x < mn$
   has a unique pair of remainders when divided by $m$ and by $n$.
+
+  Conversely, each pair of remainders is given by a unique integer within this range.
 \end{lemma}
+\vspace{1em}
 \begin{example}
   Let $m=3,\ n=4$.
   Then $mn=12$, so we list all integers
@@ -430,80 +419,138 @@ To show that $\varphi$ is multiplicative, we use the following lemma, which is a
     2 &\rightarrow (2,2), & 5 &\rightarrow (2,1), & 8 &\rightarrow (2,0), & 11 &\rightarrow (2,3).
   \end{aligned}
   \]
-  We see that each pair of remainders is unique.
-\end{example}
+\end{example}\vspace{1em}
 
+\noindent\textbf{Proof of Lemma 3.}\\
+We first show, by contradiction, that each pair of remainders when dividing by $m$ and by $n$ is produced by at most one integer $x$ with $0 \leq x < mn$.
+Let the remainders of $x$ when divided by $m$ and by $n$ be $x_m$ and $x_n$, respectively.
+Assume, for contradiction, that there exists another integer $x'$, with $0 \leq x' < mn$, which also gives remainders $x_m, x_n$.
+Without loss of generality, assume $x' > x$.\footnote{This is allowed because the other case is symmetrical}
 
+Since $x$ and $x'$ have the same remainders when divided by $m$, we have $m \mid x' - x$.
+Similarly, $n \mid x' - x$.
+Recall that $m$ and $n$ are coprime, these can be combined into $mn \mid x'-x$.
 
-
-Suppose, for contradiction, that there exists anonther integer $k'$, greater than $k$, with $0 \leq k' < mn$, which also has remainders $k_m, k_n$ when divided by $m$ and $n$, respectively.
-Then $m \mid k' - k$ and $n \mid k' - k$ are both true.
-Noting that $m$ and $n$ are coprime and $k' - k > 0$ we may write
-\[mn \mid k' - k \implies mn \leq k' - k < mn,\]
-contradiction.
-This shows that each pair of remainders $k_m, k_n$ corresponds to at most one number $k$ with $0 \leq k < mn$.
-Since there precisely $mn$ pairs of remainders, and also precisely $mn$ integers between $0$ and $mn$, we conclude that such a $k$ must always exist, so the proof is complete. \qed
-
-Then the desired equality $\varphi(mn) = \varphi(m) \varphi(n)$ is equivalent to showing that 
+But $x'>x$ by assumption, so $x'-x$ is a positive multiple of $mn$, which implies 
 \begin{align}
-  &\left| \left\{k\in\mathbb{Z}:\ 0 \leq k < mn,\ \gcd(k,mn) = 1\right\} \right|\\
-  &=\left| \left\{k\in\mathbb{Z}:\ 0\leq k < m,\ \gcd(k,m) = 1\right\} \right| \cdot
-  \left| \left\{k\in\mathbb{Z}:\ 0\leq k < n,\ \gcd(k,n) = 1\right\} \right|\\
-  &=\left| \left\{(k_m, k_n)\in\mathbb{Z} \times \mathbb{Z}:\ 0 \leq k_m < m,\ 0 \leq k_n < n,\ \gcd(k_m,m) = \gcd(k_n,n) = 1\right\} \right|
+  x'-x &\geq mn\\
+  x'   &\geq mn + x \geq mn
 \end{align}
+contradicting with the assumption that $0 \leq x' \leq mn$.
+Therefore, each pair of remainders is be given by at most one integer $x$ with $0\leq x < mn$.
 
-This theorem shows that every number $k$ from the set in (4.1) corresponds to an unique pair of remainders when divided by $n$ and $m$,
-and every pair $(k_m, k_n)$ from the set in (4.3) corresponds to an unique number between $0$ and $mn$.
-This will be very useful if we verify that the remainders of $k$ when divided $m$ and $n$ are coprime to $m$ and $n$ respectively, if and only if $k$ is coprime to $mn$.
+It is known that there are $m$ possible remainders when dividing by $m$, and $n$ possible remainders when dividing by $n$.
+Therefore, there are $mn$ total pairs of remainders. 
+This is equal to the number of integers $x$ that satisfy $0\leq x < mn$.
 
-By the Euclidean algorithm, we may write
-\[\gcd(m, k) = \gcd(m, k-m) = \gcd(m, k-2m) = ... = \gcd(m, k_m).\]
-Repeating this for $n$ and combining, we get that $\gcd(mn, k) = \gcd(m,k)\gcd(n,k)=\gcd(m,k_m)\gcd(n,k_n)$, which equals one if and only if both $\gcd(m,k_m)=\gcd(n,k_n)=1$.
+Since each such $x$ gives exactly one pair of remainders,
+and each pair of remainders is given by at most one such $x$,
+it is necessarily true that each pair of remainders is given by some such $x$.
+\qed\vspace{1em}
 
-This means the Chinese remainder theorem actually finds a one-to-one correspondence between these sets which we want to show to have equal size,
-which finally shows that $\varphi(mn) = \varphi(m)\varphi(n)$. \qed
+But $\varphi$ is only interested in the integers which are coprime.
+The following lemma is necessary.
 
-% In other words, we can compute $\varphi(n)$ using the set of positive integers less than
-% or equal to $n$, by removing those which are a multiple of some prime factor of $n$, and
-% counting how many remains.
-% This works because those which are erased are not coprime to $n$, and all the remaining ones are.
-% \begin{example}
-%   Suppose $n=15 = 5 \cdot 3$, and compute $\varphi(15)$:
+\vspace{1em}\begin{lemma}
+  Given coprime positive integers $m, n$ and integer $x$ satisfying $0 \leq x < mn$,
+  let the remainders of $x$ be $x_m$ and $x_n$ when divided by $m$ and by $n$, respectively.
 
-%   The multiples of 3 less than 15 are
-%   $\{3,\ 6,\ 9,\ 12,\ 15\}$,
-%   and the multiples of 5 less than 15 are
-%   $\{5,\ 10,\ 15\}$. If we remove these from the positive integers less than or equal to 15,
-%   the integers that remain are
-%   \begin{equation}
-%     \{1,2,\not3,4,\not5,\not6,7,8,\not9,\not10,11,\not12,13,14,\not15\}
-%     =\{1,\ 2,\ 4,\ 7,\ 8,\ 11,\ 13,\ 14\}
-%   \end{equation}
-%   so $\varphi(15) = 8$
-% \end{example}
-% The line of thought in \textbf{Example 9} motivates the following definition:
-% \begin{definition}
-%   For some prime divisor $p\mid n$, let $S_p (n)$ denote the set of multiples of $p$ which are less than or equal to $n$.
-%   Formally, define the set
-%   \begin{equation}
-%     S_p (n) = \left\{x\in\textbf{Z}^+\ :\ x\leq n,\ p \mid x\right\}
-%   \end{equation}
-% \end{definition}
-% Notice how $\{3,\ 6,\ 9,\ 12,\ 15\} = S_3 (15)$ and $\{5,\ 10,\ 15\}= S_5 (15)$ in \textbf{Example 9}.
+  Then $x$ is coprime to $mn$ if and only if $x_m$ is coprime to $m$ and $x_n$ is coprime to $n$.
+  Symbolically, the claim is
+  \begin{equation}
+    \gcd(x, mn) = 1 \iff \gcd(x_m, m) = \gcd(x_n, n) = 1
+  \end{equation}
+\end{lemma}
+\vspace{1em}
+\begin{example}
+  
+  Look back at \textbf{Example 9}.
+  The integers $1, 5, 7, 11$ are coprime to 12.
+  In the corresponding pairs of remainders, the left remainder is coprime to 3,
+  and the right remainder is coprime to 4.
 
-% To generalize the idea in the example, we should consider the following set:
-% \begin{equation}
-%   S_{p_1}(n)\cup S_{p_2}(n)\cup \dots \cup S_{p_k}(n)
-% \end{equation}
-% This is the set we remove from $\{1,\ 2,\ \dots,\ n\}$, so that the remaining numbers
-% are all coprime to $n$ and hence make up $\varphi(n)$.
+  Conversely, for the remaining integers $0, 2, 3, 4, 6, 8, 9, 10$,
+  either the left remainder shares a prime factor with 3,
+  or the right remainder shares a prime factor with 4.
+\end{example}\vspace{1em}
 
-% Actually, size of the set in (4.21) is precisely $n-\varphi(n)$.
+\noindent\textbf{Proof of Lemma 4.}\\
+Consider the integer division of $x$ by $m$ and by $n$:
+\begin{align}
+  x &= q_m m + x_m\\
+  x &= q_n n + x_n
+\end{align}
+Here $q_m$ and $q_n$ are the quotients of division by $m$ and by $n$, respectively.
 
-% prove inclusion-exclusion (pp. 231 - 233).
+If $\gcd(x,mn) > 1$, then there exists some prime $p$ which divides $x$ and divides either $m$ or $n$.
+Without loss of generality, assume $p \mid m$.
+Then rearrange (4.22):
+\begin{equation}
+  x - q_m m = x_m
+\end{equation}
+Both terms in the left hand side are divisible by $p$, so $x_m$ must be divisible by $p$ as well.
+Hence $p$ is a common divisor of $x_m$ and $m$, implying that $\gcd(x_m, m) > 1$.
 
+Conversely, again without loss of generality, assume that $\gcd(x_m, m) > 1$.
+Then there exists some prime $p$ which divides both $x_m$ and $m$.
+Since $mn$ is a multiple of $m$, it must be divisible by $p$.
+Both terms in the right hand side of (4.22) are divisible by $p$, so $x$ must be divisible by $p$ as well.
+Hence $p$ is a common divisor of $x$ and $mn$, implying that $\gcd(x, mn)>1$.
 
+We have shown that $\gcd(x,mn)>1$ holds exactly when at least one of $\gcd(x_m, m)$ and $\gcd(x_n, n)$ is greater than 1.
+Equivalently, $\gcd(x,mn)=1$ holds if and only if $\gcd(x_m, m) = \gcd(x_n, n) = 1$.
+\qed\vspace{1em}
 
+Recall that \textbf{Definition 2} defines $\varphi(n)$ as the number of positive integers $x\leq n$
+which are coprime to $n$, while \textbf{Lemma 3} and \textbf{lemma 4} are concerned
+with nonnegative integers $x < n$.
+To address this disparity, we simply note that
+for any integer $n>1$, neither $n$ nor $0$ are coprime to $n$, so $\varphi(n)$ is
+equal to the number of nonnegative $x < n$ which are coprime to $n$.
+
+Since \textit{multiplicativity} is trivial for $m=1$ or $n=1$,
+it is only necessary to consider coprime integers $m, n$ greater than 1.
+
+Combining \textbf{Lemma 3} and \textbf{Lemma 4} shows that
+the total number of pairs of remainders $(x_m, x_n)$ where $\gcd(x_m, m) = \gcd(x_n, n) = 1$
+is equal to the number of integers $x$ satisfying $0 \leq x < mn$ and $\gcd(x, mn)=1$.
+Note that this is precisely the amended definition of $\varphi(mn)$.
+
+Moreover, since the possible remainders when dividing by $m$ are simply
+${0, 1, \dots, m-1}$ and only those coprime to $m$ are counted, the number of possible
+values for $x_m$ is $\varphi(m)$, again using the amended definition.
+Similarly, the number of possible values for $x_n$ is $\varphi(n)$.
+
+This means the number of pairs $(x_m, x_n)$ is $\varphi(m)\varphi(n)$.
+Therefore, $\varphi(mn)=\varphi(m)\varphi(n)$.
+
+Now, exactly like (4.10) -- (4.15) in the derivation of the product form of $\sigma$,
+we deduce that for $n = \prod_{i=1}^{k}p_i^{\alpha_i}$ holds
+\begin{equation}
+  \varphi(n)=\prod_{i=1}^{k}\sigma(p_i^{\alpha_i})
+\end{equation}
+
+For any prime $p$ and any positive integer $\alpha$,
+we may compute $\varphi(p^\alpha)$ by
+counting the numbers from 1 to $p^\alpha$ and
+removing all $p^{\alpha-1}$ multiples of $p$:
+\begin{equation}
+  \varphi(p^\alpha)=p^\alpha - p^{\alpha-1} = p^{\alpha-1}(p-1)
+\end{equation}
+Finally, substitute this into (4.25) to finish:
+\[
+  \varphi(n) = \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1) \tag{4.2}
+\]
+\qed\vspace{1em}
+
+\begin{example}
+  Compute $\varphi(2025)$.
+  \begin{align*}
+    \varphi(2025) = &\varphi(3^4\cdot 5^2)\\
+    = &3^(4-1)(3-1) \cdot 5^(2-1)(5-1)\\
+    = &54 \cdot 20 = 1080
+  \end{align*}
+\end{example}
 
 \newpage
 \text{\huge \color{red}\textbackslash section\{ROUGH DRAFT TERRITORY\}}
