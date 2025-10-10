@@ -35,7 +35,7 @@
 {\normalfont\large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}
 {\normalfont\large\bfseries}{\thesubsection}{1em}{}
-\usepackage{tabularx} 
+\usepackage{tabularx}
 \usepackage{ragged2e}
 
 %Equation numbering
@@ -109,11 +109,14 @@ Write this when most of the essay is finished
   \caption{what?}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%
+%%% NEW SECTION
+%%%%%%%%%%%%%%%%%%%
 \newpage
 \section{Prerequisite Knowledge, Notation, and Definitions}
 The inarguably most important theorem in number theory is the following:
 \begin{theorem}[Fundamental Theorem of Arithmetic]
-  Every positive integer has an unique prime factorization.\cite{apostol}
+  Every positive integer has a unique prime factorization.\cite{apostol}
 \end{theorem}
 This theorem is crucial in our ensuing discussion, because it allows us to express any integer $n\geq 2$ uniquely in terms of its $k$ prime divisors $p_1, p_2, ..., p_k$,
 along with the positive integers $\alpha_1, \alpha_2, ..., \alpha_k$ which indicate the number of times that $n$ is divisible by the corresponding prime factor.
@@ -146,12 +149,12 @@ When two sets $A, B$ are the same, we write $A = B$.
     \item For a finite set $S$, the symbol $|S|$ denotes the number of elements contained in $S$.
     \item The union $A \cup B$ is the set of all elements that belong to $A$, to $B$, or to both.
     \item The intersection $A \cap B$ is the set of all elements that belong to both $A$ and $B$.
-    \item The difference $A \setminus B$ is the set of all elements that belong to both $A$ but not $B$.
+    \item The difference $A \setminus B$ is the set of all elements that belong to $A$ but not $B$.
   \end{itemize}
 \end{notation}\vspace{0.5em}
 
 \begin{example}
-  The set $\{1,2,4,7,8,11,13,14\}$ has size $\left|\{1,2,4,7,8,11,13,14\}\right|=4$.
+  The set $\{1,2,4,7,8,11,13,14\}$ has size $\left|\{1,2,4,7,8,11,13,14\}\right|=8$.
 
   For sets $A= \{2,4,6,8,10,12\},\ B=\{3,6,9,12\}$,
   their union is $A\cup B = \{2, 3, 4, 6, 8, 9, 10, 12\}$,
@@ -193,10 +196,10 @@ The reader should understand the following examples before proceeding:
   \begin{equation}
     \mathbb{P} = \left\{x \in \mathbb{Z}^+\ :\ x>1,\ \mathcal{D}_x = \{1,\ x\} \right\}
   \end{equation}
-  In this case, multiple conditions on $x$ are necessary, and notationally we separate them with a comma.  
+  In this case, multiple conditions on $x$ are necessary, and notationally we separate them with a comma.
 \end{example}
 
-More complicated sequential sums and products also involve require set-builder-like notation in the subscripts, used to impose restrictions on the what to take the sum or product over.
+More complicated sequential sums and products also require set-builder-like notation in the subscripts, used to impose restrictions on what to take the sum or product over.
 (2.6) in \textbf{Definition 1} serves as an example of this.
 
 \subsection{Key Definitions}
@@ -205,7 +208,7 @@ The following functions, defined for all positive integers $n$, are the central 
 \begin{definition}[Sum of Divisors Function $\sigma$]
   Define $\sigma(n)$ as the sum of all positive divisors of $n$.
 
-  Mimicking set-builder notation, write
+  Mimicking set-builder notation, we can write
   \begin{equation}
     \sigma(n) = \sum_{d \in \mathcal{D}_n} d
   \end{equation}
@@ -214,7 +217,7 @@ The following functions, defined for all positive integers $n$, are the central 
 \begin{example}
   Compute $\sigma(12)$:
   Since the positive divisors of 12 are $\mathcal{D}_{12}=\{1, 2, 3, 4, 6, 12\}$,
-  taking their sum yields $\sigma(15)=1+2+3+4+6+12=28$
+  taking their sum yields $\sigma(12)=1+2+3+4+6+12=28$
 \end{example}
 
 \vspace{1em}\begin{definition}[Euler's Totient Function $\varphi$]
@@ -233,9 +236,12 @@ The following functions, defined for all positive integers $n$, are the central 
   Compute $\varphi(12)$:
 
   \noindent The positive integers less than or equal to 15 and coprime to 15 are 1, 5, 7, 11.
-  Since there are 4 such numbers, $\varphi(12)=4$.
+  Since there are 4 such numbers, $\varphi(15)=4$.
 \end{example}
 
+%%%%%%%%%%%%%%%%%%%
+%%% NEW SECTION
+%%%%%%%%%%%%%%%%%%%
 \newpage
 
 \section{The Problem of Study}
@@ -273,12 +279,16 @@ After addressing \textbf{Question 1}, the next natural question is,
 
 This is also a natural thing to ask; we see many dense lines between 0.95 and 1, and much fewer below 0.70.
 
+
+%%%%%%%%%%%%%%%%%%%
+%%% NEW SECTION
+%%%%%%%%%%%%%%%%%%%
 \section{Background for Problem 1}
-To approach \textbf{Problem 1}, we must improve our undrstanding on the functions $\sigma$ and $\varphi$. 
+To approach \textbf{Problem 1}, we must improve our understanding on the functions $\sigma$ and $\varphi$.
 The following product forms for these functions in terms of the prime factorization of $n$ shall be derived.
 
 \begin{lemma}
-  For any positive integer $n$ with prime factorization $n = \prod_{i=1}^{k} p_i^{\alpha_i}$ holds
+  For any positive integer $n$ with prime factorization $n = \prod_{i=1}^{k} p_i^{\alpha_i}$, it holds
   \begin{align}
     \sigma(n)  &= \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i-1}\\
     \varphi(n) &= \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1)
@@ -295,11 +305,11 @@ The following lemma is used to show \textit{multiplicativity}.
 
 \vspace{1em}\begin{lemma}
   For coprime positive integers $m, n$,
-  each element $d$ in the set $\mathcal{D}_{mn}$ is a product of a 
+  each element $d$ in the set $\mathcal{D}_{mn}$ is a product of a
   unique pair of elements in $\mathcal{D}_m$ and $\mathcal{D}_n$.
-  
+
   Conversely, each pair of elements in $\mathcal{D}_m$ and $\mathcal{D}_n$
-  has a product which is an unique element in $\mathcal{D}_{mn}$.
+  has a product which is a unique element in $\mathcal{D}_{mn}$.
 \end{lemma}
 \vspace{1em}
 \begin{example}
@@ -322,7 +332,7 @@ Let $d$ be a positive divisor of $mn$, and write the prime factorization of $d$:
 \begin{equation}
   d=\prod_{i=1}^{k}p_i^{\alpha_i}
 \end{equation}
-In this form, each term $p_i^{\alpha_i}$ either 
+In this form, each term $p_i^{\alpha_i}$ either
 \vspace{-0.5em}\begin{enumerate}
   \item divides $m$ and is coprime to $n$, or
   \item divides $n$ and is coprime to $m$,
@@ -436,7 +446,7 @@ Since $x$ and $x'$ have the same remainders when divided by $m$, we have $m \mid
 Similarly, $n \mid x' - x$.
 Recall that $m$ and $n$ are coprime, these can be combined into $mn \mid x'-x$.
 
-But $x'>x$ by assumption, so $x'-x$ is a positive multiple of $mn$, which implies 
+But $x'>x$ by assumption, so $x'-x$ is a positive multiple of $mn$, which implies
 \begin{align}
   x'-x &\geq mn\\
   x'   &\geq mn + x \geq mn
@@ -445,7 +455,7 @@ contradicting with the assumption that $0 \leq x' \leq mn$.
 Therefore, each pair of remainders is be given by at most one integer $x$ with $0\leq x < mn$.
 
 It is known that there are $m$ possible remainders when dividing by $m$, and $n$ possible remainders when dividing by $n$.
-Therefore, there are $mn$ total pairs of remainders. 
+Therefore, there are $mn$ total pairs of remainders.
 This is equal to the number of integers $x$ that satisfy $0\leq x < mn$.
 
 Since each such $x$ gives exactly one pair of remainders,
@@ -468,7 +478,7 @@ The following lemma is necessary.
 \end{lemma}
 \vspace{1em}
 \begin{example}
-  
+
   Look back at \textbf{Example 9}.
   The integers $1, 5, 7, 11$ are coprime to 12.
   In the corresponding pairs of remainders, the left remainder is coprime to 3,
@@ -642,7 +652,7 @@ Formally, we may ask,
 \begin{question}
   Does there exist a nonempty open interval
   $I\subset\left(\frac{6}{\pi^2},1\right)$
-  such that 
+  such that
   $a_n \notin I$ holds for all $ n\geq 2$?
 \end{question}
 
