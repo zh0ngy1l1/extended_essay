@@ -4,8 +4,21 @@ SRC_DIR := src
 # List of LaTeX auxiliary files to be deleted
 LATEX_GARBAGE := *.aux *.fdb_latexmk *.fls *.bcf *.blg *.log *.out *.run.xml *.synctex.gz
 
-# Target to clean up LaTeX garbage and move main.pdf
-all: clean move_pdf
+# Default target: compile, clean, and move PDF
+all: compile clean move_pdf
+
+# Compile LaTeX document
+compile:
+	@echo "Compiling LaTeX document..."
+	@cd $(SRC_DIR) && latexmk -pdf -interaction=nonstopmode main.tex
+
+# Alternative compilation using pdflatex (for manual control)
+pdflatex:
+	@echo "Compiling with pdflatex..."
+	@cd $(SRC_DIR) && pdflatex -interaction=nonstopmode main.tex
+	@cd $(SRC_DIR) && bibtex main
+	@cd $(SRC_DIR) && pdflatex -interaction=nonstopmode main.tex
+	@cd $(SRC_DIR) && pdflatex -interaction=nonstopmode main.tex
 
 # Clean up LaTeX auxiliary files
 clean:
@@ -15,7 +28,7 @@ clean:
 # Move main.pdf to the target directory
 move_pdf:
 	@echo "Moving main.pdf to the target directory..."
-	@mv $(SRC_DIR)/main.pdf .
+	@if [ -f $(SRC_DIR)/main.pdf ]; then mv $(SRC_DIR)/main.pdf .; else echo "main.pdf not found in $(SRC_DIR)"; fi
 
 # Phony targets
-.PHONY: all clean move_pdf
+.PHONY: all compile pdflatex clean move_pdf
