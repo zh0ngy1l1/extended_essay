@@ -671,12 +671,28 @@ $n = \prod_{i=1}^{k} p_i^{\alpha_i}$.
 
 \subsubsection*{Maximizing number of terms}
 
-Since each term $\frac{p_i^2-1}{p_i^{\alpha_i+1}}$ is less than one, the more
+Since each term $\frac{p_i^2-1}{p_i^2}$ is less than one, the more
 terms we have, the smaller $f$ is.
-But what gives more terms?
-Each prime divisor of $n$ corresponds to a term in the product that gives $f(n)$.
+Therefore, 
+\[f(n) \geq \prod_{i=1}^{k} \frac{p_i^2-1}{p_i^2} > \prod_{p\ \text{prime}} \frac{p^2-1}{p^2}\]
+where the right product is infinite, and goes over all primes $p$.
+This works because each term $\frac{p_i^2-1}{p_i^2}$ in the left product is also a term in the right product,
+and the right product always has more terms, because it is infinite while the left product is finite.
 
-
+\subsubsection*{Evaluating the product over all primes}
+Now all that's left to show the lower bound is to show that $\displaystyle \prod_{p\ \text{prime}} \frac{p^2-1}{p^2} = \frac{\pi^2}{6}$.
+\begin{align}
+  \prod_{p\ \text{prime}} \frac{p^2-1}{p^2} =& \prod_{p\ \text{prime}} \frac{1-\frac{1}{p^2}}{1}\\
+  =& \prod_{p\ \text{prime}} \left(\left(\frac{1}{p^2}\right)^0 + \left(\frac{1}{p^2}\right)^1 + \left(\frac{1}{p^2}\right)^2 + \dots\right)\\
+  =& \prod_{p\ \text{prime}} \left(\sum_{i=0}^{\infty} \frac{1}{p^{2i}}\right)
+\end{align}
+\vspace{-1em}\begin{enumerate}[label=(4.\arabic*), start=6]
+  \item This is \textbf{Definition 1}.
+  \item By \textbf{Lemma 2}, divisors of $mn$ correspond uniquely to products $d_m d_n$ with $d_m\mid m$, $d_n\mid n$, so the sum may be rewritten as a double sum over such pairs.
+  \item The inner and outer sums are independent, allowing the factors $d_m$ and $d_n$ to be separated.
+  \item Since the inner sum depends only on $n$, it can be factored out of the outer sum.
+\end{enumerate}
+  
 
 %GI)OEWHG JIGJP IWOUGJ )U$ J)IOGW
 \newpage
