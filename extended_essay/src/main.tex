@@ -78,11 +78,11 @@
   \begin{center}
     Subject: Mathematics\\
     \vspace*{4cm}
-    {\Large \textbf{Investigating patterns in the product of Euler's totient function $\varphi$ and the sum of divisors function $\sigma$}}\\
+    {\Large \textbf{Investigating patterns in the product of the sum of divisors function $\sigma$ and Euler's totient function $\varphi$}}\\
 
     \vspace{1cm}
     \textbf{Research Question:}
-    What gives rise to the patterns in the graph of $n^{-2}\varphi(n)\sigma(n)$?\\
+    What gives rise to the patterns in the graph of $f(n)=n^{-2}\sigma(n)\varphi(n)$?\\
 
     \vfill
     Word count: 1729
@@ -140,27 +140,27 @@ and $\mathbb{R}$, used to denote the set of real numbers.
 
 Here \textit{unordered} means that for example, the set $A =\{1, 2\}$ is the same as
 the set $B=\{2, 1\}$.
-When two sets $A, B$ are the same, we write $A = B$.
+When two sets $A, B$ are the same, we write $A = B$.\\
 
-\begin{notation}
+\noindent\begin{notation}
   \begin{itemize}
     Let $A$, $B$, and $S$ be sets.
     \item The notation $x \in S$ means that $x$ is an element of the set $S$.
     \item For a finite set $S$, the symbol $|S|$ denotes the number of elements contained in $S$.
-    \item The union $A \cup B$ is the set of all elements that belong to $A$, to $B$, or to both.
-    \item The intersection $A \cap B$ is the set of all elements that belong to both $A$ and $B$.
-    \item The difference $A \setminus B$ is the set of all elements that belong to $A$ but not $B$.
+    %\item The union $A \cup B$ is the set of all elements that belong to $A$, to $B$, or to both.
+    %\item The intersection $A \cap B$ is the set of all elements that belong to both $A$ and $B$.
+    %\item The difference $A \setminus B$ is the set of all elements that belong to $A$ but not $B$.
   \end{itemize}
 \end{notation}\vspace{0.5em}
 
-\begin{example}
-  The set $\{1,2,4,7,8,11,13,14\}$ has size $\left|\{1,2,4,7,8,11,13,14\}\right|=8$.
+% \begin{example}
+%   The set $\{1,2,4,7,8,11,13,14\}$ has size $\left|\{1,2,4,7,8,11,13,14\}\right|=8$.
 
-  For sets $A= \{2,4,6,8,10,12\},\ B=\{3,6,9,12\}$,
-  their union is $A\cup B = \{2, 3, 4, 6, 8, 9, 10, 12\}$,
-  and their intersection is $A\cap B = \{6, 12\}$.
-  The difference $A\setminus B$ is $\{2,4,8,10\}$.
-\end{example}
+%   For sets $A= \{2,4,6,8,10,12\},\ B=\{3,6,9,12\}$,
+%   their union is $A\cup B = \{2, 3, 4, 6, 8, 9, 10, 12\}$,
+%   and their intersection is $A\cap B = \{6, 12\}$.
+%   The difference $A\setminus B$ is $\{2,4,8,10\}$.
+% \end{example}
 
 \subsection{Set-builder Notation}
 Set-builder notation is a way for mathematicians to define sets symbolically rather than verbosely.
@@ -248,10 +248,10 @@ The following functions, defined for all positive integers $n$, are the central 
 This investigation was inspired by the following problem from the undergraduate textbook \textit{Introduction to Analytic Number Theory} \cite{apostol}.
 
 \begin{problem}
-  Show that $\displaystyle \frac{6}{\pi^2}<\varphi(n)\sigma(n) n^{-2}<1$ for all integers $n$ greater than 1.
+  Show that $\displaystyle \frac{6}{\pi^2}<\sigma(n)\varphi(n) n^{-2}<1$ for all integers $n$ greater than 1.
 \end{problem}
 
-For simplicity, $f(n)$ will be used to denote $\varphi(n)\sigma(n) n^{-2}$ from this point onwards.
+For simplicity, $f(n)$ will be used to denote $\sigma(n)\varphi(n) n^{-2}$ from this point onwards.
 
 \begin{figure}[h]
   \centering
@@ -570,16 +570,21 @@ Finally, substitute this into (4.25) to finish:
 \end{example}
 
 \section{Solving Problem 1}
+\begin{quote} 
+  \textit{`Why is pi here? And why is it squared?'}
+  \hfill -- Grant Sanderson 
+  \end{quote}
+  
 The task was to prove $\frac{\pi^2}{6}<f(n)<1$ for all integers $n>1$.
 Now that both parts of \textbf{Lemma 1} have been derived,
 we can derive the following formula for $f(n) = \sigma(n)\varphi(n) n^{-2}$ in terms of the prime factorization of $n$.
 
-\begin{lemma}
+\vspace{1em}\begin{lemma}
   For any positive integer $n$ with prime factorization $n=\prod_{i=1}^{k}p_i^{\alpha_i}$ holds
   \begin{equation}
-    f(n)=\prod_{i=1}^{k} \frac{(p_i^{\alpha_i+1}-1)}{p_i^{\alpha_i+1}}
+    f(n)=\prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}}
   \end{equation}
-\end{lemma}
+\end{lemma}\vspace{1em}
 
 \subsubsection*{Proof of Lemma 5.}
 Suppose that the integer $n>1$ has prime factorization $n=\prod_{i=1}^{k}p_i^{\alpha_i}$.
@@ -603,7 +608,7 @@ Combine (5.3) and (5.6) and simplify:
     &=\prod_{i=1}^{k} (p_i^{\alpha_i+1}-1)p_i^{\alpha_i-1} p_i^{-2\alpha_i}\\
     &=\prod_{i=1}^{k} (p_i^{\alpha_i+1}-1)p_i^{\alpha_i-1-2\alpha_i}\\
     &=\prod_{i=1}^{k} (p_i^{\alpha_i+1}-1)p_i^{-\alpha_i-1}\\
-    &=\prod_{i=1}^{k} \frac{(p_i^{\alpha_i+1}-1)}{p_i^{\alpha_i+1}}
+    &=\prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}}
 \end{align}
 \qed
 
@@ -618,11 +623,58 @@ Combine (5.3) and (5.6) and simplify:
   The value lies between $\frac{\pi^2}{6}$ and $1$, as expected.
 \end{example}\vspace{1em}
 
-(5.11) looks very promising.
-In fact, the bound $\sigma(n)\varphi(n) n^{-2}<1$ is now obvious:
-every term in the product is strictly less than 1, so the whole product must be less than 1 too.
+\subsection{Upper bound}
+Actually, \textbf{Lemma 5} looks very promising in regards to solving \textbf{Problem 1}.
+In fact, the upper bound $\sigma(n)\varphi(n) n^{-2}<1$ is now obvious:
+Every term in the product is strictly less than 1, so the whole product must be less than 
+1 whenever the product contains at least one term.
+That is, whenever $n>1$.
 
-Yet often a term will be very close to 1.
+\subsection{Lower bound}
+The task is to show that $f$ is never exceeded by $\frac{\pi^2}{6}$, so we are interested
+in how small $f$ can get.
+
+To minimize the product $f(n) = \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}}$,
+we have to 
+\begin{enumerate}
+  \item minimize each term in the product, and
+  \item maximize the number of terms. Since each term is less than $1$, adding more terms decreases the product.
+\end{enumerate}
+
+\subsubsection*{Minimizing each term}
+\begin{equation}
+  \frac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}} = 1 - \frac{1}{p_i^{\alpha_i+1}}
+\end{equation}
+From (5.13) it is clear that the larger $\alpha_i$ is, the larger the result will be.
+In other words, minimizing the term is simply minimizing $\alpha_i$.
+Since $\alpha_i$ is a positive integer, it is $1$ at minimum, in which case the term
+would be $\frac{p_i^2-1}{p_i^2}$.
+
+\vspace{1em}\begin{example}
+  We find an integer $n$ such that $f(n) < f(2025)$ with this method:
+
+  The prime factorization is $2025 = 3^4 5^2$.
+  To minimize each term, we reduce the exponents to $1$.
+  Therefore, choose $n = 3^1 5^1 = 15$.
+  Then 
+  \[f(n) = f(15)= \frac{8}{9}\cdot\frac{24}{25}=\frac{64}{75}<\frac{30008}{30375}=f(2025)\]
+\end{example}\vspace{1em}
+
+Therefore, to find the lower bound of $f$, we only need to consider the values $f(n)$ where each prime divisor of $n$
+is only raised to the first power in the prime factorization.
+In other words, we have
+\begin{equation}
+  f(n)\geq \prod_{i=1}^{k} \frac{p_i^2-1}{p_i^2}
+\end{equation}
+and equality holds when $\alpha_1 = \alpha_2 = \dots = \alpha_k$ in the prime factorization
+$n = \prod_{i=1}^{k} p_i^{\alpha_i}$.
+
+\subsubsection*{Maximizing number of terms}
+
+Since each term $\frac{p_i^2-1}{p_i^{\alpha_i+1}}$ is less than one, the more
+terms we have, the smaller $f$ is.
+But what gives more terms?
+Each prime divisor of $n$ corresponds to a term in the product that gives $f(n)$.
 
 
 
@@ -664,8 +716,8 @@ while \textbf{Question 1} only required us to show that the sequence gets arbitr
 
 \newpage
 Then show that the basel problem $\infty$ sum is the $\infty$ product: Page 230 (pdf: 242) of \cite{apostol}.
-Then solve \textbf{Problem.} by writing $\dfrac{\varphi(n)\sigma(n)}{n^2}$ in terms of primes:
-\[\frac{\varphi(n)\sigma(n)}{n^2} = \prod_{i=1}^{k} \dfrac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}}\]
+Then solve \textbf{Problem.} by writing $\dfrac{\sigma(n)\varphi(n)}{n^2}$ in terms of primes:
+\[\frac{\sigma(n)\varphi(n)}{n^2} = \prod_{i=1}^{k} \dfrac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}}\]
 (we get this by plugging Lemma 1)
 
 To finish the problem, see the maximum of each term in this product, and the minimum of each term.
