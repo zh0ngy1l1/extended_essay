@@ -287,13 +287,13 @@ This is also a natural thing to ask; we see many dense lines between 0.95 and 1,
 To approach \textbf{Problem 1}, we must improve our understanding on the functions $\sigma$ and $\varphi$.
 The following product forms for these functions in terms of the prime factorization of $n$ shall be derived.
 
-\begin{lemma}
-  For any positive integer $n$ with prime factorization $n = \prod_{i=1}^{k} p_i^{\alpha_i}$, it holds
+\vspace{1em}\begin{lemma}
+  For any positive integer $n$ with prime factorization $n = \prod_{i=1}^{k} p_i^{\alpha_i}$ holds
   \begin{align}
     \sigma(n)  &= \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i-1}\\
     \varphi(n) &= \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1)
   \end{align}
-\end{lemma}
+\end{lemma}\vspace{1em}
 
 \subsection{Deriving the Product Form of $\sigma$}
 To do this, we first show that $\sigma$ is \textit{multiplicative}, which means
@@ -327,7 +327,7 @@ The following lemma is used to show \textit{multiplicativity}.
   \]
 \end{example}\vspace{1em}
 
-\subsubsection*{Proof of Lemma 2}
+\subsubsection*{Proof of Lemma 2.}
 Let $d$ be a positive divisor of $mn$, and write the prime factorization of $d$:
 \begin{equation}
   d=\prod_{i=1}^{k}p_i^{\alpha_i}
@@ -489,7 +489,7 @@ The following lemma is necessary.
   or the right remainder shares a prime factor with 4.
 \end{example}\vspace{1em}
 
-\subsubsection*{Proof of Lemma 4}
+\subsubsection*{Proof of Lemma 4.}
 Consider the integer division of $x$ by $m$ and by $n$:
 \begin{align}
   x &= q_m m + x_m\\
@@ -575,7 +575,7 @@ Finally, substitute this into (4.25) to finish:
   \hfill -- Grant Sanderson 
   \end{quote}
   
-The task was to prove $\frac{\pi^2}{6}<f(n)<1$ for all integers $n>1$.
+The task was to prove $\frac{6}{\pi^2}<f(n)<1$ for all integers $n>1$.
 Now that both parts of \textbf{Lemma 1} have been derived,
 we can derive the following formula for $f(n) = \sigma(n)\varphi(n) n^{-2}$ in terms of the prime factorization of $n$.
 
@@ -631,68 +631,115 @@ Every term in the product is strictly less than 1, so the whole product must be 
 That is, whenever $n>1$.
 
 \subsection{Lower bound}
-The task is to show that $f$ is never exceeded by $\frac{\pi^2}{6}$, so we are interested
-in how small $f$ can get.
+The result $f(n)>\frac{6}{\pi^2}$ can be derived using the following lemmas:
 
-To minimize the product $f(n) = \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}}$,
-we have to 
-\begin{enumerate}
-  \item minimize each term in the product, and
-  \item maximize the number of terms. Since each term is less than $1$, adding more terms decreases the product.
-\end{enumerate}
+\vspace{1em}\begin{lemma}
+  For any positive integer $n$ with prime factorization $n = \prod_{i=1}^{k} p_i^{\alpha_i}$, we have
+  \begin{equation}
+    f(n)=\prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}} \geq \prod_{i=1}^{k} \frac{p_i^2-1}{p_i^2}
+  \end{equation}
+  with equality when $\alpha_1 = \alpha_2 = \dots = \alpha_k = 1$.
+\end{lemma}
+\vspace{1em}
+\begin{lemma}[Basel Problem]
+  The infinite product 
+  $\displaystyle \prod_{p\ \text{prime}} \frac{p^2}{p^2-1}$
+  is equal to the infinite sum
+  $\displaystyle \sum_{n=1}^{\infty}\frac{1}{n^2}$
+  and evaluates to $\displaystyle \frac{\pi^2}{6}$
+\end{lemma}\vspace{1em}
 
-\subsubsection*{Minimizing each term}
+\subsubsection*{Proof of Lemma 6.}
+We compare the left product and the right product of (5.13) term by term.
+For any $i$ holds
 \begin{equation}
   \frac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}} = 1 - \frac{1}{p_i^{\alpha_i+1}}
+  \geq 1 - \frac{1}{p_i^{1+1}} = 1 - \frac{1}{p_i^2} = \frac{p_i^2-1}{p_i^2}
 \end{equation}
-From (5.13) it is clear that the larger $\alpha_i$ is, the larger the result will be.
-In other words, minimizing the term is simply minimizing $\alpha_i$.
-Since $\alpha_i$ is a positive integer, it is $1$ at minimum, in which case the term
-would be $\frac{p_i^2-1}{p_i^2}$.
+because $\alpha_i$ is a positive integer.
+Moreover, there is equality in (5.14) when $\alpha_i = 1$.
+
+This means every term in the left product is greater or equal to the corresponding term in the right product,
+so the whole left product must be greater than or equal to the whole right product.
+Equality holds when all terms are equal, so $\alpha_i=1$ for all $i$.
+\qed\vspace{1em}
 
 \vspace{1em}\begin{example}
-  We find an integer $n$ such that $f(n) < f(2025)$ with this method:
+  Bound $f(2025)$ from below.
 
   The prime factorization is $2025 = 3^4 5^2$.
-  To minimize each term, we reduce the exponents to $1$.
-  Therefore, choose $n = 3^1 5^1 = 15$.
-  Then 
-  \[f(n) = f(15)= \frac{8}{9}\cdot\frac{24}{25}=\frac{64}{75}<\frac{30008}{30375}=f(2025)\]
+  Therefore, by \textbf{Lemma 6},
+  \[f(2025) \geq \frac{3^2-1}{3^2}\cdot \frac{5^2-1}{5^2} = \frac{8}{9}\cdot\frac{24}{25}=\frac{64}{75}\]
+ 
 \end{example}\vspace{1em}
 
-Therefore, to find the lower bound of $f$, we only need to consider the values $f(n)$ where each prime divisor of $n$
-is only raised to the first power in the prime factorization.
-In other words, we have
-\begin{equation}
-  f(n)\geq \prod_{i=1}^{k} \frac{p_i^2-1}{p_i^2}
-\end{equation}
-and equality holds when $\alpha_1 = \alpha_2 = \dots = \alpha_k$ in the prime factorization
-$n = \prod_{i=1}^{k} p_i^{\alpha_i}$.
+\subsubsection*{Proof of Lemma 7.}
+The author will take for granted that the infinite sum $\sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6}$,
+and a proof will be omitted.
+For the interested reader, there is a purely elementary geometrical proof\cite{basel}
+popularized by the mathematics youtuber 3Blue1Brown.
+A much shorter yet equally beautiful proof involving integration\cite{Apostol1983},
+discovered by the author of \textit{Introduction to Analytic Number Theory}, is
+also recommended.
 
-\subsubsection*{Maximizing number of terms}
-
-Since each term $\frac{p_i^2-1}{p_i^2}$ is less than one, the more
-terms we have, the smaller $f$ is.
-Therefore, 
-\[f(n) \geq \prod_{i=1}^{k} \frac{p_i^2-1}{p_i^2} > \prod_{p\ \text{prime}} \frac{p^2-1}{p^2}\]
-where the right product is infinite, and goes over all primes $p$.
-This works because each term $\frac{p_i^2-1}{p_i^2}$ in the left product is also a term in the right product,
-and the right product always has more terms, because it is infinite while the left product is finite.
+This paper will only show that the infinite product over all primes and the infinite sum over positive integers are equal.
 
 \subsubsection*{Evaluating the product over all primes}
-Now all that's left to show the lower bound is to show that $\displaystyle \prod_{p\ \text{prime}} \frac{p^2-1}{p^2} = \frac{\pi^2}{6}$.
 \begin{align}
-  \prod_{p\ \text{prime}} \frac{p^2-1}{p^2} =& \prod_{p\ \text{prime}} \frac{1-\frac{1}{p^2}}{1}\\
-  =& \prod_{p\ \text{prime}} \left(\left(\frac{1}{p^2}\right)^0 + \left(\frac{1}{p^2}\right)^1 + \left(\frac{1}{p^2}\right)^2 + \dots\right)\\
-  =& \prod_{p\ \text{prime}} \left(\sum_{i=0}^{\infty} \frac{1}{p^{2i}}\right)
+  \prod_{p\ \text{prime}} \frac{p^2}{p^2-1} =& \prod_{p\ \text{prime}} \frac{1}{1-\frac{1}{p^2}}\\
+  =& \prod_{p\ \text{prime}} \left(\sum_{i=0}^{\infty} \left(\frac{1}{p^2}\right)^i\right)\\
+  =& \prod_{p\ \text{prime}} \left(1 + \frac{1}{p^2} + \frac{1}{p^4} + \dots\right)\\
+  =& \left(1 + \frac{1}{2^2} + \frac{1}{2^4} + \dots\right)
+  \left(1 + \frac{1}{3^2} + \frac{1}{3^4} + \dots\right)
+  \dots\\
+  =& 1 + \frac{1}{2^2} + \frac{1}{3^2} + \frac{1}{4^2} + \frac{1}{5^2}\dots\\
+  =& \sum_{n=1}^{\infty}\frac{1}{n^2}
 \end{align}
-\vspace{-1em}\begin{enumerate}[label=(4.\arabic*), start=6]
-  \item This is \textbf{Definition 1}.
-  \item By \textbf{Lemma 2}, divisors of $mn$ correspond uniquely to products $d_m d_n$ with $d_m\mid m$, $d_n\mid n$, so the sum may be rewritten as a double sum over such pairs.
-  \item The inner and outer sums are independent, allowing the factors $d_m$ and $d_n$ to be separated.
-  \item Since the inner sum depends only on $n$, it can be factored out of the outer sum.
+\vspace{-1em}\begin{enumerate}[label=(5.\arabic*), start=15]
+  \item Divide the numerator and denominator by $p^2$.
+  \item We expand $\frac{1-1/p^2}{1}$ into a geometric series.
+  \item Write without $\Sigma$-notation.
+  \item Explained below
+  \item Write with $\Sigma$-notation.
 \end{enumerate}
-  
+The step between (5.17) and (5.18) feels like a jump.
+But each term in the infinite sum in (5.19) is produced exactly once
+when the infinite product in (5.19) is expanded.
+For example, the term $\tfrac{1}{4^2}$ arises from selecting $\tfrac{1}{2^4}$ in the factor corresponding to $p=2$ 
+and $1$ in all the remaining factors. 
+Similarly, the term $\tfrac{1}{6^2}$ arises from selecting $\tfrac{1}{2^2}$ in the factor for $p=2$, 
+$\tfrac{1}{3^2}$ in the factor for $p=3$, and $1$ in all others. 
+In general, each term $\tfrac{1}{n^2}$ is produced exactly once, corresponding to the unique prime factorisation 
+$n = \prod p^{e_p}$ with $\tfrac{1}{n^2} = \prod p^{-2e_p}$.
+
+Therefore,
+\begin{equation}
+  \prod_{p\ \text{prime}} \frac{p^2}{p^2-1}
+  = \sum_{n=1}^{\infty}\frac{1}{n^2}
+  = \frac{\pi^2}{6}.
+\end{equation}
+
+\subsubsection*{Finishing the lower bound}
+By Lemma 6 we have, for $n=\prod_{i=1}^k p_i^{\alpha_i}$,
+\begin{equation}
+  f(n)\geq \prod_{i=1}^k \frac{p_i^2-1}{p_i^2}
+\end{equation}
+Each factor $\dfrac{p^2-1}{p^2}$ is less than 1, so adding more such factors (i.e. extending the product to more primes) strictly decreases the value. Hence
+\begin{equation}
+  \prod_{i=1}^k \frac{p_i^2-1}{p_i^2}
+  > \prod_{p\ \text{prime}} \frac{p^2-1}{p^2} = \left(\prod_{p\ \text{prime}} \frac{p^2}{p^2-1}\right)^{-1}
+\end{equation}
+By Lemma 7 the product on the right equals $(\frac{\pi^2}(6))^{-1}=\frac{6}{\pi^2}$, therefore
+\[
+  f(n) > \frac{6}{\pi^2}.
+\]
+The inequality is strict because equality would require $n$ to be divisible by every prime (so that the finite product already contains every factor),
+which is impossible for a finite integer $n$.
+\qed\vspace{1em}
+
+Hence we deem \textbf{Problem 1} as solved.
+
+\section{Answering Question 1.}
 
 %GI)OEWHG JIGJP IWOUGJ )U$ J)IOGW
 \newpage
