@@ -22,6 +22,7 @@
 \usepackage{cancel}
 \usepackage{hyperref}
 \usepackage{cleveref}
+\usepackage{changepage}
 
 %Images
 \usepackage{graphicx}
@@ -64,6 +65,21 @@
 \newtheorem{problem}{Problem}
 \newtheorem*{terminology}{Terminology}
 \newtheorem*{notation}{Notation}
+
+%Refer to theorems
+\Crefname{theorem}{Theorem}{Theorems}
+
+\Crefname{lemma}{Lemma}{Lemmas}
+
+\Crefname{corollary}{Corollary}{Corollaries}
+
+\Crefname{question}{Question}{Questions}
+
+\Crefname{definition}{Definition}{Definitions}
+
+\Crefname{example}{Example}{Examples}
+
+\Crefname{problem}{Problem}{Problems}
 
 %Bibliography
 \usepackage[
@@ -118,7 +134,7 @@ Write this when most of the essay is finished
 \section{Prerequisite Knowledge, Notation, and Definitions}
 The inarguably most important theorem in number theory is the following:
 \begin{theorem}[Fundamental Theorem of Arithmetic]
-  Every positive integer has a unique prime factorization.\cite{apostol}
+  Every positive integer has a unique prime factorization.
 \end{theorem}
 This theorem is crucial in our ensuing discussion, because it allows us to express any integer $n\geq 2$ uniquely in terms of its $k$ prime divisors $p_1, p_2, ..., p_k$,
 along with the positive integers $\alpha_1, \alpha_2, ..., \alpha_k$ which indicate the number of times that $n$ is divisible by the corresponding prime factor.
@@ -155,15 +171,6 @@ When two sets $A, B$ are the same, we write $A = B$.\\
   \end{itemize}
 \end{notation}\vspace{0.5em}
 
-% \begin{example}
-%   The set $\{1,2,4,7,8,11,13,14\}$ has size $\left|\{1,2,4,7,8,11,13,14\}\right|=8$.
-
-%   For sets $A= \{2,4,6,8,10,12\},\ B=\{3,6,9,12\}$,
-%   their union is $A\cup B = \{2, 3, 4, 6, 8, 9, 10, 12\}$,
-%   and their intersection is $A\cap B = \{6, 12\}$.
-%   The difference $A\setminus B$ is $\{2,4,8,10\}$.
-% \end{example}
-
 \subsection{Set-builder Notation}
 Set-builder notation is a way for mathematicians to define sets symbolically rather than verbosely.
 Basic set-builder notation is used frequently throughout this paper.
@@ -192,26 +199,26 @@ The reader should understand the following examples before proceeding:
   The notation $a\mid b$ means $a$ divides $b$.
 \end{example}\vspace{0.5em}
 
-\begin{example}
+\begin{example}\label{ex:divisor_set}
   Recall that prime numbers are positive integers greater than 1 whose only positive divisors are 1 and itself.
   Build the set of primes, denoted $\mathbb{P}$, using the set of positive divisors defined in (2.4):
-  \begin{equation}
+  \begin{equation}\label{eq:divisor_set}
     \mathbb{P} = \left\{x \in \mathbb{Z}^+\ :\ x>1,\ \mathcal{D}_x = \{1,\ x\} \right\}
   \end{equation}
   In this case, multiple conditions on $x$ are necessary, and notationally we separate them with a comma.
 \end{example}
 
 More complicated sequential sums and products also require set-builder-like notation in the subscripts, used to impose restrictions on what to take the sum or product over.
-(2.6) in \textbf{Definition 1} serves as an example of this.
+(\ref{eq:sigma}) in \textbf{\Cref{def:sigma}} below serves as an example of this.
 
 \subsection{Key Definitions}
 The following functions, defined for all positive integers $n$, are the central focus of this study.
 
-\begin{definition}[Sum of Divisors Function $\sigma$]
+\begin{definition}[Sum of Divisors Function $\sigma$]\label{def:sigma}
   Define $\sigma(n)$ as the sum of all positive divisors of $n$.
 
   Mimicking set-builder notation, we can write
-  \begin{equation}
+  \begin{equation}\label{eq:sigma}
     \sigma(n) = \sum_{d \in \mathcal{D}_n} d
   \end{equation}
 \end{definition}
@@ -222,10 +229,10 @@ The following functions, defined for all positive integers $n$, are the central 
   taking their sum yields $\sigma(12)=1+2+3+4+6+12=28$
 \end{example}
 
-\vspace{1em}\begin{definition}[Euler's Totient Function $\varphi$]
+\vspace{1em}\begin{definition}[Euler's Totient Function $\varphi$]\label{def:totient}
   Define $\varphi(n)$ as the number of positive integers less than or equal to $n$ and \textit{coprime} to $n$.
   Formally, define
-  \begin{equation}
+  \begin{equation}\label{eq:totient}
     \varphi(n) = \left|\{x\in \mathbb{Z}^+\ :\ x\leq n,\ \gcd(x,n)=1\}\right|
   \end{equation}
 \end{definition}
@@ -249,7 +256,7 @@ The following functions, defined for all positive integers $n$, are the central 
 \section{The Problem of Study}
 This investigation was inspired by the following problem from the undergraduate textbook \textit{Introduction to Analytic Number Theory} \cite{apostol}.
 
-\begin{problem}
+\begin{problem}\label{prob:1}
   Show that $\displaystyle \frac{6}{\pi^2}<\sigma(n)\varphi(n) n^{-2}<1$ for all integers $n$ greater than 1.
 \end{problem}
 
@@ -258,24 +265,25 @@ For simplicity, $f(n)$ will be used to denote $\sigma(n)\varphi(n) n^{-2}$ from 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\textwidth]{2500_bounds.png}
-  \caption{Graph for \textbf{Problem 1}}
+  \caption{Graph for \textbf{\Cref{prob:1}}}
+  \label{fig:2500_bounds}
 \end{figure}
 
-\textbf{Figure 2} visualizes the scenario by plotting points $(n, f(n))$ (in blue) and the lower-- and upper bounds (in red) on the Cartesian plane.
-Then, the task in \textbf{Problem 1} is to show that all blue points fall in between the red lines.
+\textbf{\Cref{fig:2500_bounds}} visualizes the scenario by plotting points $(n, f(n))$ (in blue) and the lower-- and upper bounds (in red) on the Cartesian plane.
+Then, the task in \textbf{\Cref{prob:1}} is to show that all blue points fall in between the red lines.
 
 The research question of this investigation, regarding `patterns' in the graph can now be put concretely.
-In addition to solving \textbf{Problem 1}, this paper will develop the necessary tools to answer the following questions.
+In addition to solving \textbf{\Cref{prob:1}}, this paper will develop the necessary tools to answer the following questions.
 
-\begin{question}
+\begin{question}\label{qn:1}
   Why are `denser lines' formed?
 \end{question}
 
 This question regards the horizontal lines that many of the points seem to fall in, at $y=1,\ y=0.75$, and $y=0.89$ for example.
-This is one of the first questions arising upon seeing \textbf{Figure 2}, since the orderly patterns strike as unexpected in such a scattered and seemingly random distribution.
-After addressing \textbf{Question 1}, the next natural question is,
+This is one of the first questions arising upon seeing \textbf{\Cref{fig:2500_bounds}}, since the orderly patterns strike as unexpected in such a scattered and seemingly random distribution.
+After addressing \textbf{\Cref{q:1}}, the next natural question is,
 
-\begin{question}
+\begin{question}\label{qn:2}
   Where can `denser lines' form?
 \end{question}
 
@@ -286,14 +294,14 @@ This is also a natural thing to ask; we see many dense lines between 0.95 and 1,
 %%% NEW SECTION
 %%%%%%%%%%%%%%%%%%%
 \section{Background for Problem 1}
-To approach \textbf{Problem 1}, we must improve our understanding on the functions $\sigma$ and $\varphi$.
+To approach \textbf{\Cref{prob:1}}, we must improve our understanding on the functions $\sigma$ and $\varphi$.
 The following product forms for these functions in terms of the prime factorization of $n$ shall be derived.
 
-\vspace{1em}\begin{lemma}
+\vspace{1em}\begin{lemma}\label{lemma:prod_form}
   For any positive integer $n$ with prime factorization $n = \prod_{i=1}^{k} p_i^{\alpha_i}$ holds
   \begin{align}
-    \sigma(n)  &= \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i-1}\\
-    \varphi(n) &= \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1)
+    \sigma(n)  &= \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i-1} \label{eq:prod_sigma}\\
+    \varphi(n) &= \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1) \label{eq:prod_totient}
   \end{align}
 \end{lemma}\vspace{1em}
 
@@ -305,7 +313,7 @@ To do this, we first show that $\sigma$ is \textit{multiplicative}, which means
 holds for all coprime positive integers $m, n$.
 The following lemma is used to show \textit{multiplicativity}.
 
-\vspace{1em}\begin{lemma}
+\vspace{1em}\begin{lemma}\label{lemma:sigmal1}
   For coprime positive integers $m, n$,
   each element $d$ in the set $\mathcal{D}_{mn}$ is a product of a
   unique pair of elements in $\mathcal{D}_m$ and $\mathcal{D}_n$.
@@ -329,7 +337,7 @@ The following lemma is used to show \textit{multiplicativity}.
   \]
 \end{example}\vspace{1em}
 
-\subsubsection*{Proof of Lemma 2.}
+\subsubsection*{Proof of \Cref{lemma:sigmal1}}
 Let $d$ be a positive divisor of $mn$, and write the prime factorization of $d$:
 \begin{equation}
   d=\prod_{i=1}^{k}p_i^{\alpha_i}
@@ -356,7 +364,7 @@ Conversely, every pair $d_m \in \mathcal{D}_m,\ d_n \in \mathcal{D}_n$ determine
 \qed\vspace{1em}
 
 \subsubsection*{Proving multiplicativity of $\sigma$}
-Using \textbf{Lemma 2}, \textit{multiplicativity} can be established using \textbf{Definition 1}.
+Using \textbf{\Cref{lemma:sigmal1}}, \textit{multiplicativity} can be established using \textbf{\Cref{def:sigma}}.
 \begin{align}
 \sigma(mn) =&\sum_{d\in \mathcal{D}_{mn}} d\\
 =&\sum_{d_m \in \mathcal{D}_m}\sum_{d_n \in \mathcal{D}_n} d_m d_n\\
@@ -364,8 +372,8 @@ Using \textbf{Lemma 2}, \textit{multiplicativity} can be established using \text
 =&\left(\sum_{d_m \in \mathcal{D}_m} d_m\right)\left(\sum_{d_n \in \mathcal{D}_n} d_n\right)=\sigma(m)\sigma(n).
 \end{align}
 \vspace{-1em}\begin{enumerate}[label=(4.\arabic*), start=6]
-  \item This is \textbf{Definition 1}.
-  \item By \textbf{Lemma 2}, divisors of $mn$ correspond uniquely to products $d_m d_n$ with $d_m\mid m$, $d_n\mid n$, so the sum may be rewritten as a double sum over such pairs.
+  \item This is \textbf{\Cref{def:sigma}}.
+  \item By \textbf{\Cref{lemma:sigmal1}}, divisors of $mn$ correspond uniquely to products $d_m d_n$ with $d_m\mid m$, $d_n\mid n$, so the sum may be rewritten as a double sum over such pairs.
   \item The inner and outer sums are independent, allowing the factors $d_m$ and $d_n$ to be separated.
   \item Since the inner sum depends only on $n$, it can be factored out of the outer sum.
 \end{enumerate}
@@ -375,17 +383,17 @@ Using \textbf{Lemma 2}, \textit{multiplicativity} can be established using \text
 $n=\prod_{i=1}^{k}p_i^{\alpha_i}$.
 Since $p_1^{\alpha_1}, p_2^{\alpha_2}, \dots, p_k^{\alpha_k}$ are all coprime,
 we may separate the terms $p_1^{\alpha_1}, p_2^{\alpha_2}, \dots, p_k^{\alpha_k}$
-out, one by one, to reach the form in (4.15):
+out one by one.
 \begin{align}
-  \sigma(n) = &\sigma(p_1^{\alpha_1}p_2^{\alpha_2} \dots p_k^{\alpha_k})\\
+  \sigma(n) = &\sigma(p_1^{\alpha_1}p_2^{\alpha_2} \dots p_k^{\alpha_k})\label{eq:sigma_apply_s}\\
   = &\sigma(p_1^{\alpha_1}) \cdot \sigma(p_2^{\alpha_2} \dots p_k^{\alpha_k})\\
   = &\sigma(p_1^{\alpha_1}) \cdot \sigma(p_2^{\alpha_2}) \cdot \sigma(p_3^{\alpha_3} \dots p_k^{\alpha_k})\\
   = &\dots\\
   = &\sigma(p_1^{\alpha_1}) \cdot \sigma(p_2^{\alpha_2}) \cdot \dots \cdot \sigma(p_k^{\alpha_k})\\
-  = &\prod_{i=1}^{k}\sigma(p_i^{\alpha_i})
+  = &\prod_{i=1}^{k}\sigma(p_i^{\alpha_i}) \label{eq:sigma_apply_e}
 \end{align}
 
-To obtain the desired form in (4.2), we only need to compute $\sigma(p^\alpha)$ when $p$ is prime and $\alpha$ is any positive integer.
+To obtain the desired form in (\ref{eq:prod_sigma}), we only need to compute $\sigma(p^\alpha)$ when $p$ is prime and $\alpha$ is any positive integer.
 This is easy since
 \begin{equation}
   \mathcal{D}_{p^\alpha}=\{1, p, p^2, \dots, p^\alpha\}
@@ -394,9 +402,9 @@ which implies $\sigma(p^\alpha)$ is simply a geometric series
 \begin{equation}
   \sigma(p^{\alpha})=1+p+p^2+\dots+p^\alpha = \frac{p^{\alpha+1}-1}{p-1}
 \end{equation}
-Finally, substitute this into (4.15) to finish:
+Finally, substitute this into (\ref{eq:sigma_apply_e}) to finish:
 \[
-  \sigma(n) = \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i-1} \tag{4.1}
+  \sigma(n) = \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i-1} \tag{\ref{eq:prod_sigma}}
 \]
 \qed\vspace{1em}
 
@@ -417,14 +425,14 @@ To do this, we first show that $\varphi$ is \textit{multiplicative}, which means
 holds for all coprime positive integers $m, n$.
 The following lemma, which is a special case of the \textbf{Chinese Remainder Theorem}, is used to show \textit{multiplicativity}.
 
-\vspace{1em}\begin{lemma}
+\vspace{1em}\begin{lemma}\label{lemma:totientl1}
   For coprime positive integers $m, n$, each integer $x$ with $0\leq x < mn$
   has a unique pair of remainders when divided by $m$ and by $n$.
 
   Conversely, each pair of remainders is given by a unique integer within this range.
 \end{lemma}
 \vspace{1em}
-\begin{example}
+\begin{example}\label{ex:remainder_12}
   Let $m=3,\ n=4$.
   Then $mn=12$, so we list all integers
   $x$ with $0 \leq x < 12$ together with their remainders
@@ -438,7 +446,7 @@ The following lemma, which is a special case of the \textbf{Chinese Remainder Th
   \]
 \end{example}\vspace{1em}
 
-\subsubsection*{Proof of Lemma 3.}
+\subsubsection*{Proof of \Cref{lemma:totientl1}}
 We first show, by contradiction, that each pair of remainders when dividing by $m$ and by $n$ is produced by at most one integer $x$ with $0 \leq x < mn$.
 Let the remainders of $x$ when divided by $m$ and by $n$ be $x_m$ and $x_n$, respectively.
 Assume, for contradiction, that there exists another integer $x'$, with $0 \leq x' < mn$, which also gives remainders $x_m, x_n$.
@@ -465,10 +473,10 @@ and each pair of remainders is given by at most one such $x$,
 it is necessarily true that each pair of remainders is given by some such $x$.
 \qed\vspace{1em}
 
-But $\varphi$ is only interested in the integers which are coprime.
+But $\varphi(n)$ only concerns integers that are coprime to $n$.
 The following lemma is necessary.
 
-\vspace{1em}\begin{lemma}
+\vspace{1em}\begin{lemma}\label{lemma:totientl2}
   Given coprime positive integers $m, n$ and integer $x$ satisfying $0 \leq x < mn$,
   let the remainders of $x$ be $x_m$ and $x_n$ when divided by $m$ and by $n$, respectively.
 
@@ -481,7 +489,7 @@ The following lemma is necessary.
 \vspace{1em}
 \begin{example}
 
-  Look back at \textbf{Example 9}.
+  Look back at \textbf{\Cref{ex:remainder_12}}:
   The integers $1, 5, 7, 11$ are coprime to 12.
   In the corresponding pairs of remainders, the left remainder is coprime to 3,
   and the right remainder is coprime to 4.
@@ -491,10 +499,10 @@ The following lemma is necessary.
   or the right remainder shares a prime factor with 4.
 \end{example}\vspace{1em}
 
-\subsubsection*{Proof of Lemma 4.}
+\subsubsection*{Proof of \Cref{lemma:totientl2}}
 Consider the integer division of $x$ by $m$ and by $n$:
 \begin{align}
-  x &= q_m m + x_m\\
+  x &= q_m m + x_m\label{eq:_eucm} \\
   x &= q_n n + x_n
 \end{align}
 Here $q_m$ and $q_n$ are the quotients of division by $m$ and by $n$, respectively.
@@ -511,7 +519,7 @@ Hence $p$ is a common divisor of $x_m$ and $m$, implying that $\gcd(x_m, m) > 1$
 Conversely, again without loss of generality, assume that $\gcd(x_m, m) > 1$.
 Then there exists some prime $p$ which divides both $x_m$ and $m$.
 Since $mn$ is a multiple of $m$, it must be divisible by $p$.
-Both terms in the right hand side of (4.22) are divisible by $p$, so $x$ must be divisible by $p$ as well.
+Both terms in the right hand side of (\ref{eq:_eucm}) are divisible by $p$, so $x$ must be divisible by $p$ as well.
 Hence $p$ is a common divisor of $x$ and $mn$, implying that $\gcd(x, mn)>1$.
 
 We have shown that $\gcd(x,mn)>1$ holds exactly when at least one of $\gcd(x_m, m)$ and $\gcd(x_n, n)$ is greater than 1.
@@ -519,8 +527,8 @@ Equivalently, $\gcd(x,mn)=1$ holds if and only if $\gcd(x_m, m) = \gcd(x_n, n) =
 \qed\vspace{1em}
 
 \subsubsection*{Proving multiplicativity of $\varphi$}
-Recall that \textbf{Definition 2} defines $\varphi(n)$ as the number of positive integers $x\leq n$
-which are coprime to $n$, while \textbf{Lemma 3} and \textbf{Lemma 4} are concerned
+Recall that \textbf{\Cref{def:totient}} defines $\varphi(n)$ as the number of positive integers $x\leq n$
+which are coprime to $n$, while \textbf{\Cref{lemma:totientl1}} and \textbf{\Cref{lemma:totientl2}} are concerned
 with nonnegative integers $x < n$.
 To address this disparity, we simply note that
 for any integer $n>1$, neither $n$ nor $0$ are coprime to $n$, so $\varphi(n)$ is
@@ -529,7 +537,7 @@ equal to the number of nonnegative $x < n$ which are coprime to $n$.
 Since \textit{multiplicativity} is trivial for $m=1$ or $n=1$,
 it is only necessary to consider coprime integers $m, n$ greater than 1.
 
-Combining \textbf{Lemma 3} and \textbf{Lemma 4} shows that
+Combining \textbf{\Cref{lemma:totientl1}} and \textbf{\Cref{lemma:totientl2}} shows that
 the total number of pairs of remainders $(x_m, x_n)$ where $\gcd(x_m, m) = \gcd(x_n, n) = 1$
 is equal to the number of integers $x$ satisfying $0 \leq x < mn$ and $\gcd(x, mn)=1$.
 Note that this is precisely the amended definition of $\varphi(mn)$.
@@ -543,10 +551,10 @@ This means the number of pairs $(x_m, x_n)$ is $\varphi(m)\varphi(n)$.
 Therefore, $\varphi(mn)=\varphi(m)\varphi(n)$.
 
 \subsubsection*{Finishing the product form of $\sigma$}
-Now, exactly like (4.10) -- (4.15) in the derivation of the product form of $\sigma$,
+Now, exactly like (\ref{eq:sigma_apply_s}) -- (\ref{eq:sigma_apply_e}) in the derivation of the product form of $\sigma$,
 we deduce that for $n = \prod_{i=1}^{k}p_i^{\alpha_i}$ holds
 \begin{equation}
-  \varphi(n)=\prod_{i=1}^{k}\sigma(p_i^{\alpha_i})
+  \varphi(n)=\prod_{i=1}^{k}\varphi(p_i^{\alpha_i})\label{eq:totient_apply_e}
 \end{equation}
 
 For any prime $p$ and any positive integer $\alpha$,
@@ -556,9 +564,9 @@ removing all $p^{\alpha-1}$ multiples of $p$:
 \begin{equation}
   \varphi(p^\alpha)=p^\alpha - p^{\alpha-1} = p^{\alpha-1}(p-1)
 \end{equation}
-Finally, substitute this into (4.25) to finish:
+Finally, substitute this into (\ref{eq:totient_apply_e}) to finish:
 \[
-  \varphi(n) = \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1) \tag{4.2}
+  \varphi(n) = \prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1) \tag{\ref{eq:prod_totient}}
 \]
 \qed\vspace{1em}
 
@@ -581,29 +589,29 @@ The task was to prove $\frac{6}{\pi^2}<f(n)<1$ for all integers $n>1$.
 Now that both parts of \textbf{Lemma 1} have been derived,
 we can derive the following formula for $f(n) = \sigma(n)\varphi(n) n^{-2}$ in terms of the prime factorization of $n$.
 
-\vspace{1em}\begin{lemma}
+\vspace{1em}\begin{lemma}\label{lemma:f_prod_form}
   For any positive integer $n$ with prime factorization $n=\prod_{i=1}^{k}p_i^{\alpha_i}$ holds
-  \begin{equation}
+  \begin{equation}\label{eq:prod_f}
     f(n)=\prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}}
   \end{equation}
 \end{lemma}\vspace{1em}
 
-\subsubsection*{Proof of Lemma 5.}
+\subsubsection*{Proof of \Cref{lemma:f_prod_form}}
 Suppose that the integer $n>1$ has prime factorization $n=\prod_{i=1}^{k}p_i^{\alpha_i}$.
-By (4.1) and (4.2),
+By (\ref{eq:prod_sigma}) and (\ref{eq:prod_totient}),
 \begin{align}
   \sigma(n)\varphi(n) &= \left(\prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i-1}\right)
                          \left(\prod_{i=1}^{k} p_i^{\alpha_i-1}(p_i-1)\right)\\
     &= \prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{\cancel{p_i-1}} p_i^{\alpha_i-1}(\cancel{p_i-1})\\
-    &= \prod_{i=1}^{k} (p_i^{\alpha_i+1}-1)p_i^{\alpha_i-1}
+    &= \prod_{i=1}^{k} (p_i^{\alpha_i+1}-1)p_i^{\alpha_i-1} \label{eq:_sigmatotient}
 \end{align}
 Additionally,
 \begin{align}
   n^{-2} &= \left(\prod_{i=1}^{k}p_i^{\alpha_i}\right)^{-2}\\
          &= \prod_{i=1}^{k}(p_i^{\alpha_i})^{-2}\\
-         &= \prod_{i=1}^{k}p_i^{-2\alpha_i}
+         &= \prod_{i=1}^{k}p_i^{-2\alpha_i} \label{eq:_nminus2}
 \end{align}
-Combine (5.3) and (5.6) and simplify:
+Combine (\ref{eq:_sigmatotient}) and (\ref{eq:_nminus2}) and simplify:
 \begin{align}
   f(n)=\sigma(n)\varphi(n) n^{-2} &= \left(\prod_{i=1}^{k} (p_i^{\alpha_i+1}-1)p_i^{\alpha_i-1}\right)
                                 \left(\prod_{i=1}^{k}p_i^{-2\alpha_i}\right)\\
@@ -617,16 +625,16 @@ Combine (5.3) and (5.6) and simplify:
 \vspace{1em}\begin{example}
   Compute $f(2025)$.
 
-  Since $2025 = 3^4\cdot 5^2$, we use the formula (5.11)
+  Since $2025 = 3^4\cdot 5^2$, we use (\ref{eq:prod_f}) in \textbf{\Cref{lemma:f_prod_form}}
   \[f(2025)=\frac{(3^{4+1}-1)}{3^{4+1}}\frac{(5^{2+1}-1)}{5^{2+1}} = \frac{242}{243}\cdot\frac{124}{125}=\frac{30008}{30375}\]
-  Verifying using the answers of \textbf{\Cref{ex:sigma_2025}} and \textbf{\Cref{ex:phi_2025}}:
+  Verifying using the answers of \textbf{\ref{ex:sigma_2025}} and \textbf{\ref{ex:phi_2025}}:
   \[f(2025) = \sigma(2025)\varphi(2025) 2025^{-2} = 3751\cdot1080 \cdot 2025^-2 = \frac{4051080}{4100625} = \frac{30008}{30375}\]
 
   The value lies between $\frac{\pi^2}{6}$ and $1$, as expected.
 \end{example}\vspace{1em}
 
 \subsection{Upper bound}
-Actually, \textbf{Lemma 5} looks very promising in regards to solving \textbf{Problem 1}.
+Actually, \textbf{\Cref{lemma:f_prod_form}} looks very promising in regards to solving \textbf{\Cref{prob:1}}.
 In fact, the upper bound $\sigma(n)\varphi(n) n^{-2}<1$ is now obvious:
 Every term in the product is strictly less than 1, so the whole product must be less than
 1 whenever the product contains at least one term.
@@ -635,7 +643,7 @@ That is, whenever $n>1$.
 \subsection{Lower bound}
 The result $f(n)>\frac{6}{\pi^2}$ can be derived using the following lemmas:
 
-\vspace{1em}\begin{lemma}
+\vspace{1em}\begin{lemma}\label{lemma:fl1}
   For any positive integer $n$ with prime factorization $n = \prod_{i=1}^{k} p_i^{\alpha_i}$, we have
   \begin{equation}
     f(n)=\prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}} \geq \prod_{i=1}^{k} \frac{p_i^2-1}{p_i^2}
@@ -643,15 +651,15 @@ The result $f(n)>\frac{6}{\pi^2}$ can be derived using the following lemmas:
   with equality when $\alpha_1 = \alpha_2 = \dots = \alpha_k = 1$.
 \end{lemma}
 \vspace{1em}
-\begin{lemma}[Basel Problem]
-  The infinite product
+\begin{lemma}[Basel Problem]\label{lemma:fl2}
+  The infinite product over all primes
   $\displaystyle \prod_{p\ \text{prime}} \frac{p^2}{p^2-1}$
   is equal to the infinite sum
   $\displaystyle \sum_{n=1}^{\infty}\frac{1}{n^2}$
   and evaluates to $\displaystyle \frac{\pi^2}{6}$
 \end{lemma}\vspace{1em}
 
-\subsubsection*{Proof of Lemma 6.}
+\subsubsection*{Proof of \Cref{lemma:fl1}}
 We compare the left product and the right product of (5.13) term by term.
 For any $i$ holds
 \begin{equation}
@@ -670,49 +678,48 @@ Equality holds when all terms are equal, so $\alpha_i=1$ for all $i$.
   Bound $f(2025)$ from below.
 
   The prime factorization is $2025 = 3^4 5^2$.
-  Therefore, by \textbf{Lemma 6},
+  Therefore, by \textbf{\Cref{lemma:fl1}},
   \[f(2025) \geq \frac{3^2-1}{3^2}\cdot \frac{5^2-1}{5^2} = \frac{8}{9}\cdot\frac{24}{25}=\frac{64}{75}\]
 
 \end{example}\vspace{1em}
 
-\subsubsection*{Proof of Lemma 7.}
+\subsubsection*{Proof of \Cref{lemma:fl2}}
 The author will take for granted that the infinite sum $\sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6}$,
 and a proof will be omitted.
 For the interested reader, there is a purely elementary geometrical proof\cite{basel}
-popularized by the mathematics youtuber 3Blue1Brown.
+popularised by the internet mathematician 3Blue1Brown\cite{Sanderson2018}.
 A much shorter yet equally beautiful proof involving integration\cite{Apostol1983},
 discovered by the author of \textit{Introduction to Analytic Number Theory}, is
 also recommended.
 
 This paper will only show that the infinite product over all primes and the infinite sum over positive integers are equal.
 
-\subsubsection*{Evaluating the product over all primes}
 \begin{align}
   \prod_{p\ \text{prime}} \frac{p^2}{p^2-1} =& \prod_{p\ \text{prime}} \frac{1}{1-\frac{1}{p^2}}\\
   =& \prod_{p\ \text{prime}} \left(\sum_{i=0}^{\infty} \left(\frac{1}{p^2}\right)^i\right)\\
   =& \prod_{p\ \text{prime}} \left(1 + \frac{1}{p^2} + \frac{1}{p^4} + \dots\right)\\
   =& \left(1 + \frac{1}{2^2} + \frac{1}{2^4} + \dots\right)
   \left(1 + \frac{1}{3^2} + \frac{1}{3^4} + \dots\right)
-  \dots\\
-  =& 1 + \frac{1}{2^2} + \frac{1}{3^2} + \frac{1}{4^2} + \frac{1}{5^2}\dots\\
-  =& \sum_{n=1}^{\infty}\frac{1}{n^2}
+  \dots \label{eq:f_inf_prod} \\
+  =& 1 + \frac{1}{2^2} + \frac{1}{3^2} + \frac{1}{4^2} + \frac{1}{5^2}\dots
+  = \sum_{n=1}^{\infty}\frac{1}{n^2} \label{eq:f_inf_sum}
 \end{align}
 \vspace{-1em}\begin{enumerate}[label=(5.\arabic*), start=15]
   \item Divide the numerator and denominator by $p^2$.
-  \item We expand $\frac{1-1/p^2}{1}$ into a geometric series.
+  \item Expand $\frac{1}{1-1/p^2}$ into a geometric series.
   \item Write without $\Sigma$-notation.
+  \item Write without $\Pi$-notation.
   \item Explained below
-  \item Write with $\Sigma$-notation.
 \end{enumerate}
-The step between (5.17) and (5.18) feels like a jump.
-But each term in the infinite sum in (5.19) is produced exactly once
+The step between (\ref{eq:f_inf_prod}) and (\ref{eq:f_inf_sum}) feels like a jump.
+But each term in the infinite sum in (\ref{eq:f_inf_sum}) is produced exactly once
 when the infinite product in (5.19) is expanded.
-For example, the term $\tfrac{1}{4^2}$ arises from selecting $\tfrac{1}{2^4}$ in the factor corresponding to $p=2$
-and $1$ in all the remaining factors.
-Similarly, the term $\tfrac{1}{6^2}$ arises from selecting $\tfrac{1}{2^2}$ in the factor for $p=2$,
-$\tfrac{1}{3^2}$ in the factor for $p=3$, and $1$ in all others.
-In general, each term $\tfrac{1}{n^2}$ is produced exactly once, corresponding to the unique prime factorisation
-$n = \prod p^{e_p}$ with $\tfrac{1}{n^2} = \prod p^{-2e_p}$.
+For example, the term $\tfrac{1}{4^2}$ arises from selecting $\tfrac{1}{2^4}$ in the factor corresponding to $p=2$ 
+and $1$ in all the remaining factors. 
+Similarly, the term $\tfrac{1}{6^2}$ arises from selecting $\tfrac{1}{2^2}$ in the factor for $p=2$, 
+$\tfrac{1}{3^2}$ in the factor for $p=3$, and $1$ in all others. 
+In general, each term $\tfrac{1}{n^2}$ is produced exactly once upon expanding the product,
+and it corresponds to the unique prime factorisation of $n$, by the Fundamental Theorem of Arithmetic.
 
 Therefore,
 \begin{equation}
@@ -722,26 +729,56 @@ Therefore,
 \end{equation}
 
 \subsubsection*{Finishing the lower bound}
-By Lemma 6 we have, for $n=\prod_{i=1}^k p_i^{\alpha_i}$,
+By \textbf{\Cref{lemma:fl1}}, for $n=\prod_{i=1}^k p_i^{\alpha_i}$ holds
 \begin{equation}
   f(n)\geq \prod_{i=1}^k \frac{p_i^2-1}{p_i^2}
 \end{equation}
-Each factor $\dfrac{p^2-1}{p^2}$ is less than 1, so adding more such factors (i.e. extending the product to more primes) strictly decreases the value. Hence
+Each factor $\dfrac{p^2-1}{p^2}$ is less than 1, so adding more such factors (i.e. extending the product to more primes) strictly decreases the value.
+Hence
 \begin{equation}
   \prod_{i=1}^k \frac{p_i^2-1}{p_i^2}
   > \prod_{p\ \text{prime}} \frac{p^2-1}{p^2} = \left(\prod_{p\ \text{prime}} \frac{p^2}{p^2-1}\right)^{-1}
 \end{equation}
-By Lemma 7 the product on the right equals $(\frac{\pi^2}(6))^{-1}=\frac{6}{\pi^2}$, therefore
-\[
+The equality is strict because the left product has finitely many terms, 
+By \textbf{\Cref{lemma:fl2}} the product on the right equals $(\frac{\pi^2}{6})^{-1}=\frac{6}{\pi^2}$.
+Therefore,
+\begin{equation}
   f(n) > \frac{6}{\pi^2}.
-\]
-The inequality is strict because equality would require $n$ to be divisible by every prime (so that the finite product already contains every factor),
-which is impossible for a finite integer $n$.
+\end{equation}
 \qed\vspace{1em}
 
-Hence we deem \textbf{Problem 1} as solved.
+\section{Answering \Cref{qn:1}.}
+Next we turn our attention from the bounds of $f(n)$ to the patterns formed in
+its graph.
 
-\section{Answering Question 1.}
+\begin{figure}[h]
+  \begin{adjustwidth}{-1cm}{-1cm} % temporarily extend margins
+    \centering
+    \begin{minipage}{0.495\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{2500_clean.png}
+      \caption{Clean graph of $(n, f(n))$}
+      \label{fig:2500_clean}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.495\linewidth}
+      \centering
+      \includegraphics[width=\linewidth]{2500_densest.png}
+      \caption{First six `dense lines'}
+      \label{fig:2500_densest}
+    \end{minipage}
+  \end{adjustwidth}
+  \end{figure}
+
+Draw \textbf{\Cref{fig:2500_bounds}} again, but without the red lines indicating the bounds
+to obtain \textbf{\Cref{fig:2500_clean}}.
+Highlight six densest `lines' to obtain \textbf{\Cref{fig:2500_densest}}. 
+
+Recall that the task was to explain the denser lines on which many of the points
+seem to belong.
+
+
+
 
 %GI)OEWHG JIGJP IWOUGJ )U$ J)IOGW
 \newpage
@@ -750,7 +787,7 @@ Hence we deem \textbf{Problem 1} as solved.
   \centering
   \begin{minipage}{0.49\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{2500_simple.png}
+    \includegraphics[width=\linewidth]{2500_minmax.png}
     \caption{Plotting the Sequence}
     \label{fig:simple}
   \end{minipage}
