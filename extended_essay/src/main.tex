@@ -269,14 +269,14 @@ For simplicity, $f(n)$ will be used to denote $\sigma(n)\varphi(n) n^{-2}$ from 
   \label{fig:2500_bounds}
 \end{figure}
 
-\textbf{\Cref{fig:2500_bounds}} visualizes the scenario by plotting points $(n, f(n))$ (in blue) and the lower-- and upper bounds (in red) on the Cartesian plane.
+\textbf{\Cref{fig:2500_bounds}} visualizes the scenario by plotting points $\left(n, f(n)\right)$ (in blue) and the lower-- and upper bounds (in red) on the Cartesian plane.
 Then, the task in \textbf{\Cref{prob:1}} is to show that all blue points fall in between the red lines.
 
 The research question of this investigation, regarding `patterns' in the graph can now be put concretely.
 In addition to solving \textbf{\Cref{prob:1}}, this paper will develop the necessary tools to answer the following questions.
 
-\begin{question}\label{qn:1}
-  Why are `denser lines' formed?
+\begin{question}\label{quesetion:1}
+  Why are `dense lines' formed?
 \end{question}
 
 This question regards the horizontal lines that many of the points seem to fall in, at $y=1,\ y=0.75$, and $y=0.89$ for example.
@@ -284,7 +284,7 @@ This is one of the first questions arising upon seeing \textbf{\Cref{fig:2500_bo
 After addressing \textbf{\Cref{q:1}}, the next natural question is,
 
 \begin{question}\label{qn:2}
-  Where can `denser lines' form?
+  Where can `dense lines' form?
 \end{question}
 
 This is also a natural thing to ask; we see many dense lines between 0.95 and 1, and much fewer below 0.70.
@@ -343,7 +343,7 @@ Let $d$ be a positive divisor of $mn$, and write the prime factorization of $d$:
   d=\prod_{i=1}^{k}p_i^{\alpha_i}
 \end{equation}
 In this form, each term $p_i^{\alpha_i}$ either
-\vspace{-0.5em}\begin{enumerate}
+\vspace{-1em}\begin{enumerate}
   \item divides $m$ and is coprime to $n$, or
   \item divides $n$ and is coprime to $m$,
 \end{enumerate}\vspace{-0.5em}
@@ -585,7 +585,7 @@ Finally, substitute this into (\ref{eq:totient_apply_e}) to finish:
   \hfill -- Grant Sanderson
   \end{quote}
 
-The task was to prove $\frac{6}{\pi^2}<f(n)<1$ for all integers $n>1$.
+The task is to prove $\frac{6}{\pi^2}<f(n)<1$ for all integers $n>1$.
 Now that both parts of \textbf{Lemma 1} have been derived,
 we can derive the following formula for $f(n) = \sigma(n)\varphi(n) n^{-2}$ in terms of the prime factorization of $n$.
 
@@ -747,17 +747,17 @@ Therefore,
 \end{equation}
 \qed\vspace{1em}
 
-\section{Answering \Cref{qn:1}.}
+\section{Answering \Cref{quesetion:1}.}
 Next we turn our attention from the bounds of $f(n)$ to the patterns formed in
 its graph.
 
 \begin{figure}[h]
-  \begin{adjustwidth}{-1cm}{-1cm} % temporarily extend margins
+  \begin{adjustwidth}{-1.5cm}{-1.5cm} % temporarily extend margins
     \centering
     \begin{minipage}{0.495\linewidth}
       \centering
       \includegraphics[width=\linewidth]{2500_clean.png}
-      \caption{Clean graph of $(n, f(n))$}
+      \caption{Clean graph of $\left(n, f(n)\right)$}
       \label{fig:2500_clean}
     \end{minipage}
     \hfill
@@ -768,68 +768,62 @@ its graph.
       \label{fig:2500_densest}
     \end{minipage}
   \end{adjustwidth}
-  \end{figure}
-
-Draw \textbf{\Cref{fig:2500_bounds}} again, but without the red lines indicating the bounds
-to obtain \textbf{\Cref{fig:2500_clean}}.
-Highlight six densest `lines' to obtain \textbf{\Cref{fig:2500_densest}}. 
-
-Recall that the task was to explain the denser lines on which many of the points
-seem to belong.
-
-
-
-
-%GI)OEWHG JIGJP IWOUGJ )U$ J)IOGW
-\newpage
-\text{\huge \color{red}\textbackslash section\{ROUGH DRAFT TERRITORY\}}
-\begin{figure}[h]
-  \centering
-  \begin{minipage}{0.49\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{2500_minmax.png}
-    \caption{Plotting the Sequence}
-    \label{fig:simple}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.49\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{2500_minmax.png}
-    \caption{Highlighting Minima \& Maxima}
-    \label{fig:minmax}
-  \end{minipage}
 \end{figure}
 
-After discussing these regions with many points, we proceed to discuss the opposite:
-Are there any regions with no points?
-Formally, we may ask,
-\begin{question}
-  Does there exist a nonempty open interval
-  $I\subset\left(\frac{6}{\pi^2},1\right)$
-  such that
-  $a_n \notin I$ holds for all $ n\geq 2$?
-\end{question}
+Draw \textbf{\Cref{fig:2500_bounds}} again, without the red lines indicating the bounds (\textbf{\Cref{fig:2500_clean}})
+and highlight the six densest lines (\textbf{\Cref{fig:2500_densest}}).
 
-Notice how this formulation looks familiar?
-Similarly to \textbf{Question 1}, the answer here is also \textbf{No.}
-This is actually a generalization of that question:
-Here we are showing that the sequence $a_n$ gets arbitrarily close to \textit{any} point in the interval $\left(\frac{6}{\pi^2},1\right)$,
-while \textbf{Question 1} only required us to show that the sequence gets arbitrarily close to its boundary.
+From \textbf{\Cref{lemma:f_prod_form}} it can be seen that if $p$ is prime, then
+\begin{equation}
+  f(p) = \frac{p^2-1}{p^2}
+\end{equation}
+Since $p^2$ is generally much larger than 1, $f(p)$ will often be very close to $1$.
+We might guess that the points which form the `dense line' at $y=1$ are points of the form $\left(p, f(p)\right)$, where $p$ is prime.
+The highlighted points in \textbf{\Cref{fig:2500_primes}} below seem to confirm our guess on why `dense lines' are formed.
+Rather, seeing this graph lets us define `dense lines' in  a useful way, something
+that must be done before further discussion.
 
 \newpage
-Then show that the basel problem $\infty$ sum is the $\infty$ product: Page 230 (pdf: 242) of \cite{apostol}.
-Then solve \textbf{Problem.} by writing $\dfrac{\sigma(n)\varphi(n)}{n^2}$ in terms of primes:
-\[\frac{\sigma(n)\varphi(n)}{n^2} = \prod_{i=1}^{k} \dfrac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}}\]
-(we get this by plugging Lemma 1)
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{2500_primes.png}
+  \caption{Highlight the points $\left(p, f(p)\right)$}
+  \label{fig:2500_primes}
+\end{figure}
 
-To finish the problem, see the maximum of each term in this product, and the minimum of each term.
-Each term is at least $\dfrac{p_k^2-1}{p_k^2}$ and at most arbitrarily close to 1 but less than $1$.
+\begin{definition}
+  We say that an infinite sequence of numbers 
+  $n_1, n_2, \dots$
+  form a `dense line at $y=t$' for some real number $t$ with
+  $\frac{6}{\pi^2} \leq t \leq 1$ if the following conditions hold:
+  \vspace{-1em}\begin{enumerate}
+    \item Asymptotically, the \textit{density} of the sequence is some constant fraction of the density of primes.
+    \item The sequence $f(n_1), f(n_2), \dots$ is increasing and approaches $t$.
+  \end{enumerate}
+\end{definition}
 
-Then the global maximum is strictly below 1 (we only consider $n\geq2$\footnote{maybe consider $n=1$ too but that's a matter of my taste \& preference})
-Then the global minimum is strictly above $\prod_{p\in \mathbb{P}}\dfrac{p^2-1}{p^2} = \dfrac{6}{\pi^2}$ (Basel Problem)
+\noindent
+The condition regarding density is 
+Formally, for an increasing sequence of positive integers 
+$a_1, a_2, \dots$
+we define its \textit{asymptotic density} as the limit
+\begin{equation}
+  D = \lim_{x \to \infty} \frac{\left|\{a_i\ :\ i \in \mathbb{Z}^+,\ a_i \leq x\}\right|}{x},
+\end{equation}
+Verbosely, we would say that the density $D$ of the sequence is the 
 
-So \textbf{Problem 1.} is done.
+\vspace{0.5em}
+\noindent
+We say that a sequence has \textit{at least the density of a constant multiple of the primes, asymptotically}, 
+if there exists a constant $c>0$ such that
+\[
+  \#\{n_i \leq x\} \;\geq\; c \cdot \pi(x)
+\]
+for all sufficiently large $x$, where $\pi(x)$ denotes the number of primes not exceeding $x$.  
+Equivalently, this means that the growth rate of the sequence, in terms of how many of its elements lie below $x$, is asymptotically no slower than a fixed positive multiple of that of the prime numbers.
 
+
+\newpage
 \section{Questions}
 Next answer Question 1. Also rewrite it not using the interval because it's IB AA HL, not Topology 101.
 
