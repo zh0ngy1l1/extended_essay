@@ -4,29 +4,8 @@ SRC_DIR := src
 # List of LaTeX auxiliary files to be deleted
 LATEX_GARBAGE := *.aux *.fdb_latexmk *.fls *.bcf *.blg *.log *.out *.run.xml *.synctex.gz
 
-# Default target: compile, clean, and move PDF
-all: compile clean move_pdf
-
-# Compile LaTeX document
-compile:
-	@echo "Compiling LaTeX document..."
-	@cd $(SRC_DIR) && latexmk -pdf -interaction=nonstopmode main.tex
-
-# Alternative compilation using pdflatex (for manual control)
-pdflatex:
-	@echo "Compiling with pdflatex..."
-	@cd $(SRC_DIR) && pdflatex -interaction=nonstopmode main.tex
-	@cd $(SRC_DIR) && bibtex main
-	@cd $(SRC_DIR) && pdflatex -interaction=nonstopmode main.tex
-	@cd $(SRC_DIR) && pdflatex -interaction=nonstopmode main.tex
-
-# Fast compilation without bibliography (single pdflatex pass)
-fast:
-	@echo "Fast compilation (no bibliography)..."
-	@cd $(SRC_DIR) && pdflatex -interaction=nonstopmode main.tex
-
-# Fast compilation followed by cleanup
-fastmove: fast move_pdf
+# Target to clean up LaTeX garbage and move main.pdf
+all: clean move_pdf
 
 # Clean up LaTeX auxiliary files
 clean:
@@ -36,7 +15,7 @@ clean:
 # Move main.pdf to the target directory
 move_pdf:
 	@echo "Moving main.pdf to the target directory..."
-	@if [ -f $(SRC_DIR)/main.pdf ]; then mv $(SRC_DIR)/main.pdf .; else echo "main.pdf not found in $(SRC_DIR)"; fi
+	@mv $(SRC_DIR)/main.pdf .
 
 # Phony targets
-.PHONY: all compile pdflatex fast fastclean clean move_pdf
+.PHONY: all clean move_pdf
