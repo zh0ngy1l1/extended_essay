@@ -20,6 +20,8 @@
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{cancel}
+\usepackage{hyperref}
+\usepackage{cleveref}
 
 %Images
 \usepackage{graphicx}
@@ -235,8 +237,8 @@ The following functions, defined for all positive integers $n$, are the central 
 \begin{example}
   Compute $\varphi(12)$:
 
-  \noindent The positive integers less than or equal to 15 and coprime to 15 are 1, 5, 7, 11.
-  Since there are 4 such numbers, $\varphi(15)=4$.
+  \noindent The positive integers less than or equal to 12 and coprime to 12 are 1, 5, 7, 11.
+  Since there are 4 such numbers, $\varphi(12)=4$.
 \end{example}
 
 %%%%%%%%%%%%%%%%%%%
@@ -398,7 +400,7 @@ Finally, substitute this into (4.15) to finish:
 \]
 \qed\vspace{1em}
 
-\begin{example}
+\begin{example}\label{ex:sigma_2025}
   Compute $\sigma(2025)$.
   \begin{align*}
     \sigma(2025) = &\sigma(3^4\cdot 5^2)\\
@@ -518,7 +520,7 @@ Equivalently, $\gcd(x,mn)=1$ holds if and only if $\gcd(x_m, m) = \gcd(x_n, n) =
 
 \subsubsection*{Proving multiplicativity of $\varphi$}
 Recall that \textbf{Definition 2} defines $\varphi(n)$ as the number of positive integers $x\leq n$
-which are coprime to $n$, while \textbf{Lemma 3} and \textbf{lemma 4} are concerned
+which are coprime to $n$, while \textbf{Lemma 3} and \textbf{Lemma 4} are concerned
 with nonnegative integers $x < n$.
 To address this disparity, we simply note that
 for any integer $n>1$, neither $n$ nor $0$ are coprime to $n$, so $\varphi(n)$ is
@@ -560,7 +562,7 @@ Finally, substitute this into (4.25) to finish:
 \]
 \qed\vspace{1em}
 
-\begin{example}
+\begin{example}\label{ex:phi_2025}
   Compute $\varphi(2025)$.
   \begin{align*}
     \varphi(2025) = &\varphi(3^4\cdot 5^2)\\
@@ -570,11 +572,11 @@ Finally, substitute this into (4.25) to finish:
 \end{example}
 
 \section{Solving Problem 1}
-\begin{quote} 
+\begin{quote}
   \textit{`Why is pi here? And why is it squared?'}
-  \hfill -- Grant Sanderson 
+  \hfill -- Grant Sanderson
   \end{quote}
-  
+
 The task was to prove $\frac{6}{\pi^2}<f(n)<1$ for all integers $n>1$.
 Now that both parts of \textbf{Lemma 1} have been derived,
 we can derive the following formula for $f(n) = \sigma(n)\varphi(n) n^{-2}$ in terms of the prime factorization of $n$.
@@ -617,7 +619,7 @@ Combine (5.3) and (5.6) and simplify:
 
   Since $2025 = 3^4\cdot 5^2$, we use the formula (5.11)
   \[f(2025)=\frac{(3^{4+1}-1)}{3^{4+1}}\frac{(5^{2+1}-1)}{5^{2+1}} = \frac{242}{243}\cdot\frac{124}{125}=\frac{30008}{30375}\]
-  Verifying using the answers of \textbf{Example 8} and \textbf{Example 11}:
+  Verifying using the answers of \textbf{\Cref{ex:sigma_2025}} and \textbf{\Cref{ex:phi_2025}}:
   \[f(2025) = \sigma(2025)\varphi(2025) 2025^{-2} = 3751\cdot1080 \cdot 2025^-2 = \frac{4051080}{4100625} = \frac{30008}{30375}\]
 
   The value lies between $\frac{\pi^2}{6}$ and $1$, as expected.
@@ -626,7 +628,7 @@ Combine (5.3) and (5.6) and simplify:
 \subsection{Upper bound}
 Actually, \textbf{Lemma 5} looks very promising in regards to solving \textbf{Problem 1}.
 In fact, the upper bound $\sigma(n)\varphi(n) n^{-2}<1$ is now obvious:
-Every term in the product is strictly less than 1, so the whole product must be less than 
+Every term in the product is strictly less than 1, so the whole product must be less than
 1 whenever the product contains at least one term.
 That is, whenever $n>1$.
 
@@ -642,7 +644,7 @@ The result $f(n)>\frac{6}{\pi^2}$ can be derived using the following lemmas:
 \end{lemma}
 \vspace{1em}
 \begin{lemma}[Basel Problem]
-  The infinite product 
+  The infinite product
   $\displaystyle \prod_{p\ \text{prime}} \frac{p^2}{p^2-1}$
   is equal to the infinite sum
   $\displaystyle \sum_{n=1}^{\infty}\frac{1}{n^2}$
@@ -670,7 +672,7 @@ Equality holds when all terms are equal, so $\alpha_i=1$ for all $i$.
   The prime factorization is $2025 = 3^4 5^2$.
   Therefore, by \textbf{Lemma 6},
   \[f(2025) \geq \frac{3^2-1}{3^2}\cdot \frac{5^2-1}{5^2} = \frac{8}{9}\cdot\frac{24}{25}=\frac{64}{75}\]
- 
+
 \end{example}\vspace{1em}
 
 \subsubsection*{Proof of Lemma 7.}
@@ -705,11 +707,11 @@ This paper will only show that the infinite product over all primes and the infi
 The step between (5.17) and (5.18) feels like a jump.
 But each term in the infinite sum in (5.19) is produced exactly once
 when the infinite product in (5.19) is expanded.
-For example, the term $\tfrac{1}{4^2}$ arises from selecting $\tfrac{1}{2^4}$ in the factor corresponding to $p=2$ 
-and $1$ in all the remaining factors. 
-Similarly, the term $\tfrac{1}{6^2}$ arises from selecting $\tfrac{1}{2^2}$ in the factor for $p=2$, 
-$\tfrac{1}{3^2}$ in the factor for $p=3$, and $1$ in all others. 
-In general, each term $\tfrac{1}{n^2}$ is produced exactly once, corresponding to the unique prime factorisation 
+For example, the term $\tfrac{1}{4^2}$ arises from selecting $\tfrac{1}{2^4}$ in the factor corresponding to $p=2$
+and $1$ in all the remaining factors.
+Similarly, the term $\tfrac{1}{6^2}$ arises from selecting $\tfrac{1}{2^2}$ in the factor for $p=2$,
+$\tfrac{1}{3^2}$ in the factor for $p=3$, and $1$ in all others.
+In general, each term $\tfrac{1}{n^2}$ is produced exactly once, corresponding to the unique prime factorisation
 $n = \prod p^{e_p}$ with $\tfrac{1}{n^2} = \prod p^{-2e_p}$.
 
 Therefore,
@@ -797,7 +799,7 @@ Next answer Question 1. Also rewrite it not using the interval because it's IB A
 The answer is: no, the bounds can't be uniformly improved.
 For upper bound this is trivial (n = $2^k$ for very big $k$)
 
-For lower bound it's what convergence means. Now that I think about it, Question 1 isn't really worth doing since it's so fricking easy.
+For lower bound it's what convergence means. Now that I think about it, Question 1 isn't really worth doing since it's trivial.
 
 Question 2.
 The topmost `dense line' is primes, (or prime powers? That would make the discussion more complete but also longer and not that much more impressive)
@@ -811,7 +813,7 @@ The topmost `dense line' is primes, (or prime powers? That would make the discus
 \end{definition}
 
 
-Actually, we get a dense line $b_n = a_{c p_n}$ for any positive integer d, and the line is denser the smaller c is (obviously). here $p_n$ is the $n$th smallest prime.
+Actually, we get a dense line $b_n = a_{d p_n}$ for any positive integer d, and the line is denser the smaller d is (obviously). here $p_n$ is the $n$th smallest prime.
 Though the issue is that if I define `dense lines' like this, it's hard to verify every dense line is generated by this description.
 In fact, I don't even think that's true... Maybe it is? But how do I define it better? This is the only formal definition I could come up with!
 
