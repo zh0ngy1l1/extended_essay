@@ -688,8 +688,8 @@ The author will take for granted that the infinite sum $\sum_{n=1}^{\infty}\frac
 and a proof will be omitted.
 For the interested reader, there is a purely elementary geometrical proof\cite{basel}
 popularised by the internet mathematician 3Blue1Brown\cite{Sanderson2018}.
-A much shorter yet equally beautiful proof involving integration\cite{Apostol1983},
-discovered by the author of \textit{Introduction to Analytic Number Theory}, is
+A much shorter proof involving integration\cite{Apostol1983}
+by the author of \textit{Introduction to Analytic Number Theory} is
 also recommended.
 
 This paper will only show that the infinite product over all primes and the infinite sum over positive integers are equal.
@@ -733,7 +733,7 @@ By \textbf{\Cref{lemma:fl1}}, for $n=\prod_{i=1}^k p_i^{\alpha_i}$ holds
 \begin{equation}
   f(n)\geq \prod_{i=1}^k \frac{p_i^2-1}{p_i^2}
 \end{equation}
-Each factor $\dfrac{p^2-1}{p^2}$ is less than 1, so adding more such factors (i.e. extending the product to more primes) strictly decreases the value.
+Each factor $\dfrac{p_i^2-1}{p_i^2}$ is less than 1, so adding more such factors (i.e. extending the product to more primes) strictly decreases the value.
 Hence
 \begin{equation}
   \prod_{i=1}^k \frac{p_i^2-1}{p_i^2}
@@ -779,7 +779,7 @@ From \textbf{\Cref{lemma:f_prod_form}} it can be seen that if $p$ is prime, then
 \end{equation}
 Since $p^2$ is generally much larger than 1, $f(p)$ will often be very close to $1$.
 We might guess that the points which form the `dense line' at $y=1$ are points of the form $\left(p, f(p)\right)$, where $p$ is prime.
-The highlighted points in \textbf{\Cref{fig:2500_primes}} below seem to confirm our guess on why `dense lines' are formed.
+In \textbf{\Cref{fig:2500_primes}} below, points of this form are highlighted; this seems to confirm our guess on why `dense lines' are formed.
 Rather, seeing this graph lets us define `dense lines' in  a useful way, something
 that must be done before further discussion.
 
@@ -791,36 +791,78 @@ that must be done before further discussion.
   \label{fig:2500_primes}
 \end{figure}
 
-\begin{definition}
+\begin{definition}\label{def:denseline}
+  Let $p_1, p_2, \dots$ be the sequence of prime numbers in ascending order.
   We say that an infinite sequence of numbers 
-  $n_1, n_2, \dots$
-  form a `dense line at $y=t$' for some real number $t$ with
-  $\frac{6}{\pi^2} \leq t \leq 1$ if the following conditions hold:
-  \vspace{-1em}\begin{enumerate}
-    \item Asymptotically, the \textit{density} of the sequence is some constant fraction of the density of primes.
-    \item The sequence $f(n_1), f(n_2), \dots$ is increasing and approaches $t$.
-  \end{enumerate}
+  $a_1, a_2, \dots$
+  form a `dense line' if there exists positive real constants $M, c, k$ such that
+  for all terms $a_i$ of the sequence holds the following:
+  \begin{align}
+    \frac{a_i}{p_i} \leq& M               \label{eq:density}\\
+    |f(a_i)-k|      \leq& \frac{c}{a_i^2} \label{eq:error}
+  \end{align}
 \end{definition}
 
-\noindent
-The condition regarding density is 
-Formally, for an increasing sequence of positive integers 
-$a_1, a_2, \dots$
-we define its \textit{asymptotic density} as the limit
-\begin{equation}
-  D = \lim_{x \to \infty} \frac{\left|\{a_i\ :\ i \in \mathbb{Z}^+,\ a_i \leq x\}\right|}{x},
-\end{equation}
-Verbosely, we would say that the density $D$ of the sequence is the 
+\subsubsection*{Explaining the \hyperref[def:denseline]{Definition of Dense Lines}}
+\textbf{Condition} (\ref{eq:density}) requires that the sequence $(a_i)$ does not grow significantly faster than the sequence of prime numbers $(p_i)$.
+In particular, it ensures that the ratio $\frac{a_i}{p_i}$ remains bounded by some constant $M$.
+If $(a_i)$ grows too rapidly, no such $M$ can exist, and the sequence cannot be considered dense with respect to the primes.
 
-\vspace{0.5em}
-\noindent
-We say that a sequence has \textit{at least the density of a constant multiple of the primes, asymptotically}, 
-if there exists a constant $c>0$ such that
-\[
-  \#\{n_i \leq x\} \;\geq\; c \cdot \pi(x)
-\]
-for all sufficiently large $x$, where $\pi(x)$ denotes the number of primes not exceeding $x$.  
-Equivalently, this means that the growth rate of the sequence, in terms of how many of its elements lie below $x$, is asymptotically no slower than a fixed positive multiple of that of the prime numbers.
+\vspace{1em}\begin{example}
+  Let $a_i = p_i^2$, where $p_i$ denotes the $i$-th prime number.
+  Then
+  \[\frac{a_i}{p_i}=p_i\]
+  which is unbounded, since the primes are unbounded.
+  Hence, the sequence $(a_i)$ fails to satisfy (\ref{eq:density}) and is not a dense line.
+\end{example}\vspace{1em}
+
+The minimal constant $M$ satisfying (\ref{eq:density}) for a given sequence $(a_i)$ is a meausre of its density relative to the primes.
+A smaller $M$ corresponds to a denser sequence.
+\footnote{$M=\limsup_{i\to\infty} \frac{a_i}{p_i}$ would be better, for the reader who knows $\limsup$.}
+
+\textbf{Condition} (\ref{eq:error}) ensures that the points $(a_i, f(a_i))$ asymptotically lie close to a horizontal line.
+Because the bound $\frac{c}{a_i^2}$ decreases rapidly to zero with increasing $a_i$, this condition guarantees that the deviation of $f(a_i)$ from $k$ diminishes along the sequence,
+so that $(f(a_i))$ converges rapidly toward $k$.
+The constant $c$ indicates `how quickly the points fall onto the line.'
+
+\begin{example}[The primes form a dense line at \(t=1\)]
+  Let \(a_i:=p_i\) be the \(i\)-th prime. We claim that \((p_i)_{i\ge 1}\) is a dense line at \(y=1\).
+  \begin{proof}
+    \textbf{(Condition 1.)} For each \(x>0\) the set \(\{a_i: a_i\le x\}\) is exactly the set of primes \(\{p_i: p_i\le x\}\). Hence
+    \[
+      \frac{\big|\{a_i: a_i\le x\}\big|}{\big|\{p_i: p_i\le x\}\big|}
+      =\frac{\big|\{p_i: p_i\le x\}\big|}{\big|\{p_i: p_i\le x\}\big|}=1.
+    \]
+    The limit as \(x\to\infty\) therefore exists and equals \(1>0\), so condition (1) is satisfied.
+
+    \textbf{(Condition 2.)} Recall the definition of \(f\) used in this paper:
+    \[
+      f(n)=\frac{\sigma(n)\,\varphi(n)}{n^2}.
+    \]
+    If \(p\) is prime then \(\sigma(p)=1+p\) and \(\varphi(p)=p-1\). Consequently
+    \[
+      f(p)=\frac{(1+p)(p-1)}{p^2}=\frac{p^2-1}{p^2}=1-\frac{1}{p^2}.
+    \]
+    As \(p\) increases, \(1/p^2\) decreases, so the sequence
+    \[
+      f(p_1),\, f(p_2),\, f(p_3),\dots
+    \]
+    is strictly increasing. Moreover
+    \[
+      \lim_{i\to\infty} f(p_i)=\lim_{p\to\infty}\Big(1-\frac{1}{p^2}\Big)=1.
+    \]
+    Hence condition (2) is satisfied with \(t=1\).
+  \end{proof}
+\end{example}
+
+\paragraph{Motivation and further remarks.}
+\begin{itemize}
+  \item Why require monotonicity of \(f(a_i)\)? The monotonicity requirement simplifies the picture: it guarantees that the subsequence approaches the limit \(t\) from one side and avoids oscillatory behaviour that might make the asymptotic interpretation less transparent. In many natural arithmetic subsequences (for example, values taken at primes, or values taken on an increasing sequence of integers with strictly increasing structural complexity) the corresponding \(f\)-values are monotone or eventually monotone, so the condition is not overly restrictive for intended applications.
+
+  \item The choice of comparing counts to the primes (rather than to \(x\) itself) is deliberate because many sets of arithmetic interest are as sparse as the primes (or sparser), so a normalization by the primes is a natural way to detect nontrivial “largeness” among sparse sets. If one preferred to measure density among all integers, one could replace the denominator in (1) by \(x\); the present definition instead measures the relative frequency among primes.
+
+  \item Examples. The prime example above shows the maximal possible limit \(t=1\) can be attained. Other subsequences can produce intermediate limits \(t\in\big(\tfrac{6}{\pi^2},1\big)\); for instance, any subsequence of primes whose relative density among primes tends to a positive constant \(c\in(0,1]\) will still have \(f\)-limit \(1\) (because \(f(p)\to1\)), while more elaborate constructions (choosing composite \(a_i\) whose arithmetic structure forces \(f(a_i)\) to cluster near a prescribed value \(t\)) can realize other \(t\)-values in the allowed interval.
+\end{itemize}
 
 
 \newpage

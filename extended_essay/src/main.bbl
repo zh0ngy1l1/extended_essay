@@ -1,0 +1,149 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{Apostol1983}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=125cfbd85cc6e304e8467fb8dded9ad1}{%
+           family={Apostol},
+           familyi={A\bibinitperiod},
+           given={Tom\bibnamedelima M.},
+           giveni={T\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \strng{fullhash}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \strng{fullhashraw}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \strng{bibnamehash}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \strng{authorbibnamehash}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \strng{authornamehash}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \strng{authorfullhash}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \strng{authorfullhashraw}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \field{extraname}{1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Mathematical Intelligencer}
+      \field{title}{A proof that Euler missed: evaluating $\zeta(2)$ the easy way}
+      \field{volume}{5}
+      \field{year}{1983}
+      \field{pages}{59\bibrangedash 60}
+      \range{pages}{2}
+      \verb{doi}
+      \verb 10.1007/BF03026576
+      \endverb
+    \endentry
+    \entry{apostol}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=125cfbd85cc6e304e8467fb8dded9ad1}{%
+           family={Apostol},
+           familyi={A\bibinitperiod},
+           given={Tom\bibnamedelima M.},
+           giveni={T\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \strng{fullhash}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \strng{fullhashraw}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \strng{bibnamehash}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \strng{authorbibnamehash}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \strng{authornamehash}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \strng{authorfullhash}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \strng{authorfullhashraw}{125cfbd85cc6e304e8467fb8dded9ad1}
+      \field{extraname}{2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Introduction to Analytic Number Theory}
+      \field{year}{1976}
+    \endentry
+    \entry{Sanderson2018}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=5dd1de74b15229ad68590a5ce3ade3c5}{%
+           family={Sanderson},
+           familyi={S\bibinitperiod},
+           given={Grant},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{5dd1de74b15229ad68590a5ce3ade3c5}
+      \strng{fullhash}{5dd1de74b15229ad68590a5ce3ade3c5}
+      \strng{fullhashraw}{5dd1de74b15229ad68590a5ce3ade3c5}
+      \strng{bibnamehash}{5dd1de74b15229ad68590a5ce3ade3c5}
+      \strng{authorbibnamehash}{5dd1de74b15229ad68590a5ce3ade3c5}
+      \strng{authornamehash}{5dd1de74b15229ad68590a5ce3ade3c5}
+      \strng{authorfullhash}{5dd1de74b15229ad68590a5ce3ade3c5}
+      \strng{authorfullhashraw}{5dd1de74b15229ad68590a5ce3ade3c5}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{YouTube video, 3Blue1Brown}
+      \field{month}{3}
+      \field{note}{Accessed: 2025-10-12}
+      \field{title}{Why is pi here? And why is it squared? A geometric answer to the Basel problem}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://www.youtube.com/watch?v=d-o3eB9sfls
+      \endverb
+      \verb{url}
+      \verb https://www.youtube.com/watch?v=d-o3eB9sfls
+      \endverb
+    \endentry
+    \entry{basel}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e88ddc7429c1b7c5d2a7f65b7409b286}{%
+           family={Wästlund},
+           familyi={W\bibinitperiod},
+           given={Johan},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Department of Mathematics, Chalmers University of Technology}%
+      }
+      \list{location}{1}{%
+        {Gothenburg, Sweden}%
+      }
+      \strng{namehash}{e88ddc7429c1b7c5d2a7f65b7409b286}
+      \strng{fullhash}{e88ddc7429c1b7c5d2a7f65b7409b286}
+      \strng{fullhashraw}{e88ddc7429c1b7c5d2a7f65b7409b286}
+      \strng{bibnamehash}{e88ddc7429c1b7c5d2a7f65b7409b286}
+      \strng{authorbibnamehash}{e88ddc7429c1b7c5d2a7f65b7409b286}
+      \strng{authornamehash}{e88ddc7429c1b7c5d2a7f65b7409b286}
+      \strng{authorfullhash}{e88ddc7429c1b7c5d2a7f65b7409b286}
+      \strng{authorfullhashraw}{e88ddc7429c1b7c5d2a7f65b7409b286}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.math.chalmers.se/~wastlund/Cosmic.pdf}}
+      \field{note}{Accessed: 2025-03-10}
+      \field{title}{Summing inverse squares by euclidean geometry}
+      \field{year}{2010}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

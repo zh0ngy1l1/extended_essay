@@ -16,7 +16,6 @@
 \usepackage{mathtools}
 \usepackage{amsfonts}
 \usepackage{titlesec}
-\usepackage{mhchem}
 
 %Images
 \usepackage{graphicx}
@@ -76,7 +75,7 @@
     \textbf{Research Question:}
     How does changing the mass of a box sliding against a plane affect the force of friction it experiences?
     \vfill
-    Word count: 420
+    Word count: 1392
   \end{center}
 \end{titlepage}
 
@@ -120,10 +119,10 @@ measured average friction.
 Since the box and the plane are level, the normal force exerted by the plane
 onto the box is equal to the force of gravitational attraction that the box
 experiences.
-Formally, if $g$ is the gravitational constant ($\approx 9.81 m s^{-2}$) and
+Formally, if $g$ is the gravitational constant ($\approx 9.81$ m s$^{-2}$) and
 $m$ is the mass of the box, the normal force $R$ can be calculated as follows:
 \begin{equation}
-  R=G=mg
+  R=G=m\cdot g
 \end{equation}
 The coefficient of friction $\mu_d$ is defined as
 \begin{equation}
@@ -231,7 +230,7 @@ The plank that is pushed acts simultaneously as both the \textcircled{2} counter
 The force sensor is secured to an unmoving platform.
 The box and the force sensor are connected with a piece of string, selected to minimize
 unwanted unwanted behaviour.
-The mass is varied in $200g$ increments, by varying the number of weights on the box.
+The mass is varied in $200$g increments, by varying the number of weights on the box.
 
 \section{procedure}
 \textbf{For each trial:}
@@ -243,8 +242,8 @@ Have the string slack and running parallel with the grain of the wood and in the
 Start data collection and attempt to push the plank at a constant speed, directly away from the force sensor.
 
 \section{Data and processing}
-This investigation begins at no weights ($m=195g$) and proceeds to increment till 6 weights ($m=1495g$) are on the box.
-In each trial, three runs are performed and their average frictions measured between $t=6s$ and $t=8s$ are recorded.
+This investigation begins at no weights ($m=195$g) and proceeds to increment till 6 weights ($m=1495$g) are on the box.
+In each trial, three runs are performed and their average frictions measured between $t=6$s and $t=8$s are recorded.
 Of the three averages, the median is selected for further data processing.
 The maximum and minimum frictions recorded across these three runs in this time interval are used for error estimation.
 
@@ -252,15 +251,15 @@ The maximum and minimum frictions recorded across these three runs in this time 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\textwidth]{data_06.png}
-  \caption{Measurements for $m=795g$}
+  \caption{Measurements for $m=795$g}
 \end{figure}
-For example, in \textbf{Figure 4}, the median average friction, which is the one selected for further analysis, is $1.790N$.
-The maximum friction (in red at $t=7.97s$) is $1.66N$
-and the minimum friction (in green at $t=7.64s$) is $1.42N$.
-This gives an uncertainty of $\frac{1.66-1.42}{2}=0.12N$ for friction in this trial.
+For example, in \textbf{Figure 4}, the median average friction, which is the one selected for further analysis, is $1.54$N. (Labeled `Auto Fit for Run 3')
+The maximum friction (in red at $t\approx 7.97$s) is $1.66$N
+and the minimum friction (in green at $t \approx 7.64$s) is $1.42$N.
+This gives an uncertainty of $\frac{1.66-1.42}{2}=0.12$N for friction in this trial.
 
-The mass of the box in this trial is $995g = 0.995kg$, so the normal force is $0.995\cdot9.81\approx9.76N$.
-The uncertainty associated with the normal force is a constant $0.01N$, arising from the scale having a precision of $1g$.
+The mass of the box in this trial is $995$g$= 0.995$kg, so the normal force is $0.995\cdot9.81\approx9.76$N.
+The uncertainty associated with the normal force is a constant $0.01$N, arising from the scale having a precision of $1$g.
 
 In this manner, the average friction and its uncertainty are deduced and computed for each trial.
 The normal force and its uncertainty are also computed, giving \textbf{Table 1} below.
@@ -268,28 +267,52 @@ The normal force and its uncertainty are also computed, giving \textbf{Table 1} 
   \centering
   \begin{tabular}{|c|c|} 
    \hline
-   $R$ & $F_\mu$\\ 
+   $R$ (N)& $F_\mu$ (N)\\ 
    \hline
-   $1.91N$ & $0.36\pm 0.12\ N$\\
-   $3.87N$ & $0.74\pm 0.13\ N$\\
-   $5.84N$ & $1.14\pm 0.12\ N$\\
-   $7.80N$ & $1.54\pm 0.12\ N$\\
-   $9.76N$ & $1.79\pm 0.25\ N$\\
-   $11.73N$& $2.13\pm 0.21\ N$\\
-   $13.68N$& $2.48\pm 0.17\ N$\\
+   $1.91$ & $0.36\pm 0.12$\\
+   $3.87$ & $0.74\pm 0.13$\\
+   $5.84$ & $1.14\pm 0.12$\\
+   $7.80$ & $1.54\pm 0.12$\\
+   $9.76$ & $1.79\pm 0.25$\\
+   $11.73$& $2.13\pm 0.21$\\
+   $13.68$& $2.48\pm 0.17$\\
    \hline
   \end{tabular}
   \caption{Processed data}
 \end{table}
 
+\section{Evaluations}
+We plot the processed data and associated uncertainties on the $(F_\mu,R)$ plane.
+Observation of a proportional relationship would serve as evidence that the force of friction experienced by the box is proportional to the normal force exerted on it by the plane.
+In that case we call the proportionality constant the `frictional coefficient' between the materials, wood and steel in this case.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\textwidth]{Screenshot 2025-10-03 155223.png}
   \caption{Fitted curves}
 \end{figure}
+Note that here the horizontal error bars are (by mistake) set to 0.1N instead of 0.01N,
+exaggerating the uncertainty of mass, and subsequently the final uncertainty in the frictional coefficient.
+Regardless, the Auto Fit gives a slope of $0.1782 \approx 0.18$N, with max/min values of
+$\approx 0.21$N and $0.16$N, respectively.
+This means an uncertainty of $\frac{0.21-0.16}{2}\approx0.03$N in absolute terms, or a 13\% relative uncertainty.
 
-\newpage
+Since the origin lies above the line of maximum slope, but below the line of minimum slope,
+no major systematic bias is perceived.
+
+This value can be compared with those obtained in Murase's study, mentioned in \textbf{Section 4}.
+Their coefficient for stainless steel ($\approx1.2$) falls outside of the range given by our uncertainties, but
+the coefficient for mild steel ($\approx 1.6$) is within the range.
+This deviation is expected and potential causes of it were explained in \textbf{Section 4}.
+Additionally, if \textbf{Figure 2} of the box and its railings are observed closely, we can see that they're
+slightly rusty, so the metal in question is probably not stainless steel.
+
 \section{Conclusions}
+I am amazed by the lack of availability of existing data regarding this coefficient measured in my investigation.
+Perhaps it is simply not relevant in engineering, to have steel slide against wood?
+The majority of data on steel's dynamic frictional coefficients I was able to find online
+had it slide against rubber, steel, copper, ice, plasic, or concrete, and often included lubricant oil or water.
+
+I think Murase's study should be performed and documented again; the format is slightly outdated and the results cannot really be compared to anything else readily available.
 \newpage
 \printbibliography
 
