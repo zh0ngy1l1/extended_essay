@@ -1,0 +1,104 @@
+\documentclass[a4paper, 12pt]{article}
+
+%Paragraph jumps and indentation
+\setlength{\parskip}{1.6em}
+\setlength{\parindent}{1cm}
+
+%Border
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+
+%Double spacing
+\usepackage{setspace}
+\doublespacing
+%Packages
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{titlesec}
+
+%Images
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{wrapfig}
+\usepackage{float}
+
+%Tables
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabu}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+%Equation numbering
+\counterwithin{equation}{section}
+
+%links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+\urlstyle{same}
+
+%Diagrams
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{positioning, arrows.meta}
+\usepgfplotslibrary{fillbetween}
+
+%Theorems
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+
+%Bibliography
+\usepackage[backend=biber]{biblatex}
+\addbibresource{refs.bib}
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+    Tok Essay\\
+    \vspace*{5cm}    
+    {\large \textbf{Prompt 3.}\\
+    Is the power of knowledge determined by the way in which the knowledge is conveyed?
+    Discuss with reference to mathematics \textbf{and one other} area of knowledge.}
+    \vfill
+    Word count: 0000
+  \end{center}
+\end{titlepage}
+\section*{Plan.}
+My other area of knowledge is human sciences. (?)
+
+Define 'power of knowledge': The influence that knowledge has on the world.
+Ex: Historical knowledge may be more powerful, i.e. recounted more, if it was written in a more aesthetic way.
+
+Reading / material for real life examples:
+\begin{itemize}
+  \item A Mathematician's Apology
+  \item Thinking, Fast and Slow (Nudge)
+  \item Philosophy of Mathematics and Natural Sciences
+  \item Mathematics, Queen and Servant of Science
+\end{itemize}
+Hopefully this has enough material.
+
+Then my other area of knowledge, Human Sciences, would be economics or psychology...
+
+I'll begin work on the essay when I've read the works
+
+\section{Introduction}
+hallo
+
+\newpage
+\printbibliography
+
+\end{document}
