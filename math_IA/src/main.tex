@@ -1,0 +1,129 @@
+\documentclass[a4paper, 12pt]{article}
+
+%Paragraph jumps and indentation
+\setlength{\parskip}{1.6em}
+\setlength{\parindent}{1cm}
+
+%Border
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+
+%Double spacing
+\usepackage{setspace}
+\doublespacing
+%Packages
+\usepackage{amsmath}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{titlesec}
+
+%Images
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{wrapfig}
+\usepackage{float}
+
+%Tables
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabu}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+%Theorems
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{question}{Question}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{problem}{Problem}
+\newtheorem*{terminology}{Terminology}
+\newtheorem*{notation}{Notation}
+
+%Equation numbering
+\counterwithin{equation}{section}
+
+%links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+\urlstyle{same}
+
+%Refs
+\usepackage{cleveref}
+\Crefname{problem}{Problem}{Problems}
+
+%Diagrams
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{positioning, arrows.meta}
+\usepgfplotslibrary{fillbetween}
+
+%Bibliography
+\usepackage[backend=biber]{biblatex}
+\addbibresource{refs.bib}
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+    Internal Assessment: Mathematics, Analysis and Approaches // \textbf{\Large IA PROPOSAL!!!}\\
+    \vspace*{4cm}
+    {\Large \textbf{Inversive solution to a Combinatorial Geometry problem (BW2024-15), relying on Sylvester-Gallai theorem.}}\\
+    
+    \vspace{1cm}
+    \textbf{Research Question:}
+    What is the bound for the number of \textit{baltic triangles} in a set of $N$ points on the plane?
+    \vfill
+    Word count: -1
+  \end{center}
+\end{titlepage}
+
+\section{IA plan / proposal}
+Solving the problem:
+\begin{itemize}
+  \item This involves introducing and deriving the Sylvester-Gallai theorem
+  \item Then, introducing inversion and showing some basic properties, like bijection, and circles through the origin mapping to lines.
+\end{itemize}
+Maybe I could also solve \href{https://prase.cz/kalva/short/soln/sh99g2.html}{G2 from the 1999 IMO shortlist}; it also involves inversion, and is otherwise highly similar.
+Then I could name the essay: \textbf{Inversion in Combinatorial Geometry}
+and have the research question \textbf{How to solve combinatorial geometry problems with inversion?}
+\newpage
+Here are the two problems:
+\begin{problem}[Baltic Way 2024]
+  There is a set of $N\geq 3$ points in the plane, such that no three of them are collinear.
+  Three points $A, B, C$ in the set are said to form a \textit{Baltic triangle} if no other point in the set lies on the circumcircle of triangle $ABC$.
+  Assume that there exists at least one Baltic triangle.
+  
+  \noindent Show that there exist at least $\frac{N}{3}$ Baltic Triangles.
+\end{problem}
+
+\vspace{1em}\begin{problem}[IMO shortlist 1999] \label{prob:2}
+  A circle is called a \textit{separator} for a set of five points in a plane
+  if it passes through three of these points, it contains a fourth point in its
+  interior, and the fifth point outside the circle.
+
+  \noindent Prove that every set of five points such that no three are collinear and no
+  four are concyclic has exactly four separators.
+\end{problem}
+
+I can solve both these problems easily, alongside showing Sylvester and inversion lemmas.
+But if my task is to research, i.e. Extend \Cref{prob:2} to more points or maybe to the third or more dimensions.
+This might be fun too, but I want to do as little as I can.
+%\section{Conclusions}
+\newpage
+\printbibliography
+
+\end{document}
