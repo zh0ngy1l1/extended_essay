@@ -1,7 +1,7 @@
 \documentclass[a4paper, 12pt]{article}
 
 %Paragraph jumps and indentation
-\setlength{\parskip}{1.6em}
+\setlength{\parskip}{1em}
 \setlength{\parindent}{1cm}
 
 %Border
@@ -16,12 +16,16 @@
 \usepackage{mathtools}
 \usepackage{amsfonts}
 \usepackage{titlesec}
+\usepackage{enumitem}
+
 
 %Images
 \usepackage{graphicx}
 \graphicspath{ {./images/} }
 \usepackage{wrapfig}
 \usepackage{float}
+
+\usepackage{mathrsfs}
 
 %Tables
 \usepackage{multirow}
@@ -63,13 +67,21 @@
 
 %Refs
 \usepackage{cleveref}
-\Crefname{problem}{Problem}{Problems}
+\crefname{problem}{Prob.}{Problems}
+\Crefname{problem}{\textbf{Problem}}{\textbf{Problems}}
+
+\crefname{figure}{Fig.}{Figures}
+\Crefname{figure}{\textbf{Figure}}{\textbf{Figures}}
+
+\crefname{property}{Prop.}{Properties}
+\Crefname{property}{\textbf{Property}}{\textbf{Properties}}
 
 %Diagrams
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
-\usetikzlibrary{positioning, arrows.meta}
+\usetikzlibrary{positioning, arrows}
 \usepgfplotslibrary{fillbetween}
+\tikzset{every picture/.style={scale=0.8}}
 
 %Bibliography
 \usepackage[backend=biber]{biblatex}
@@ -79,35 +91,24 @@
 
 \begin{titlepage}
   \begin{center}
-    Internal Assessment: Mathematics, Analysis and Approaches // \textbf{\Large IA PROPOSAL!!!}\\
+    Internal Assessment: Mathematics, Analysis and Approaches\\
     \vspace*{4cm}
-    {\Large \textbf{Inversive solution to a Combinatorial Geometry problem (BW2024-15), relying on Sylvester-Gallai theorem.}}\\
+    {\Large \textbf{Inversion in Combinatorial Geometry.}}\\
     
     \vspace{1cm}
-    \textbf{Research Question:}
-    What is the bound for the number of \textit{baltic triangles} in a set of $N$ points on the plane?
+    Developing the technique and solving problems from the Baltic Way and the IMO Shortlist
     \vfill
     Word count: -1
   \end{center}
 \end{titlepage}
 
-\section{IA plan / proposal}
-Solving the problem:
-\begin{itemize}
-  \item This involves introducing and deriving the Sylvester-Gallai theorem
-  \item Then, introducing inversion and showing some basic properties, like bijection, and circles through the origin mapping to lines.
-\end{itemize}
-Maybe I could also solve \href{https://prase.cz/kalva/short/soln/sh99g2.html}{G2 from the 1999 IMO shortlist}; it also involves inversion, and is otherwise highly similar.
-Then I could name the essay: \textbf{Inversion in Combinatorial Geometry}
-and have the research question \textbf{How to solve combinatorial geometry problems with inversion?}
-\newpage
-Here are the two problems:
-\begin{problem}[Baltic Way 2024]
-  There is a set of $N\geq 3$ points in the plane, such that no three of them are collinear.
-  Three points $A, B, C$ in the set are said to form a \textit{Baltic triangle} if no other point in the set lies on the circumcircle of triangle $ABC$.
-  Assume that there exists at least one Baltic triangle.
-  
-  \noindent Show that there exist at least $\frac{N}{3}$ Baltic Triangles.
+\section{Introduction}
+
+\section{Problem Statements}
+\begin{problem}[Baltic Way 2021] \label{prob:1}
+  We are given 2021 points on a plane, no three of which are collinear. Among any 5 of
+  these points, at least 4 lie on the same circle. Is it necessarily true that at least 2020 of the points
+  lie on the same circle?
 \end{problem}
 
 \vspace{1em}\begin{problem}[IMO shortlist 1999] \label{prob:2}
@@ -119,11 +120,196 @@ Here are the two problems:
   four are concyclic has exactly four separators.
 \end{problem}
 
-I can solve both these problems easily, alongside showing Sylvester and inversion lemmas.
-But if my task is to research, i.e. Extend \Cref{prob:2} to more points or maybe to the third or more dimensions.
-This might be fun too, but I want to do as little as I can.
+\vspace{1em}\begin{problem}[Baltic Way 2019] \label{prob:3}
+  There are 2019 points given in the plane. A child wants to draw $k$ (closed) discs in such a manner,
+  that for any two distinct points there exists a disc that contains exactly one of these two points. What is the
+  minimal $k$, such that for any initial configuration of points it is possible to draw $k$ discs with the above property?
+\end{problem}
+
+\vspace{1em}\begin{problem}[Baltic Way 2024] \label{prob:4}
+  There is a set of $N\geq 3$ points in the plane, such that no three of them are collinear.
+  Three points $A, B, C$ in the set are said to form a \textit{Baltic triangle} if no other point in the set lies on the circumcircle of triangle $ABC$.
+  Assume that there exists at least one Baltic triangle.
+  
+  \noindent Show that there exist at least $\frac{N}{3}$ Baltic Triangles.
+\end{problem}
+\newpage
+
+\section{The Concept of Inversion}
+\begin{quote}
+  Out of nothing I have created a strange new universe.
+  \hspace{1em plus 1fill}János Bolyai
+\end{quote}
+
+\vspace{-0.5em}\noindent These problems all involve circles and points, and the simplest solution to each problem uses the common technique of inversion.
+
+\subsection{Motivation for Inversion}
+\begin{figure}[H]
+  \begin{center}
+    \input{fig1.tex}
+  \end{center}
+  \caption{Reflecting a point over a line}
+  \label{fig:1}
+\end{figure}
+
+Firstly, let us intuitively motivate the upcoming definition of an inversion.
+We can easily reflect a point across a given line: draw a normal from point onto the line,
+and mark the refection as the point on this normal which has an equal distance to the line.
+In \Cref{fig:1} point $P'$ is the reflection point $P$ across line $l$.
+
+Now, what if instead of a line we had a circle instead?
+How should reflection be defined in that case?
+This premise may seem odd, but it will turn out to be a surprisingly powerful tool if defined
+appropriately.
+
+Let us first try to define reflection over a circle in `the obvious way':
+Like with the line, draw a normal from the point onto the circle, and mark the reflection as
+the point on this normal which has an equal distance to the point where the normal intersects
+the circle.
+This is quite simple to do, since the normal to the circle from a point is simply the 
+line connecting it with the centre.
+
+\begin{figure}[H]
+  \begin{center}
+    \input{fig2.tex}
+  \end{center}
+  \caption{Naïvely reflecting over a circle}
+  \label{fig:2}
+\end{figure}
+
+\vspace{-1em} In \Cref{fig:2}, point $O$ is the centre of circle $\omega$, and line $OP$ is the normal drawn from point $P$.
+With this definition, point $P'$ is the reflection of $P$ across $\omega$.
+Though this looks reasonable so far, upon attempting to make reflections for
+more points, we realise the drawbacks of such a guileless definition.
+
+\begin{figure}[H]
+  \begin{center}
+    \input{fig3.tex}
+  \end{center}
+  \caption{Exposing the weakness of the naïve definition}
+  \label{fig:3}
+\end{figure}
+
+\vspace{-1em} Again, points $A', B'$ are the reflections of $A, B$, and likewise $A'', B''$ are the reflections of $A', B'$.
+But making observations from \Cref{fig:3} we realise some undesireable implications of this definition.
+
+It feels wrong that $A$ and $A'$ lie on the same side of the circle (the two sides of a circle are `inside' and `outside') even though $A'$ is the reflection of $A$.
+Moreover, though points $A'$ and $B'$ are the reflections of $A$ and $B$, points $A$ and $B$ themselves are not the reflections of $A'$ and $B'$.
+What even is the reflection of $O$?
+It is not possible to define it uniquely since it could be point $B$, or that point rotated with any angle.
+Worse still, if point $M$ moves along the segment $AB$, then its reflection traces some complicated curve with endpoints $A', B'$, instead of something familiar like a line or a circle.
+
+This last issue in particular cripples this definition of reflecting over a circle.
+When we reflect many points over a line, they still stay the same shape:
+lines map to lines, circles map to circles; it is not possible for simple things to have complicated reflections.
+
+We need to define the reflection over a circle in a more deliberate way to avoid these undesirable weaknesses.
+Since we call the operation `reflection', it should share some of the most fundamental properties fulfilled when reflecting over a line.
+
+\begin{enumerate}[label=\textbf{Property \arabic*.}, leftmargin=*]
+  \item \label{prop:existence-uniqueness}
+        The reflection of each point exists and is uniquely defined.
+  \item \label{prop:involution}
+        Reflecting the reflection of a point yields the point itself.
+  \item \label{prop:fixed-line}
+        Points on the line $l$ are fixed, i.e. reflect to themselves.
+  \item \label{prop:opposite-side}
+        Points not on the line $l$ are reflected to the opposite side of $l$.
+\end{enumerate}
+
+We can take these properties directly as the requirements for our definition of reflecting over a circle,
+just by replacing line $l$ with circle $\omega$.
+We have commented on how the naïve definition fails to satisfy \textbf{Properties 1, 2,} and \textbf{4},
+but \textbf{Property 3} is satisfied.
+
+Our note about the reflection of segment $AB$ in \Cref{fig:3}, however, warrants another property to be demanded
+from the upcoming definition:
+
+\begin{enumerate}[label=\textbf{Property \arabic*.}, leftmargin=*, start=5]
+  \item \label{prop:image-locus}
+        If a point moves along a circle or a line, then its reflection also traces a circle or a line.
+\end{enumerate}
+
+Turns out \textit{inversion} is a way to define reflection across a circle which satisfies these properties.
+In fact, the words are synonymous by convention, and
+the author apologises for his abuse of terminology in the previous section.
+
+\subsection{Definition of Inversion}
+
+The author finds no better way to formulate of the definition of inversion than simply taking an 
+extended quotation from his favorite mathematics textbook, \textit{Euclidean Geometry in Mathematical Olympiads} (2016).
+
+\begin{quote}
+  \hspace{-1em}\vrule width 1pt\hspace{1em}%
+  \begin{minipage}[t]{0.95\linewidth}
+    \small
+    \setlength{\parindent}{1em}
+    \setlength{\baselineskip}{0.7\baselineskip}
+    \noindent The idea is to view every line as a circle with infinite radius.
+    We add a special point $P_\infty$ to the plane, which every ordinary line passes through (and no circle passes through).
+    This is called the \textbf{point at infinity}.
+    Therefore, every choice of three distinct points determine a unique circle or line---three ordinary points determine a circle, while two ordinary points plus the point at infinity determine a line.
+  
+
+    With this said, we can now define an inversion. Let $\omega$ be a circle with centre $O$ and radius $R$.
+    We say an \textbf{inversion} about $\omega$ is a map (that is, a transformation) which does the following.
+    \begin{figure}[H]
+      \begin{center}
+        \input{fig4.tex}
+      \end{center}
+      \caption{\small $A\text{*}$ is the image of point $A$ when we take an inversion about $\omega$}
+      \label{fig:4}
+    \end{figure}
+
+    \begin{itemize}
+      \item The centre $O$ of the circle is sent to $P_\infty$
+      \item The point $P_\infty$ is sent to $O$.
+      \item For any other point $A$, we send $A$ to the point $A\text{*}$ lying on ray $OA$ such that $OA\cdot OA\text{*} = r^2$.
+    \end{itemize}
+    \hfill {\color{gray} \footnotesize Copied from \cite{Chen2016}}
+  \end{minipage}
+\end{quote}
+
+
+\subsection{Properties of Inversion}
+\begin{figure}[H]
+  \begin{center}
+    \input{fig5.tex}
+  \end{center}
+  \caption{\Cref{fig:3} but with inversion}
+  \label{fig:5}
+\end{figure}
+
+\section{Solutions}
+\begin{figure}[H]
+  \begin{center}
+    \input{3_24.tex}
+  \end{center}
+\end{figure}
+
+
+\subsection{Solving Problem 1.}
+\subsection{Solving Problem 2.}
+\subsection{Solving Problem 3.}
+\subsection{Solving Problem 4.}  
+
+
+%I can solve both these problems easily, alongside showing Sylvester and inversion lemmas.
+%But if my task is to research, i.e. Extend \Cref{prob:2} to more points or maybe to the third or more dimensions.
+%This might be fun too, but I want to do as little as I can.
+
+%I have ordered these four problems in approximately increasing order of difficulty.
+%For example, problem 1 is really easy; 2 is rather simple too.
+
+%Then 3 and 4 require a bit more theory.
+
+%But what connects these is the need for inversion. 
+
+%Define the function $I: \mathbb{C}\setminus \{0\} \rightarrow \mathbb{C}\setminus \{0\}$$I(z) = \overline{z^{-1}}$
 %\section{Conclusions}
 \newpage
+
+
 \printbibliography
 
 \end{document}

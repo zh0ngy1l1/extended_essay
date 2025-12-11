@@ -1,0 +1,19 @@
+\begin{tikzpicture}[line cap=round, line join=round, >=triangle 45, ]
+
+\draw  (-3,0) circle (3cm);
+\draw [domain=-10.82:10.82, y domain=-7.41:7.41] plot(\x,{(-0-0*\x)/3});
+\draw  (-1.19,-7.41) -- (-1.19,7.41);
+\draw [dotted] (-1.19,-2.3924673456496746)-- (-1.19,2.392467345649675);
+\draw [dashed] (-1.19,2.392467345649675)-- (1.9723756906077343,0);
+\draw [dashed] (1.9723756906077343,0)-- (-1.19,-2.3924673456496746);
+\draw  (-3,0)-- (1.9723756906077343,0);
+
+\draw  (-3,0) circle (2pt);
+\draw (-3.38,0.38) node {$O$};
+\draw (-4.02,2.38) node {$\omega$};
+\draw [fill=black] (-1.19,0) circle (2pt);
+\draw (-0.86,0.42) node {$A$};
+\draw [fill=black] (1.9723756906077343,0) circle (2pt);
+\draw (2.46,0.38) node {$A*$};
+
+\end{tikzpicture}
