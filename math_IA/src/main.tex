@@ -60,8 +60,6 @@
     linkcolor=blue,
     filecolor=magenta,      
     urlcolor=cyan,
-    pdftitle={Overleaf Example},
-    pdfpagemode=FullScreen,
     }
 \urlstyle{same}
 
@@ -73,14 +71,15 @@
 \crefname{figure}{Fig.}{Figures}
 \Crefname{figure}{\textbf{Figure}}{\textbf{Figures}}
 
-\crefname{property}{Prop.}{Properties}
+\crefname{property}{}{}
 \Crefname{property}{\textbf{Property}}{\textbf{Properties}}
+
+\Crefname{section}{\textbf{Section}}{\textbf{Sections}}
 
 %Diagrams
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
 \usetikzlibrary{positioning, arrows}
-\usepgfplotslibrary{fillbetween}
 \tikzset{every picture/.style={scale=0.8}}
 
 %Bibliography
@@ -95,16 +94,12 @@
     \vspace*{4cm}
     {\Large \textbf{Inversion in Combinatorial Geometry.}}\\
     
-    \vspace{1cm}
-    Developing the technique and solving problems from the Baltic Way and the IMO Shortlist
-    \vfill
-    Word count: -1
   \end{center}
 \end{titlepage}
 
 \section{Introduction}
 
-\section{Problem Statements}
+\section{Problem Statements}\label{sec:problems}
 \begin{problem}[Baltic Way 2021] \label{prob:1}
   We are given 2021 points on a plane, no three of which are collinear. Among any 5 of
   these points, at least 4 lie on the same circle. Is it necessarily true that at least 2020 of the points
@@ -204,16 +199,16 @@ When we reflect many points over a line, they still stay the same shape:
 lines map to lines, circles map to circles; it is not possible for simple things to have complicated reflections.
 
 We need to define the reflection over a circle in a more deliberate way to avoid these undesirable weaknesses.
-Since we call the operation `reflection', it should share some of the most fundamental properties fulfilled when reflecting over a line.
+Since we call the operation `reflection', it should share some of the most fundamental properties fulfilled when reflecting over a line $l$.
 
-\begin{enumerate}[label=\textbf{Property \arabic*.}, leftmargin=*]
-  \item \label{prop:existence-uniqueness}
+\vspace{-1em}\begin{enumerate}[label=\textbf{Property \arabic*.}, leftmargin=*]
+  \item \label[property]{prop:existence-uniqueness}
         The reflection of each point exists and is uniquely defined.
-  \item \label{prop:involution}
+  \item \label[property]{prop:involution}
         Reflecting the reflection of a point yields the point itself.
-  \item \label{prop:fixed-line}
+  \item \label[property]{prop:fixed-line}
         Points on the line $l$ are fixed, i.e. reflect to themselves.
-  \item \label{prop:opposite-side}
+  \item \label[property]{prop:opposite-side}
         Points not on the line $l$ are reflected to the opposite side of $l$.
 \end{enumerate}
 
@@ -225,12 +220,12 @@ but \textbf{Property 3} is satisfied.
 Our note about the reflection of segment $AB$ in \Cref{fig:3}, however, warrants another property to be demanded
 from the upcoming definition:
 
-\begin{enumerate}[label=\textbf{Property \arabic*.}, leftmargin=*, start=5]
-  \item \label{prop:image-locus}
+\vspace{-1em}\begin{enumerate}[label=\textbf{Property \arabic*.}, leftmargin=*, start=5]
+  \item \label[property]{prop:image-locus}
         If a point moves along a circle or a line, then its reflection also traces a circle or a line.
 \end{enumerate}
 
-Turns out \textit{inversion} is a way to define reflection across a circle which satisfies these properties.
+We shall introduce \textit{inversion}, which is a possible definition of reflection across a circle satisfying all these properties.
 In fact, the words are synonymous by convention, and
 the author apologises for his abuse of terminology in the previous section.
 
@@ -251,44 +246,215 @@ extended quotation from his favorite mathematics textbook, \textit{Euclidean Geo
     Therefore, every choice of three distinct points determine a unique circle or line---three ordinary points determine a circle, while two ordinary points plus the point at infinity determine a line.
   
 
-    With this said, we can now define an inversion. Let $\omega$ be a circle with centre $O$ and radius $R$.
+    With this said, we can now define an inversion. Let $\omega$ be a circle with centre $O$ and radius $r$.
     We say an \textbf{inversion} about $\omega$ is a map (that is, a transformation) which does the following.
     \begin{figure}[H]
       \begin{center}
         \input{fig4.tex}
       \end{center}
-      \caption{\small $A\text{*}$ is the image of point $A$ when we take an inversion about $\omega$}
+      \caption{\small $A^*$ is the image of point $A$ when we take an inversion about $\omega$}
       \label{fig:4}
     \end{figure}
 
     \begin{itemize}
       \item The centre $O$ of the circle is sent to $P_\infty$
       \item The point $P_\infty$ is sent to $O$.
-      \item For any other point $A$, we send $A$ to the point $A\text{*}$ lying on ray $OA$ such that $OA\cdot OA\text{*} = r^2$.
+      \item For any other point $A$, we send $A$ to the point $A^*$ lying on ray $OA$ such that $OA\cdot OA^* = r^2$.
     \end{itemize}
-    \hfill {\color{gray} \footnotesize Copied from \cite{Chen2016}}
+    \hfill {\color{gray} \footnotesize Quoted at length from \cite{Chen2016}}
   \end{minipage}
 \end{quote}
 
+The definition of $P_\infty$ above facilitates taking an inverse of point $O$ and allows us to treat lines and circles as highly similar objects.
+
+\Cref{fig:4} shows a geometrical interpretation of the relationship between a point $A$ and its inverse $A^*$:
+$A$ is the point where the chord given by the tangents of $A^*$ to $\omega$ intersects line $OA^*$.
+We can prove this by adding the point of tangency $B$, and considering triangles $\triangle OAB$ and $\triangle OBA^*$.
+
+\begingroup
+  \tikzset{every picture/.style={scale=0.8}}
+  \setcounter{figure}{0}
+  \renewcommand{\thefigure}{4.\arabic{figure}}
+
+  \begin{figure}[H]
+    \centering
+    \input{fig4.1.tex}
+    \caption{\small $A^*$ is the image of point $A$ when we take an inversion about $\omega$}
+    \label{fig:4.1}
+  \end{figure}
+\endgroup
+
+These triangles are similar, because they both have a right angle and the angle $\angle AOB$.
+Hence,
+\[
+  \frac{OA}{OB}=\frac{OB}{OA^*}\implies OA \cdot OA^* = OB^2=r^2.
+\]
+
 
 \subsection{Properties of Inversion}
+Let us verify that inversion satisfies all the properties demanded in the previous section.
+Consider a point on the plane $A$, and its inverse $A$ with respect to a circle of centre $O$ and radius $r$.
+
+\cref{prop:existence-uniqueness}:
+If $A=O$, we explicitly defined its inverse as $P_\infty$.
+Otherwise we can construct $A^*$, by drawing ray $OA$ and marking $A^*$ as the point on there
+whose distance to $O$ is $\frac{r^2}{OA}$.
+
+\cref{prop:involution}:
+If $A=O$, our explicit defninitions guarantee the inverse of its inverse is also $O$.
+Otherwise we have
+\begin{equation}
+  \begin{cases}
+    OA \cdot OA = r^2\\
+    OA^* \cdot O\left(A^*\right)^* = r^2
+  \end{cases}
+\end{equation}
+so $OA=O\left(A^*\right)^*$.
+Since $A^*$ and $\left(A^*\right)^*$ are both on ray $OA$, we necessarily have $A=\left(A^*\right)^*$.
+
+\cref{prop:fixed-line}:
+We only consider points $A$ which lie on the circle.
+This simply means $OA=r$, so trivially $OA^*=r$ and $A=A^*$.
+
+\cref{prop:opposite-side}:
+If point $A$ is inside the circle, then $OA<r$, so $OA^*=\frac{r^2}{OA}>\frac{r^2}{r}=r$, so its inverse is outside.
+Likewise, if if point $A$ is outside, we have $OA>r \implies OA^*<r$, so its inverse is inside, as desired.
+
+\cref{prop:image-locus}:
+We show that a line or circle inverts to a line or a circle, by proving a more specific claim about their behaviour upon inversion.
+
+\vspace{-1em}\begin{enumerate}[label=\textbf{Property 5.\arabic*.}, leftmargin=*, start=6]
+  \item \label[property]{prop:diameter}
+    A line passing through O inverts to itself.
+  \item \label[property]{prop:circle-circle}
+    The inverse of a circle not passing through $O$ is a circle not passing through $O$.
+  \item \label[property]{prop:circle-line}
+    The inverse of a line not passing through $O$ is a circle passing through $O$.
+    Equivalently, the inverse of a circle passing through $O$ is a line not passing through $O$.
+\end{enumerate}
+
 \begin{figure}[H]
   \begin{center}
+    \footnotesize
     \input{fig5.tex}
   \end{center}
-  \caption{\Cref{fig:3} but with inversion}
+  \caption{Same as \Cref{fig:3}, but using inversion.}
   \label{fig:5}
 \end{figure}
 
-\section{Solutions}
-\begin{figure}[H]
-  \begin{center}
-    \input{3_24.tex}
-  \end{center}
-\end{figure}
+We see \cref{prop:circle-line} in action in \Cref{fig:5}.
+The inverse of line $AB$ is the circle passing through $O$, $A^*$, and $B^*$. 
 
+
+Verifying \cref{prop:diameter} is trivial.
+The inverse of each point on the line is still on the line, since the line goes through $O$.
+
+For \cref{prop:circle-circle}, consider the following proof.
+(I can either give a geometrical proof, or show the transformation on the complex plane which achieves inversion, and then prove this algebraically.
+Alternatively I could just omit a proof.)
+Define the function $I: \mathbb{C}\setminus \{0\} \rightarrow \mathbb{C}\setminus \{0\}$ as $I(z) = \overline{z^{-1}}$
+
+\cref{prop:circle-line} has a similar proof.
+
+These three properties combined are of crucial importance in the solution of our problems in \Cref{sec:problems}.
+To supplement them, let us formulate and derive an additional property not mentioned in Chen's masterpiece (perhaps he takes it to be trivial?)
+
+\begin{lemma}\label{lem:invariant}
+  If points $A, B$ are on different sides of circle or line $\Xi$, then their inverses
+  will be on different sides of the inverse of $\Xi$.
+\end{lemma}
+We can define the notion of two points $A, B$ lying on different sides of an object $\Xi$ formally, to
+mean that all (continuous) paths starting at $A$ and ending at $B$ on the plane intersect $\Xi$ at least once.
+By this definition, $A$ and $A'$ of \Cref{fig:3} are clearly on the same side of $\omega$, since 
+we can draw a curve connecting them which never touches $\omega$.
+
+\textbf{Proof.}
+Assume, for contradiction, that $A^*$ and $B^*$ are on the same side of the inverse of $\Xi$.
+This means there exists a path from $A^*$ to $B^*$ which never intersects the inverse of $\Xi$.
+Then the inverse of this path must never intersect $\Xi$, by \cref{prop:existence-uniqueness}, which is contradiction:
+it would imply $A$ and $B$ are on the same side!
+
+\section{Solutions}
+Actually, in none of these problems matters the radius of the circle through which inversion is performed.
 
 \subsection{Solving Problem 1.}
+\begin{problem}[Baltic Way 2021]
+  We are given 2021 points on a plane, no three of which are collinear. Among any 5 of
+  these points, at least 4 lie on the same circle. Is it necessarily true that at least 2020 of the points
+  lie on the same circle?
+\end{problem}
+
+\noindent Answer: \boxed{Yes.}
+
+Let us label the points $A_1, A_2, \dots, A_{2021}$.
+If all points lie on a circle, there is no need to discuss any further.
+Otherwise, suppose without loss of generality, that among points $A_1, A_2, A_3, A_4, A_5$,
+the latter four points $A_2, A_3, A_4, A_5$ lie on the same circle $\gamma$, but $A_1$ is not on $\gamma$.
+
+\begin{figure}[H]
+  \begin{center}
+    \footnotesize
+    \input{fig7.tex}
+  \end{center}
+  \caption{$A_2A_3A_4A_5$ lie on a circle $\gamma$ not containing $A_1$.}
+  \label{fig:7}
+\end{figure}
+
+Next, let $A_i^*$ denote the inverse of point $A_i$, for $i=2, 3, \dots, 2021$, with
+respect to the circle centered at $A_1$ with radius 1.
+What does the problem statement say about these inverses?
+
+We are guaranteed that when we select any five points from $A_1, \dots, A_{2021}$, at least four of them lie on the same circle.
+In the case that these five points are $A_1$, and four others, call them $A_i, A_j, A_k, A_l$,
+we can actually say that
+\begin{enumerate}
+  \item All four of $A_i^*, A_j^*, A_k^*, A_l^*$ lie on a circle not containing $A_1$, by \cref{prop:circle-circle}, or
+  \item At least three of $A_i^*, A_j^*, A_k^*, A_l^*$ lie on a line not containing $A_1$, by \cref{prop:circle-line}
+\end{enumerate}
+
+Here, the first case represents the situation when $A_1$ is not one of the four points which lie on the same circle, while
+the second case represents the situation when it is.
+
+By \cref{prop:circle-circle}, $A_2^*A_3^*A_4^*A_5^*$ lie on a circle, which we shall call $\gamma^*$.
+We wish to show that all 2020 inverses, including these four, lie on $\gamma^*$.
+
+Suppose, for contradiction, and without loss of generality, that point $A_6^*$ is not on the $\gamma^*$.
+Then, by observing points $A_2^*A_3^*A_4^*A_6^*$, we get that $A_6^*$ must lie on one of the lines $A_2^*A_3^*$, $A_2^*A_4^*$, $A_3^*A_4^*$.
+Suppose, without loss of generality, that $A_6^*$ lies on line $A_2^*A_3^*$.
+Next, observe the points $A_3^*A_4^*A_5^*A_6^*$.
+Again $A_6^*$ must lie on one of the lines $A_3^*A_4^*$, $A_3^*A_5^*$, $A_4^*A_5^*$.
+Yet it can't be on $A_3^*A_4^*$ or $A_3^*A_5^*$, since that would imply $A_6^*=A_3^*$.
+Hence $A_6^*$ lies on $A_4^*A_5^*$.
+This means $A_6^*$ is exactly the intersection of lines $A_2^*A_3^*$ and $A_4^*A_5^*$.
+
+\begin{figure}[H]
+  \begin{center}
+    \footnotesize
+    \input{fig8.tex}
+  \end{center}
+  \caption{$A_6^*$ is the intersection of lines $A_2^*A_3^*$ and $A_4^*A_5^*$.}
+  \label{fig:8}
+\end{figure}
+
+Consider the case that among the 2020 inverses, there existed a point $A_k^*$ differing from $A_2^*A_3^*A_4^*A_5^*A_6^*$ that lies on the circle $\gamma^*$.
+Then we could observe $A_3^*A_4^*A_6^*A_k^*$ for contradiction:
+they cannot all lie on the same circle, and clearly no three of them may be collinear or otherwise two distinct points would be equal.
+
+Otherwise none of $A_7^*, A_8^*, A_9^*$ lie on $\gamma^*$.
+But then similarly to how we showed that $A_6^*$ is the intersection of $A_2^*A_3^*$ and $A_4^*A_5^*$,
+we get that $A_7^*, A_8^*, A_9^*$ are all intersections of two lines formed by points $A_2^*A_3^*A_4^*A_5^*$.
+
+\begin{figure}[H]
+  \begin{center}
+    \footnotesize
+    \input{fig9.tex}
+  \end{center}
+  \caption{$A_6^*, A_7^*, A_8^*$ occupy the valid intersections, and $A_9$ causes contradiction.}
+  \label{fig:9}
+\end{figure}
+
+That's impossible, since there are only three such intersections.
+Hence we have contradiction, which means point $A_6^*$, and all other inverses too, must lie on $\gamma^*$, and we are done.
 \subsection{Solving Problem 2.}
 \subsection{Solving Problem 3.}
 \subsection{Solving Problem 4.}  
@@ -305,8 +471,7 @@ extended quotation from his favorite mathematics textbook, \textit{Euclidean Geo
 
 %But what connects these is the need for inversion. 
 
-%Define the function $I: \mathbb{C}\setminus \{0\} \rightarrow \mathbb{C}\setminus \{0\}$$I(z) = \overline{z^{-1}}$
-%\section{Conclusions}
+\section{Conclusions}
 \newpage
 
 

@@ -1,0 +1,40 @@
+\begin{tikzpicture}[line cap=round, line join=round, >=triangle 45]
+\begin{axis}[
+  xmin=-10.82, xmax=10.82,
+  ymin=-7.41, ymax=7.41,
+  width=21.64cm,
+  height=14.82cm,
+  x=1cm, y=1cm,
+  unit vector ratio*=1 1 1,
+  domain=-10.82:10.82,
+  restrict y to domain=-7.41:7.41,
+  unbounded coords=jump,
+  clip=true,
+  axis lines=none,
+  ticks=none,
+  tick style={draw=none},
+  xtick=\empty,
+  ytick=\empty,
+  xlabel=\empty,
+  ylabel=\empty,
+  enlargelimits=false
+]
+
+
+\draw [dashed] (4,0) circle (2.92cm);
+
+\draw  (-3,0) circle (2pt);
+\draw (-3.36,0.7) node {$A_1$};
+\draw [fill=black] (1.5354621822066483,2.133929086138146) circle (2pt);
+\draw (1.76,2.62) node {$A_2$};
+\draw [fill=black] (3.1185297859034575,-3.1385681865558688) circle (2pt);
+\draw (3.34,-2.64) node {$A_4$};
+\draw [fill=black] (5.3151631431632165,-2.98294249137744) circle (2pt);
+\draw (5.54,-2.5) node {$A_5$};
+\draw [fill=black] (0.9390373951509123,-1.121654105201549) circle (2pt);
+\draw (1.16,-0.64) node {$A_3$};
+
+\draw (5.36,2.62) node {$\gamma$};
+
+\end{axis}
+\end{tikzpicture}

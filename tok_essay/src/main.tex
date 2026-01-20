@@ -43,21 +43,40 @@
     filecolor=magenta,      
     urlcolor=cyan,
     pdftitle={Overleaf Example},
-    pdfpagemode=FullScreen,
     }
 \urlstyle{same}
 
 %Diagrams
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
-\usetikzlibrary{positioning, arrows.meta}
 \usepgfplotslibrary{fillbetween}
+\usetikzlibrary{positioning, arrows, decorations.pathreplacing}
+
 
 %Theorems
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{definition}{Definition}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{corollary}{Corollary}[section]
+
+
+%Refs
+\usepackage{cleveref}
+
+\crefname{figure}{Fig.}{Figures}
+\Crefname{figure}{\textbf{Figure}}{\textbf{Figures}}
+
+\Crefname{section}{\textbf{Section}}{\textbf{Sections}}
+
+% --- Unicode Greek (XeLaTeX / LuaLaTeX) ---
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\setotherlanguage{greek}
+
+% Pick a Greek-capable font (these are common on Overleaf)
+\newfontfamily\greekfont{Times New Roman} % or: GFS Artemisia, FreeSerif, Linux Libertine O
+
 
 %Bibliography
 \usepackage[backend=biber]{biblatex}
@@ -76,45 +95,144 @@
     Word count: 0000
   \end{center}
 \end{titlepage}
-\section*{Plan.}
-My other area of knowledge is human sciences. (?)
 
-Define 'power of knowledge': The influence that knowledge has on the world.
-Ex: Historical knowledge may be more powerful, i.e. recounted more, if it was written in a more aesthetic way.
+\section*{Introduction}
+Let us define the power of knowledge as follows: %The influence that knowledge has on the world makes knowledge powerful.
+%Ex: Historical knowledge may be more powerful, i.e. recounted more, if it was written in a more aesthetic way.
+\begin{enumerate}
+  \item Knowledge that is persuasive is powerful.
+  \item Knowledge that influences decisions of policymakers is powerful.
+  \item Knowledge that affects the understanding of other knowledge is powerful.
+\end{enumerate}
 
-Reading / material for real life examples:
-\begin{itemize}
-  \item A Mathematician's Apology
-  \item Thinking, Fast and Slow (maybe Nudge as well?)
-  \item Philosophy of Mathematics and Natural Sciences
-  \item Mathematics, Queen and Servant of Science
-\end{itemize}
-Hopefully this has enough material.
-
-Then my other area of knowledge, Human Sciences, would relate to economics or psychology...
-
-Conjectures: 
-
+\section{Fermat's Last Theorem}
 \textbf{The way in which knowledge is conveyed:} From a figure of authority.
+A rigorous proof is the backbone of mathematics.
 Authority is useless (or has very little use) in the power of mathematical knowledge.
 Fermat, the greatest mathematician at his time, claims he has proven his last theorem $a^n + b^n = c^n$.
 Yet, before Wiles's proof and verification, the theorem is not treated as much more plausible than, say, nonexistence of odd perfect numbers.
 
-\textbf{The way in which knowledge is conveyed:} motivation, salience... 
-
-A \textit{model} is a set of rules, abstractions, simplifications, and theory, through which knowledge may be interpreted.
-
-Descartes' invention of algebraic geometry:
+\section{Euclid's definition of a point}
 \begin{quote}
-  
+  \textit{To anyone who has lived in a modern American city
+  (except Boston) at least one of the underlying ideas of
+  Descartes' analytic geometry will seem ridiculously evident.
+  Yet, it took mathematicians all of two thousand
+  years to arrive at this simple thing.}
+  \hfill
+  Bell, pp. 123
 \end{quote}
 
+Really, it seems obvious to us that to describe points
+on a two-dimensional plane we may use \textit{two dimensions},
+the horizontal and the vertical. This makes it rather surprising
+that such a representation was not developed any sooner
+than the fifteenth century, such as by the Ancient Greeks who
+are especially known for their study of geometry.
 
-mathematical proof vs empirical evidence
+For argument's sake, let us assume that the Greeks noticed
+this idea, but for some reason which we will explore,
+it was never popularized or documented at the time.
+After all, the basic idea was no more than just
+comparing the widths and heights of rectangles who share
+a corner:
 
-\section{Introduction}
-hallo
- 
+\begin{figure}[H]
+  \begin{center}
+    \input{fig1.tex}
+  \end{center}
+  \caption{What the Ancient Greeks might have drawn.}
+  \label{fig:1}
+\end{figure}
+
+It is known that the Ancient Greeks were quite capable
+in the study of the lengths in geometrical configurations,
+with examples like Archimedes' approximation of $\pi$.
+In fact, for the task of computing the distance between
+points $A$ and $B$ in \Cref{fig:1}, we would use none
+other than the \textit{Pythagorean} theorem, a testament
+to the Greeks' geometrical development.
+
+Yet they never achieved the level of abstraction attained
+by the cartesian plane, which would turn out to be a very
+powerful tool. It could reduce the proof of or disproof of any
+claim to a purely mechanical routine that required no
+spatial intuition, much unlike the classical methods that
+relied on studying the diagram.
+
+Notwithstanding the difference in available mathematical knowledge,
+I argue that a reason for the delay in the invention of analytic
+geometry is the way in which mathematical knowledge was conveyed
+in the ancient times and at Descartes' time.
+Specifically, Ancient Greeks studied mathematics through spoken
+persuasion and with reference to geometrical diagrams and construction,
+differing from the modern approach of symbolic abstraction, which was
+already popularized at Descartes' time.
+
+Because of the spoken tradition of presenting mathematical knowledge,
+there is an inherent risk of overlooking certain important details.
+Consider Euclid's definition of a point as an example.
+In his list of definitions in Book 1, Euclid writes:
+
+\begin{quote}
+  \small
+  \textgreek{Σημεῖόν ἐστιν, οὗ μέρος οὐθέν.}
+  \hfill
+  \textit{A point is that of which there is no part.}
+\end{quote}
+
+Such a definition might be acceptable at the time. Euclid's students
+likely did not challenge this definition, because it states what is
+intuitively the distinction between a point and all other geometrical
+objects. You can always divide a curve or a solid into parts, but
+there is no way to do this to a point.
+Moreover, this definition was, at the time, rather inescapable: Another
+characteristic of a point is that it has only position. Yet this
+risks a circular argument, since positions are simply points.
+
+The oral tradition is the ultimate cause for this weakness of
+the Ancient Greek, since obviously for the sake of persuasion such an
+intuitively obvious definition is preferred, over some convoluted way
+of describing a point as side lengths of rectangles as drawn in
+\Cref{fig:1}.
+This is a significant reason why Euclid chose not to define a point
+as `represented by the pair of numbers $(x, y)$'.
+
+For this reason, Ancient Greek geometers would never uncover the full
+power of their geometrical knowledge, which lies in Descartes' invention
+of the \textit{coordinate system} that would unite geometry with algebra.
+The Pythagorean theorem was a way to compute hypotenuses of right
+triagles, but it would not become \textit{The Distance Formula} until
+Descartes.
+
+% The conviction comes from seeing that the argument must be true, not from manipulating symbols.
+% So mathematical knowledge is conveyed as logical necessity made visually intelligible.
+
+
+\section{Hans Rosling's Gapminder}
+%How knowledge is used by/not used by policymakers:
+To  scholars, decisions may seem ignorant; Yet there is a gap between scholars and Leaders, likely because how knowledge is conveyed.
+It's not enough that knowledge exists somehere; conveying it is equally critical for the power of this knowledge to manifest. 
+
+I argue that certain knowledge (especially outside of mathematics), can only demonstrate its
+power when conveyed in a specific way. (or, if this is too strong, then that the 
+way in which knowledge is conveyed amplifies its power significantly.)
+
+Gapminder is considered succesful, not for introducing new knowledge, but instead
+for propagating existing knowledge to a wider audience.
+Surely intuition correction is powerful.
+
+It is rhetorical power.  The site even tells you `your answer is incorrect, just like 70\% others.'
+%"The statistical knowledge itself was not powerful in changing public misconceptions until it was conveyed in a dynamic, visual, and narrative form."
+
+%"Knowledge may exist, but without effective conveyance it fails to exercise cognitive power."
+
+\section{Whatever in the World, what even is the AOK???}
+???
+
+\section{conclusion?}
+???
+
 \newpage
 \printbibliography
 
@@ -125,18 +243,6 @@ hallo
 
 %ex, ctex for the other direction too.
 
-% How history is used by/not used by policymakers.
-% to historians and scholars, decisions may seem ignorant, but there really is a gap between scholars and Leaders, likely because how knowledge is conveyed.
-% It's not enough that knowledge exists somehere; conveying it is equally critical for the power of this knowledge to manifest. 
-% Maybe Gapminder: Psychology?
-% Shows how important the means of conveying knowledge is. 
-% since these statistics of *stuff* always exists somewhere on the internet and it just has to be shown to people.
-
 % Assuming I take this, I just need to figure out an argument against. 
 % So why it MAY NOT BE that important.
 % " Personal things? "
-
-% CHATGPT:
-% Example (Psychology): Classical Conditioning Works Regardless of Medium
-% Alternative Psychology Example: Placebo Effect Does Not Depend on Medium
-% Another Option: Memory Reconsolidation

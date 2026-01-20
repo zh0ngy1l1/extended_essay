@@ -1,0 +1,48 @@
+\begin{tikzpicture}[line cap=round, line join=round, >=triangle 45]
+\begin{axis}[
+  xmin=-10.82, xmax=10.82,
+  ymin=-7.41, ymax=7.41,
+  width=21.64cm,
+  height=14.82cm,
+  x=1cm, y=1cm,
+  unit vector ratio*=1 1 1,
+  domain=-10.82:10.82,
+  restrict y to domain=-7.41:7.41,
+  unbounded coords=jump,
+  clip=true,
+  axis lines=none,
+  ticks=none,
+  tick style={draw=none},
+  xtick=\empty,
+  ytick=\empty,
+  xlabel=\empty,
+  ylabel=\empty,
+  enlargelimits=false
+]
+
+
+\draw [dashed] (-0.94,4.53) circle (2.6cm);
+\addplot[domain=-10.82:10.82] {(--12.676917159514588--2.924393828276518*x)/0.5357506977357223};
+\addplot[domain=-10.82:10.82] {(--3.6176319929342426--0.13979394650755594*x)/1.9731705981419938};
+\addplot[domain=-10.82:10.82] {(--7.677815574029971-1.6719401561155145*x)/3.9309439744290096};
+\addplot[domain=-10.82:10.82] {(--5.769340719634713--4.736127930899588*x)/-1.4220226785512937};
+\addplot[domain=-10.82:10.82] {(--7.392269817847605-4.596333984392032*x)/3.3951932766932877};
+\addplot[domain=-10.82:10.82] {(--0.2116382515101316-1.8117341026230704*x)/1.957773376287016};
+
+\draw [fill=black] (-3.153821229659042,6.446845211046245) circle (2pt);
+\draw (-2.56,6.7) node {$A_2*$};
+\draw [fill=black] (-1.7317985511077485,1.7107172801466568) circle (2pt);
+\draw (-1.86,1.54) node {$A_4*$};
+\draw [fill=black] (0.2413720470342453,1.8505112266542127) circle (2pt);
+\draw (0.54,2.34) node {$A_5*$};
+\draw [fill=black] (-3.6895719273947645,3.5224513827697272) circle (2pt);
+\draw (-3.38,4.02) node {$A_3*$};
+\draw [fill=black] (-4.051591947254944,1.5463660201821365) circle (2pt);
+\draw (-3.66,2.1) node {$A_6*$};
+\draw [fill=black] (-2.0687903490404524,2.833087753379289) circle (2pt);
+\draw (-1.76,3.28) node {$A_7*$};
+\draw [fill=black] (4.830326180197964,-4.361908543338784) circle (2pt);
+\draw (5.14,-3.92) node {$A_8*$};
+
+\end{axis}
+\end{tikzpicture}
