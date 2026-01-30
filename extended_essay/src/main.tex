@@ -112,25 +112,44 @@
 \newpage
 
 \section{Introduction}
-Write this when most of the essay is finished
-%As the British mathematician G. H. Hardy most eloquently argues in his essay \textit{A Mathematician's Apology} (1940)\cite{hardy}, pure mathematics is pursued for its aesthetic value despite having no practical applications.
-%When encounting a result that seems plausible but is not formally proven, a mathematician cannot help being compelled to seek for a formal justification.
-%The investigations done in the production of this paper are motivated by precisely this: It is a classic textbook example to show the bounds of $$
+The theory of numbers plays an important part in the study of mathematics, and it means determining certain properties of positive integers.
+For example, one might ask, `Which positive integers may not be written as a product of two smaller positive integers?'
+We call such numbers \textit{primes}, and already in Ancient Greece, Euclid had proven that there are infinitely many prime numbers.
+Another mathematician from the time, Nicomachus of Gerasa, had conjectured that there are infinitely many \textit{perfect numbers}, which are numbers that equal the sum of their proper divisors, i.e. positive divisors which are smaller than the number itself.
+For example, 6 is perfect because $6=1+2+3$, and numbers 1, 2, 3 are exactly the positive integers which are less than 6 and divide 6.
+Yet, unlike the existence of infinitely many primes, this latter statement has remained unproven for now more than two millenia since its proposal.
 
-%Explanation why this topic is relevant and important to a student.
-%Clearly stated the research question
-%Methodology of the research (future tense)
+To investigate and potentially solve these elusive questions, mathematicians have defined and studied certain functions which report an interesting property of a number.
+My extended essay will be about investigating the product of two functions which are both central in number theory.
 
+Firstly, we have the function $\sigma(n)$, which is defined as the sum of all positive divisors of $n$.
+This is almost directly a part of the definition of perfect numbers, which in turn are connected to an unsolved problem, making the function inherently interesting to mathematicians.
+The slight difference is that summing over all positive divisors includes the number $n$ itself, alongside all its proper divisors.
+Therefore, a positive integer $n$ is perfect if $n=\sigma(n)-n$, i.e. it is equal to the sum of all its positive divisors excluding itself.
+
+Next, we have Euler's Totient Function, denoted by $\varphi(n)$, which is defined as the number of positive integers less than or equal to $n$ and have no common divisors with $n$.
+This function has become highly relevant in the past century, because it is used many computer algorithms such as encryption and quickly checking whether a very large number is prime.
+
+My study will focus on the function $f(n) = \frac{\sigma(n)\varphi(n)}{n^2}$, which is the product of these two aformentioned functions, divided by $n^2$ because (surprisingly) for any positive integer $n$, the values $\sigma(n)\varphi(n)$ and $n^2$ actually are comparable in size.
+
+We will first develop the necessary tools to tell how close $\sigma(n)\varphi(n)$ and $n^2$ really lie, and then investigate the following figure, which is obtained when our function $f(n)=\frac{\sigma(n)\varphi(n)}{n^2}$ is plotted on the Cartesian plane, as we see in the following figure:
 \begin{figure}[h]
   \centering
   \includegraphics[width=\linewidth]{2million_simple.png}
-  \caption{what?}
+  \caption{The graph of $f(n)$, up to $n=2,000,000$}
+  \label{fig:intro}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%
-%%% NEW SECTION
-%%%%%%%%%%%%%%%%%%%
-\newpage
+The second half of my investigation aims to explain some properties of \Cref{fig:intro}, of which the most striking are the horizontal lines, which emerge in a seemingly random pattern.
+Specifically, we will answer the following questions:
+\begin{question}
+  Why are `dense lines' formed?
+\end{question}
+\begin{question}
+  Where can `dense lines' form?
+\end{question}
+
+
 \section{Prerequisite Knowledge, Notation, and Definitions}
 The inarguably most important theorem in number theory is the following:
 \begin{theorem}[Fundamental Theorem of Arithmetic]
@@ -212,7 +231,7 @@ More complicated sequential sums and products also require set-builder-like nota
 (\ref{eq:sigma}) in \textbf{\Cref{def:sigma}} below serves as an example of this.
 
 \subsection{Key Definitions}
-The following functions, defined for all positive integers $n$, are the central focus of this study.
+As alluded in the introduction, the following functions, defined for all positive integers $n$, are the central focus of this study.
 
 \begin{definition}[Sum of Divisors Function $\sigma$]\label{def:sigma}
   Define $\sigma(n)$ as the sum of all positive divisors of $n$.
@@ -236,7 +255,6 @@ The following functions, defined for all positive integers $n$, are the central 
     \varphi(n) = \left|\{x\in \mathbb{Z}^+\ :\ x\leq n,\ \gcd(x,n)=1\}\right|
   \end{equation}
 \end{definition}
-\vspace{1em}
 \begin{terminology}
   We say that `$a$ is coprime to $b$', or `$a$ and $b$ are coprime', if $\gcd(a,b)=1$.
 \end{terminology}\vspace{1em}
@@ -248,51 +266,48 @@ The following functions, defined for all positive integers $n$, are the central 
   Since there are 4 such numbers, $\varphi(12)=4$.
 \end{example}
 
-%%%%%%%%%%%%%%%%%%%
-%%% NEW SECTION
-%%%%%%%%%%%%%%%%%%%
 \newpage
 
 \section{The Problem of Study}
-This investigation was inspired by the following problem from the undergraduate textbook \textit{Introduction to Analytic Number Theory} \cite{apostol}.
+The author first learned of this problem in the undergraduate textbook \textit{Introduction to Analytic Number Theory} \cite{apostol}.
 
 \begin{problem}\label{prob:1}
-  Show that $\displaystyle \frac{6}{\pi^2}<\sigma(n)\varphi(n) n^{-2}<1$ for all integers $n$ greater than 1.
+  Define $f(n) = \frac{\sigma(n)\varphi(n)}{n^2}$.
+  Show that $\displaystyle \frac{6}{\pi^2}<f(n)<1$ for all integers $n$ greater than 1.
 \end{problem}
 
-For simplicity, $f(n)$ will be used to denote $\sigma(n)\varphi(n) n^{-2}$ from this point onwards.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\textwidth]{2500_bounds.png}
-  \caption{Graph for \textbf{\Cref{prob:1}}}
+  \caption{Graph of $f(n)$ up to $n=2500$, with the proposed bounds in \textbf{\Cref{prob:1}}}
   \label{fig:2500_bounds}
 \end{figure}
 
 \textbf{\Cref{fig:2500_bounds}} visualizes the scenario by plotting points $\left(n, f(n)\right)$ (in blue) and the lower-- and upper bounds (in red) on the Cartesian plane.
 Then, the task in \textbf{\Cref{prob:1}} is to show that all blue points fall in between the red lines.
 
-The research question of this investigation, regarding `patterns' in the graph can now be put concretely.
+Moreover, the `patterns' that we will later investigate are also apparent in this graph.
 In addition to solving \textbf{\Cref{prob:1}}, this paper will develop the necessary tools to answer the following questions.
 
+\setcounter{question}{0}
 \begin{question}\label{quesetion:1}
   Why are `dense lines' formed?
 \end{question}
 
 This question regards the horizontal lines that many of the points seem to fall in, at $y=1,\ y=0.75$, and $y=0.89$ for example.
 This is one of the first questions arising upon seeing \textbf{\Cref{fig:2500_bounds}}, since the orderly patterns strike as unexpected in such a scattered and seemingly random distribution.
-After addressing \textbf{\Cref{q:1}}, the next natural question is,
+After addressing \textbf{\Cref{quesetion:1}}, the next natural question is,
 
-\begin{question}\label{qn:2}
+\begin{question}\label{question:2}
   Where can `dense lines' form?
 \end{question}
 
 This is also a natural thing to ask; we see many dense lines between 0.95 and 1, and much fewer below 0.70.
+Is it true that the denser lines may only form in certain regions, and are entirely absent elsewhere?
+As we will show, the answer is that anywhere between $6/\pi^2$ and 1 are denser lines able to emerge.
+The reader may disregard these questions for now, as an exact definition of these `dense lines' is not given until later.
 
-
-%%%%%%%%%%%%%%%%%%%
-%%% NEW SECTION
-%%%%%%%%%%%%%%%%%%%
 \section{Background for Problem 1}
 To approach \textbf{\Cref{prob:1}}, we must improve our understanding on the functions $\sigma$ and $\varphi$.
 The following product forms for these functions in terms of the prime factorization of $n$ shall be derived.
@@ -586,12 +601,12 @@ Finally, substitute this into (\ref{eq:totient_apply_e}) to finish:
   \end{quote}
 
 The task is to prove $\frac{6}{\pi^2}<f(n)<1$ for all integers $n>1$.
-Now that both parts of \textbf{Lemma 1} have been derived,
-we can derive the following formula for $f(n) = \sigma(n)\varphi(n) n^{-2}$ in terms of the prime factorization of $n$.
+Now that both parts of \Cref{lemma:prod_form} have been derived,
+we can derive the following formula for $f(n) = \frac{\sigma(n)\varphi(n)}{n^2}$ in terms of the prime factorization of $n$.
 
 \vspace{1em}\begin{lemma}\label{lemma:f_prod_form}
   For any positive integer $n$ with prime factorization $n=\prod_{i=1}^{k}p_i^{\alpha_i}$ holds
-  \begin{equation}\label{eq:prod_f}
+  \begin{equation}\label{eq:f_prod_form}
     f(n)=\prod_{i=1}^{k} \frac{p_i^{\alpha_i+1}-1}{p_i^{\alpha_i+1}}
   \end{equation}
 \end{lemma}\vspace{1em}
@@ -625,7 +640,7 @@ Combine (\ref{eq:_sigmatotient}) and (\ref{eq:_nminus2}) and simplify:
 \vspace{1em}\begin{example}
   Compute $f(2025)$.
 
-  Since $2025 = 3^4\cdot 5^2$, we use (\ref{eq:prod_f}) in \textbf{\Cref{lemma:f_prod_form}}
+  Since $2025 = 3^4\cdot 5^2$, we use (\ref{eq:f_prod_form}) in \textbf{\Cref{lemma:f_prod_form}}
   \[f(2025)=\frac{(3^{4+1}-1)}{3^{4+1}}\frac{(5^{2+1}-1)}{5^{2+1}} = \frac{242}{243}\cdot\frac{124}{125}=\frac{30008}{30375}\]
   Verifying using the answers of \textbf{\ref{ex:sigma_2025}} and \textbf{\ref{ex:phi_2025}}:
   \[f(2025) = \sigma(2025)\varphi(2025) 2025^{-2} = 3751\cdot1080 \cdot 2025^-2 = \frac{4051080}{4100625} = \frac{30008}{30375}\]
@@ -709,7 +724,6 @@ This paper will only show that the infinite product over all primes and the infi
   \item Expand $\frac{1}{1-1/p^2}$ into a geometric series.
   \item Write without $\Sigma$-notation.
   \item Write without $\Pi$-notation.
-  \item Explained below
 \end{enumerate}
 The step between (\ref{eq:f_inf_prod}) and (\ref{eq:f_inf_sum}) feels like a jump.
 But each term in the infinite sum in (\ref{eq:f_inf_sum}) is produced exactly once
@@ -747,8 +761,8 @@ Therefore,
 \end{equation}
 \qed\vspace{1em}
 
-\section{Answering \Cref{quesetion:1}.}
-Next we turn our attention from the bounds of $f(n)$ to the patterns formed in
+\section{Dense lines}
+Now we turn our attention from the bounds of $f(n)$ to the patterns formed in
 its graph.
 
 \begin{figure}[h]
@@ -757,7 +771,7 @@ its graph.
     \begin{minipage}{0.495\linewidth}
       \centering
       \includegraphics[width=\linewidth]{2500_clean.png}
-      \caption{Clean graph of $\left(n, f(n)\right)$}
+      \caption{Graph of $f(n)$}
       \label{fig:2500_clean}
     \end{minipage}
     \hfill
@@ -770,76 +784,58 @@ its graph.
   \end{adjustwidth}
 \end{figure}
 
-Draw \textbf{\Cref{fig:2500_bounds}} again, without the red lines indicating the bounds (\textbf{\Cref{fig:2500_clean}})
-and highlight the six densest lines (\textbf{\Cref{fig:2500_densest}}).
-
-From \textbf{\Cref{lemma:f_prod_form}} it can be seen that if $p$ is prime, then
-\begin{equation}
-  f(p) = \frac{p^2-1}{p^2}
-\end{equation}
-Since $p^2$ is generally much larger than 1, $f(p)$ will often be very close to $1$.
-We might guess that the points which form the `dense line' at $y=1$ are points of the form $\left(p, f(p)\right)$, where $p$ is prime.
-In \textbf{\Cref{fig:2500_primes}} below, points of this form are highlighted; this seems to confirm our guess on why `dense lines' are formed.
-Rather, seeing this graph lets us define `dense lines' in  a useful way, something
-that must be done before further discussion.
-
-\newpage
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.8\textwidth]{2500_primes.png}
-  \caption{Highlight the points $\left(p, f(p)\right)$}
-  \label{fig:2500_primes}
-\end{figure}
+Recall that `dense lines' still lacked a precise definition.
+Therefore, let us attempt to provide one here.
 
 \begin{definition}\label{def:denseline}
   Let $p_1, p_2, \dots$ be the sequence of prime numbers in ascending order.
   We say that an infinite sequence of numbers 
   $a_1, a_2, \dots$
-  form a `dense line' if there exists positive real constants $M, c, k$ such that
-  for all terms $a_i$ of the sequence holds the following:
+  form a `dense line' if there exist positive real constants $M, c, k$ such that
+  for all terms $a_i$ of the sequence, the following conditions are met.
   \begin{align}
     \frac{a_i}{p_i} \leq& M               \label{eq:density}\\
     |f(a_i)-k|      \leq& \frac{c}{a_i^2} \label{eq:error}
   \end{align}
 \end{definition}
 
-\subsubsection*{Explaining the \hyperref[def:denseline]{Definition of Dense Lines}}
 \textbf{Condition} (\ref{eq:density}) requires that the sequence $(a_i)$ does not grow significantly faster than the sequence of prime numbers $(p_i)$.
 In particular, it ensures that the ratio $\frac{a_i}{p_i}$ remains bounded by some constant $M$.
 If $(a_i)$ grows too rapidly, no such $M$ can exist, and the sequence cannot be considered dense with respect to the primes.
+
+We interpret the minimal constant $M$ satisfying (\ref{eq:density}) for a given sequence $(a_i)$ as a meausre of its density relative to the primes.
+A smaller $M$ therefore corresponds to a denser sequence.
+
+\vspace{1em}\textbf{Condition} (\ref{eq:error}) ensures that the points $(a_i, f(a_i))$ asymptotically lie close to a horizontal line.
+Because the bound $\frac{c}{a_i^2}$ decreases rapidly to zero with increasing $a_i$, this condition guarantees that the deviation of $f(a_i)$ from $k$ diminishes along the sequence,
+so that $(f(a_i))$ converges rapidly toward $k$.
+
+We interpret the minimal constant $c$ satisfying (\ref{eq:error}) for a given sequence $(a_i)$ as a measure of `how quickly the points fall onto the line.'
+A smaller $c$ therefore corresponds to a sequence that approaches the line faster.
 
 \vspace{1em}\begin{example}
   Let $a_i = p_i^2$, where $p_i$ denotes the $i$-th prime number.
   Then
   \[\frac{a_i}{p_i}=p_i\]
-  which is unbounded, since the primes are unbounded.
-  Hence, the sequence $(a_i)$ fails to satisfy (\ref{eq:density}) and is not a dense line.
+  which tends to infinity as $i$ increases, so no such $M$ may exist.
+  Hence, the sequence $(a_i)$ fails to satisfy (\ref{eq:density}), so it is not a dense line.
 \end{example}\vspace{1em}
-
-The minimal constant $M$ satisfying (\ref{eq:density}) for a given sequence $(a_i)$ is a meausre of its density relative to the primes.
-A smaller $M$ corresponds to a denser sequence.
-\footnote{$M=\limsup_{i\to\infty} \frac{a_i}{p_i}$ would be better, for the reader who knows $\limsup$.}
-
-\textbf{Condition} (\ref{eq:error}) ensures that the points $(a_i, f(a_i))$ asymptotically lie close to a horizontal line.
-Because the bound $\frac{c}{a_i^2}$ decreases rapidly to zero with increasing $a_i$, this condition guarantees that the deviation of $f(a_i)$ from $k$ diminishes along the sequence,
-so that $(f(a_i))$ converges rapidly toward $k$.
-The constant $c$ indicates `how quickly the points fall onto the line.'
 
 \begin{example}[The primes form a dense line at \(t=1\)]
   Let \(a_i:=p_i\) be the \(i\)-th prime. We claim that \((p_i)_{i\ge 1}\) is a dense line at \(y=1\).
   \begin{proof}
-    \textbf{(Condition 1.)} For each \(x>0\) the set \(\{a_i: a_i\le x\}\) is exactly the set of primes \(\{p_i: p_i\le x\}\). Hence
+    \textbf{(\ref{eq:density})} For each \(x>0\) the set \(\{a_i: a_i\le x\}\) is exactly the set of primes \(\{p_i: p_i\le x\}\). Hence
     \[
       \frac{\big|\{a_i: a_i\le x\}\big|}{\big|\{p_i: p_i\le x\}\big|}
       =\frac{\big|\{p_i: p_i\le x\}\big|}{\big|\{p_i: p_i\le x\}\big|}=1.
     \]
     The limit as \(x\to\infty\) therefore exists and equals \(1>0\), so condition (1) is satisfied.
 
-    \textbf{(Condition 2.)} Recall the definition of \(f\) used in this paper:
+    \textbf{(\ref{eq:error})} Recall the definition of \(f\):
     \[
       f(n)=\frac{\sigma(n)\,\varphi(n)}{n^2}.
     \]
-    If \(p\) is prime then \(\sigma(p)=1+p\) and \(\varphi(p)=p-1\). Consequently
+    If \(p\) is prime then \(\sigma(p)=1+p\) and \(\varphi(p)=p-1\), so 
     \[
       f(p)=\frac{(1+p)(p-1)}{p^2}=\frac{p^2-1}{p^2}=1-\frac{1}{p^2}.
     \]
@@ -855,62 +851,29 @@ The constant $c$ indicates `how quickly the points fall onto the line.'
   \end{proof}
 \end{example}
 
-\paragraph{Motivation and further remarks.}
-\begin{itemize}
-  \item Why require monotonicity of \(f(a_i)\)? The monotonicity requirement simplifies the picture: it guarantees that the subsequence approaches the limit \(t\) from one side and avoids oscillatory behaviour that might make the asymptotic interpretation less transparent. In many natural arithmetic subsequences (for example, values taken at primes, or values taken on an increasing sequence of integers with strictly increasing structural complexity) the corresponding \(f\)-values are monotone or eventually monotone, so the condition is not overly restrictive for intended applications.
+\subsection{Answering Question 1.}
+We are now able to explain why these `dense lines' are formed.
+From \textbf{\Cref{lemma:f_prod_form}} it can be seen that if $p$ is prime, then
+\begin{equation}
+  f(p) = \frac{p^2-1}{p^2}
+\end{equation}
+Since $p^2$ is generally much larger than 1, $f(p)$ will often be very close to $1$.
+We might guess that the points which form the `dense line' at $y=1$ are points of the form $\left(p, f(p)\right)$, where $p$ is prime.
+In \textbf{\Cref{fig:2500_primes}} below, points of this form are highlighted, and their pattern seems to confirm that our definition of `dense lines'.
 
-  \item The choice of comparing counts to the primes (rather than to \(x\) itself) is deliberate because many sets of arithmetic interest are as sparse as the primes (or sparser), so a normalization by the primes is a natural way to detect nontrivial “largeness” among sparse sets. If one preferred to measure density among all integers, one could replace the denominator in (1) by \(x\); the present definition instead measures the relative frequency among primes.
-
-  \item Examples. The prime example above shows the maximal possible limit \(t=1\) can be attained. Other subsequences can produce intermediate limits \(t\in\big(\tfrac{6}{\pi^2},1\big)\); for instance, any subsequence of primes whose relative density among primes tends to a positive constant \(c\in(0,1]\) will still have \(f\)-limit \(1\) (because \(f(p)\to1\)), while more elaborate constructions (choosing composite \(a_i\) whose arithmetic structure forces \(f(a_i)\) to cluster near a prescribed value \(t\)) can realize other \(t\)-values in the allowed interval.
-\end{itemize}
-
-
-\newpage
-\section{Questions}
-Next answer Question 1. Also rewrite it not using the interval because it's IB AA HL, not Topology 101.
-
-The answer is: no, the bounds can't be uniformly improved.
-For upper bound this is trivial (n = $2^k$ for very big $k$)
-
-For lower bound it's what convergence means. Now that I think about it, Question 1 isn't really worth doing since it's trivial.
-
-Question 2.
-The topmost `dense line' is primes, (or prime powers? That would make the discussion more complete but also longer and not that much more impressive)
-\begin{definition}[`dense line' should I come up with a better name :(]
-  We define a subsequence $b_n$ of the sequence $a_n$ to be a `dense line' if it
-\begin{itemize}
-  \item increases
-  \item approaches some value $t$
-  \item $b_n$ = $a_g(n)$ and $g(n) < c x \ln x$\footnote{Here $x \ln x$ is the asymptotic growth of primes (also the asymptotic growth of prime powers, cool! This condition says `$b_n$ must be dense enough.')}
-\end{itemize}
-\end{definition}
-
-
-Actually, we get a dense line $b_n = a_{d p_n}$ for any positive integer d, and the line is denser the smaller d is (obviously). here $p_n$ is the $n$th smallest prime.
-Though the issue is that if I define `dense lines' like this, it's hard to verify every dense line is generated by this description.
-In fact, I don't even think that's true... Maybe it is? But how do I define it better? This is the only formal definition I could come up with!
-
-But that's enough knowledge about the dense lines that we can graph them! Is this a satisfying enough answer to Question 2?
 \begin{figure}[h]
   \centering
-  \begin{minipage}{0.49\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{2500_densest.png}
-    \caption{First 6 `dense lines'}
-    \label{fig:densest}
-  \end{minipage}
-  \hfill
-  \begin{minipage}{0.49\linewidth}
-    \centering
-    \includegraphics[width=\linewidth]{2million_simple.png}
-    \caption{plotting up to $n=2,000,000$}
-    \label{fig:2million}
-  \end{minipage}
+  \includegraphics[width=0.8\textwidth]{2500_primes.png}
+  \caption{Highlight the points $\left(p, f(p)\right)$}
+  \label{fig:2500_primes}
 \end{figure}
 
-Now question 3. Look at figure 4. We see more blue `dense lines' than previously, but also white regions with very few points.
-We are motivated to ask: Do dense lines cover everything eventually? Will there be some strip with no points whatsoever?
-The answer is no, and we present an algorithm which shows this. It's really cool and relies on Nagura's bound:
+\begin{theorem}
+  A dense line is a sequence $a_i = a_0 \cdot p_i$, for any positive integer $a_0$.
+\end{theorem}
+
+\section{Answering Question 2.}
+The answer is no, and we present an algorithm which shows this, which relies on Nagura's bound on \textit{Bertrand's Postulate}.
 \begin{theorem}
   For all $n\geq 25$ there is always a prime $p$ with $n < p < 1.2n$
 \end{theorem}
@@ -920,16 +883,9 @@ And a bit of computer brute-force for $3 < n < 25$
 and a tiny bit of brute-force by hand for $n=2, n=3$
 
 After that though Nagura + induction can get the remaining cases.
-I think this is my coolest result, and I only recently come up with it
 
+\section{Conclusion}
 
-
-
-\section{Concluding Remarks}
-I don't know what to say here.
-It's been fun investigating this, but seeing that the lines were just primes and constant multiples of primes is kinda anticlimactic for me; I like very hard problems and felt much more thrilled solving \textbf{Question 3.}
-
-Also I need to write an introduction\dots
 
 \newpage
 
